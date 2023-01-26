@@ -1,0 +1,149 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="scardoc.css" rel="stylesheet" type="text/css" charset="utf-8">
+<title>Entity Blueprints</title></head>
+
+<body>
+<span class="subtitle">Using ScarDoc</span> 
+<p>ScarDoc can be used for adding auto-documenting C++ and Lua functions.&nbsp;
+To get a function to show up in this webpage all you need to do is add a few
+special comments above your function.&nbsp; There are several different tags
+that you can use on your functions; some are required, while others are only
+optional.</p>
+<p>When documenting Lua functions with ScarDoc you must provide type information
+for your functions arguments and result.&nbsp; This is so ScarDoc can know what
+types need to get passed to the functions.&nbsp; The tags for specifying these
+are @result and @args.</p>
+<table width="100%" class="exampletable">
+  <tr>
+    <td width="100%" class="exampletitle">Example 1.1: Registering a Lua function with ScarDoc</td>
+  </tr>
+  <tr>
+    <td width="100%" class="examplebody">--? @shortdesc Set the race for&nbsp; a player.<br>
+      --? @extdesc<br>
+      --? The race name must be a valid race name from the attribute
+      editor.\n\n<br>
+      --? This function will return false if the raceName does not
+      exist.\n\n<br>
+      --? This comment will be in a new paragraph.<br>
+      --? @result Void<br>
+      --? @args PlayerID playerID, String raceName<br>
+      --? @refs PlayerRaces.txt, SomeOtherDoc.doc<br>
+      function Player_SetRace( playerID, raceName )<br>
+      &nbsp;&nbsp;&nbsp; --<br>
+      end</td>
+  </tr>
+</table>
+<p>Documenting C++ functions is a little more straight forward since type
+information is already specified in the C++ language.&nbsp; Since C++ type-names
+can look really nasty, ScarDoc converts C++ type-names&nbsp; to 'Designer
+Friendly' type-names.&nbsp; This way, if a Lua bound function takes a
+&quot;const Math::Vector3f&nbsp; *&quot; as a parameter, the person writing
+script does not need to worry about all this means.&nbsp; In this case, it would
+be a more friendly name such as &quot;PositionRef.&quot;&nbsp; To see a list of
+all the types and their conversions go to <b>&gt;&gt;TODO&lt;&lt;</b>.&nbsp;</p>
+<table width="100%" class="exampletable">
+  <tr>
+    <td width="100%" class="exampletitle">Example 1.2: Registering a C++ function with ScarDoc</td>
+  </tr>
+  <tr>
+    <td width="100%" class="examplebody">//? @shortdesc Set the race for&nbsp; a player.<br>
+      //? @extdesc<br>
+      //? The race name must be a valid race name from the attribute
+      editor.\n\n<br>
+      //? This function will return false if the raceName does not
+      exist.\n\n<br>
+      //? This comment will be in a new paragraph.<br>
+      //? @refs PlayerRaces.txt, SomeOtherDoc.doc<br>
+      static bool Player_SetRace( Player * playerID, const char * raceName )<br>
+      {<br>
+      }</td>
+  </tr>
+</table>
+<p>Functions can also be categorized into named subgroups.&nbsp; These are the
+sub groups that you see in the Function list. To set the current group, use the
+@group tag.&nbsp; Once the group is set, all functions in the file <i>below</i>
+the tag will be added to this group.&nbsp; If another @group tag is found, this
+will change the current group and the functions will now get added to that
+group.&nbsp; If you do not specify a group, functions will be added to the
+&quot;Various&quot; group.</p>
+<table width="100%" class="exampletable">
+  <tr>
+    <td width="100%" class="exampletitle">Example 1.3: Using the @group tag</td>
+  </tr>
+  <tr>
+    <td width="100%" class="examplebody">/* In this example &quot;Group1&quot;
+      will contain Function1 and Function2, &quot;Group2&quot; will contain
+      Function3 and Function4.&nbsp; Function0 will be added to
+      &quot;Various&quot; */
+      <p>//? @shortdesc Function0 description.<br>
+      static void Function0( ){}<br>
+      <br>
+      <br>
+      //? @group Group1</p>
+      <p>//? @shortdesc Function1 description.<br>
+      static void Function1( ){}<br>
+      <br>
+      //? @shortdesc Function2 description.<br>
+      static void Function2( ){}<br>
+      <br>
+      <br>
+      //? @group Group2<br>
+      <br>
+      //? @shortdesc Function3 description.<br>
+      static void Function3( ){}<br>
+      <br>
+      //? @shortdesc Function4 description.<br>
+      static void Function4( ){}</p>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<span class="subtitle">Tags</span> 
+<p>Following is a list of all the possible ScarDoc tags.</p>
+<ul>
+  <li><b>@shortdesc</b> (<i>required</i>)
+    <ul>
+      <li>A one sentence description of your function.&nbsp; This description
+        will show up in the WSciTE API.</li>
+    </ul>
+  </li>
+  <li><b>@extdesc</b> (<i>optional</i>)
+    <ul>
+      <li>An optional detailed description of your function.&nbsp; If you put a
+        &quot;\n&quot; in your description the generated html will contain a
+        &lt;BR&gt; tag. This description will not show up in the WSciTE API.</li>
+    </ul>
+  </li>
+  <li><b>@refs </b>(<i>optional</i>)
+    <ul>
+      <li>Add a link to an external document.&nbsp; The filepath must be
+        relative to the scardoc/html/references folder.&nbsp;&nbsp; Separate
+        filenames with commas if there is more then one.</li>
+    </ul>
+  </li>
+  <li><b>@result</b> (<i>required, lua only</i>)
+    <ul>
+      <li>Used to specify the result type of the function.&nbsp; This result
+        type must be a valid ScarDoc type.</li>
+    </ul>
+  </li>
+  <li><b>@args </b>(<i>required, lua only</i>)
+    <ul>
+      <li>Used to specify the types for the functions arguments.&nbsp; If the
+        number of arguments in this list does not match up to the number of
+        arguments in the function, ScarDoc will display a warning in its logfile.</li>
+    </ul>
+  </li>
+  <li><b>@group </b>(<i>optional</i>)
+    <ul>
+      <li>This tag does not have to be part of a function. This is a global tag
+        for the current file to set the current group type.&nbsp; If this tag is
+        not specified function will be added to the &quot;Various&quot; group.</li>
+    </ul>
+  </li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+--- Create a table that will be interpreted as a data context for UI properties.
+---@param table table
+--- @return unknown
+function UI_CreateDataContext(table) end
+
+--- Create a table that will be interpreted as a command for UI properties.
+--- @param cmd string
+--- @return unknown
+function UI_CreateCommand(cmd) end
+
+---@param locId string | number
+function Loc_ToAnsi(locId) end
+
+
+---@class ResourceType : userdata
+
+---@type ResourceType
+RT_Manpower = {}
+---@type ResourceType
+RT_Fuel = {}
+---@type ResourceType
+RT_Munition = {}
+---@type ResourceType
+RT_Command = {}

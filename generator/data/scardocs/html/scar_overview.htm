@@ -1,0 +1,67 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="scardoc.css" rel="stylesheet" type="text/css" charset="utf-8">
+<title>Entity Blueprints</title></head>
+
+<body>
+<span class="subtitle">What is LUA?</span> 
+<p>
+<b>LUA</b> is a lightweight programming language designed to be embedded in other applications. This language has seen frequent use in game development across the industry for its flexibility, execution speed, and ease-of-use for integrating it into game engines.
+<p>
+If you already know how programming languages work, there are a few main things you might find different with LUA:
+<ul>
+<li>LUA is <b>Dynamically Typed</b>, meaning that variables can be reassigned to different types on the fly. The function scartype() returns the type of a variable.
+<li>There are 8 basic types in LUA, but Age of Empires IV only uses 6 of these. They are: <b>nil</b>, <b>boolean</b>, <b>number</b>, <b>string</b>, <b>function</b>, and <b>table</b>.
+</ul>
+<p>
+If you are unfamiliar with programming languages and would like to create your own Crafted Map scenarios, Generated Maps, or Game Modes for Age of Empires IV, we recommend you start by learning LUA.
+<p>
+There are multiple resources online to begin your journey, including on the <a href="https://www.lua.org/start.html">official LUA website</a>.
+<p>
+<span class="subtitle">What is SCAR?</span>
+<p>
+<b>SCAR</b> (short for “Scripting At Relic”) is a programming language based on LUA that can run during a match in Age of Empires IV.
+<p>
+SCAR is the result of integrating LUA into the Age of Empires IV Content Editor, combined with a number custom functions that allow for easy modification of game objects and parameters. Therefore, if you are familiar with how to script in LUA, you also know how to script for Age of Empires IV.
+<p>
+By using your LUA knowledge to explore Age of Empires IV's built-in SCAR functions, you should be able to spawn and command units, set objectives, destroy buildings, and a variety of other core functions.
+<p>
+Age of Empires IV employs SCAR in a variety of uses, including creating:
+<ul>
+<li>Multiplayer game mode logic </li>
+<li>Campaign missions </li>
+<li>Procedural map generation </li>
+<li>Debug functions </li>
+</ul>
+<p>
+SCAR is useful in these situations because of how it works, as it runs at a “global” level.
+<p>
+With SCAR, there is only a single script running which can be doing multiple things, allowing it to preside over the entire game session. This makes SCAR perfect for using in content such as scripted missions or custom game modes.
+<p>
+
+<span class="subtitle">Scardocs</span>
+<p>
+<b>Scardocs</b> is a file bundled with the Age of Empires IV Content Editor that contains a large list of useful functions.
+<p>
+You can access Scardocs through the <b>Main Menu</b> and navigating to  <b>Script > Documentation</b>. This will open up <b>Scardocs</b> in your web browser.
+<p>
+To use Scardocs:
+<ol>
+<li>Select a category of functions in the left panel.</li>
+<ul>
+<li>In the example below, we selected FOW. This category contains functions that allow you to control the Fog of War in a match.</li>
+</ul>
+<li>Select a function in the category to view its description and parameters.</li>
+<ul>
+<li>In the example below, we selected FOW_RevealAll. Notice that this function reveals the Fog of War for all players when it is called. It does not have any parameters which makes it easy to use. If you wanted to reveal a specific area, you would call FOW_RevealArea, but you would first need to identify a position on the map, set a radius/duration, and feed that information into the function when you call it.</li>
+</ul>
+<li>Use the function in your Crafted Map or Game Modes script.</li>
+<ul>
+<li>You can learn more about how to achieve this in the <b>Creating a Script</b> documentation for either Crafted Maps or Game Modes.</li>
+</ul>
+</ol>
+
+
+</body>
+</html>

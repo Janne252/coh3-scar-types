@@ -1,0 +1,170 @@
+body {
+	background-color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+	border: 0px;
+}
+
+a {
+	color: #330000;
+}
+
+form {
+	background-color: #CCCC99;
+}
+
+.title {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 16px;
+	line-height: 30px;
+	color: #FFFFFF;
+	font-weight: bold;
+	background-color: #0054A6;
+}
+
+.subtitle {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 16px;
+	line-height: 20px;
+	font-weight: bold;
+  color: #0054A6; font-style: oblique;
+}
+
+.tabletitle {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 14px;
+	line-height: 20px;
+	color: #FFFFFF;
+	font-weight: bold;
+	background-color: #0054A6;
+}
+
+.tablesubtitle{
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #CCCC66;
+}
+
+.header {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 24px;
+	background-color: #990000;
+  color: #FFFF66;
+}
+
+a:hover {
+	color: #DEDECA;
+	background-color: #330000;
+}
+
+.arg {
+	font-style: italic;
+	color: #CC3300;
+
+}
+.function {
+	font-weight: bold;
+
+}
+.funcdesc {
+}
+.squadbasetrooper {
+	font-style: italic;
+	color: #000099;
+}
+.squadupgrade {
+	font-style: italic;
+	color: #990000;
+}
+.health {
+	font-style: italic;
+	color: #008800;
+}
+.exampletable{
+	background-color: #000000;
+}
+.examplebody{
+	font-family: Courier;
+	font-size:12px;
+	line-height:12px;
+	background-color: #DDDDDD;
+}
+.exampletitle {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 14px;
+	line-height: 20px;
+	color: #FFFFFF;
+	font-weight: bold;
+	background-color: #990000;
+}
+
+/* Tree view styles */
+.tree-group {
+	list-style-type: none;
+	white-space: nowrap;
+}
+
+.tree-group-expander {
+	background-image: url('./assets/menu_tee_plus.gif');
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	line-height: 14px;
+	vertical-align: middle;
+	margin-right: 3px;
+}
+
+.tree-group-expander:hover {
+	color: #AA6666;
+	background-color: transparent;
+}
+
+.tree-group-expander.expanded {
+	background-image: url('./assets/menu_tee_minus.gif');
+}
+
+.tree-link {
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.tree-link:hover {
+	color: #AA6666;
+	background-color: transparent;
+}
+
+.tree-link.expanded {
+	font-weight: bold;
+}
+
+.tree-entry {
+	list-style-type: none;
+	background-image: url('./assets/menu_tee_file.gif');
+	background-position: left center;
+	height: 16px;
+	line-height: 14px;
+	padding-left: 32px;
+	background-repeat: no-repeat;
+	background-size: 32px 16px;
+	margin-left: 1px;
+}
+
+.tree-entry-expander {
+
+}
+
+.tree-list {
+	margin: 0px;
+	padding: 0;
+	display: none;
+}
+
+.nested {
+	margin-left: 16px;
+}
+
+.tree-list.expanded {
+	display: block;
+}
