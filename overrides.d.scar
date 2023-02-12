@@ -27,3 +27,8 @@ RT_Command = {}
 ---@param team TeamID
 ---@return TeamID
 function Team_GetEnemyTeam(team) end
+
+--? @shortdesc Converts a colour table to an ARGB hex string (e.g. {a=0, r=255, g=204, b=136} => #00FFCC88).
+---@param color table
+---@return string
+function UI_GetColourAsString(color) end
