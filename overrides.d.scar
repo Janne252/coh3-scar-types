@@ -22,3 +22,8 @@ RT_Fuel = {}
 RT_Munition = {}
 ---@type ResourceType
 RT_Command = {}
+
+
+---@param team TeamID
+---@return TeamID
+function Team_GetEnemyTeam(team) end
