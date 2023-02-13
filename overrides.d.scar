@@ -35,3 +35,9 @@ function UI_GetColourAsString(color) end
 
 ---@param message  string
 function fatal(message) end
+
+--- Use capType CT_Personnel to get max squad cap or CT_VehicleCap to get max vehicle cap.
+---@param player Player
+---@param capType CapType
+---@return number
+function Player_GetMaxPopulation(player, capType) end
