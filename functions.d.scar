@@ -174,8 +174,6 @@ GameUICore = {}
 List = {}
 ---@class EBP
 EBP = {}
----@class StackVarFunction
-StackVarFunction = {}
 ---@class Marker
 Marker = {}
 ---@class Upgrade
@@ -7440,7 +7438,7 @@ function EGroup_FilterUnderConstruction(egroup, filtertype) end
 --- Call a lua function for each item in a group. Function will recieve (groupid, itemindex, itemid) and should return true to break or false to continue.
 --- function Rule_Test( )\n \tlocal DespawnEntity = function( egroupid, itemindex, entityID )\n \t\tEntity_Despawn( entityID )\n \tend\n\n \tEGroup_ForEach( EGroup_FromName("eg_PlayersHQ"), DespawnEntity )\n end\n Note: This function iterates over SPAWNED ENTITIES ONLY.
 --- @param egroup EGroupID
---- @param f StackVarFunction
+--- @param f function
 --- @return unknown
 function EGroup_ForEach(egroup, f) end
 
@@ -7448,14 +7446,14 @@ function EGroup_ForEach(egroup, f) end
 --- Only use this to TEST conditions on entities. DO NOT use this to perform operations on all entities, since it may not call your function on all entities (due to short circuit evaluation). This is used for checking if ALL or ANY items in a group match a given predicate. (eg. Are all items in a group chaos marines)\n Note: This function iterates over SPAWNED ENTITIES ONLY.
 --- @param egroup EGroupID
 --- @param all boolean
---- @param f StackVarFunction
+--- @param f function
 --- @return unknown
 function EGroup_ForEachAllOrAny(egroup, all, f) end
 
 --- Same as EGroup_ForEachAllOrAny except you have a choice to iterate over spawned entities, despawned entities, or both.
 --- @param egroup EGroupID
 --- @param all boolean
---- @param f StackVarFunction
+--- @param f function
 --- @param spawned boolean
 --- @param despawned boolean
 --- @return unknown
@@ -7463,7 +7461,7 @@ function EGroup_ForEachAllOrAnyEx(egroup, all, f, spawned, despawned) end
 
 --- Same as EGroup_ForEach except you have a choice to iterate over spawned entities, despawned entities, or both.
 --- @param egroup EGroupID
---- @param f StackVarFunction
+--- @param f function
 --- @param spawned boolean
 --- @param despawned boolean
 --- @return unknown
@@ -13142,7 +13140,7 @@ function SGroup_FilterVisibleToPlayer(sgroup, filtertype, OPT_splitSGroup) end
 --- Call a lua function for each item in a group. Function will recieve (groupid, itemindex, itemid) and should return true to break or false to continue.
 --- function Rule_Test( )\n \tlocal DespawnSquad = function( sgroupid, itemindex, squadID )\n \t\tSquad_Despawn( squadID )\n \tend\n\n \tSGroup_ForEach( SGroup_FromName("sg_Squads"), DespawnSquad )\n end\n\n This functions iterates over spawned squads only.
 --- @param sgroup SGroupID
---- @param f StackVarFunction
+--- @param f function
 --- @return unknown
 function SGroup_ForEach(sgroup, f) end
 
@@ -13150,14 +13148,14 @@ function SGroup_ForEach(sgroup, f) end
 --- Only use this to TEST conditions on squads. DO NOT use this to perform operations on all squads, since it may not call your function on all squads (due to short circuit evaluation). This is used for checking if ALL or ANY items in a group match a given predicate. (eg. Are all items in a group chaos marines)\n This functions iterates over spawned squads only.
 --- @param sgroup SGroupID
 --- @param all boolean
---- @param f StackVarFunction
+--- @param f function
 --- @return unknown
 function SGroup_ForEachAllOrAny(sgroup, all, f) end
 
 --- Same as SGroup_ForEachAllOrAny except you have a choice to iterate over spawned squads, despawned squads, or both.
 --- @param sgroup SGroupID
 --- @param all boolean
---- @param f StackVarFunction
+--- @param f function
 --- @param spawned boolean
 --- @param despawned boolean
 --- @return unknown
@@ -13165,7 +13163,7 @@ function SGroup_ForEachAllOrAnyEx(sgroup, all, f, spawned, despawned) end
 
 --- Same as SGroup_ForEach except you have a choice to iterate over spawned squads, despawned squads, or both.
 --- @param sgroup SGroupID
---- @param f StackVarFunction
+--- @param f function
 --- @param spawned boolean
 --- @param despawned boolean
 --- @return unknown

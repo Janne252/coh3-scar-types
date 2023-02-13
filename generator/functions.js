@@ -13,7 +13,7 @@ window.normalizetype = (/**@type {string} */type) => {
         ['Ability']: ['Ability', 'AbilityID'],
         ['Upgrade']: ['Upgrade', 'UpgradeID'],
         ['number']: ['number', 'real', 'integer'],
-        ['function']: ['luaFUnction', 'function'],
+        ['function']: ['luaFUnction', 'function', 'StackVarFunction'],
     }
     const aliased = Object.entries(standardAliases).find(([, variants]) => variants.some(v => v.toLowerCase() == normalized))
     const genericMatch = /(?<genericType>.*?)<(?<typeVar>.*?)>/
