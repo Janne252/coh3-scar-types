@@ -32,3 +32,6 @@ function Team_GetEnemyTeam(team) end
 ---@param color table
 ---@return string
 function UI_GetColourAsString(color) end
+
+---@param message  string
+function fatal(message) end
