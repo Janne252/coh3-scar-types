@@ -41,3 +41,8 @@ function fatal(message) end
 ---@param capType CapType
 ---@return number
 function Player_GetMaxPopulation(player, capType) end
+
+
+---@param locId string | number | userdata
+---@return string
+function Loc_ToAnsi(locId) end
