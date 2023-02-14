@@ -24,8 +24,6 @@ EntityType = {}
 SquadType = {}
 ---@class UpgradeType
 UpgradeType = {}
----@class StackVar
-StackVar = {}
 ---@class Void
 Void = {}
 ---@class MarkerID
@@ -1473,7 +1471,7 @@ function Weapon_Tracking() end
 --- @param r number
 --- @param g number
 --- @param b number
---- @param svar StackVar
+--- @param svar any
 --- @return unknown
 function dr_drawline(pos0, pos1, r, g, b, svar) end
 
@@ -1923,7 +1921,7 @@ function AIPlayer_GetCachedPathPoints(player, requestingID) end
 
 --- Returns an EGroup containing all capture points on the map owned by a player with the specified
 --- @param aiPlayer Player
---- @param relationshipEnum StackVar
+--- @param relationshipEnum any
 --- @param onlyCanPlaceSecuringStructure boolean
 --- @param egroupOut EGroupID
 --- @return unknown
@@ -2001,7 +1999,7 @@ function AIPlayer_GetOwnedMilitaryPointEntitiesInRange(militaryPointPBG, positio
 
 --- Returns all positions of military points allied with a player
 --- @param aiPlayer Player
---- @param relationshipEnum StackVar
+--- @param relationshipEnum any
 --- @return unknown
 function AIPlayer_GetPositionsOfMilitaryPointsWithRelation(aiPlayer, relationshipEnum) end
 
@@ -2952,7 +2950,7 @@ function Loc_FormatTime_M_S(secs, leading_zeroes) end
 function Loc_FormatTime_M_S_MS(secs, leading_zeroes) end
 
 --- Returns the localized string identified by the specified id.
---- @param id StackVar
+--- @param id any
 --- @return unknown
 function Loc_GetString(id) end
 
@@ -3267,7 +3265,7 @@ function Modifier_ApplyToSquad(modifier, squad, durationSeconds) end
 --- @param usageType ModifierUsageType
 --- @param exclusive boolean
 --- @param value number
---- @param v StackVar
+--- @param v any
 --- @return unknown
 function Modifier_Create(applicationType, modtype, usageType, exclusive, value, v) end
 
@@ -3549,17 +3547,17 @@ function Scar_DebugCheatMenuExecute(command) end
 function Scar_DebugConsoleExecute(command) end
 
 --- Returns ST_NIL,ST_BOOLEAN,ST_NUMBER,ST_STRING,ST_TABLE,ST_FUNCTION,ST_SCARPOS,ST_EGROUP,ST_ENTITY,ST_SGROUP,ST_SQUAD,ST_TEAM,ST_MARKER, ST_PBG, or ST_UNKNOWN
---- @param v StackVar
+--- @param v any
 --- @return unknown
 function scartype(v) end
 
 --- Returns a string representing the scartype when passed a scartype enum value
---- @param v StackVar
+--- @param v any
 --- @return unknown
 function scartype_enum_tostring(v) end
 
 --- Returns a string representing the scartype
---- @param v StackVar
+--- @param v any
 --- @return unknown
 function scartype_tostring(v) end
 
@@ -4182,7 +4180,7 @@ function UI_SetPlayerDataContext(player, table) end
 --- Sets the property propertyName on elementName to value stackVar.
 --- @param elementName string
 --- @param propertyName string
---- @param stackVar StackVar
+--- @param stackVar any
 --- @return unknown
 function UI_SetPropertyValue(elementName, propertyName, stackVar) end
 
@@ -5850,7 +5848,7 @@ function BP_GetSquadTypeExtRaceCount(pbgShortname) end
 function BP_GetSquadUIInfo(sbp, rbp) end
 
 --- Returns the type of a blueprint.
---- @param v StackVar
+--- @param v any
 --- @return unknown
 function BP_GetType(v) end
 
@@ -15571,7 +15569,7 @@ function HintMouseover_Remove(hintText, hintTarget) end
 
 --- Creates a hintpoint attached to a Marker, EGroup, SGroup or position
 --- If range is set to 0, then the hintpoint is rangeless, see the design document for rangeless features. The following types of hintpoint actions are available. HPAT_Objective HPAT_Hint HPAT_Critical HPAT_Movement HPAT_Attack HPAT_FormationSetup HPAT_RallyPoint HPAT_DeepSnow HPAT_CoverGreen HPAT_CoverYellow HPAT_CoverRed HPAT_Detonation HPAT_Vaulting
---- @param where StackVar
+--- @param where any
 --- @param bVisible boolean
 --- @param hintText string
 --- @param OPT_height number
@@ -16368,7 +16366,7 @@ function UI_CreateEventCueClickableByType(eventType, lifetime, title, descriptio
 
 --- Creates a blip on the minimap; return the ID of the blip.
 --- 'where' can be an entity, marker, position, egroup, sgroup, or squad.
---- @param where StackVar
+--- @param where any
 --- @param lifetime number
 --- @param blipDataTemplate string
 --- @return unknown
@@ -16833,12 +16831,12 @@ function bug(errormessage) end
 function Clone(data, OPT_recursive) end
 
 --- Converts any enum value to a number
---- @param var StackVar
+--- @param var any
 --- @return unknown
 function Enum_ToNumber(var) end
 
 --- Converts any enum value to a string
---- @param var StackVar
+--- @param var any
 --- @return unknown
 function Enum_ToString(var) end
 

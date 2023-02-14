@@ -1,4 +1,5 @@
 window.keywords = ['nil', 'boolean', 'number', 'string', 'function', 'userdata', 'thread', 'table', 'and', 'break', 'do', 'else', 'elseif', 'end', 'false', 'for', 'function', 'goto', 'if', 'in', 'local', 'nil', 'not', 'or', 'repeat', 'return', 'then', 'true', 'until', 'while']
+window.builtInTypes = ['any']
 window.types = new Set()
 window.generics = new Set()
 window.normalizetype = (/**@type {string} */type) => {
@@ -14,6 +15,7 @@ window.normalizetype = (/**@type {string} */type) => {
         ['Upgrade']: ['Upgrade', 'UpgradeID'],
         ['number']: ['number', 'real', 'integer'],
         ['function']: ['luaFUnction', 'function', 'StackVarFunction'],
+        ['any']: ['StackVar'],
     }
     const aliased = Object.entries(standardAliases).find(([, variants]) => variants.some(v => v.toLowerCase() == normalized))
     const genericMatch = /(?<genericType>.*?)<(?<typeVar>.*?)>/
@@ -40,7 +42,7 @@ window.normalizetype = (/**@type {string} */type) => {
     } else {
         result = type
     }
-    if (!isComplex && !window.keywords.includes(result)) {
+    if (!isComplex && !window.keywords.includes(result) && !window.builtInTypes.includes(result)) {
         window.types.add(result)
     }
 

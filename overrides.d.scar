@@ -8,10 +8,6 @@ function UI_CreateDataContext(table) end
 --- @return unknown
 function UI_CreateCommand(cmd) end
 
----@param locId string | number
-function Loc_ToAnsi(locId) end
-
-
 ---@class ResourceType : userdata
 
 ---@type ResourceType
@@ -22,6 +18,8 @@ RT_Fuel = {}
 RT_Munition = {}
 ---@type ResourceType
 RT_Command = {}
+
+---@class LocString : table
 
 
 ---@param team TeamID
@@ -43,6 +41,57 @@ function fatal(message) end
 function Player_GetMaxPopulation(player, capType) end
 
 
----@param locId string | number | userdata
+---@param locId string | number | LocString
 ---@return string
 function Loc_ToAnsi(locId) end
+
+---@class UIInfo
+---Icon names are WITHOUT .png extension
+---@field helpText LocString
+---@field revealDecrypt boolean
+---@field screenNameShort LocString
+---@field extraTextWorld LocString
+---@field tooltipDataTemplate string
+---@field iconName string
+---@field helpTextWorld LocString
+---@field debugText string
+---@field briefText LocString
+---@field iconAlternateName string
+---@field hotkeyName string
+---@field extraText LocString
+---@field screenName LocString
+---@field screenNameWorld LocString
+---@field portraitIconName string
+---@field symbolIconName string
+---@field showInBuildLog boolean
+---@field uiCombineType userdata
+---@field screenNameAlternate LocString
+---@field helpTextAlternate LocString
+
+
+---@param squadBP ScarSquadPBG
+---@param raceBP ScarRacePBG
+---@return UIInfo
+function BP_GetSquadUIInfo(squadBP, raceBP) end
+
+---@param blueprint  string
+---@return ScarRacePBG
+function World_GetRaceBlueprint(blueprint) end
+
+
+---@class RaceInfo
+---Icon names are WITHOUT .png extension
+---@field name LocString
+---@field icon string
+---@field faction_type number
+---@field loadout table
+---@field flag_icon string
+---@field image string
+---@field image_small string
+---@field icon_secondary string
+---@field path_name string
+---@field name_abbreviated LocString
+
+---@param raceBP ScarRacePBG
+---@return RaceInfo
+function BP_GetRaceInfo(raceBP) end
