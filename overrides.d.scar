@@ -69,10 +69,14 @@ function Loc_ToAnsi(locId) end
 ---@field helpTextAlternate LocString
 
 
----@param squadBP ScarSquadPBG
+---@param sbp ScarSquadPBG
 ---@param raceBP ScarRacePBG
 ---@return UIInfo
-function BP_GetSquadUIInfo(squadBP, raceBP) end
+function BP_GetSquadUIInfo(sbp, raceBP) end
+
+---@param ebp ScarEntityPBG
+---@return UIInfo
+function BP_GetEntityUIInfo(ebp) end
 
 ---@param blueprint  string
 ---@return ScarRacePBG
