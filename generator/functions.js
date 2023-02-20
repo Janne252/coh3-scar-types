@@ -1,5 +1,13 @@
 window.keywords = ['nil', 'boolean', 'number', 'string', 'function', 'userdata', 'thread', 'table', 'and', 'break', 'do', 'else', 'elseif', 'end', 'false', 'for', 'function', 'goto', 'if', 'in', 'local', 'nil', 'not', 'or', 'repeat', 'return', 'then', 'true', 'until', 'while']
 window.builtInTypes = ['any']
+window.predefinedTypes = {
+    'Position': 
+`---@class Position
+---@field x number
+---@field y number
+---@field z number
+`
+}
 window.types = new Set()
 window.generics = new Set()
 window.normalizetype = (/**@type {string} */type) => {
@@ -16,6 +24,7 @@ window.normalizetype = (/**@type {string} */type) => {
         ['number']: ['number', 'real', 'integer'],
         ['function']: ['luaFUnction', 'function', 'StackVarFunction'],
         ['any']: ['StackVar'],
+        ['Position']: ['Position', 'ScarPos', 'ScarPosition'],
     }
     const aliased = Object.entries(standardAliases).find(([, variants]) => variants.some(v => v.toLowerCase() == normalized))
     const genericMatch = /(?<genericType>.*?)<(?<typeVar>.*?)>/
@@ -42,7 +51,7 @@ window.normalizetype = (/**@type {string} */type) => {
     } else {
         result = type
     }
-    if (!isComplex && !window.keywords.includes(result) && !window.builtInTypes.includes(result)) {
+    if (!isComplex && !window.keywords.includes(result) && !window.builtInTypes.includes(result) && !(result in window.predefinedTypes)) {
         window.types.add(result)
     }
 
@@ -88,4 +97,4 @@ window.renderFunction = (f) => {
 }
 window.function_docs = window.functions.map(window.renderFunction)
 
-console.log(`${[...window.generics].map(g => `---@generic ${g}`).join('\n')}\n\n${[...window.types].map(t => `---@class ${t}\n${t} = {}`).join('\n')}\n\n${window.function_docs.join('\n\n')}`)
+console.log(`${[...window.generics].map(g => `---@generic ${g}`).join('\n')}\n\n${Object.values(window.predefinedTypes).join('\n\n')}\n\n${[...window.types].map(t => `---@class ${t}\n${t} = {}`).join('\n')}\n\n${window.function_docs.join('\n\n')}`)

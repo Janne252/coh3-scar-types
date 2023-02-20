@@ -1,5 +1,11 @@
 
 
+---@class Position
+---@field x number
+---@field y number
+---@field z number
+
+
 ---@class Player
 Player = {}
 ---@class ScoringFunction
@@ -14,8 +20,6 @@ Squad = {}
 Entity = {}
 ---@class PropertyBagGroup
 PropertyBagGroup = {}
----@class Position
-Position = {}
 ---@class AITacticType
 AITacticType = {}
 ---@class EntityType
@@ -98,8 +102,6 @@ Optional = {}
 stack_level = {}
 ---@class path
 path = {}
----@class ScarPos
-ScarPos = {}
 ---@class t_test_group
 t_test_group = {}
 ---@class Any
@@ -3989,7 +3991,7 @@ function TestUtil_GetAllBlueprintNames(do_entity___true_for_entity_blueprints, f
 
 --- Draws a circle at the given location.
 --- calls a render debug function in a way that creates a visible outline on terrain. Any provided colour value that isn't within the char bit range (0 - 255) will be adjusted. The colour, segment and thickness parameters are optional and will default to reasonable values if excluded.
---- @param position_real_radius_real_opt_lifetime_real_opt_red_value_real_opt_green_value_real_opt_blue_value_real_opt_number_of_circle_segments_int_opt_thickness_of_circle_border ScarPos
+--- @param position_real_radius_real_opt_lifetime_real_opt_red_value_real_opt_green_value_real_opt_blue_value_real_opt_number_of_circle_segments_int_opt_thickness_of_circle_border Position
 --- @return unknown
 function TestUtil_HighlightCircleRadius(position_real_radius_real_opt_lifetime_real_opt_red_value_real_opt_green_value_real_opt_blue_value_real_opt_number_of_circle_segments_int_opt_thickness_of_circle_border) end
 
@@ -17914,7 +17916,7 @@ function World_PointPointProx(p1, p2, prox) end
 --- @param x number
 --- @param y number
 --- @param z number
---- @return unknown
+--- @return Position
 function World_Pos(x, y, z) end
 
 --- Returns if given position is in playable area.
