@@ -99,3 +99,10 @@ function World_GetRaceBlueprint(blueprint) end
 ---@param raceBP ScarRacePBG
 ---@return RaceInfo
 function BP_GetRaceInfo(raceBP) end
+
+
+---@param entity Entity
+---@param extension string
+---@return boolean
+function Entity_ExtensionExist(entity, extension) end
+
