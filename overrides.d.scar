@@ -140,3 +140,8 @@ function Rule_Add(f, OPT_data, OPT_group) end
 --- @return unknown
 ---@overload fun(rule: function, OPT_delay: number)
 function Rule_AddOneShot(rule, OPT_delay, OPT_data, OPT_group) end
+
+--- Sends a stop command to egroup or sgroup.
+--- @param group EGroupID | SGroupID
+--- @return unknown
+function Cmd_Stop(group) end
