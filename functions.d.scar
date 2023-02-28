@@ -1,3 +1,8 @@
+---@diagnostic disable: missing-return
+
+ALL = true
+ANY = false
+
 
 
 ---@class Position
@@ -10,8 +15,6 @@
 Player = {}
 ---@class ScoringFunction
 ScoringFunction = {}
----@class ResourceType
-ResourceType = {}
 ---@class vector
 vector = {}
 ---@class Squad
@@ -40,14 +43,12 @@ EGroupID = {}
 UniqueID = {}
 ---@class ConstTargetHandle
 ConstTargetHandle = {}
----@class ScarAbilityPBG
-ScarAbilityPBG = {}
+---@class Ability
+Ability = {}
 ---@class Key
 Key = {}
 ---@class EntityPBG
 EntityPBG = {}
----@class ScarSquadPBG
-ScarSquadPBG = {}
 ---@class AIScoreMultiplierID
 AIScoreMultiplierID = {}
 ---@class StackVarTable
@@ -104,8 +105,6 @@ stack_level = {}
 path = {}
 ---@class t_test_group
 t_test_group = {}
----@class Any
-Any = {}
 ---@class FrontEnd_Layer
 FrontEnd_Layer = {}
 ---@class DialogResult
@@ -118,8 +117,6 @@ Pos = {}
 WinReason = {}
 ---@class KillPlayerReason
 KillPlayerReason = {}
----@class ScarEntityPBG
-ScarEntityPBG = {}
 ---@class AIMilitaryTargetType
 AIMilitaryTargetType = {}
 ---@class CombatRangePolicy
@@ -140,8 +137,8 @@ LuaMap = {}
 ScarAIFormationCoordinatorPBG = {}
 ---@class PropertyBagGroupType
 PropertyBagGroupType = {}
----@class ScarUpgradePBG
-ScarUpgradePBG = {}
+---@class Upgrade
+Upgrade = {}
 ---@class CapType
 CapType = {}
 ---@class ScarFn
@@ -176,14 +173,8 @@ List = {}
 EBP = {}
 ---@class Marker
 Marker = {}
----@class Upgrade
-Upgrade = {}
 ---@class TeamID
 TeamID = {}
----@class ANY
-ANY = {}
----@class ALL
-ALL = {}
 ---@class EncounterData
 EncounterData = {}
 ---@class SBP
@@ -210,8 +201,6 @@ ANY_MEMBER = {}
 ANY_SQUAD = {}
 ---@class modids
 modids = {}
----@class Ability
-Ability = {}
 ---@class MUT
 MUT = {}
 ---@class PBG
@@ -266,6 +255,8 @@ InputEnabledFlag = {}
 VisibilityFlag = {}
 ---@class target
 target = {}
+---@class unknown
+unknown = {}
 ---@class ScarBriefingActorPBG
 ScarBriefingActorPBG = {}
 ---@class sender
@@ -1726,7 +1717,7 @@ function AI_FindClosestOpenPositionForAbilityWithinRange(caster, pAbilityPBG, po
 function AI_FindClosestOpenPositionForStructure(aiPlayer, pEntityPBG, posIn) end
 
 --- Returns the maximum number of targets for the given ability, or -1 if the ability is invalid.
---- @param ability ScarAbilityPBG
+--- @param ability Ability
 --- @return unknown
 function AI_GetAbilityMaxNumTargets(ability) end
 
@@ -2007,7 +1998,7 @@ function AIPlayer_GetPositionsOfMilitaryPointsWithRelation(aiPlayer, relationshi
 
 --- Returns the utility of building the squad specified by the PBG, or 0 if not found
 --- @param aiPlayer Player
---- @param squadPBG ScarSquadPBG
+--- @param squadPBG Squad
 --- @return unknown
 function AIPlayer_GetSquadPBGProductionUtility(aiPlayer, squadPBG) end
 
@@ -3489,9 +3480,9 @@ function PrintOnScreen(text) end
 --- Prints the given message on the screen. If you would like to print multiple messages without clearing them you can assign them unique ID's. Must use PrintOnScreen_Remove(id) to remove each instance
 --- @param object Object
 --- @param id string
---- @param OPT_style string
+--- @param style string | nil
 --- @return unknown
-function PrintOnScreen_Add(object, id, OPT_style) end
+function PrintOnScreen_Add(object, id, style) end
 
 --- Removes the PrintOnScreen text of a given ID
 --- @param id string
@@ -3814,9 +3805,9 @@ function SyncWeapon_IsAttacking(weapon, time) end
 --- Returns true if the specified player owns the sync weapon. Use a playerid of nil to see if it's unonwed.
 --- If player is not specified, then the code will check to see if the SyncWeapon is owned by the world.
 --- @param weapon SyncWeaponID
---- @param OPT_player Player
+--- @param player Player | nil
 --- @return unknown
-function SyncWeapon_IsOwnedByPlayer(weapon, OPT_player) end
+function SyncWeapon_IsOwnedByPlayer(weapon, player) end
 
 --- Sets whether a weapon to auto-target things or not
 --- @param weapon SyncWeaponID
@@ -3846,15 +3837,15 @@ function Table_Copy(OriginalTable) end
 --- If the myDefaults table has any item with the value REQUIRED_DATA, then you are declaring that there is no default for this item and that you REQUIRE the user provides a value. You will get a Fatal Scar Error if these are left out, listing exactly which required keys are missing.
 --- @param myTable table
 --- @param myDefaults table
---- @param OPT_errorMessage string
+--- @param errorMessage string | nil
 --- @return unknown
-function Table_FillWithDefaultValues(myTable, myDefaults, OPT_errorMessage) end
+function Table_FillWithDefaultValues(myTable, myDefaults, errorMessage) end
 
 --- Returns a random item from a table. You can return multiple items (without duplicates) by passing in an optional number parameter.
 --- @param table table
---- @param OPT_numberofitems number
+--- @param numberofitems number | nil
 --- @return unknown
-function Table_GetRandomItem(table, OPT_numberofitems) end
+function Table_GetRandomItem(table, numberofitems) end
 
 --- CHecks if a table contains the specified key
 --- @param table LuaTable
@@ -3865,10 +3856,10 @@ function Table_HasKey(table, key) end
 --- Makes a table read-only. This can be done recursively to also apply to any subtables.
 --- Any attempts to write to this table after this has been called will trigger a Fatal SCAR Error. You can customize the error message that will be given with the "error" parameter.
 --- @param table table
---- @param OPT_recursive boolean
---- @param OPT_errorMessage string
+--- @param recursive boolean | nil
+--- @param errorMessage string | nil
 --- @return unknown
-function Table_MakeReadOnly(table, OPT_recursive, OPT_errorMessage) end
+function Table_MakeReadOnly(table, recursive, errorMessage) end
 
 --- Finds the first instance of a given item in the given table and removes it
 --- @param table table
@@ -4039,21 +4030,21 @@ function TestUtil_SpawnSquadsInGridWithoutBlocking(player_SGroup_sgroup, t_sbpna
 
 --- Compare two values and print to standard_test if they are close enough
 --- Uses equality if acceptable_difference is nil or 0
---- @param value1 Any
---- @param value2 Any
---- @param OPT_acceptable_difference number
---- @param OPT_value1_name string
---- @param OPT_value2_name string
+--- @param value1 any
+--- @param value2 any
+--- @param acceptable_difference number | nil
+--- @param value1_name string | nil
+--- @param value2_name string | nil
 --- @return unknown
-function TestUtil_TestClose(value1, value2, OPT_acceptable_difference, OPT_value1_name, OPT_value2_name) end
+function TestUtil_TestClose(value1, value2, acceptable_difference, value1_name, value2_name) end
 
 --- Compare two values using the given comparator
---- @param value1 Any
---- @param value2 Any
---- @param OPT_value1_name string
---- @param OPT_value2_name string
+--- @param value1 any
+--- @param value2 any
+--- @param value1_name string | nil
+--- @param value2_name string | nil
 --- @return unknown
-function TestUtil_TestCompare(value1, value2, OPT_value1_name, OPT_value2_name) end
+function TestUtil_TestCompare(value1, value2, value1_name, value2_name) end
 
 --- Checks if directions are equal and prints message to standard_test if they are not
 --- The items must of of types that can have a direction resolved on them with Util_GetDirection()
@@ -4064,12 +4055,12 @@ function TestUtil_TestDirectionsSame(item1, item2) end
 
 --- Compare two values and print to standard_test if they are equal
 --- Uses equality if acceptable_difference is nil or 0
---- @param value1 Any
---- @param value2 Any
---- @param OPT_value1_name string
---- @param OPT_value2_name string
+--- @param value1 any
+--- @param value2 any
+--- @param value1_name string | nil
+--- @param value2_name string | nil
 --- @return unknown
-function TestUtil_TestEqual(value1, value2, OPT_value1_name, OPT_value2_name) end
+function TestUtil_TestEqual(value1, value2, value1_name, value2_name) end
 
 --- Checks if positions are equal and prints message to standard_test if they are not
 --- @param object1 EGroupID
@@ -4213,11 +4204,11 @@ function UnitEntry_CompleteDeploymentImmediately(deployment) end
 --- @param sgroup SGroupID
 --- @param units table
 --- @param spawn MarkerID | Pos
---- @param OPT_entryMethod table
---- @param OPT_stagger number
---- @param OPT_options table
+--- @param entryMethod table | nil
+--- @param stagger number | nil
+--- @param options table | nil
 --- @return unknown
-function UnitEntry_DeploySquads(player, sgroup, units, spawn, OPT_entryMethod, OPT_stagger, OPT_options) end
+function UnitEntry_DeploySquads(player, sgroup, units, spawn, entryMethod, stagger, options) end
 
 --- Returns a spawnLocation and Facing. If the unit has a custom spawn, it uses that, otherwise it gets it from deployment
 --- @return unknown
@@ -4261,7 +4252,7 @@ function World_SetTeamWin(winningTeam, winReason) end
 
 --- overrides the Heavy Cover Occupancy for the passed EBP
 --- @param pPlayer Player
---- @param ebp ScarEntityPBG
+--- @param ebp Entity
 --- @param occupancyOverride number
 --- @return unknown
 function AI_AddHeavyCoverEbpOccupancyOverride(pPlayer, ebp, occupancyOverride) end
@@ -4857,7 +4848,7 @@ function AIEncounter_EngagementGuidance_SetMaxIdleTime(pEncounter, seconds) end
 
 --- set the sbp setup location priority override
 --- @param pEncounter AIEncounterID
---- @param sbp ScarSquadPBG
+--- @param sbp Squad
 --- @param priority number
 --- @return unknown
 function AIEncounter_EngagementGuidance_SetSetupLocationSbpPriority(pEncounter, sbp, priority) end
@@ -5687,12 +5678,12 @@ function BP_GetEntityBlueprint(pbgShortname) end
 function BP_GetEntityBlueprintByPbgID(pbgID) end
 
 --- Returns the unmodified build time in seconds from cost_ext for a given entity blueprint.
---- @param entityBag ScarEntityPBG
+--- @param entityBag Entity
 --- @return unknown
 function BP_GetEntityBPBuildTime(entityBag) end
 
 --- Returns the default movement speed from moving_ext for a given entity blueprint. If getModifiedSpeed is true, the value will be modified by any speed_maximum_modifier applied to the player for the given entity blueprint.
---- @param entityBag ScarEntityPBG
+--- @param entityBag Entity
 --- @param getModifiedSpeed boolean
 --- @param player Player
 --- @return unknown
@@ -5732,7 +5723,7 @@ function BP_GetEntityTypeExtRaceBlueprintAtIndex(pbgShortname, index) end
 function BP_GetEntityTypeExtRaceCount(pbgShortname) end
 
 --- Returns a table containing the ui_ext info for given entity
---- @param ebp ScarEntityPBG
+--- @param ebp Entity
 --- @return unknown
 function BP_GetEntityUIInfo(ebp) end
 
@@ -5844,7 +5835,7 @@ function BP_GetSquadTypeExtRaceBlueprintAtIndex(pbgShortname, index) end
 function BP_GetSquadTypeExtRaceCount(pbgShortname) end
 
 --- Returns a table containing the ui_ext info for given squad and race
---- @param sbp ScarSquadPBG
+--- @param sbp Squad
 --- @param rbp ScarRacePBG
 --- @return unknown
 function BP_GetSquadUIInfo(sbp, rbp) end
@@ -5865,7 +5856,7 @@ function BP_GetUpgradeBlueprint(pbgShortname) end
 function BP_GetUpgradeBlueprintByPbgID(pbgID) end
 
 --- Returns a table containing the ui_ext info for given upgrade
---- @param ubp ScarUpgradePBG
+--- @param ubp Upgrade
 --- @return unknown
 function BP_GetUpgradeUIInfo(ubp) end
 
@@ -5880,7 +5871,7 @@ function BP_GetWeaponBlueprint(pbgShortname) end
 function BP_GetWeaponBlueprintByPbgID(pbgID) end
 
 --- Returns true if the UpgradePGB's list of types includes the given type
---- @param upgradePBG ScarUpgradePBG
+--- @param upgradePBG Upgrade
 --- @param key string
 --- @return unknown
 function BP_IsUpgradeOfType(upgradePBG, key) end
@@ -5925,11 +5916,11 @@ function Camera_CatromSplinePanOverTime(var, seconds, keepQueue, controlRotation
 
 --- Moves the camera through a list of positions.
 --- @param list table
---- @param OPT_pan boolean
---- @param OPT_panRate number
---- @param OPT_callback ScarFn
+--- @param pan boolean | nil
+--- @param panRate number | nil
+--- @param callback ScarFn | nil
 --- @return unknown
-function Camera_CyclePositions(list, OPT_pan, OPT_panRate, OPT_callback) end
+function Camera_CyclePositions(list, pan, panRate, callback) end
 
 --- Set the camera to follow an sgroup/squad/egroup/entity.
 --- The camera will follow them until the player takes control again.
@@ -5995,26 +5986,26 @@ function Camera_RotateTo(angle) end
 --- If the restartMission flag is set, when the cheat is activated the mission will be restarted. Most of the startup script happens as normal: Mission_SetupVariables,  Mission_SetDifficulty, Mission_SetupRestrictions and Mission_Preset are all called as normal, but the supplied function is called INSTEAD OF the regular Mission_Start function.
 --- @param cheatFunction function
 --- @param title string
---- @param OPT_restartMission boolean
+--- @param restartMission boolean | nil
 --- @return unknown
-function CheatMenu_RegisterCheatFunction(cheatFunction, title, OPT_restartMission) end
+function CheatMenu_RegisterCheatFunction(cheatFunction, title, restartMission) end
 
 --- Order a squad group to abandon their current team weapon if they have it and they could (tuning value in attribute editor)
 --- @param sgroupid SGroupID
---- @param OPT_preserveCrew boolean
---- @param OPT_queued boolean
+--- @param preserveCrew boolean | nil
+--- @param queued boolean | nil
 --- @return unknown
-function Cmd_AbandonTeamWeapon(sgroupid, OPT_preserveCrew, OPT_queued) end
+function Cmd_AbandonTeamWeapon(sgroupid, preserveCrew, queued) end
 
 --- Sends an ability command to a player, egroup or sgroup. extra parameters are provided if the ability requires them.
 --- @param user EGroupID
 --- @param blueprint number
---- @param OPT_target EGroupID
---- @param OPT_direction Position
---- @param OPT_skipCostPrereq boolean
---- @param OPT_queued boolean
+--- @param target EGroupID | nil
+--- @param direction Position | nil
+--- @param skipCostPrereq boolean | nil
+--- @param queued boolean | nil
 --- @return unknown
-function Cmd_Ability(user, blueprint, OPT_target, OPT_direction, OPT_skipCostPrereq, OPT_queued) end
+function Cmd_Ability(user, blueprint, target, direction, skipCostPrereq, queued) end
 
 --- Attach the squad from sgroupnameAttachee to sgroupname.  Both SGroups must contain only one squad.
 --- @param sgroup SGroupID
@@ -6025,79 +6016,79 @@ function Cmd_AttachSquads(sgroup, sgroupAttachee) end
 --- Issues an attack command to an SGroup
 --- @param sgroup SGroupID
 --- @param target EGroupID
---- @param OPT_queued boolean
---- @param OPT_stationary boolean
---- @param OPT_plan string
---- @param OPT_check_FOW boolean
+--- @param queued boolean | nil
+--- @param stationary boolean | nil
+--- @param plan string | nil
+--- @param check_FOW boolean | nil
 --- @return unknown
-function Cmd_Attack(sgroup, target, OPT_queued, OPT_stationary, OPT_plan, OPT_check_FOW) end
+function Cmd_Attack(sgroup, target, queued, stationary, plan, check_FOW) end
 
 --- Order a squad group to attack move to a position (anything whose position can be queried). can be queued, can follow a plan, can search for cover within a radius
 --- @param sgroup SGroupID
 --- @param targetposition Position
---- @param OPT_queued boolean
---- @param OPT_plan string
---- @param OPT_coverSearchRadius number
---- @param OPT_deleteWhenNearMarker MarkerID
---- @param OPT_splitCmd boolean
+--- @param queued boolean | nil
+--- @param plan string | nil
+--- @param coverSearchRadius number | nil
+--- @param deleteWhenNearMarker MarkerID | nil
+--- @param splitCmd boolean | nil
 --- @return unknown
-function Cmd_AttackMove(sgroup, targetposition, OPT_queued, OPT_plan, OPT_coverSearchRadius, OPT_deleteWhenNearMarker, OPT_splitCmd) end
+function Cmd_AttackMove(sgroup, targetposition, queued, plan, coverSearchRadius, deleteWhenNearMarker, splitCmd) end
 
 --- Command attacker sgroup to attack move to strategic point target; when it is capturable, the sgroup would capture it
 --- @param attacker SGroupID
 --- @param target EGroupID
---- @param OPT_queued boolean
+--- @param queued boolean | nil
 --- @return unknown
-function Cmd_AttackMoveThenCapture(attacker, target, OPT_queued) end
+function Cmd_AttackMoveThenCapture(attacker, target, queued) end
 
 --- Order a squad group to capture team weapon entity group.
 --- @param sgroupid SGroupID
 --- @param targetid EGroupID
---- @param OPT_queued boolean
+--- @param queued boolean | nil
 --- @return unknown
-function Cmd_CaptureTeamWeapon(sgroupid, targetid, OPT_queued) end
+function Cmd_CaptureTeamWeapon(sgroupid, targetid, queued) end
 
 --- Orders a squad to contruct a building at specified position, or to continue construction on an existing building.
 --- The command also checks to see if a building already exists at the location, and the squad will continue building it, if it is of the correct type.
 --- @param sgroupid SGroupID
 --- @param blueprint Entity
 --- @param targetid EGroupID
---- @param OPT_Facing Position
---- @param OPT_queued boolean
+--- @param Facing Position | nil
+--- @param queued boolean | nil
 --- @return unknown
-function Cmd_Construct(sgroupid, blueprint, targetid, OPT_Facing, OPT_queued) end
+function Cmd_Construct(sgroupid, blueprint, targetid, Facing, queued) end
 
 --- Detonates a building's demolitions
 --- @param player Player
 --- @param target EGroupID
---- @param OPT_queued boolean
+--- @param queued boolean | nil
 --- @return unknown
-function Cmd_DetonateDemolitions(player, target, OPT_queued) end
+function Cmd_DetonateDemolitions(player, target, queued) end
 
 --- Orders an EGroup or SGroup to kick out its occupants. If no position is specified, the occupants stay at the exit.
 --- @param fromgroupid EGroupID
---- @param OPT_destination Position
---- @param OPT_queued boolean
+--- @param destination Position | nil
+--- @param queued boolean | nil
 --- @return unknown
-function Cmd_EjectOccupants(fromgroupid, OPT_destination, OPT_queued) end
+function Cmd_EjectOccupants(fromgroupid, destination, queued) end
 
 --- Order a squad group to load at a random entity or squad of the group
 --- overload is a flag that will allow the hold entity to ignore maximum slot check
 --- @param fromsgroupid SGroupID
 --- @param togroupid EGroupID
---- @param OPT_overload boolean
---- @param OPT_queued boolean
---- @param OPT_instant boolean
+--- @param overload boolean | nil
+--- @param queued boolean | nil
+--- @param instant boolean | nil
 --- @return unknown
-function Cmd_Garrison(fromsgroupid, togroupid, OPT_overload, OPT_queued, OPT_instant) end
+function Cmd_Garrison(fromsgroupid, togroupid, overload, queued, instant) end
 
 --- Order a squad group to hold position at a given location (or just it's current location)
 --- The location parameter can be a position (to hold position at that location), or a Boolean to enable/disable HoldPosition at the current location. If it's omitted entirely, it defaults to true.
 --- @param sgroup SGroupID
---- @param OPT_location boolean
---- @param OPT_queued boolean
+--- @param location boolean | nil
+--- @param queued boolean | nil
 --- @return unknown
-function Cmd_HoldPosition(sgroup, OPT_location, OPT_queued) end
+function Cmd_HoldPosition(sgroup, location, queued) end
 
 --- Sends a instant reinforce command to all squads in a group.  count represents the number of commands to send.
 --- Note: This function bypasses pre-reqs, costs and the production queue
@@ -6108,39 +6099,39 @@ function Cmd_InstantReinforceUnit(sgroup, count) end
 
 --- Order a squad group to instant setup their team weapon without animation
 --- @param sgroupid SGroupID
---- @param OPT_queued boolean
+--- @param queued boolean | nil
 --- @return unknown
-function Cmd_InstantSetupTeamWeapon(sgroupid, OPT_queued) end
+function Cmd_InstantSetupTeamWeapon(sgroupid, queued) end
 
 --- Sends an instant upgrade command to a player, egroup or sgroup. accepts a single upgrade or table of upgrades.
 --- @param target EGroupID
 --- @param blueprint number
---- @param OPT_count number
+--- @param count number | nil
 --- @return unknown
-function Cmd_InstantUpgrade(target, blueprint, OPT_count) end
+function Cmd_InstantUpgrade(target, blueprint, count) end
 
 --- Move a squad group to a given position.
 --- Supports facing, 'offset' movement, and can find cover. The sgroup can be deleted when in proximity of a marker (it assumes a proximity of 5 if you forget to set one on the marker)
 --- @param sgroup SGroupID
 --- @param position EGroupID
---- @param OPT_queued boolean
---- @param OPT_deleteWhenNearMarker MarkerID
---- @param OPT_facing Position
---- @param OPT_offset number
---- @param OPT_distance number
---- @param OPT_coverSearchRadius number
---- @param OPT_splitCmd boolean
+--- @param queued boolean | nil
+--- @param deleteWhenNearMarker MarkerID | nil
+--- @param facing Position | nil
+--- @param offset number | nil
+--- @param distance number | nil
+--- @param coverSearchRadius number | nil
+--- @param splitCmd boolean | nil
 --- @return unknown
-function Cmd_Move(sgroup, position, OPT_queued, OPT_deleteWhenNearMarker, OPT_facing, OPT_offset, OPT_distance, OPT_coverSearchRadius, OPT_splitCmd) end
+function Cmd_Move(sgroup, position, queued, deleteWhenNearMarker, facing, offset, distance, coverSearchRadius, splitCmd) end
 
 --- Move a squad group out of a position to a certain radius
 --- All squads in the group will move away from the centre position from its current position
 --- @param sgroup SGroupID
 --- @param position Pos
 --- @param radius number
---- @param OPT_queued boolean
+--- @param queued boolean | nil
 --- @return unknown
-function Cmd_MoveAwayFromPos(sgroup, position, radius, OPT_queued) end
+function Cmd_MoveAwayFromPos(sgroup, position, radius, queued) end
 
 --- Moves a squad group to the indicated Marker and despawns it.
 --- @param sgroup SGroupID
@@ -6166,25 +6157,25 @@ function Cmd_MoveToClosestMarker(sgroup, markertable) end
 --- Squad will move to a position, once they're within 'distance', they will attack-move the rest of the way.
 --- @param sgroup SGroupID
 --- @param position EGroupID
---- @param OPT_distance number
---- @param OPT_ANY boolean
---- @param OPT_queued boolean
+--- @param distance number | nil
+--- @param ANY boolean | nil
+--- @param queued boolean | nil
 --- @return unknown
-function Cmd_MoveToThenAttackMove(sgroup, position, OPT_distance, OPT_ANY, OPT_queued) end
+function Cmd_MoveToThenAttackMove(sgroup, position, distance, ANY, queued) end
 
 --- Command attacker sgroup to attack move to strategic point target; when it is capturable, the sgroup would capture it
 --- @param attacker SGroupID
 --- @param target EGroupID
---- @param OPT_queued boolean
+--- @param queued boolean | nil
 --- @return unknown
-function Cmd_MoveToThenCapture(attacker, target, OPT_queued) end
+function Cmd_MoveToThenCapture(attacker, target, queued) end
 
 --- Order a squad group to recrew an abandoned vehicle.
 --- @param sgroupid SGroupID
 --- @param targetid EGroupID
---- @param OPT_queued boolean
+--- @param queued boolean | nil
 --- @return unknown
-function Cmd_RecrewVehicle(sgroupid, targetid, OPT_queued) end
+function Cmd_RecrewVehicle(sgroupid, targetid, queued) end
 
 --- Sends a reinforce command to all squads in a group.  count represents the number of commands to send.
 --- Note: To reinforce squad bypassing the pre-reqs and costs use Cmd_InstantReinforceUnit.
@@ -6196,34 +6187,34 @@ function Cmd_ReinforceUnit(sgroup, count) end
 --- Order a squad group to retreat, optionally to a specific location. The sgroup can be deleted when in proximity of a marker (it assumes a proximity of 5 if you forget to set one on the marker)
 --- vulnerableRetreat will make retreating squads take more damage
 --- @param sgroup SGroupID
---- @param OPT_location Position
---- @param OPT_deleteWhenNearMarker boolean
---- @param OPT_queued boolean
---- @param OPT_saveEncounters boolean
---- @param OPT_vulnerableRetreat boolean
+--- @param location Position | nil
+--- @param deleteWhenNearMarker boolean | nil
+--- @param queued boolean | nil
+--- @param saveEncounters boolean | nil
+--- @param vulnerableRetreat boolean | nil
 --- @return unknown
-function Cmd_Retreat(sgroup, OPT_location, OPT_deleteWhenNearMarker, OPT_queued, OPT_saveEncounters, OPT_vulnerableRetreat) end
+function Cmd_Retreat(sgroup, location, deleteWhenNearMarker, queued, saveEncounters, vulnerableRetreat) end
 
 --- Order a squad group to revert occupied building
 --- @param sgroupid SGroupID
 --- @param targetid EGroupID
---- @param OPT_queued boolean
+--- @param queued boolean | nil
 --- @return unknown
-function Cmd_RevertOccupiedBuilding(sgroupid, targetid, OPT_queued) end
+function Cmd_RevertOccupiedBuilding(sgroupid, targetid, queued) end
 
 --- Orders a squad group to place demolition charges on a building (egroup). Function does nothing if egroup cannot be detonated, or player can't afford the demolitions
 --- @param sgroupid SGroupID
 --- @param targetid EGroupID
---- @param OPT_skipCostPrereq boolean
---- @param OPT_queued boolean
+--- @param skipCostPrereq boolean | nil
+--- @param queued boolean | nil
 --- @return unknown
-function Cmd_SetDemolitions(sgroupid, targetid, OPT_skipCostPrereq, OPT_queued) end
+function Cmd_SetDemolitions(sgroupid, targetid, skipCostPrereq, queued) end
 
 --- Order a squad group to setup their team weapon with animation
 --- @param sgroupid SGroupID
---- @param OPT_queued boolean
+--- @param queued boolean | nil
 --- @return unknown
-function Cmd_SetupTeamWeapon(sgroupid, OPT_queued) end
+function Cmd_SetupTeamWeapon(sgroupid, queued) end
 
 --- Sends an camouflage stance command to all squads in a group.  stanceid should be the number returned by Util_GetCamouflageStanceID( stancename )
 --- @param sgroup SGroupID
@@ -6239,11 +6230,11 @@ function Cmd_SquadCamouflageStance(sgroup, stanceid) end
 --- @param loop number
 --- @param bAttackMove boolean
 --- @param pauseTime number
---- @param OPT_deleteWhenNearMarker MarkerID
---- @param OPT_queued boolean
---- @param OPT_bMoveForward boolean
+--- @param deleteWhenNearMarker MarkerID | nil
+--- @param queued boolean | nil
+--- @param bMoveForward boolean | nil
 --- @return unknown
-function Cmd_SquadPath(sgroup, pathName, bFromClosest, loop, bAttackMove, pauseTime, OPT_deleteWhenNearMarker, OPT_queued, OPT_bMoveForward) end
+function Cmd_SquadPath(sgroup, pathName, bFromClosest, loop, bAttackMove, pauseTime, deleteWhenNearMarker, queued, bMoveForward) end
 
 --- Causes a squad to patrol a marker attacking any enemies that come within its radius. If used on circular markers, the radius must be at least 5. To stop the squad from patrolling the marker, use Cmd_Stop.
 --- @param sgroup SGroupID
@@ -6255,10 +6246,10 @@ function Cmd_SquadPatrolMarker(sgroup, marker) end
 --- Each Squad in the sgroup will have a 1 in 3 chance to retreat.  After 10 seconds (or maxTries), all squads will be forced to retreat. Squads will delete on arrival at their retreat point. vulnerableRetreat will make retreating squads take more damage
 --- @param sgroup SGroupID
 --- @param markers table
---- @param OPT_maxTries number
---- @param OPT_vulnerableRetreat boolean
+--- @param maxTries number | nil
+--- @param vulnerableRetreat boolean | nil
 --- @return unknown
-function Cmd_StaggeredRetreat(sgroup, markers, OPT_maxTries, OPT_vulnerableRetreat) end
+function Cmd_StaggeredRetreat(sgroup, markers, maxTries, vulnerableRetreat) end
 
 --- Sends a stop command to egroup or sgroup.
 --- @param group EGroupID
@@ -6268,38 +6259,38 @@ function Cmd_Stop(group) end
 --- Orders a squad to surrender and awards the local player with an appropriate number of action points
 --- Use the optional parameter to assign action points to override the default number.  The function automatically addresses squads that are in buildings or vehicles by ordering them out of the vehicle. The command will also overwrite the exit position as well, if you do not want the squads to exit at the map entry point.
 --- @param sgroupid SGroupID
---- @param OPT_actionpoints number
---- @param OPT_exitpos Position
---- @param OPT_deleteAtExit boolean
---- @param OPT_removeWeapon boolean
+--- @param actionpoints number | nil
+--- @param exitpos Position | nil
+--- @param deleteAtExit boolean | nil
+--- @param removeWeapon boolean | nil
 --- @return unknown
-function Cmd_Surrender(sgroupid, OPT_actionpoints, OPT_exitpos, OPT_deleteAtExit, OPT_removeWeapon) end
+function Cmd_Surrender(sgroupid, actionpoints, exitpos, deleteAtExit, removeWeapon) end
 
 --- Orders an sgroup to exit the building or vehicle that it's in. If no position is specified, the sgroup stays at the exit.
 --- @param sgroupid SGroupID
---- @param OPT_destination Position
---- @param OPT_queued boolean
+--- @param destination Position | nil
+--- @param queued boolean | nil
 --- @return unknown
-function Cmd_UngarrisonSquad(sgroupid, OPT_destination, OPT_queued) end
+function Cmd_UngarrisonSquad(sgroupid, destination, queued) end
 
 --- Sends an upgrade command to a player, egroup or sgroup. accepts a single upgrade or table of upgrades.
 --- @param user EGroupID
 --- @param blueprint number
---- @param OPT_count number
---- @param OPT_instant boolean
+--- @param count number | nil
+--- @param instant boolean | nil
 --- @return unknown
-function Cmd_Upgrade(user, blueprint, OPT_count, OPT_instant) end
+function Cmd_Upgrade(user, blueprint, count, instant) end
 
 --- Set a squad's unit speed to a multiplied value, and revert it when they reach the target, speed cannot be 0.0f
 --- Squad will move to a position, once they're within 'distance', they will revert back to their original speed. ANY means any squad in the group within distance meets criteria, ALL means ALL squads. Queued means the command is queued if true as a command, rather than executing immediately.
 --- @param sgroup SGroupID
 --- @param position EGroupID
 --- @param speedMultiplier number
---- @param OPT_distance___10 number
---- @param OPT_ANY___ANY boolean
---- @param OPT_queued___false boolean
+--- @param distance___10 number | nil
+--- @param ANY___ANY boolean | nil
+--- @param queued___false boolean | nil
 --- @return unknown
-function Cmd_WalkToAndThenRun(sgroup, position, speedMultiplier, OPT_distance___10, OPT_ANY___ANY, OPT_queued___false) end
+function Cmd_WalkToAndThenRun(sgroup, position, speedMultiplier, distance___10, ANY___ANY, queued___false) end
 
 --- Send a entity command to a entity group(CMD_DefaultAction, CMD_Stop, CMD_Destroy, CMD_BuildSquad, CMD_CancelProduction, CMD_RallyPoint, CMD_AttackForced)
 --- Entity commands are mostly used for buildings etc.  If you need to issue commands to units, use the Squad_Command function.
@@ -6312,7 +6303,7 @@ function LocalCommand_Entity(player, egroup, entityCommand) end
 --- Send an entity ability command (CMD_Ability) to an entity
 --- @param player Player
 --- @param egroup EGroupID
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param skipCostAndPrereq boolean
 --- @param queued boolean
 --- @return unknown
@@ -6321,7 +6312,7 @@ function LocalCommand_EntityAbility(player, egroup, abilityPBG, skipCostAndPrere
 --- Send a squad command to a entity group with custom data
 --- @param player Player
 --- @param egroup EGroupID
---- @param squadPbg ScarSquadPBG
+--- @param squadPbg Squad
 --- @return unknown
 function LocalCommand_EntityBuildSquad(player, egroup, squadPbg) end
 
@@ -6357,7 +6348,7 @@ function LocalCommand_EntityPos(player, egroup, entityCommand, target) end
 --- @param player Player
 --- @param egroup EGroupID
 --- @param pos Position
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param skipCostAndPrereq boolean
 --- @param queued boolean
 --- @return unknown
@@ -6369,7 +6360,7 @@ function LocalCommand_EntityPosAbility(player, egroup, pos, abilityPBG, skipCost
 --- @param egroup EGroupID
 --- @param pos Position
 --- @param dir Position
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param skipCostAndPrereq boolean
 --- @param queued boolean
 --- @return unknown
@@ -6399,7 +6390,7 @@ function LocalCommand_EntitySquad(player, egroup, entityCommand, target) end
 --- @param player Player
 --- @param egroup EGroupID
 --- @param entityTarget Entity
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param skipCostAndPrereq boolean
 --- @param queued boolean
 --- @return unknown
@@ -6410,7 +6401,7 @@ function LocalCommand_EntityTargetEntityAbility(player, egroup, entityTarget, ab
 --- @param player Player
 --- @param egroup EGroupID
 --- @param squadTarget Squad
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param skipCostAndPrereq boolean
 --- @param queued boolean
 --- @return unknown
@@ -6419,7 +6410,7 @@ function LocalCommand_EntityTargetSquadAbility(player, egroup, squadTarget, abil
 --- Send a squad command to a entity group with custom data
 --- @param player Player
 --- @param egroup EGroupID
---- @param upgrade ScarUpgradePBG
+--- @param upgrade Upgrade
 --- @param instant boolean
 --- @param queued boolean
 --- @return unknown
@@ -6436,7 +6427,7 @@ function LocalCommand_Player(player, dest, playerCommand) end
 --- Send a player ability command (PCMD_Ability) to a player
 --- @param player Player
 --- @param dest Player
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param skipCostAndPrereq boolean
 --- @return unknown
 function LocalCommand_PlayerAbility(player, dest, abilityPBG, skipCostAndPrereq) end
@@ -6461,14 +6452,14 @@ function LocalCommand_PlayerExt(player, dest, playerCommand, cmdparam, queued) e
 --- Send a player a command to use a multi-target ability on the given targets.
 --- @param caster Player
 --- @param targets vector<ConstTargetHandle>
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param skipCostAndPrereq boolean
 --- @return unknown
 function LocalCommand_PlayerMultiTargetAbility(caster, targets, abilityPBG, skipCostAndPrereq) end
 
 --- Place a planned structure
 --- @param player Player
---- @param ebp ScarEntityPBG
+--- @param ebp Entity
 --- @param position Position
 --- @param facingPos Position
 --- @param queued boolean
@@ -6478,7 +6469,7 @@ function LocalCommand_PlayerPlaceAndConstructEntitiesPlanned(player, ebp, positi
 
 --- Place a planned fence
 --- @param player Player
---- @param ebp ScarEntityPBG
+--- @param ebp Entity
 --- @param posStart Position
 --- @param posEnd Position
 --- @param queued boolean
@@ -6488,7 +6479,7 @@ function LocalCommand_PlayerPlaceAndConstructFencePlanned(player, ebp, posStart,
 
 --- Place a planned slotted spline
 --- @param player Player
---- @param ebp ScarEntityPBG
+--- @param ebp Entity
 --- @param posStart Position
 --- @param posEnd Position
 --- @param queued boolean
@@ -6510,7 +6501,7 @@ function LocalCommand_PlayerPos(player, dest, playerCommand, pos) end
 --- @param player Player
 --- @param dest Player
 --- @param pos Position
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param skipCostAndPrereq boolean
 --- @return unknown
 function LocalCommand_PlayerPosAbility(player, dest, pos, abilityPBG, skipCostAndPrereq) end
@@ -6521,7 +6512,7 @@ function LocalCommand_PlayerPosAbility(player, dest, pos, abilityPBG, skipCostAn
 --- @param dest Player
 --- @param pos Position
 --- @param dir Position
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param skipCostAndPrereq boolean
 --- @return unknown
 function LocalCommand_PlayerPosDirAbility(player, dest, pos, dir, abilityPBG, skipCostAndPrereq) end
@@ -6541,7 +6532,7 @@ function LocalCommand_PlayerPosExt(player, dest, playerCommand, pos, cmdparam, q
 --- structureBlueprint must be a valid building that can be constructed by the sgroup. This building would cost nothing and does not effect population and availability This is a special command for SCAR use
 --- @param player Player
 --- @param sgroup SGroupID
---- @param ebp ScarEntityPBG
+--- @param ebp Entity
 --- @param position Position
 --- @param facingPos Position
 --- @param queued boolean
@@ -6552,7 +6543,7 @@ function LocalCommand_PlayerSquadConstructBuilding(player, sgroup, ebp, position
 --- structureBlueprint must be a valid building that can be constructed by the sgroup. This building would cost nothing and does not effect population and availability This is a special command for SCAR use
 --- @param player Player
 --- @param sgroup SGroupID
---- @param ebp ScarEntityPBG
+--- @param ebp Entity
 --- @param position Position
 --- @param facingPos Position
 --- @param queued boolean
@@ -6563,7 +6554,7 @@ function LocalCommand_PlayerSquadConstructBuildingCheat(player, sgroup, ebp, pos
 --- structureBlueprint must be a valid building that can be constructed by the sgroup. This building would cost nothing and does not effect population and availability This is a special command for SCAR use
 --- @param player Player
 --- @param sgroup SGroupID
---- @param ebp ScarEntityPBG
+--- @param ebp Entity
 --- @param posStart Position
 --- @param posEnd Position
 --- @param queued boolean
@@ -6574,7 +6565,7 @@ function LocalCommand_PlayerSquadConstructFence(player, sgroup, ebp, posStart, p
 --- structureBlueprint must be a valid building that can be constructed by the sgroup. This building would cost nothing and does not effect population and availability This is a special command for SCAR use
 --- @param player Player
 --- @param sgroup SGroupID
---- @param ebp ScarEntityPBG
+--- @param ebp Entity
 --- @param posStart Position
 --- @param posEnd Position
 --- @param queued boolean
@@ -6585,7 +6576,7 @@ function LocalCommand_PlayerSquadConstructFenceCheat(player, sgroup, ebp, posSta
 --- structureBlueprint must be a valid building that can be constructed by the sgroup. This building would cost nothing and does not effect population and availability This is a special command for SCAR use
 --- @param player Player
 --- @param sgroup SGroupID
---- @param ebp ScarEntityPBG
+--- @param ebp Entity
 --- @param posStart Position
 --- @param posEnd Position
 --- @param queued boolean
@@ -6596,7 +6587,7 @@ function LocalCommand_PlayerSquadConstructField(player, sgroup, ebp, posStart, p
 --- structureBlueprint must be a valid building that can be constructed by the sgroup. This building would cost nothing and does not effect population and availability This is a special command for SCAR use
 --- @param player Player
 --- @param sgroup SGroupID
---- @param ebp ScarEntityPBG
+--- @param ebp Entity
 --- @param posStart Position
 --- @param posEnd Position
 --- @param queued boolean
@@ -6607,7 +6598,7 @@ function LocalCommand_PlayerSquadConstructFieldCheat(player, sgroup, ebp, posSta
 --- structureBlueprint must be a valid building that can be constructed by the sgroup. This building costs nothing and does not effect population and availability This is a special command for SCAR use
 --- @param player Player
 --- @param sgroup SGroupID
---- @param ebp ScarEntityPBG
+--- @param ebp Entity
 --- @param posStart Position
 --- @param posEnd Position
 --- @param queued boolean
@@ -6618,7 +6609,7 @@ function LocalCommand_PlayerSquadConstructSlottedSpline(player, sgroup, ebp, pos
 --- structureBlueprint must be a valid building that can be constructed by the sgroup. This building costs nothing and does not effect population and availability This is a special command for SCAR use
 --- @param player Player
 --- @param sgroup SGroupID
---- @param ebp ScarEntityPBG
+--- @param ebp Entity
 --- @param posStart Position
 --- @param posEnd Position
 --- @param queued boolean
@@ -6629,7 +6620,7 @@ function LocalCommand_PlayerSquadConstructSlottedSplineCheat(player, sgroup, ebp
 --- structureBlueprint must be a valid building that can be constructed by the sgroup. This building costs nothing and does not effect population and availability This is a special command for SCAR use
 --- @param player Player
 --- @param sgroup SGroupID
---- @param ebp ScarEntityPBG
+--- @param ebp Entity
 --- @param position Position
 --- @param facingPos Position
 --- @param queued boolean
@@ -6640,7 +6631,7 @@ function LocalCommand_PlayerSquadConstructSlottedSplineDependent(player, sgroup,
 --- structureBlueprint must be a valid building that can be constructed by the sgroup. This building costs nothing and does not effect population and availability This is a special command for SCAR use
 --- @param player Player
 --- @param sgroup SGroupID
---- @param ebp ScarEntityPBG
+--- @param ebp Entity
 --- @param position Position
 --- @param facingPos Position
 --- @param queued boolean
@@ -6651,7 +6642,7 @@ function LocalCommand_PlayerSquadConstructSlottedSplineDependentCheat(player, sg
 --- structureBlueprint must be a valid building that can be constructed by the sgroup. This building costs nothing and does not effect population and availability This is a special command for SCAR use
 --- @param player Player
 --- @param sgroup SGroupID
---- @param ebp ScarEntityPBG
+--- @param ebp Entity
 --- @param position Position
 --- @param facingPos Position
 --- @param queued boolean
@@ -6662,7 +6653,7 @@ function LocalCommand_PlayerSquadConstructSlottedSplineReplacer(player, sgroup, 
 --- structureBlueprint must be a valid building that can be constructed by the sgroup. This building costs nothing and does not effect population and availability This is a special command for SCAR use
 --- @param player Player
 --- @param sgroup SGroupID
---- @param ebp ScarEntityPBG
+--- @param ebp Entity
 --- @param position Position
 --- @param facingPos Position
 --- @param queued boolean
@@ -6671,7 +6662,7 @@ function LocalCommand_PlayerSquadConstructSlottedSplineReplacerCheat(player, sgr
 
 --- Sends an upgrade command to a player
 --- @param player Player
---- @param upgrade ScarUpgradePBG
+--- @param upgrade Upgrade
 --- @param instant boolean
 --- @param queued boolean
 --- @return unknown
@@ -6689,7 +6680,7 @@ function LocalCommand_Squad(player, sgroup, squadCommand, queued) end
 --- Send a ability command (SCMD_Ability) to a squad
 --- @param player Player
 --- @param sgroup SGroupID
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param skipCostAndPrereq boolean
 --- @param queued boolean
 --- @return unknown
@@ -6721,7 +6712,7 @@ function LocalCommand_SquadEntity(player, sgroup, squadCommand, target, queued) 
 --- @param player Player
 --- @param sgroup SGroupID
 --- @param target EGroupID
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param skipCostAndPrereq boolean
 --- @param queued boolean
 --- @return unknown
@@ -6806,7 +6797,7 @@ function LocalCommand_SquadMovePosFacing(player, sgroup, target, facing, queued,
 --- Send a squad a command to use a multi-target ability on the given targets.
 --- @param caster Squad
 --- @param targets vector<ConstTargetHandle>
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param skipCostAndPrereq boolean
 --- @param queued boolean
 --- @return unknown
@@ -6840,7 +6831,7 @@ function LocalCommand_SquadPos(player, sgroup, squadCommand, target, queued) end
 --- @param player Player
 --- @param sgroup SGroupID
 --- @param pos Position
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param skipCostAndPrereq boolean
 --- @param queued boolean
 --- @return unknown
@@ -6910,7 +6901,7 @@ function LocalCommand_SquadSquad(player, sgroup, squadCommand, target, queued) e
 --- @param player Player
 --- @param sgroup SGroupID
 --- @param target SGroupID
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param skipCostAndPrereq boolean
 --- @param queued boolean
 --- @return unknown
@@ -6952,7 +6943,7 @@ function LocalCommand_SquadSquadLoad(player, sgroup, squadCommand, target, bOver
 --- Sends an upgrade command to a squad group.
 --- @param player Player
 --- @param sgroup SGroupID
---- @param upgrade ScarUpgradePBG
+--- @param upgrade Upgrade
 --- @param instant boolean
 --- @param queued boolean
 --- @return unknown
@@ -7067,10 +7058,10 @@ function Core_SetMutualPlayerRelationship(player1, player2, relationship) end
 --- Sets the relationship between two entries
 --- NOTE: You should generally be setting Team to Team only. Valid Relationships: R_NEUTRAL, R_ALLY, R_ENEMY, R_UNDEFINED
 --- @param player_teams_table Player | table
---- @param player_teams_table Player | table
+--- @param player_teams_table_2 Player | table
 --- @param relationship Relationship
 --- @return unknown
-function Core_SetMutualRelationship(player_teams_table, player_teams_table, relationship) end
+function Core_SetMutualRelationship(player_teams_table, player_teams_table_2, relationship) end
 
 --- Sets a player as defeated.
 --- @param player Player
@@ -7196,21 +7187,21 @@ function Game_RemoveGameRestoreCallback(callback) end
 function Game_SetGameRestoreCallback(callback) end
 
 --- Enters Cinematic mode
---- @param OPT_VisibilityFlag_Enums GameUICore
---- @param OPT_of_GameUICore_VisibilityFlag_enums_to_hide_in_cinematic_mode__Pass_in_an_empty_table_or_nil_to_not_hide_any_game_components__Pass_in_the_constant__DEFAULT_CINEMATIC_HIDDEN_GAME_COMPONENT_FLAGS__for_a_default_set_of_game_components_to_hide_ List
+--- @param VisibilityFlag_Enums GameUICore | nil
+--- @param of_GameUICore_VisibilityFlag_enums_to_hide_in_cinematic_mode__Pass_in_an_empty_table_or_nil_to_not_hide_any_game_components__Pass_in_the_constant__DEFAULT_CINEMATIC_HIDDEN_GAME_COMPONENT_FLAGS__for_a_default_set_of_game_components_to_hide_ List | nil
 --- @param skipNISCallback__optional___Skip_NIS_callback_to_set_ function
 --- @return unknown
-function Util_EnterCinematicMode(OPT_VisibilityFlag_Enums, OPT_of_GameUICore_VisibilityFlag_enums_to_hide_in_cinematic_mode__Pass_in_an_empty_table_or_nil_to_not_hide_any_game_components__Pass_in_the_constant__DEFAULT_CINEMATIC_HIDDEN_GAME_COMPONENT_FLAGS__for_a_default_set_of_game_components_to_hide_, skipNISCallback__optional___Skip_NIS_callback_to_set_) end
+function Util_EnterCinematicMode(VisibilityFlag_Enums, of_GameUICore_VisibilityFlag_enums_to_hide_in_cinematic_mode__Pass_in_an_empty_table_or_nil_to_not_hide_any_game_components__Pass_in_the_constant__DEFAULT_CINEMATIC_HIDDEN_GAME_COMPONENT_FLAGS__for_a_default_set_of_game_components_to_hide_, skipNISCallback__optional___Skip_NIS_callback_to_set_) end
 
 --- Exits Cinematic mode
 --- @return unknown
 function Util_ExitCinematicMode() end
 
 --- Enters Fullscreen mode
---- @param OPT_VisibilityFlag_Enums GameUICore
---- @param OPT_of_GameUICore_VisibilityFlag_enums_to_hide_in_fullscreen_mode__Pass_in_an_empty_table_or_nil_to_not_hide_any_game_components__Pass_in_the_constant__DEFAULT_FULLSCREEN_HIDDEN_GAME_COMPONENT_FLAGS__for_a_default_set_of_game_components_to_hide_ List
+--- @param VisibilityFlag_Enums GameUICore | nil
+--- @param of_GameUICore_VisibilityFlag_enums_to_hide_in_fullscreen_mode__Pass_in_an_empty_table_or_nil_to_not_hide_any_game_components__Pass_in_the_constant__DEFAULT_FULLSCREEN_HIDDEN_GAME_COMPONENT_FLAGS__for_a_default_set_of_game_components_to_hide_ List | nil
 --- @return unknown
-function Util_FullscreenMode(OPT_VisibilityFlag_Enums, OPT_of_GameUICore_VisibilityFlag_enums_to_hide_in_fullscreen_mode__Pass_in_an_empty_table_or_nil_to_not_hide_any_game_components__Pass_in_the_constant__DEFAULT_FULLSCREEN_HIDDEN_GAME_COMPONENT_FLAGS__for_a_default_set_of_game_components_to_hide_) end
+function Util_FullscreenMode(VisibilityFlag_Enums, of_GameUICore_VisibilityFlag_enums_to_hide_in_fullscreen_mode__Pass_in_an_empty_table_or_nil_to_not_hide_any_game_components__Pass_in_the_constant__DEFAULT_FULLSCREEN_HIDDEN_GAME_COMPONENT_FLAGS__for_a_default_set_of_game_components_to_hide_) end
 
 --- Wrapper function for command line arguments. DO NOT USE MORE THAN ONCE PER ARGUMENT. It is impossible for them to change after application start, so save the result and reuse it.
 --- @param key_of_the_argument_you_want_to_query string
@@ -7355,9 +7346,9 @@ function EGroup_CreateIfNotFound(egroupname) end
 function EGroup_CreateKickerMessage(group, textid) end
 
 --- Returns an EGroup with a unique name, prefixed by the 'prefix' parameter.
---- @param OPT_prefix string
+--- @param prefix string | nil
 --- @return unknown
-function EGroup_CreateUnique(OPT_prefix) end
+function EGroup_CreateUnique(prefix) end
 
 --- Returns a new entity group with an autogenerated unique name, optionally prefixed by the string passed in.
 --- Use this if you want to create a new EGroup but don't necessarily care about the name.\n Entity groups are used for buildings and objects such as rocks and trees.\n
@@ -7410,9 +7401,9 @@ function EGroup_Exists(name) end
 --- @param egroup EGroupID
 --- @param blueprint_type string
 --- @param filtertype number
---- @param OPT_splitGroup EGroupID
+--- @param splitGroup EGroupID | nil
 --- @return unknown
-function EGroup_Filter(egroup, blueprint_type, filtertype, OPT_splitGroup) end
+function EGroup_Filter(egroup, blueprint_type, filtertype, splitGroup) end
 
 --- Filters an EGroup by whether units are on screen or not. Percent refers to the screen area you are considering (0.8 is a good value to use - it won't include things that are right at the screen edge).
 --- Setting filtertype to FILTER_KEEP results in the group only containing those entities that are on screen.
@@ -7674,9 +7665,9 @@ function EGroup_IsMoving(egroupid, all) end
 --- @param player Player
 --- @param group EGroupID
 --- @param all boolean
---- @param OPT_percent number
+--- @param percent number | nil
 --- @return unknown
-function EGroup_IsOnScreen(player, group, all, OPT_percent) end
+function EGroup_IsOnScreen(player, group, all, percent) end
 
 --- Returns true if ALL or ANY entities in a group are currently producing squads
 --- Set all to true to check for ALL or set to false to check for ANY
@@ -7824,9 +7815,9 @@ function EGroup_SetCrushable(egroup, crushable) end
 --- Instantly wires a building for demolitions
 --- @param player Player
 --- @param egroupid EGroupID
---- @param OPT_numcharges number
+--- @param numcharges number | nil
 --- @return unknown
-function EGroup_SetDemolitions(player, egroupid, OPT_numcharges) end
+function EGroup_SetDemolitions(player, egroupid, numcharges) end
 
 --- Set the minimum health for this entity
 --- This is usually set to zero, any higher value prevents the entity from having its health reduced below this given value
@@ -7839,9 +7830,9 @@ function EGroup_SetHealthMinCap(egroup, minhealth) end
 --- The optional reset_time is used to automatically remove invulnerability after a set time. If invulnerable, health damage is disabled.
 --- @param egroup EGroupID
 --- @param enabled boolean
---- @param OPT_reset_time number
+--- @param reset_time number | nil
 --- @return unknown
-function EGroup_SetInvulnerable(egroup, enabled, OPT_reset_time) end
+function EGroup_SetInvulnerable(egroup, enabled, reset_time) end
 
 --- Changes the player owner for all spawned and despawned entities of an EGroup.
 --- Strategic/capturable point does not support setting player owner directly
@@ -7924,7 +7915,7 @@ function SGroup_HasEntityUpgrade(egroup, upgrade, all) end
 
 --- Finds all encounters that contain ANY or ALL squads within the given sgroup.
 --- @param sgroup SGroupID
---- @param all ANY | ALL
+--- @param all any | ALL
 --- @return unknown
 function Ai(sgroup, all) end
 
@@ -8144,54 +8135,54 @@ function AITownLifeGoal_SetOverrideGoalData(overrideGoalData) end
 --- Create a new encounter from encounter data. If spawnNow is true, spawns specified units immediately.
 --- See: http://relicwiki/display/REL/Ai+Encounters
 --- @param data EncounterData
---- @param OPT_spawnNow boolean
---- @param OPT_spawnStaggered number
+--- @param spawnNow boolean | nil
+--- @param spawnStaggered number | nil
 --- @return unknown
-function Encounter(data, OPT_spawnNow, OPT_spawnStaggered) end
+function Encounter(data, spawnNow, spawnStaggered) end
 
 --- Create a new encounter with a generic FormationAttack goal.
 --- @param name string
 --- @param encUnits SBP | table
 --- @param spawnLoc Marker | Pos
 --- @param encTarget EGroupID
---- @param OPT_dynamicSpawn Marker | Pos
---- @param OPT_encRange number
---- @param OPT_encLeash number
+--- @param dynamicSpawn Marker | Pos | nil
+--- @param encRange number | nil
+--- @param encLeash number | nil
 --- @return unknown
-function Encounter(name, encUnits, spawnLoc, encTarget, OPT_dynamicSpawn, OPT_encRange, OPT_encLeash) end
+function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, encRange, encLeash) end
 
 --- Create a new encounter with a generic FormationAttack goal.
 --- @param name string
 --- @param encUnits SBP | table
 --- @param spawnLoc Marker | Pos
 --- @param encTarget EGroupID
---- @param OPT_dynamicSpawn Marker | Pos
---- @param OPT_encRange number
---- @param OPT_encLeash number
+--- @param dynamicSpawn Marker | Pos | nil
+--- @param encRange number | nil
+--- @param encLeash number | nil
 --- @return unknown
-function Encounter(name, encUnits, spawnLoc, encTarget, OPT_dynamicSpawn, OPT_encRange, OPT_encLeash) end
+function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, encRange, encLeash) end
 
 --- Create a new encounter with a generic Attack goal.
 --- @param name string
 --- @param encUnits SBP | table
 --- @param spawnLoc Marker | Pos
 --- @param encTarget EGroupID
---- @param OPT_dynamicSpawn Marker | Pos
---- @param OPT_encRange number
---- @param OPT_encLeash number
+--- @param dynamicSpawn Marker | Pos | nil
+--- @param encRange number | nil
+--- @param encLeash number | nil
 --- @return unknown
-function Encounter(name, encUnits, spawnLoc, encTarget, OPT_dynamicSpawn, OPT_encRange, OPT_encLeash) end
+function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, encRange, encLeash) end
 
 --- Create a new encounter with a generic Defend goal.
 --- @param name string
 --- @param encUnits SBP | table
 --- @param spawnLoc Marker | Pos
 --- @param encTarget EGroupID
---- @param OPT_dynamicSpawn Marker | Pos
---- @param OPT_encRange number
---- @param OPT_encLeash number
+--- @param dynamicSpawn Marker | Pos | nil
+--- @param encRange number | nil
+--- @param encLeash number | nil
 --- @return unknown
-function Encounter(name, encUnits, spawnLoc, encTarget, OPT_dynamicSpawn, OPT_encRange, OPT_encLeash) end
+function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, encRange, encLeash) end
 
 --- Create a new encounter with a generic Patrol goal.
 --- pathLoop can be: LOOP_NONE, LOOP_NORMAL, LOOP_TOGGLE_DIRECTION
@@ -8199,49 +8190,49 @@ function Encounter(name, encUnits, spawnLoc, encTarget, OPT_dynamicSpawn, OPT_en
 --- @param encUnits SBP | table
 --- @param spawnLoc Marker | Pos
 --- @param encPath string
---- @param OPT_dynamicSpawn Marker | Pos
---- @param OPT_pathWait number
---- @param OPT_pathLoop number
+--- @param dynamicSpawn Marker | Pos | nil
+--- @param pathWait number | nil
+--- @param pathLoop number | nil
 --- @return unknown
-function Encounter(name, encUnits, spawnLoc, encPath, OPT_dynamicSpawn, OPT_pathWait, OPT_pathLoop) end
+function Encounter(name, encUnits, spawnLoc, encPath, dynamicSpawn, pathWait, pathLoop) end
 
 --- Create a new encounter with a generic Move goal.
 --- @param name string
 --- @param encUnits SBP | table
 --- @param spawnLoc Marker | Pos
 --- @param encTarget EGroupID
---- @param OPT_dynamicSpawn Marker | Pos
---- @param OPT_moveRange number
+--- @param dynamicSpawn Marker | Pos | nil
+--- @param moveRange number | nil
 --- @return unknown
-function Encounter(name, encUnits, spawnLoc, encTarget, OPT_dynamicSpawn, OPT_moveRange) end
+function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, moveRange) end
 
 --- Create a new encounter with a generic Ability goal.
 --- @param name string
 --- @param encUnits SBP | table
 --- @param spawnLoc Marker | Pos
 --- @param encTarget EGroupID
---- @param OPT_dynamicSpawn Marker | Pos
---- @param OPT_moveRange number
+--- @param dynamicSpawn Marker | Pos | nil
+--- @param moveRange number | nil
 --- @return unknown
-function Encounter(name, encUnits, spawnLoc, encTarget, OPT_dynamicSpawn, OPT_moveRange) end
+function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, moveRange) end
 
 --- Create a new encounter with a generic TownLife goal.
 --- @param name string
 --- @param encUnits SBP | table
 --- @param spawnLoc Marker | Pos
 --- @param encTarget EGroupID
---- @param OPT_dynamicSpawn Marker | Pos
---- @param OPT_townLifeRange number
+--- @param dynamicSpawn Marker | Pos | nil
+--- @param townLifeRange number | nil
 --- @return unknown
-function Encounter(name, encUnits, spawnLoc, encTarget, OPT_dynamicSpawn, OPT_townLifeRange) end
+function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, townLifeRange) end
 
 --- Create a new basic encounter.
 --- @param name string
 --- @param spawnLoc Marker | Pos
 --- @param encUnits SBP | table
---- @param OPT_dynamicSpawn Marker | Pos
+--- @param dynamicSpawn Marker | Pos | nil
 --- @return unknown
-function Encounter(name, spawnLoc, encUnits, OPT_dynamicSpawn) end
+function Encounter(name, spawnLoc, encUnits, dynamicSpawn) end
 
 --- Create a new encounter from an SGroup, with default encounter data
 --- Encounter player is derived from sgroup; all squads in sgroup must be owned by same player.
@@ -8265,9 +8256,9 @@ function Encounter(unitData, spawnType) end
 --- See: http://relicwiki/display/REL/Ai+Goal
 --- @param goalData GoalData
 --- @param triggerGoal__dafault_true_ boolean
---- @param OPT_previousEncounterID HandleID
+--- @param previousEncounterID HandleID | nil
 --- @return unknown
-function Encounter(goalData, triggerGoal__dafault_true_, OPT_previousEncounterID) end
+function Encounter(goalData, triggerGoal__dafault_true_, previousEncounterID) end
 
 --- Determines whether or not the encounter has an active and valid goal.
 --- @return unknown
@@ -8388,7 +8379,7 @@ function Entity_ActiveCommandIs(entity, cmdtype) end
 
 --- Allows the entity to use this ability
 --- @param entity Entity
---- @param ability ScarAbilityPBG
+--- @param ability Ability
 --- @return unknown
 function Entity_AddAbility(entity, ability) end
 
@@ -8490,7 +8481,7 @@ function Entity_ClearTagDebug() end
 
 --- Instantly adds an upgrade to a given entity
 --- @param pEntity Entity
---- @param upgradePBG ScarUpgradePBG
+--- @param upgradePBG Upgrade
 --- @return unknown
 function Entity_CompleteUpgrade(pEntity, upgradePBG) end
 
@@ -8962,7 +8953,7 @@ function Entity_HandleAllAsserts() end
 
 --- Tests to see if an entity has an ability
 --- @param entity Entity
---- @param ability ScarAbilityPBG
+--- @param ability Ability
 --- @return unknown
 function Entity_HasAbility(entity, ability) end
 
@@ -8980,7 +8971,7 @@ function Entity_HasProductionQueue(entity) end
 
 --- Return true if the entity has purchased the specified upgrade.
 --- @param pEntity Entity
---- @param upgradePBG ScarUpgradePBG
+--- @param upgradePBG Upgrade
 --- @return unknown
 function Entity_HasUpgrade(pEntity, upgradePBG) end
 
@@ -9003,7 +8994,7 @@ function Entity_InstantRevertOccupiedBuilding(entity) end
 
 --- True if the ability is active
 --- @param entity Entity
---- @param pbg ScarAbilityPBG
+--- @param pbg Ability
 --- @return unknown
 function Entity_IsAbilityActive(entity, pbg) end
 
@@ -9066,22 +9057,22 @@ function Entity_IsDemolitionReady(entity) end
 
 --- True if entity is currently performing the given ability
 --- @param entity Entity
---- @param pbg ScarAbilityPBG
+--- @param pbg Ability
 --- @return unknown
 function Entity_IsDoingAbility(entity, pbg) end
 
 --- Returns true if the given blueprint is a building
---- @param ebp ScarEntityPBG
+--- @param ebp Entity
 --- @return unknown
 function Entity_IsEBPBuilding(ebp) end
 
 --- Returns true if the given blueprint is objcover
---- @param ebp ScarEntityPBG
+--- @param ebp Entity
 --- @return unknown
 function Entity_IsEBPObjCover(ebp) end
 
 --- Returns true if the given blueprint is of the given type. Types are defined in type_ext/unit_type_list
---- @param ebp ScarEntityPBG
+--- @param ebp Entity
 --- @param type string
 --- @return unknown
 function Entity_IsEBPOfType(ebp, type) end
@@ -9155,7 +9146,7 @@ function Entity_IsPlannedStructure(entity) end
 
 --- Returns whether a particular squad blueprint is being produced by a given entity
 --- @param entity Entity
---- @param pbg ScarSquadPBG
+--- @param pbg Squad
 --- @return unknown
 function Entity_IsProducingSquad(entity, pbg) end
 
@@ -9274,7 +9265,7 @@ function Entity_RagDoll(entity) end
 
 --- Removes an ability that was previously added by Entity_AddAbility. You cannot remove static abilities (from AE: ability_ext)
 --- @param entity Entity
---- @param ability ScarAbilityPBG
+--- @param ability Ability
 --- @return unknown
 function Entity_RemoveAbility(entity, ability) end
 
@@ -9290,7 +9281,7 @@ function Entity_RemoveDemolitions(entity) end
 
 --- Removes an upgrade from an entity
 --- @param entity Entity
---- @param upgrade ScarUpgradePBG
+--- @param upgrade Upgrade
 --- @return unknown
 function Entity_RemoveUpgrade(entity, upgrade) end
 
@@ -9689,7 +9680,7 @@ function Entity_SpawnToward(entity, pos, toward, spawnType) end
 
 --- Abruptly stops an active ability
 --- @param entity Entity
---- @param ability ScarAbilityPBG
+--- @param ability Ability
 --- @param bIsEarlyExit boolean
 --- @return unknown
 function Entity_StopAbility(entity, ability, bIsEarlyExit) end
@@ -10195,17 +10186,17 @@ function Modifier_RemoveAllFromSGroup(sgroup) end
 --- @param player Player
 --- @param ability Ability
 --- @param scalefactor number
---- @param OPT_mathtype number
+--- @param mathtype number | nil
 --- @return unknown
-function Modify_AbilityCastTime(player, ability, scalefactor, OPT_mathtype) end
+function Modify_AbilityCastTime(player, ability, scalefactor, mathtype) end
 
 --- Modifies the channeling time of an ability
 --- @param player Player
 --- @param ability Ability
 --- @param scalefactor number
---- @param OPT_mathtype number
+--- @param mathtype number | nil
 --- @return unknown
-function Modify_AbilityChannelingTime(player, ability, scalefactor, OPT_mathtype) end
+function Modify_AbilityChannelingTime(player, ability, scalefactor, mathtype) end
 
 --- Modifies the initial delay time of an ability
 --- @param player Player
@@ -10225,9 +10216,9 @@ function Modify_AbilityDurationTime(player, ability, scalefactor) end
 --- @param player Player
 --- @param ability Ability
 --- @param scalefactor number
---- @param OPT_mathtype number
+--- @param mathtype number | nil
 --- @return unknown
-function Modify_AbilityManpowerCost(player, ability, scalefactor, OPT_mathtype) end
+function Modify_AbilityManpowerCost(player, ability, scalefactor, mathtype) end
 
 --- Modifies the maximum casting range of an ability. NOTE: it assumes that the actions that the ability executes can also handle the modified range
 --- @param player Player
@@ -10247,24 +10238,24 @@ function Modify_AbilityMinCastRange(player, ability, scalefactor) end
 --- @param player Player
 --- @param ability Ability
 --- @param scalefactor number
---- @param OPT_mathtype number
+--- @param mathtype number | nil
 --- @return unknown
-function Modify_AbilityMunitionsCost(player, ability, scalefactor, OPT_mathtype) end
+function Modify_AbilityMunitionsCost(player, ability, scalefactor, mathtype) end
 
 --- Modifies the recharge time of an ability
 --- @param player_entity_squad Player | Entity | Squad
 --- @param ability Ability
 --- @param scalefactor number
---- @param OPT_mathtype number
+--- @param mathtype number | nil
 --- @return unknown
-function Modify_AbilityRechargeTime(player_entity_squad, ability, scalefactor, OPT_mathtype) end
+function Modify_AbilityRechargeTime(player_entity_squad, ability, scalefactor, mathtype) end
 
 --- Modifies a squad or entity's armor
 --- @param group EGroupID
 --- @param scalefactor number
---- @param OPT_exclusive boolean
+--- @param exclusive boolean | nil
 --- @return unknown
-function Modify_Armor(group, scalefactor, OPT_exclusive) end
+function Modify_Armor(group, scalefactor, exclusive) end
 
 --- Modifies the capture time of all strategic points in an EGroup.
 --- @param egroup EGroupID
@@ -10353,17 +10344,17 @@ function Modify_PlayerProductionRate(sgroup, scalefactor) end
 --- @param playerId Player
 --- @param resourceType number
 --- @param scalefactor number
---- @param OPT_mathtype number
+--- @param mathtype number | nil
 --- @return unknown
-function Modify_PlayerResourceCap(playerId, resourceType, scalefactor, OPT_mathtype) end
+function Modify_PlayerResourceCap(playerId, resourceType, scalefactor, mathtype) end
 
 --- Modifies a player's incoming resource rate. Possible math types are MUT_Multiplication, MUT_Addition.
 --- @param playerId Player
 --- @param resourceType number
 --- @param scalefactor number
---- @param OPT_mathtype number
+--- @param mathtype number | nil
 --- @return unknown
-function Modify_PlayerResourceRate(playerId, resourceType, scalefactor, OPT_mathtype) end
+function Modify_PlayerResourceRate(playerId, resourceType, scalefactor, mathtype) end
 
 --- Modifies the sight radius for a player.
 --- @param player Player
@@ -10375,9 +10366,9 @@ function Modify_PlayerSightRadius(player, scalefactor) end
 --- @param playerId Player
 --- @param resourceType number
 --- @param scalefactor number
---- @param OPT_mathtype number
+--- @param mathtype number | nil
 --- @return unknown
-function Modify_PlayerUpkeep(playerId, resourceType, scalefactor, OPT_mathtype) end
+function Modify_PlayerUpkeep(playerId, resourceType, scalefactor, mathtype) end
 
 --- Modifies the production rate of all factories in an EGroup
 --- @param sgroup EGroupID
@@ -10401,16 +10392,16 @@ function Modify_ProjectileDelayTime(player, entityBP, factor) end
 --- Modifies the chance of a squad/entity being hit
 --- @param group EGroupID
 --- @param scalefactor number
---- @param OPT_exclusive boolean
+--- @param exclusive boolean | nil
 --- @return unknown
-function Modify_ReceivedAccuracy(group, scalefactor, OPT_exclusive) end
+function Modify_ReceivedAccuracy(group, scalefactor, exclusive) end
 
 --- Modifies the damage a squad/entity receives.
 --- @param group EGroupID
 --- @param scalefactor number
---- @param OPT_exclusive boolean
+--- @param exclusive boolean | nil
 --- @return unknown
-function Modify_ReceivedDamage(group, scalefactor, OPT_exclusive) end
+function Modify_ReceivedDamage(group, scalefactor, exclusive) end
 
 --- Modifies the rate at which a squad gets suppressed
 --- @param sgroup SGroupID
@@ -10457,9 +10448,9 @@ function Modify_SquadCost(player, blueprint, resourcetype, addition) end
 --- @param group SGroupID
 --- @param Factor number
 --- @param Usage__MUT_Multiplication MUT
---- @param OPT_exclusive boolean
+--- @param exclusive boolean | nil
 --- @return unknown
-function Modify_SquadHealthRegen(group, Factor, Usage__MUT_Multiplication, OPT_exclusive) end
+function Modify_SquadHealthRegen(group, Factor, Usage__MUT_Multiplication, exclusive) end
 
 --- Enable or Disable a squad's vulnerability to knock back
 --- @param group SGroupID
@@ -10493,9 +10484,9 @@ function Modify_TargetPriority(group, addition) end
 --- @param group EGroupID
 --- @param modifier string
 --- @param scalefactor number
---- @param OPT_hardpoint string
+--- @param hardpoint string | nil
 --- @return unknown
-function Modify_TeamWeapon(group, modifier, scalefactor, OPT_hardpoint) end
+function Modify_TeamWeapon(group, modifier, scalefactor, hardpoint) end
 
 --- Modifies the territory radius for an egroup or an sgroup.
 --- @param group EGroupID
@@ -10512,9 +10503,9 @@ function Modify_UnitSpeed(sgroup, scalefactor) end
 --- Modifies the Veterancy Experience value of the target SGroup, EGroup, Entity, or Squad. Mathtype is Multiplication by default
 --- @param group EGroupID
 --- @param scalefactor number
---- @param OPT_mathtype number
+--- @param mathtype number | nil
 --- @return unknown
-function Modify_UnitVeterancyValue(group, scalefactor, OPT_mathtype) end
+function Modify_UnitVeterancyValue(group, scalefactor, mathtype) end
 
 --- Modifies the build time for a particular upgrade. This only affects the given player.
 --- @param playerId Player
@@ -10650,9 +10641,9 @@ function Music_GetMusicEventIntensityLevel(music_event__see_Cardinal_scar_for_ev
 --- Lock the music's intensity to a given level, for a given length of time (if you omit duration, the music plays indefinately until Music_UnlockIntensity is called)
 --- You can chain several level/duration pairs together to create a playlist of sorts. To do this, just use more parameters: Music_LockIntensity(level1, duration1, level2, duration2, ...)
 --- @param level number
---- @param OPT_duration number
+--- @param duration number | nil
 --- @return unknown
-function Music_LockIntensity(level, OPT_duration) end
+function Music_LockIntensity(level, duration) end
 
 --- Plays the music end outro segement and stop music after for about 50 secs.
 --- @return unknown
@@ -10714,9 +10705,9 @@ function NIS_CameraCheckpoint() end
 
 --- ONLY USE THIS INSIDE AN NIS EVENT. Transition from the NIS back to the game.
 --- You can safely do any cleanup after calling this, and it will occur once the screen is black.
---- @param OPT_details table
+--- @param details table | nil
 --- @return unknown
-function NIS_END(OPT_details) end
+function NIS_END(details) end
 
 --- Used to create a fade cut in an NIS
 --- Call this in your NIS Event.  This will require an nis_pause() frame in your NIS file in order to work.
@@ -10731,16 +10722,16 @@ function NIS_PREAMBLE(details) end
 
 --- ONLY USE THIS INSIDE AN NIS EVENT. Transition from the game (or a preamble) into an NIS.
 --- You can do any setup after calling this, as that will occur once the screen has faded to black on the transition in. The game will fade back in to the NIS over the next half second or so (apart from opening cinematics, which is two seconds), so you may want to delay your first action accordingly. The details table should include, at the very least, the following items: style (NIS_OPENING, NIS_MID, or NIS_CLOSING), revealFOW (a Boolean). If you included details in a preamble, you don't need to supply them again here.
---- @param OPT_details table
+--- @param details table | nil
 --- @return unknown
-function NIS_START(OPT_details) end
+function NIS_START(details) end
 
 --- ONLY USE THIS INSIDE AN NIS EVENT with an NIS camera. Starts the NIS camera drifting.
 --- "Drifting" moves the camera around in the shape of an infinity symbol, so it doesn't look quite so static.
---- @param OPT_totalTime number
---- @param OPT_driftScale number
+--- @param totalTime number | nil
+--- @param driftScale number | nil
 --- @return unknown
-function NIS_StartDrift(OPT_totalTime, OPT_driftScale) end
+function NIS_StartDrift(totalTime, driftScale) end
 
 --- ONLY USE THIS INSIDE AN NIS EVENT with an NIS camera. Stops the NIS camera drifting.
 --- "Drifting" moves the camera around in the shape of an infinity symbol, so it doesn't look quite so static.
@@ -10756,32 +10747,32 @@ function NIS_StoreCurrentCameraPos() end
 --- AreaType is AT_CIRCLE (the default) or AT_SQUARE. Color is a table with three values for red, green and blue - i.e. {255, 0, 0}.
 --- @param objTable LuaTable
 --- @param pos Marker | Position | Group
---- @param OPT_areatype AreaType
---- @param OPT_scale number
---- @param OPT_color table
---- @param OPT_alpha number
+--- @param areatype AreaType | nil
+--- @param scale number | nil
+--- @param color table | nil
+--- @param alpha number | nil
 --- @return unknown
-function Objective_AddAreaHighlight(objTable, pos, OPT_areatype, OPT_scale, OPT_color, OPT_alpha) end
+function Objective_AddAreaHighlight(objTable, pos, areatype, scale, color, alpha) end
 
 --- Adds a visual splat on the ground in the world around a certain position, returning the ID
 --- The reticule blueprint (the circle on the ground) and the hintpoint template (the arrow) are by defualt taken from the objective type, but you can override them or set them to false to turn that element off.
 --- @param objTable LuaTable
 --- @param position Marker | Pos
---- @param OPT_size number
---- @param OPT_reticuleBlueprint BP
---- @param OPT_hintpointTemplate string
+--- @param size number | nil
+--- @param reticuleBlueprint BP | nil
+--- @param hintpointTemplate string | nil
 --- @return unknown
-function Objective_AddGroundReticule(objTable, position, OPT_size, OPT_reticuleBlueprint, OPT_hintpointTemplate) end
+function Objective_AddGroundReticule(objTable, position, size, reticuleBlueprint, hintpointTemplate) end
 
 --- Adds a Healthbar tied to a squad or entity at a location.  Will update the health bar as the unit's health fluctuates.  Can be removed with Objective_RemoveHealthBar or completing/failing the objective
 --- If you want to use one of the "global" progress bars (if your project supports them), supply the relevant barIndex value and text string to show alongside it.
 --- @param objTable LuaTable
 --- @param group EGroupID
---- @param OPT_onlyWhenDamaged boolean
---- @param OPT_barIndex number
---- @param OPT_text string
+--- @param onlyWhenDamaged boolean | nil
+--- @param barIndex number | nil
+--- @param text string | nil
 --- @return unknown
-function Objective_AddHealthBar(objTable, group, OPT_onlyWhenDamaged, OPT_barIndex, OPT_text) end
+function Objective_AddHealthBar(objTable, group, onlyWhenDamaged, barIndex, text) end
 
 --- Adds a tactical map ping to an objective
 --- @param objectiveTable LuaTable
@@ -10792,24 +10783,24 @@ function Objective_AddPing(objectiveTable, pos) end
 --- Adds a Timer bar for objective timers, which is automatically updated. The bar can be removed with Objective_RemoveTimerBar or by completing/failing the objective.
 --- Requires a timer to have been started with Objective_StartTimer to work. If you want to use one of the "global" progress bars (if your project supports them), supply the relevant barIndex value and text string to show alongside it.
 --- @param objTable LuaTable
---- @param OPT_barIndex number
---- @param OPT_text string
+--- @param barIndex number | nil
+--- @param text string | nil
 --- @return unknown
-function Objective_AddTimerBar(objTable, OPT_barIndex, OPT_text) end
+function Objective_AddTimerBar(objTable, barIndex, text) end
 
 --- Adds multiple UI elements on one position. 'pos' can be group/entity/squad/marker. worldArrow adds a 3D arrow which points to the thing in the world. hintpointText adds a hint point that appears on the thing when moused over. If you're adding an arrow or a hintpoint, this thing will be among those potentially pointed to by the 2D HUD arrow. objectiveArrowOffset is an offset applied to the arrow's position (you can specify a height offset or a 3D position offset).
 --- @param objTable LuaTable
 --- @param pos Position
---- @param OPT_ping boolean
---- @param OPT_hintpointText string
---- @param OPT_worldArrow boolean
---- @param OPT_objectiveArrowOffset number
---- @param OPT_objectiveArrowFacing Entity | Squad | Position
---- @param OPT_actionType number
---- @param OPT_iconName string
---- @param OPT_templateName string
+--- @param ping boolean | nil
+--- @param hintpointText string | nil
+--- @param worldArrow boolean | nil
+--- @param objectiveArrowOffset number | nil
+--- @param objectiveArrowFacing Entity | Squad | Position | nil
+--- @param actionType number | nil
+--- @param iconName string | nil
+--- @param templateName string | nil
 --- @return unknown
-function Objective_AddUIElements(objTable, pos, OPT_ping, OPT_hintpointText, OPT_worldArrow, OPT_objectiveArrowOffset, OPT_objectiveArrowFacing, OPT_actionType, OPT_iconName, OPT_templateName) end
+function Objective_AddUIElements(objTable, pos, ping, hintpointText, worldArrow, objectiveArrowOffset, objectiveArrowFacing, actionType, iconName, templateName) end
 
 --- Returns whether all primary objectives have been completed.
 --- @return unknown
@@ -10842,26 +10833,26 @@ function Objective_BlinkUIElements(objTable, elementID) end
 --- Completes an objective and removes it from the list (unless it is a sub-objective, in which case it is marked as complete but stays visible until the parent objective is finished)
 --- Automatically removes any elements added with Objective_AddUIElements(). The showTitle and playIntel flags let you control whether the titlecard and Intel_Complete event are played (default: true).
 --- @param objTable LuaTable
---- @param OPT_showTitle boolean
---- @param OPT_playIntel boolean
+--- @param showTitle boolean | nil
+--- @param playIntel boolean | nil
 --- @return unknown
-function Objective_Complete(objTable, OPT_showTitle, OPT_playIntel) end
+function Objective_Complete(objTable, showTitle, playIntel) end
 
 --- Expires an objective and removes it from the list (unless it is a sub-objective, in which case it is marked as expired but stays visible until the parent objective is finished)
 --- Automatically removes any elements added with Objective_AddUIElements(). The showTitle and playIntel flags let you control whether the titlecard and Intel_Expire event are played (default: true).
 --- @param objTable LuaTable
---- @param OPT_showTitle boolean
---- @param OPT_playIntel boolean
+--- @param showTitle boolean | nil
+--- @param playIntel boolean | nil
 --- @return unknown
-function Objective_Expire(objTable, OPT_showTitle, OPT_playIntel) end
+function Objective_Expire(objTable, showTitle, playIntel) end
 
 --- Fails an objective and removes it from the list (unless it is a sub-objective, in which case it is marked as failed but stays visible until the parent objective is finished)
 --- Automatically removes any elements added with Objective_AddUIElements(). The showTitle and playIntel flags let you control whether the titlecard and Intel_Fail event are played (default: true).
 --- @param objTable LuaTable
---- @param OPT_showTitle boolean
---- @param OPT_playIntel boolean
+--- @param showTitle boolean | nil
+--- @param playIntel boolean | nil
 --- @return unknown
-function Objective_Fail(objTable, OPT_showTitle, OPT_playIntel) end
+function Objective_Fail(objTable, showTitle, playIntel) end
 
 --- Returns the current count associated with this objective.
 --- @param objTable LuaTable
@@ -10880,9 +10871,9 @@ function Objective_GetTimerSeconds(objTable) end
 
 --- Increases the counter that is associated with this objective in the UI. You can provide an amount to increase by.
 --- @param objTable LuaTable
---- @param OPT_amount number
+--- @param amount number | nil
 --- @return unknown
-function Objective_IncreaseCounter(objTable, OPT_amount) end
+function Objective_IncreaseCounter(objTable, amount) end
 
 --- Returns whether an objective is complete
 --- @param objTable LuaTable
@@ -10927,9 +10918,9 @@ function Objective_PauseTimer(objTable) end
 --- 'Registers' an objective. Wrapper function for Objective_Create with a few other features.
 --- Includes pings as defined by the objective table created in the main scar file. You can pass in a team or player, so that the objective only applies to it.
 --- @param objTable LuaTable
---- @param OPT_owner Player | TeamID
+--- @param owner Player | TeamID | nil
 --- @return unknown
-function Objective_Register(objTable, OPT_owner) end
+function Objective_Register(objTable, owner) end
 
 --- Removes an existing ground reticule by its ID
 --- @return unknown
@@ -10980,19 +10971,19 @@ function Objective_SetAlwaysShowDetails(objTable, title, hud_arrow, hintpoints) 
 --- Sets a counter that is associated with this objective in the UI. You can provide a 'maximum' so that it shows up as "1 of 5"
 --- @param objTable LuaTable
 --- @param current number
---- @param OPT_maximum number
+--- @param maximum number | nil
 --- @return unknown
-function Objective_SetCounter(objTable, current, OPT_maximum) end
+function Objective_SetCounter(objTable, current, maximum) end
 
 --- Show a progress bar for this objective with the given value (which should be a percentage from 0.0 (empty) to 1.0 (full)). This bar can be removed with Objective_RemoveProgressBar or by completing or failing the mission.
 --- If you want to use one of the "global" progress bars (if your project supports them), supply the relevant barIndex value and text string to show alongside it.
 --- @param objTable LuaTable
 --- @param value number
---- @param OPT_flashing boolean
---- @param OPT_barIndex number
---- @param OPT_text string
+--- @param flashing boolean | nil
+--- @param barIndex number | nil
+--- @param text string | nil
 --- @return unknown
-function Objective_SetProgressBar(objTable, value, OPT_flashing, OPT_barIndex, OPT_text) end
+function Objective_SetProgressBar(objTable, value, flashing, barIndex, text) end
 
 --- Shows or hides an objective from the UI and tactical map
 --- @param objective_table LuaTable
@@ -11004,18 +10995,18 @@ function Objective_Show(objective_table, on_off, ShowTitle) end
 --- Shows an objective to the player and activates it
 --- Includes pings and FOW as defined by the SetupUI() function. The showTitle and playIntel flags let you control whether the titlecard and Intel_Start event are played (default: true).
 --- @param objTable LuaTable
---- @param OPT_showTitle boolean
---- @param OPT_playIntel boolean
+--- @param showTitle boolean | nil
+--- @param playIntel boolean | nil
 --- @return unknown
-function Objective_Start(objTable, OPT_showTitle, OPT_playIntel) end
+function Objective_Start(objTable, showTitle, playIntel) end
 
 --- Starts a timer that is associated with this objective in the UI. Use COUNT_DOWN or COUNT_UP for the 'direction' parameter
 --- @param objTable LuaTable
 --- @param direction number
---- @param OPT_initialTime number
---- @param OPT_flashThreshold number
+--- @param initialTime number | nil
+--- @param flashThreshold number | nil
 --- @return unknown
-function Objective_StartTimer(objTable, direction, OPT_initialTime, OPT_flashThreshold) end
+function Objective_StartTimer(objTable, direction, initialTime, flashThreshold) end
 
 --- Stops an objective that is in progress and puts it back into the waiting-to-start state
 --- @param objTable LuaTable
@@ -11048,20 +11039,20 @@ function Objective_TriggerTitleCard() end
 --- @param objTable LuaTable
 --- @param new_title string
 --- @param new_description string
---- @param OPT_showTitle boolean
---- @param OPT_immediate boolean
+--- @param showTitle boolean | nil
+--- @param immediate boolean | nil
 --- @return unknown
-function Objective_UpdateText(objTable, new_title, new_description, OPT_showTitle, OPT_immediate) end
+function Objective_UpdateText(objTable, new_title, new_description, showTitle, immediate) end
 
 --- Add an ability to a player
 --- @param player Player
---- @param pAbilityPBG ScarAbilityPBG
+--- @param pAbilityPBG Ability
 --- @return unknown
 function Player_AddAbility(player, pAbilityPBG) end
 
 --- Specifies a marker where an ability cannot be used. This only applies to abilities where you use the cursor to pick a location in the world (like a location to paradrop at).
 --- @param player Player
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param marker MarkerID
 --- @return unknown
 function Player_AddAbilityLockoutZone(player, abilityPBG, marker) end
@@ -11101,28 +11092,28 @@ function Player_AreSquadsNearMarker(playerid, marker) end
 
 --- Tests if the player can currently use an ability on target entity
 --- @param player Player
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param targetEntity Entity
 --- @return unknown
 function Player_CanCastAbilityOnEntity(player, abilityPBG, targetEntity) end
 
 --- Tests if the player can currently use an ability on target player
 --- @param player Player
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param targetPlayer Player
 --- @return unknown
 function Player_CanCastAbilityOnPlayer(player, abilityPBG, targetPlayer) end
 
 --- Tests if the player can currently use an ability on target position
 --- @param player Player
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param targetPosition Position
 --- @return unknown
 function Player_CanCastAbilityOnPosition(player, abilityPBG, targetPosition) end
 
 --- Tests if the player can currently use an ability on target squad
 --- @param player Player
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param targetSquad Squad
 --- @return unknown
 function Player_CanCastAbilityOnSquad(player, abilityPBG, targetSquad) end
@@ -11138,15 +11129,15 @@ function Player_CanConstruct(player, pbg) end
 --- @param sgroupid SGroupID
 --- @param ebp Entity
 --- @param targetid EGroupID
---- @param OPT_Facing Position
+--- @param Facing Position | nil
 --- @return unknown
-function Player_CanConstructOnPosition(player, sgroupid, ebp, targetid, OPT_Facing) end
+function Player_CanConstructOnPosition(player, sgroupid, ebp, targetid, Facing) end
 
 --- Check if a player of specified group can place an entity at the specified position and facing angle.
 --- ebp is the structureBlueprint that must be a valid building that can be constructed by the sgroup.
 --- @param player Player
 --- @param sgroup SGroupID
---- @param ebp ScarEntityPBG
+--- @param ebp Entity
 --- @param position Position
 --- @param facing Position
 --- @return unknown
@@ -11219,7 +11210,7 @@ function Player_ClearStateModelTarget(player, key) end
 
 --- Finish upgrade for a player
 --- @param pPlayer Player
---- @param pUpgradePBG ScarUpgradePBG
+--- @param pUpgradePBG Upgrade
 --- @return unknown
 function Player_CompleteUpgrade(pPlayer, pUpgradePBG) end
 
@@ -11252,10 +11243,10 @@ function Player_GetAIType(player) end
 --- Creates/Clears groups that contain all of a player's units and buildings. Defaults - sg_allsquads and eg_allentities
 --- Fills an SGroup with all of the given player's squads, and an EGroup with all the player's entities. If you don't provide and groups, then it defaults to using sg_allsquads and eg_allentities.
 --- @param player Player
---- @param OPT_sgroup SGroupID
---- @param OPT_egroup EGroupID
+--- @param sgroup SGroupID | nil
+--- @param egroup EGroupID | nil
 --- @return unknown
-function Player_GetAll(player, OPT_sgroup, OPT_egroup) end
+function Player_GetAll(player, sgroup, egroup) end
 
 --- Returns an sim::EntityGroupObs containing all the players entities including ones in squad.
 --- This function returns a 'global' entity group with the name '__Player%dEntities', where %d is the player ID.  This means that you should never need to destroy it./n However, if you do destroy it, it will be recreated the next time this function is called.
@@ -11275,18 +11266,18 @@ function Player_GetAllEntitiesFromType(player, unitType) end
 --- @param playerid Player
 --- @param egroup EGroupID
 --- @param position MarkerID | Pos | SectorID
---- @param OPT_range number
+--- @param range number | nil
 --- @return unknown
-function Player_GetAllEntitiesNearMarker(playerid, egroup, position, OPT_range) end
+function Player_GetAllEntitiesNearMarker(playerid, egroup, position, range) end
 
 --- Gather together all of a player's squads that are in proximity to a marker, a position, or within a territory sector into an SGroup. The SGroup is cleared beforehand.
 --- You can override a marker's normal proximity by specifying a range.
 --- @param player Player
 --- @param sgroup SGroupID
 --- @param position MarkerID | Pos | SectorID
---- @param OPT_range number
+--- @param range number | nil
 --- @return unknown
-function Player_GetAllSquadsNearMarker(player, sgroup, position, OPT_range) end
+function Player_GetAllSquadsNearMarker(player, sgroup, position, range) end
 
 --- Returns the entityID of the first player owned building listed in the table.
 --- This only looks at completed buildings
@@ -11365,13 +11356,13 @@ function Player_GetEntityBPCost(player, pbg) end
 --- Finds the greatest (or least) concentration of entities owned by a player.
 --- This function is slow, so don't call it very often
 --- @param player Player
---- @param OPT_popcapOnly boolean
---- @param OPT_includeBlueprints table
---- @param OPT_excludeBlueprints table
---- @param OPT_bLeastConcentrated boolean
---- @param OPT_onlyInThisMarker MarkerID | table
+--- @param popcapOnly boolean | nil
+--- @param includeBlueprints table | nil
+--- @param excludeBlueprints table | nil
+--- @param bLeastConcentrated boolean | nil
+--- @param onlyInThisMarker MarkerID | table | nil
 --- @return unknown
-function Player_GetEntityConcentration(player, OPT_popcapOnly, OPT_includeBlueprints, OPT_excludeBlueprints, OPT_bLeastConcentrated, OPT_onlyInThisMarker) end
+function Player_GetEntityConcentration(player, popcapOnly, includeBlueprints, excludeBlueprints, bLeastConcentrated, onlyInThisMarker) end
 
 --- Returns the number of entities a player currently owns
 --- @param player Player
@@ -11426,9 +11417,9 @@ function Player_GetNumVictoryPoints(p) end
 --- Gets the current personnel or vehicle population as a percetange of the current max-cap. The captype is either CT_Personnel or CT_Vehicle.
 --- If MaxPopulation is 0, returns 1.0 captype is CT_Personnel by default.
 --- @param playerid Player
---- @param OPT_captype number
+--- @param captype number | nil
 --- @return unknown
-function Player_GetPopulationPercentage(playerid, OPT_captype) end
+function Player_GetPopulationPercentage(playerid, captype) end
 
 --- Returns the race for the given player.
 --- @param player Player
@@ -11477,13 +11468,13 @@ function Player_GetSquadBPCost(pPlayer, pbg) end
 --- Finds the greatest (or least) concentration of squads owned by a player.
 --- This function is slow, so don't call it very often
 --- @param player Player
---- @param OPT_popcapOnly boolean
---- @param OPT_includeBlueprints table
---- @param OPT_excludeBlueprints table
---- @param OPT_bLeastConcentrated boolean
---- @param OPT_onlyInThisMarker MarkerID | table
+--- @param popcapOnly boolean | nil
+--- @param includeBlueprints table | nil
+--- @param excludeBlueprints table | nil
+--- @param bLeastConcentrated boolean | nil
+--- @param onlyInThisMarker MarkerID | table | nil
 --- @return unknown
-function Player_GetSquadConcentration(player, OPT_popcapOnly, OPT_includeBlueprints, OPT_excludeBlueprints, OPT_bLeastConcentrated, OPT_onlyInThisMarker) end
+function Player_GetSquadConcentration(player, popcapOnly, includeBlueprints, excludeBlueprints, bLeastConcentrated, onlyInThisMarker) end
 
 --- Returns the number of squads a player currently owns
 --- @param player Player
@@ -11629,13 +11620,13 @@ function Player_GetUnitCount(player) end
 
 --- Returns the cost of an upgrade.
 --- @param player Player
---- @param upgradePBG ScarUpgradePBG
+--- @param upgradePBG Upgrade
 --- @return unknown
 function Player_GetUpgradeBPCost(player, upgradePBG) end
 
 --- Returns the cost of an upgrade in a specific resource.
 --- @param player Player
---- @param upgradePBG ScarUpgradePBG
+--- @param upgradePBG Upgrade
 --- @param type number
 --- @return unknown
 function Player_GetUpgradeBPCostByResource(player, upgradePBG, type) end
@@ -11649,7 +11640,7 @@ function Player_GiftResource(player, type, amount) end
 
 --- Tests to see if a player has an ability
 --- @param player Player
---- @param pAbilityPBG ScarAbilityPBG
+--- @param pAbilityPBG Ability
 --- @return unknown
 function Player_HasAbility(player, pAbilityPBG) end
 
@@ -11680,7 +11671,7 @@ function Player_HasCapturingSquadNearStrategicPoint(player, strategicPoint) end
 
 --- Tests to see if the player has any entities with the specified PBG
 --- @param player Player
---- @param entity ScarEntityPBG
+--- @param entity Entity
 --- @return unknown
 function Player_HasEntity(player, entity) end
 
@@ -11691,13 +11682,13 @@ function Player_HasMapEntryPosition(player) end
 
 --- Return true if the squad has purchased the specified upgrade.
 --- @param pPlayer Player
---- @param upgradePBG ScarUpgradePBG
+--- @param upgradePBG Upgrade
 --- @return unknown
 function Player_HasUpgrade(pPlayer, upgradePBG) end
 
 --- Returns true or false, depending on whether the passed in player ability is active on the player
 --- @param player Player
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @return unknown
 function Player_IsAbilityActive(player, abilityPBG) end
 
@@ -11729,7 +11720,7 @@ function Player_IsValid(id) end
 
 --- Returns the number of upgrades that this player has.
 --- @param player Player
---- @param upgradePBG ScarUpgradePBG
+--- @param upgradePBG Upgrade
 --- @return unknown
 function Player_NumUpgradeComplete(player, upgradePBG) end
 
@@ -11748,9 +11739,9 @@ function Player_ObserveReputation(observer, target) end
 --- Returns true if a given player owns ALL or ANY items in a group
 --- @param player Player
 --- @param egroup EGroupID
---- @param OPT_all boolean
+--- @param all boolean | nil
 --- @return unknown
-function Player_OwnsEGroup(player, egroup, OPT_all) end
+function Player_OwnsEGroup(player, egroup, all) end
 
 --- Returns true if a given player owns an entity
 --- @param playerid Player
@@ -11761,9 +11752,9 @@ function Player_OwnsEntity(playerid, entity) end
 --- Returns true if a given player owns ALL or ANY items in a group
 --- @param player Player
 --- @param sgroup SGroupID
---- @param OPT_all boolean
+--- @param all boolean | nil
 --- @return unknown
-function Player_OwnsSGroup(player, sgroup, OPT_all) end
+function Player_OwnsSGroup(player, sgroup, all) end
 
 --- Returns true if a given player owns a squad
 --- @param playerid Player
@@ -11773,7 +11764,7 @@ function Player_OwnsSquad(playerid, squad) end
 
 --- Removes a marker that was previously a lockout zone.
 --- @param player Player
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param marker MarkerID
 --- @return unknown
 function Player_RemoveAbilityLockoutZone(player, abilityPBG, marker) end
@@ -11785,13 +11776,13 @@ function Player_RemoveAllUpgrades(player) end
 
 --- Removes an upgrade from a player
 --- @param player Player
---- @param upgrade ScarUpgradePBG
+--- @param upgrade Upgrade
 --- @return unknown
 function Player_RemoveUpgrade(player, upgrade) end
 
 --- Reset the cooldown of an ability on every unit a player has, and the player itself.
 --- @param player Player
---- @param ability ScarAbilityPBG
+--- @param ability Ability
 --- @return unknown
 function Player_ResetAbilityCooldowns(player, ability) end
 
@@ -12041,7 +12032,7 @@ function Player_SetUpgradeAvailability(player, bp, availability) end
 
 --- Abruptly stops an active ability
 --- @param player Player
---- @param ability ScarAbilityPBG
+--- @param ability Ability
 --- @param bIsEarlyExit boolean
 --- @return unknown
 function Player_StopAbility(player, ability, bIsEarlyExit) end
@@ -12067,10 +12058,10 @@ function Prefab_ApplyDefaults(instance_data, prefab_schema) end
 --- Example: Calling the "Trigger" action on an instance that is a PlaneCrash prefab will look for a function called "PlaneCrash_Trigger"
 --- @param instance_data string
 --- @param actionName string
---- @param OPT_param1 Var
---- @param OPT_param2___ Var
+--- @param param1 Var | nil
+--- @param param2___ Var | nil
 --- @return unknown
-function Prefab_DoAction(instance_data, actionName, OPT_param1, OPT_param2___) end
+function Prefab_DoAction(instance_data, actionName, param1, param2___) end
 
 --- Finalize the initialization of any prefab instances that have been run through Prefab_Init(). This is automatically called one frame after a prefab is initialized, but you can force it early if necessary.
 --- If you are creating prefabs and using them in the same frame, call this function once, after all the Prefab_Inits, but before you start using them. This will force the post-initialization to occur early.
@@ -12127,93 +12118,93 @@ function PrefabHelper_StandardTriggerSystem(instance_data, action_name, trigger_
 --- If the speech file is not available, a placeholder time will be calculated for the message using the number of words and the message will be displayed for that length of time.\n speechbubble: Who a speech bubble should appear over ingame. Can be a squadID or an SGroup (where it appears over the first guy in the group) \n It can also be a table in the format {sgroup = sg_orkboys, closest_to = sg_gorgutz} where it finds the squad in the group closest to the reference point. It can also be in the format {sbp = SBP.ORKS.ORK_BOY, closest_to = mkr_orkIdol} to find the closest unit of the specified type, and you can also add a player entry to that table to specify which player (default is the local player)\n You can also specify just an SBP, in which case it will play on the first SBP found owned - use this for elite units who may or may not be on the map audioCtrlEvent:  is a wwise event name. This parameter is used to apply an effect on the line of speech. Ex. "Comm_on" plays speech through a comm effect. Work with an audio designer to get more effects.
 --- @param actor ActorTable
 --- @param locID number
---- @param OPT_speechbubble SGroupID
---- @param OPT_audioCtrlEvent string
+--- @param speechbubble SGroupID | nil
+--- @param audioCtrlEvent string | nil
 --- @return unknown
-function Actor_PlaySpeech(actor, locID, OPT_speechbubble, OPT_audioCtrlEvent) end
+function Actor_PlaySpeech(actor, locID, speechbubble, audioCtrlEvent) end
 
 --- Plays a speech event for a given actor WITHOUT a portrait or subtitle. See Actor_PlaySpeech for more details
 --- @param actor ActorTable
 --- @param locID number
---- @param OPT_speechbubble SGroupID
---- @param OPT_audioCtrlEvent string
+--- @param speechbubble SGroupID | nil
+--- @param audioCtrlEvent string | nil
 --- @return unknown
-function Actor_PlaySpeechWithoutPortrait(actor, locID, OPT_speechbubble, OPT_audioCtrlEvent) end
+function Actor_PlaySpeechWithoutPortrait(actor, locID, speechbubble, audioCtrlEvent) end
 
 --- Returns true if ANY or ALL entities from a group are in range of a given position, marker, or territory sector.
 --- You MUST specify a range if you are using a position rather than a marker. Markers with proximity type rectangle will use circular proximity check if custom range is supplied\n
 --- @param egroup EGroupID
 --- @param position MarkerID | Position | SectorID
 --- @param all boolean
---- @param OPT_range number
+--- @param range number | nil
 --- @return unknown
-function Prox_AreEntitiesNearMarker(egroup, position, all, OPT_range) end
+function Prox_AreEntitiesNearMarker(egroup, position, all, range) end
 
 --- Returns true if ANY or ALL of a player's entities are in range of a given position, marker, or territory sector. THIS FUNCTION IS VERY SLOW. DO NOT USE THIS UNLESS ABSOLUTELY NECESSARY.
 --- You MUST specify a range if you are using a position rather than a marker.\n Markers with proximity type rectangle will use circular proximity check if custom range is supplied\n
 --- @param player Player
 --- @param position MarkerID | Position | SectorID
 --- @param all boolean
---- @param OPT_range number
---- @param OPT_filterlist EBP | table
---- @param OPT_filtertype number
---- @param OPT_ignore_camouflage boolean
+--- @param range number | nil
+--- @param filterlist EBP | table | nil
+--- @param filtertype number | nil
+--- @param ignore_camouflage boolean | nil
 --- @return unknown
-function Prox_ArePlayerEntitiesNearMarker(player, position, all, OPT_range, OPT_filterlist, OPT_filtertype, OPT_ignore_camouflage) end
+function Prox_ArePlayerEntitiesNearMarker(player, position, all, range, filterlist, filtertype, ignore_camouflage) end
 
 --- Returns true if ANY or ALL of a player's members (i.e. individual guys, not squads as a whole) are in range of a given position, marker, or territory sector. DO NOT USE THIS FUNCTION UNLESS YOU ABSOLUTELY HAVE TO!!
 --- You MUST specify a range if you are using a position rather than a marker.
 --- @param player Player
 --- @param position MarkerID | Position | SectorID
 --- @param all boolean
---- @param OPT_range number
---- @param OPT_filterlist SBP | table
---- @param OPT_filtertype number
---- @param OPT_ignore_camouflage boolean
+--- @param range number | nil
+--- @param filterlist SBP | table | nil
+--- @param filtertype number | nil
+--- @param ignore_camouflage boolean | nil
 --- @return unknown
-function Prox_ArePlayerMembersNearMarker(player, position, all, OPT_range, OPT_filterlist, OPT_filtertype, OPT_ignore_camouflage) end
+function Prox_ArePlayerMembersNearMarker(player, position, all, range, filterlist, filtertype, ignore_camouflage) end
 
 --- Returns true if ANY or ALL of a player's squads are in range of a given position, marker, or territory sector. THIS FUNCTION IS VERY SLOW. DO NOT USE THIS UNLESS ABSOLUTELY NECESSARY.
 --- You MUST specify a range if you are using a position rather than a marker.\n Markers with proximity type rectangle will use circular proximity check if custom range is supplied\n
 --- @param player Player
 --- @param position MarkerID | Position | SectorID
 --- @param all boolean
---- @param OPT_range number
---- @param OPT_filterlist SBP | table
---- @param OPT_filtertype number
---- @param OPT_ignore_camouflage boolean
+--- @param range number | nil
+--- @param filterlist SBP | table | nil
+--- @param filtertype number | nil
+--- @param ignore_camouflage boolean | nil
 --- @return unknown
-function Prox_ArePlayersNearMarker(player, position, all, OPT_range, OPT_filterlist, OPT_filtertype, OPT_ignore_camouflage) end
+function Prox_ArePlayersNearMarker(player, position, all, range, filterlist, filtertype, ignore_camouflage) end
 
 --- Returns true if ANY or ALL squad members (i.e. individual guys, not squads as a whole) from a group are in range of a given position, marker, or territory sector. DO NOT USE THIS FUNCTION UNLESS YOU ABSOLUTELY HAVE TO!!
 --- You MUST specify a range if you are using a position rather than a marker.\n Markers with proximity type rectangle will use circular proximity check if custom range is supplied\n
 --- @param sgroup SGroupID
 --- @param position MarkerID | Position | SectorID
 --- @param all boolean
---- @param OPT_range number
+--- @param range number | nil
 --- @return unknown
-function Prox_AreSquadMembersNearMarker(sgroup, position, all, OPT_range) end
+function Prox_AreSquadMembersNearMarker(sgroup, position, all, range) end
 
 --- Returns true if ANY or ALL squads from a group are in range of a given position, marker, or territory sector
 --- You MUST specify a range if you are using a position rather than a marker.\n Markers with proximity type rectangle will use circular proximity check if custom range is supplied\n
 --- @param sgroup SGroupID
 --- @param position MarkerID | Position | SectorID
 --- @param all boolean
---- @param OPT_range number
+--- @param range number | nil
 --- @return unknown
-function Prox_AreSquadsNearMarker(sgroup, position, all, OPT_range) end
+function Prox_AreSquadsNearMarker(sgroup, position, all, range) end
 
 --- Returns true if ANY or ALL of a teams's squads are in range of a given position, marker, or territory sector. THIS FUNCTION IS VERY SLOW. DO NOT USE THIS UNLESS ABSOLUTELY NECESSARY.
 --- You MUST specify a range if you are using a position rather than a marker.\n Markers with proximity type rectangle will use circular proximity check if custom range is supplied\n
 --- @param team TeamID
 --- @param position MarkerID | Position | SectorID
 --- @param all boolean
---- @param OPT_range number
---- @param OPT_filterlist SBP | table
---- @param OPT_filtertype number
---- @param OPT_ignore_camouflage boolean
+--- @param range number | nil
+--- @param filterlist SBP | table | nil
+--- @param filtertype number | nil
+--- @param ignore_camouflage boolean | nil
 --- @return unknown
-function Prox_AreTeamsNearMarker(team, position, all, OPT_range, OPT_filterlist, OPT_filtertype, OPT_ignore_camouflage) end
+function Prox_AreTeamsNearMarker(team, position, all, range, filterlist, filtertype, ignore_camouflage) end
 
 --- Returns the distance between two entity groups. use checktype PROX_SHORTEST, PROX_LONGEST, or PROX_CENTER.
 --- If check is PROX_SHORTEST this will return the shortest distance between the two groups.\n If check is PROX_LONGEST this will return the longest distance between the two groups.\n If check is PROX_CENTER this will return the distance between the two groups centers.\n
@@ -12386,7 +12377,7 @@ function Decal_GetInvalidID() end
 
 --- Precache entity resources and listen for event GE_EntityPrecached that it is done
 --- callback example: Rule_AddGlobalEvent(EntityPrecacheComplete, GE_EntityPrecached) Params: ebp - entity blueprint skinID - this is the server item id for a skin, it will precache and equip it player - the player that we want to precache the entity or squad for cacheName - name of cache where resource will be loaded into source - helps identify who requested the precaching id - id to table of data that will be used once entity/squad is loaded
---- @param ebp ScarEntityPBG
+--- @param ebp Entity
 --- @param skinItemDefinitionID number
 --- @param player Player
 --- @param resourceContainerCacheName string
@@ -12438,7 +12429,7 @@ function Splat_GetInvalidID() end
 
 --- Precache squad resources and listen for event GE_EntityPrecached that it is done
 --- callback example: Rule_AddGlobalEvent(EntityPrecacheComplete, GE_SquadPrecached) Params: sbp - squad blueprint skinID - this is the server item id for a skin, it will precache and equip it player - the player that we want to precache the entity or squad for cacheName - name of cache where resource will be loaded into source - helps identify who requested the precaching id - id to table of data that will be used once entity/squad is loaded
---- @param sbp ScarSquadPBG
+--- @param sbp Squad
 --- @param skinItemDefinitionID number
 --- @param player Player
 --- @param resourceContainerCacheName string
@@ -12468,10 +12459,10 @@ function TerrainHighlight_Show(metadataLayerName, opacity) end
 --- Add a rule to be executed every frame.
 --- Returns the ID of the rule just added.
 --- @param f function
---- @param OPT_data table
---- @param OPT_group EGroupID
+--- @param data table | nil
+--- @param group EGroupID | nil
 --- @return unknown
-function Rule_Add(f, OPT_data, OPT_group) end
+function Rule_Add(f, data, group) end
 
 --- Add a rule to be executed when the event of 'eventType' has happened on entities in the 'egroup'
 --- Event types are: GE_EntityKilled, GE_EntityParadropComplete, GE_EntityCommandIssued, GE_ProjectileFired, GE_AbilityExecuted, GE_SpawnActionComplete
@@ -12540,19 +12531,19 @@ function Rule_AddGlobalEvent(rule, eventtype) end
 --- interval can be a number (the interval between subsequent rule calls) or a table with the keys: "delay", "interval" and "count". Returns the ID of the rule just added.
 --- @param f function
 --- @param interval number | table
---- @param OPT_data table
---- @param OPT_group EGroupID
+--- @param data table | nil
+--- @param group EGroupID | nil
 --- @return unknown
-function Rule_AddInterval(f, interval, OPT_data, OPT_group) end
+function Rule_AddInterval(f, interval, data, group) end
 
 --- Add a rule to be executed once, after 'delay' seconds.
 --- Returns the ID of the rule just added.
 --- @param rule function
---- @param OPT_delay number
---- @param OPT_data table
---- @param OPT_group EGroupID
+--- @param delay number | nil
+--- @param data table | nil
+--- @param group EGroupID | nil
 --- @return unknown
-function Rule_AddOneShot(rule, OPT_delay, OPT_data, OPT_group) end
+function Rule_AddOneShot(rule, delay, data, group) end
 
 --- Add a rule to be executed when the event of 'eventType' has happened on the 'player'
 --- Event types are: GE_PlayerBeingAttacked, GE_PlayerCommandIssued, GE_AbilityExecuted, GE_UpgradeComplete, GE_ConstructionComplete, GE_BuildItemComplete, GE_PlayerKilled, GE_SpawnActionComplete, GE_AIPlayer_EncounterNotification
@@ -12595,11 +12586,11 @@ function Rule_ChangeIntervalWithID(id, interval) end
 --- @param all boolean
 --- @param who EGroupID
 --- @param where Marker
---- @param OPT_range number
---- @param OPT_recur boolean
---- @param OPT_data table
+--- @param range number | nil
+--- @param recur boolean | nil
+--- @param data table | nil
 --- @return unknown
-function Rule_EnterProximity(f, all, who, where, OPT_range, OPT_recur, OPT_data) end
+function Rule_EnterProximity(f, all, who, where, range, recur, data) end
 
 --- Test if a rule with LuaFunction f is currently active
 --- @param rule function
@@ -12616,11 +12607,11 @@ function Rule_ExistsWithID(id) end
 --- @param all boolean
 --- @param who EGroupID
 --- @param where Marker
---- @param OPT_range number
---- @param OPT_recur boolean
---- @param OPT_data table
+--- @param range number | nil
+--- @param recur boolean | nil
+--- @param data table | nil
 --- @return unknown
-function Rule_ExitProximity(f, all, who, where, OPT_range, OPT_recur, OPT_data) end
+function Rule_ExitProximity(f, all, who, where, range, recur, data) end
 
 --- Comparison is one of IS_LESS_THAN; IS_LESS_THAN_OR_EQUAL; IS_EQUAL; IS_NOT_EQUAL; IS_GREATER_THAN; IS_GREATER_THAN_OR_EQUAL. Triggers when the number of objects in the group, when compared to value by comparison, is true
 --- @param f function
@@ -12735,19 +12726,19 @@ function Rule_UnpauseWithID(id) end
 --- @param all boolean
 --- @param who EGroupID
 --- @param where Marker
---- @param OPT_range number
---- @param OPT_interval number
---- @param OPT_recur boolean
---- @param OPT_data table
+--- @param range number | nil
+--- @param interval number | nil
+--- @param recur boolean | nil
+--- @param data table | nil
 --- @return unknown
-function Rule_WhileInProximity(f, all, who, where, OPT_range, OPT_interval, OPT_recur, OPT_data) end
+function Rule_WhileInProximity(f, all, who, where, range, interval, recur, data) end
 
 --- Pass in a group to command to 'stop'. Pass in booleans for capturing and building
 --- @param sgroup1 SGroupID
---- @param OPT_stopCapture boolean
---- @param OPT_stopBuild boolean
+--- @param stopCapture boolean | nil
+--- @param stopBuild boolean | nil
 --- @return unknown
-function Cmd_StopSquadsExcept(sgroup1, OPT_stopCapture, OPT_stopBuild) end
+function Cmd_StopSquadsExcept(sgroup1, stopCapture, stopBuild) end
 
 --- Instantly adds an upgrade to all entities in a given EGroup.
 --- @param egroup EGroupID
@@ -12758,9 +12749,9 @@ function EGroup_CompleteUpgrade(egroup, upgrade) end
 --- Filters an EGroup to either FILTER_REMOVE or FILTER_KEEP entities that are currently camouflaged (stealthed included)
 --- @param sgroup EGroupID
 --- @param filtertype number
---- @param OPT_splitEGroup EGroupID
+--- @param splitEGroup EGroupID | nil
 --- @return unknown
-function EGroup_FilterCamouflaged(sgroup, filtertype, OPT_splitEGroup) end
+function EGroup_FilterCamouflaged(sgroup, filtertype, splitEGroup) end
 
 --- Restore the targeting type of the entities in this EGroup to their respective defaults (as found in their EBPs)
 --- @param egroup EGroupID
@@ -12991,9 +12982,9 @@ function SGroup_CreateIfNotFound(name) end
 function SGroup_CreateKickerMessage(group, player, textid) end
 
 --- Returns an SGroup with a unique name, prefixed by the 'prefix' parameter.
---- @param OPT_prefix string
+--- @param prefix string | nil
 --- @return unknown
-function SGroup_CreateUnique(OPT_prefix) end
+function SGroup_CreateUnique(prefix) end
 
 --- Returns a new squad group with an autogenerated unique name, optionally prefixed by the string passed in.
 --- Use this if you want to create a new SGroup but don't necessarily care about the name.\n Squad groups are used for all units and vehicles.  You can issue orders such as move and attack to an entire squad group.\n
@@ -13080,32 +13071,32 @@ function SGroup_FaceMarker(sgroup, marker) end
 --- @param sgroup SGroupID
 --- @param blueprint SBP | SquadType | table
 --- @param filtertype number
---- @param OPT_splitSGroup SGroupID
+--- @param splitSGroup SGroupID | nil
 --- @return unknown
-function SGroup_Filter(sgroup, blueprint, filtertype, OPT_splitSGroup) end
+function SGroup_Filter(sgroup, blueprint, filtertype, splitSGroup) end
 
 --- Filters an sgroup base on proximity. Use FILTER_KEEP to keep the affected units, or FILTER_REMOVE to remove them. Set invertPosition to TRUE to affect the units outside the position.
 --- @param sgroup SGroupID
 --- @param position Pos
 --- @param filtertype number
---- @param OPT_OPT_range number
---- @param OPT_OPT_splitSGroup SGroupID
+--- @param OPT_range number | nil
+--- @param OPT_splitSGroup SGroupID | nil
 --- @return unknown
-function SGroup_FilterByProximity(sgroup, position, filtertype, OPT_OPT_range, OPT_OPT_splitSGroup) end
+function SGroup_FilterByProximity(sgroup, position, filtertype, OPT_range, OPT_splitSGroup) end
 
 --- Filters an SGroup to either FILTER_REMOVE or FILTER_KEEP units that are currently camouflaged (stealthed included)
 --- @param sgroup SGroupID
 --- @param filtertype number
---- @param OPT_splitSGroup SGroupID
+--- @param splitSGroup SGroupID | nil
 --- @return unknown
-function SGroup_FilterCamouflaged(sgroup, filtertype, OPT_splitSGroup) end
+function SGroup_FilterCamouflaged(sgroup, filtertype, splitSGroup) end
 
 --- Pass in a group and it will filter it down to the indicated number
 --- @param sgroup1 SGroupID
 --- @param groupSize number
---- @param OPT_splitSGroup SGroupID
+--- @param splitSGroup SGroupID | nil
 --- @return unknown
-function SGroup_FilterCount(sgroup1, groupSize, OPT_splitSGroup) end
+function SGroup_FilterCount(sgroup1, groupSize, splitSGroup) end
 
 --- Filters an SGroup by whether units are on screen or not. Percent refers to the screen area you are considering (0.8 is a good value to use - it won't include things that are right at the screen edge).
 --- Setting filtertype to FILTER_KEEP results in the group only containing those squads that are on screen.
@@ -13118,24 +13109,24 @@ function SGroup_FilterOnScreen(egroup, percent, filtertype) end
 --- Filters an sgroup on spawned/despawned status. Use FILTER_KEEP to keep the spawned units (therefore removing the despawned), or FILTER_REMOVE to remove the spawned units (and keep the despawned).
 --- @param sgroup SGroupID
 --- @param filtertype number
---- @param OPT_splitSGroup SGroupID
+--- @param splitSGroup SGroupID | nil
 --- @return unknown
-function SGroup_FilterSpawned(sgroup, filtertype, OPT_splitSGroup) end
+function SGroup_FilterSpawned(sgroup, filtertype, splitSGroup) end
 
 --- Searches an SGroup and finds the first threat within the table (searching first to last) and removes all other SBPs.
 --- Optional parameter bEmpty can be set to true, will clear the SGroup if none of the SBPS in the table are found.
 --- @param sgroup SGroupID
 --- @param tableSBPs LuaTable
---- @param OPT_bEmpty boolean
+--- @param bEmpty boolean | nil
 --- @return unknown
-function SGroup_FilterThreat(sgroup, tableSBPs, OPT_bEmpty) end
+function SGroup_FilterThreat(sgroup, tableSBPs, bEmpty) end
 
 --- Filters an sgroup on spawned/despawned status. Use FILTER_KEEP to keep the spawned units (therefore removing the despawned), or FILTER_REMOVE to remove the spawned units (and keep the despawned).
 --- @param sgroup SGroupID
 --- @param filtertype number
---- @param OPT_splitSGroup SGroupID
+--- @param splitSGroup SGroupID | nil
 --- @return unknown
-function SGroup_FilterVisibleToPlayer(sgroup, filtertype, OPT_splitSGroup) end
+function SGroup_FilterVisibleToPlayer(sgroup, filtertype, splitSGroup) end
 
 --- Call a lua function for each item in a group. Function will recieve (groupid, itemindex, itemid) and should return true to break or false to continue.
 --- function Rule_Test( )\n \tlocal DespawnSquad = function( sgroupid, itemindex, squadID )\n \t\tSquad_Despawn( squadID )\n \tend\n\n \tSGroup_ForEach( SGroup_FromName("sg_Squads"), DespawnSquad )\n end\n\n This functions iterates over spawned squads only.
@@ -13237,9 +13228,9 @@ function SGroup_GetInvulnerable(sgroup, all) end
 --- Gets the last attacker(s) for all the squads in an SGroup Gets the last attacker for all the squads in an SGroup and stores that in SGroupAttacker
 --- @param SGroupVictim SGroupID
 --- @param SGroupAttacker SGroupID
---- @param OPT_seconds number
+--- @param seconds number | nil
 --- @return unknown
-function SGroup_GetLastAttacker(SGroupVictim, SGroupAttacker, OPT_seconds) end
+function SGroup_GetLastAttacker(SGroupVictim, SGroupAttacker, seconds) end
 
 --- Get the squad id of the vehicle squad that any squad of the sgroup is loaded in
 --- @param groupid SGroupID
@@ -13372,17 +13363,17 @@ function SGroup_Hide(sgroup, hide) end
 --- Increase squad veterancy experience for all squads in the sgroup. Can do silent promotion (no sound/UI). Can skip modifiers, giving you direct control of experience gained.
 --- @param groupid SGroupID
 --- @param experience number
---- @param OPT_silent boolean
---- @param OPT_applyModifiers boolean
+--- @param silent boolean | nil
+--- @param applyModifiers boolean | nil
 --- @return unknown
-function SGroup_IncreaseVeterancyExperience(groupid, experience, OPT_silent, OPT_applyModifiers) end
+function SGroup_IncreaseVeterancyExperience(groupid, experience, silent, applyModifiers) end
 
 --- Increase squad veterancy rank for all squads in the sgroup. By default, increases rank by 1. Can do silent promotion (no sound/UI. ex: mass rank insrease at mission start)
 --- @param groupid SGroupID
---- @param OPT_numranks number
---- @param OPT_silent boolean
+--- @param numranks number | nil
+--- @param silent boolean | nil
 --- @return unknown
-function SGroup_IncreaseVeterancyRank(groupid, OPT_numranks, OPT_silent) end
+function SGroup_IncreaseVeterancyRank(groupid, numranks, silent) end
 
 --- Same as EGroup_Intersection. Note: You cannot mix squad groups and entity groups.
 --- Only squads that are in both groups will be added to 'group'.\n The contents of 'grouptointersect' will not be changed.\n Example: group = (1,2,3,4,5,6)  grouptointersect = (2,4,6,8,10)   --> group will now equal (2,4,6)
@@ -13465,9 +13456,9 @@ function SGroup_IsIdle(sgroup, ALL) end
 
 --- Returns the percentage of the SGroup members that are in cover. Alternatively, specify ANY or ALL as a second parameter to return true/false.
 --- @param sgroup SGroupID
---- @param OPT_all boolean
+--- @param all boolean | nil
 --- @return unknown
-function SGroup_IsInCover(sgroup, OPT_all) end
+function SGroup_IsInCover(sgroup, all) end
 
 --- Returns true if ALL or ANY squads in a group are infiltrated
 --- @param sgroup SGroupID
@@ -13497,9 +13488,9 @@ function SGroup_IsMoving(sgroup, all) end
 --- @param player Player
 --- @param group SGroupID
 --- @param all boolean
---- @param OPT_percent number
+--- @param percent number | nil
 --- @return unknown
-function SGroup_IsOnScreen(player, group, all, OPT_percent) end
+function SGroup_IsOnScreen(player, group, all, percent) end
 
 --- Returns true if ANY or ALL of a group is pinned
 --- @param group SGroupID
@@ -13667,9 +13658,9 @@ function SGroup_SetCrushable(sgroup, crushable) end
 --- The optional reset_time is used to automatically remove invulnerability after a set time. If invulnerable, both health damage is disabled.
 --- @param sgroup SGroupID
 --- @param enabled boolean
---- @param OPT_reset_time number
+--- @param reset_time number | nil
 --- @return unknown
-function SGroup_SetInvulnerable(sgroup, enabled, OPT_reset_time) end
+function SGroup_SetInvulnerable(sgroup, enabled, reset_time) end
 
 --- Set soldier mood mode. Mode could be MM_Auto, MM_ForceCalm or MM_ForceTense
 --- @param group SGroupID
@@ -13847,7 +13838,7 @@ function Sound_SetMusicRaceCode(raceCode) end
 function Sound_StartMusicOutro(outroEvent) end
 
 --- Try to group the squads, returning the squads in groupings that are at least the ideal squad range apart
---- @param _not or
+--- @param _not boolean
 --- @param smallvector_SGroup SGroupID
 --- @param sgroup SGroupID
 --- @param spawnedOnly boolean
@@ -13878,7 +13869,7 @@ function SGroup_SnapFacePosition(sgroup, pos) end
 
 --- Allows the squad to use this ability
 --- @param squad Squad
---- @param ability ScarAbilityPBG
+--- @param ability Ability
 --- @return unknown
 function Squad_AddAbility(squad, ability) end
 
@@ -13932,14 +13923,14 @@ function Squad_CanCastAbilityOnEGroup(caster, ability, target_egroup) end
 
 --- Test whether a squad can be ordered to do this ability on the target squad
 --- @param castingSquad Squad
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param targetEntity Entity
 --- @return unknown
 function Squad_CanCastAbilityOnEntity(castingSquad, abilityPBG, targetEntity) end
 
 --- Test whether a squad can be ordered to do this ability on the target squad
 --- @param castingSquad Squad
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param targetPos Position
 --- @return unknown
 function Squad_CanCastAbilityOnPosition(castingSquad, abilityPBG, targetPos) end
@@ -13953,7 +13944,7 @@ function Squad_CanCastAbilityOnSGroup(caster, ability, target_sgroup) end
 
 --- Test whether a squad can be ordered to do this ability on the target squad
 --- @param castingSquad Squad
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param targetSquad Squad
 --- @return unknown
 function Squad_CanCastAbilityOnSquad(castingSquad, abilityPBG, targetSquad) end
@@ -14042,7 +14033,7 @@ function Squad_ClearStateModelTarget(squad, key) end
 
 --- Instantly adds an upgrade to a given squad
 --- @param pSquad Squad
---- @param upgradePBG ScarUpgradePBG
+--- @param upgradePBG Upgrade
 --- @return unknown
 function Squad_CompleteUpgrade(pSquad, upgradePBG) end
 
@@ -14053,7 +14044,7 @@ function Squad_Count(squad) end
 
 --- Create a squad, spawn it and assign it to a player.
 --- This will create a squad of size 'loadoutCount' and of unit type 'unit_base' (from squad blueprint)\n Note: loadoutCount will be clipped to loadoutMin and loadoutMax from the squad blueprint. A loudoutCount of zero means create the whole squad as is.
---- @param sbp ScarSquadPBG
+--- @param sbp Squad
 --- @param player Player
 --- @param loadoutCount number
 --- @param pos Position
@@ -14476,7 +14467,7 @@ function Squad_GiveSlotItemsFromTable(squadid, itemTable) end
 
 --- Tests to see if a squad has an ability
 --- @param squad Squad
---- @param ability ScarAbilityPBG
+--- @param ability Ability
 --- @return unknown
 function Squad_HasAbility(squad, ability) end
 
@@ -14542,7 +14533,7 @@ function Squad_HasTeamWeapon(pSquad) end
 
 --- Return true if the squad has purchased the specified upgrade.
 --- @param squad Squad
---- @param pbg ScarUpgradePBG
+--- @param pbg Upgrade
 --- @return unknown
 function Squad_HasUpgrade(squad, pbg) end
 
@@ -14579,7 +14570,7 @@ function Squad_InstantSetupTeamWeapon(squad) end
 
 --- True if the ability is active
 --- @param squad Squad
---- @param pbg ScarAbilityPBG
+--- @param pbg Ability
 --- @return unknown
 function Squad_IsAbilityActive_CS(squad, pbg) end
 
@@ -14622,7 +14613,7 @@ function Squad_IsConstructing(squad) end
 
 --- True if squad is currently performing the given ability
 --- @param squad Squad
---- @param pbg ScarAbilityPBG
+--- @param pbg Ability
 --- @return unknown
 function Squad_IsDoingAbility(squad, pbg) end
 
@@ -14728,7 +14719,7 @@ function Squad_IsReinforcing(squad) end
 function Squad_IsRetreating(squad) end
 
 --- Returns true if the given blueprint is of the given type. Types are defined in squad_type_ext/squad_type_list
---- @param sbp ScarSquadPBG
+--- @param sbp Squad
 --- @param type string
 --- @return unknown
 function Squad_IsSBPOfType(sbp, type) end
@@ -14739,7 +14730,7 @@ function Squad_IsSBPOfType(sbp, type) end
 function Squad_IsSettingDemolitions(squad) end
 
 --- Returns true if the supplied squad pbg is a siege unit
---- @param pbg ScarSquadPBG
+--- @param pbg Squad
 --- @return unknown
 function Squad_IsSiege(pbg) end
 
@@ -14777,7 +14768,7 @@ function Squad_IsUnderAttackFromDirection(squad, offset, timeSeconds) end
 
 --- Returns true if the squad is currently upgrading something specific.
 --- @param squad Squad
---- @param upgrade ScarUpgradePBG
+--- @param upgrade Upgrade
 --- @return unknown
 function Squad_IsUpgrading(squad, upgrade) end
 
@@ -14798,7 +14789,7 @@ function Squad_Kill(squad) end
 
 --- Returns the number of upgrades that this squad has.
 --- @param squad Squad
---- @param upgradePBG ScarUpgradePBG
+--- @param upgradePBG Upgrade
 --- @return unknown
 function Squad_NumUpgradeComplete(squad, upgradePBG) end
 
@@ -14810,7 +14801,7 @@ function Squad_Population(squad, type) end
 
 --- Removes an ability that was previously added by Squad_AddAbility. You cannot remove static abilities (from AE: squad_ability_ext)
 --- @param squad Squad
---- @param ability ScarAbilityPBG
+--- @param ability Ability
 --- @return unknown
 function Squad_RemoveAbility(squad, ability) end
 
@@ -14872,7 +14863,7 @@ function Squad_RemoveStateModelListVector3f(squad, key, value) end
 
 --- Removes an upgrade from a squad
 --- @param squad Squad
---- @param upgrade ScarUpgradePBG
+--- @param upgrade Upgrade
 --- @return unknown
 function Squad_RemoveUpgrade(squad, upgrade) end
 
@@ -14883,13 +14874,13 @@ function Squad_RemoveUpgrade(squad, upgrade) end
 function Squad_RewardActionPoints(squad, actionPoint) end
 
 --- ZERO-BASED get of entity blueprints out of squad blueprint
---- @param sbp ScarSquadPBG
+--- @param sbp Squad
 --- @param index number
 --- @return unknown
 function Squad_SBPEntityAt(sbp, index) end
 
 --- Returns the max number of units allowed in the squad blueprint
---- @param sbp ScarSquadPBG
+--- @param sbp Squad
 --- @return unknown
 function Squad_SBPGetMax(sbp) end
 
@@ -15209,7 +15200,7 @@ function Squad_Split(squad, int) end
 
 --- Abruptly stops an active ability
 --- @param squad Squad
---- @param ability ScarAbilityPBG
+--- @param ability Ability
 --- @param bIsEarlyExit boolean
 --- @return unknown
 function Squad_StopAbility(squad, ability, bIsEarlyExit) end
@@ -15340,9 +15331,9 @@ function Timer_Pause(timerID) end
 --- Resume the specified timer.
 --- Pause and Resume calls are ref-counted: if you have called Pause *twice* on a timer, you will also need to call Resume twice in order to start the timer up again. Set the force parameter to true if you want to bypass the refcounting and make sure a timer starts up again.
 --- @param timerID number
---- @param OPT_force boolean
+--- @param force boolean | nil
 --- @return unknown
-function Timer_Resume(timerID, OPT_force) end
+function Timer_Resume(timerID, force) end
 
 --- Start a timer with the specified id, taking the required period ( in seconds )
 --- @param timerID number
@@ -15473,25 +15464,25 @@ function Game_SetMapExplored(player) end
 
 --- Set the player color for the world visuals from preset colors defined in tuning_simulation\ui_team_colours.
 --- @param player target
---- @param _Colour_Neutral__ or
+--- @param _Colour_Neutral__ boolean
 --- @return unknown
 function Game_SetPlayerColour(player, _Colour_Neutral__) end
 
 --- Set the player color for the world visuals by slot index from preset colors defined in tuning_simulation\ui_player_colours.
 --- @param player target
---- @param based_player_slot_index unknown_1
+--- @param based_player_slot_index unknown
 --- @return unknown
 function Game_SetPlayerSlotColour(player, based_player_slot_index) end
 
 --- Set the player color for the UI from preset colors defined in tuning_simulation\ui_team_colours. Does not affect world visuals.
 --- @param player target
---- @param _Colour_Neutral__ or
+--- @param _Colour_Neutral__ boolean
 --- @return unknown
 function Game_SetPlayerUIColour(player, _Colour_Neutral__) end
 
 --- Set the player color for the UI by slot index from preset colors defined in tuning_simulation\ui_player_colours. Does not affect world visuals.
 --- @param player target
---- @param based_player_slot_index unknown_1
+--- @param based_player_slot_index unknown
 --- @return unknown
 function Game_SetPlayerUISlotColour(player, based_player_slot_index) end
 
@@ -15574,14 +15565,14 @@ function HintMouseover_Remove(hintText, hintTarget) end
 --- @param where any
 --- @param bVisible boolean
 --- @param hintText string
---- @param OPT_height number
---- @param OPT_actionType number
---- @param OPT_iconName string
---- @param OPT_priority number
---- @param OPT_visibleInFOW boolean
---- @param OPT_dataTemplate string
+--- @param height number | nil
+--- @param actionType number | nil
+--- @param iconName string | nil
+--- @param priority number | nil
+--- @param visibleInFOW boolean | nil
+--- @param dataTemplate string | nil
 --- @return unknown
-function HintPoint_Add(where, bVisible, hintText, OPT_height, OPT_actionType, OPT_iconName, OPT_priority, OPT_visibleInFOW, OPT_dataTemplate) end
+function HintPoint_Add(where, bVisible, hintText, height, actionType, iconName, priority, visibleInFOW, dataTemplate) end
 
 --- Deprecated.
 --- @param egroup EGroupID
@@ -15679,9 +15670,9 @@ function HintPoint_RemoveAll() end
 --- @param hintpointID number
 --- @param x number
 --- @param y number
---- @param OPT_z number
+--- @param z number | nil
 --- @return unknown
-function HintPoint_SetDisplayOffset(hintpointID, x, y, OPT_z) end
+function HintPoint_SetDisplayOffset(hintpointID, x, y, z) end
 
 --- Add a projected offset to the specified hint point.
 --- @param id number
@@ -16148,7 +16139,7 @@ function Subtitle_UnstickCurrentSpeech() end
 --- Only use this function from code which is executed for a single player (such as UI button callbacks).
 --- @param player Player
 --- @param dest Player
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param skipCostAndPrereq boolean
 --- @return unknown
 function SynchronizedCommand_PlayerAbility(player, dest, abilityPBG, skipCostAndPrereq) end
@@ -16158,7 +16149,7 @@ function SynchronizedCommand_PlayerAbility(player, dest, abilityPBG, skipCostAnd
 --- @param player Player
 --- @param dest Player
 --- @param pos Position
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param skipCostAndPrereq boolean
 --- @return unknown
 function SynchronizedCommand_PlayerPosAbility(player, dest, pos, abilityPBG, skipCostAndPrereq) end
@@ -16169,7 +16160,7 @@ function SynchronizedCommand_PlayerPosAbility(player, dest, pos, abilityPBG, ski
 --- @param dest Player
 --- @param pos Position
 --- @param dir Position
---- @param abilityPBG ScarAbilityPBG
+--- @param abilityPBG Ability
 --- @param skipCostAndPrereq boolean
 --- @return unknown
 function SynchronizedCommand_PlayerPosDirAbility(player, dest, pos, dir, abilityPBG, skipCostAndPrereq) end
@@ -16186,16 +16177,16 @@ function Taskbar_SetVisibility(visible) end
 --- Adds a threat to an existing group
 --- @param GroupID number
 --- @param Threat EGroupID
---- @param OPT_icon string
+--- @param icon string | nil
 --- @return unknown
-function ThreatArrow_Add(GroupID, Threat, OPT_icon) end
+function ThreatArrow_Add(GroupID, Threat, icon) end
 
 --- Creates a group of threats that are represented by a single arrow. Threats can be entities, squads, egroups, sgroups, positions or markers
 --- @param dataTemplate string
 --- @param target1 Marker | Pos | Entity | Squad | Group
---- @param OPT_target2___ Marker | Pos | Entity | Squad | Group
+--- @param target2___ Marker | Pos | Entity | Squad | Group | nil
 --- @return unknown
-function ThreatArrow_CreateGroup(dataTemplate, target1, OPT_target2___) end
+function ThreatArrow_CreateGroup(dataTemplate, target1, target2___) end
 
 --- Destroy all threat groups
 --- @return unknown
@@ -16218,9 +16209,9 @@ function ThreatArrow_Remove(GroupID, Threat) end
 --- @param abilityID Ability
 --- @param text string
 --- @param length number
---- @param OPT_blueprint_filter number
+--- @param blueprint_filter number | nil
 --- @return unknown
-function UI_AddHintAndFlashAbility(playerid, abilityID, text, length, OPT_blueprint_filter) end
+function UI_AddHintAndFlashAbility(playerid, abilityID, text, length, blueprint_filter) end
 
 --- Toggle off all territory lines. Each call to UI_AllTerritoryHide must be matched by a call to UI_AllTerritoryShow
 --- @return unknown
@@ -16325,10 +16316,10 @@ function UI_CreateEntityKickerMessage(player, entity, message) end
 --- @param data_template string
 --- @param icon_path string
 --- @param sound_path string
---- @param OPT_visibility EventCueVisibility
---- @param OPT_lifetime number
+--- @param visibility EventCueVisibility | nil
+--- @param lifetime number | nil
 --- @return unknown
-function UI_CreateEventCue(title, description, data_template, icon_path, sound_path, OPT_visibility, OPT_lifetime) end
+function UI_CreateEventCue(title, description, data_template, icon_path, sound_path, visibility, lifetime) end
 
 --- Creates a custom event cue. The Lua function callback passed in takes an ID as an argument which can be used to clear the event cue with UI_ClearEventCueFromID.
 --- @param customEventType number
@@ -16489,13 +16480,13 @@ function UI_EnableUIEventCueType(uiEventType, enable) end
 function UI_FadeOutEventCueFromID(id) end
 
 --- Flash an ability command button.  Pass the return value to UI_StopFlashing to stop flashing the button.
---- @param ability ScarAbilityPBG
+--- @param ability Ability
 --- @param stopOnClick boolean
 --- @return unknown
 function UI_FlashAbilityButton(ability, stopOnClick) end
 
 --- Flash a construction item command button.  Pass the return value to UI_StopFlashing to stop flashing the button.
---- @param ebp ScarEntityPBG
+--- @param ebp Entity
 --- @param stopOnClick boolean
 --- @return unknown
 function UI_FlashConstructionButton(ebp, stopOnClick) end
@@ -16568,7 +16559,7 @@ function UI_FlashUSSEntityButton(entity, stopOnClick) end
 function UI_FlashUSSSquadButton(squad, stopOnClick) end
 
 --- Returns the icon name for a given ability
---- @param abilityBag ScarAbilityPBG
+--- @param abilityBag Ability
 --- @return unknown
 function UI_GetAbilityIconName(abilityBag) end
 
@@ -16681,7 +16672,7 @@ function UI_SetAlliedBandBoxSelection(allow) end
 function UI_SetAllowLoadAndSave(allowLoadAndSave) end
 
 --- Sets a callback firing when user select a control group either by hotkey or by control group button
---- @param the_format_of_function_controlGroupIndex_ in
+--- @param the_format_of_function_controlGroupIndex_ any
 --- @return unknown
 function UI_SetControlGroupSelectedCallback(the_format_of_function_controlGroupIndex_) end
 
@@ -16828,9 +16819,9 @@ function bug(errormessage) end
 
 --- Clones a table allowing for unadulterated use of the data. By default this cloning is done recursively, but that can be changed with the optional recursive flag.
 --- @param data table
---- @param OPT_recursive boolean
+--- @param recursive boolean | nil
 --- @return unknown
-function Clone(data, OPT_recursive) end
+function Clone(data, recursive) end
 
 --- Converts any enum value to a number
 --- @param var any
@@ -16848,11 +16839,11 @@ function Event_IsAnyRunning() end
 
 --- Ends the single player game (win/lose).
 --- @param win boolean
---- @param OPT_winReason WinReason
---- @param OPT_nis boolean
---- @param OPT_sandmap boolean
+--- @param winReason WinReason | nil
+--- @param nis boolean | nil
+--- @param sandmap boolean | nil
 --- @return unknown
-function Game_EndSP(win, OPT_winReason, OPT_nis, OPT_sandmap) end
+function Game_EndSP(win, winReason, nis, sandmap) end
 
 --- Fades the screen to black - FADE_OUT to fade to black, FADE_IN to fade back in
 --- @param direction boolean
@@ -16868,9 +16859,9 @@ function Import_Once(Path) end
 --- Returns a formatted localized string.
 --- Use this function to format localized text. ie %1PLAYERNAME% is going to win. It accepts up to 9 additional values as parameters.
 --- @param FormatID number
---- @param OPT_parameters argc
+--- @param parameters argc | nil
 --- @return unknown
-function Loc_FormatText(FormatID, OPT_parameters) end
+function Loc_FormatText(FormatID, parameters) end
 
 --- Modify whether or not the group is revealed in the fog of war.
 --- @param group EGroupID
@@ -16938,29 +16929,29 @@ function Sound_PlayOnSquad(soundpathname, sgroupid) end
 --- Finds the greatest (or least) concentration of entities owned by a team.
 --- This function is slow, so don't call it very often
 --- @param team TeamID
---- @param OPT_popcapOnly boolean
---- @param OPT_includeBlueprints table
---- @param OPT_excludeBlueprints table
---- @param OPT_bLeastConcentrated boolean
---- @param OPT_onlyInThisMarker MarkerID | table
+--- @param popcapOnly boolean | nil
+--- @param includeBlueprints table | nil
+--- @param excludeBlueprints table | nil
+--- @param bLeastConcentrated boolean | nil
+--- @param onlyInThisMarker MarkerID | table | nil
 --- @return unknown
-function Team_GetEntityConcentration(team, OPT_popcapOnly, OPT_includeBlueprints, OPT_excludeBlueprints, OPT_bLeastConcentrated, OPT_onlyInThisMarker) end
+function Team_GetEntityConcentration(team, popcapOnly, includeBlueprints, excludeBlueprints, bLeastConcentrated, onlyInThisMarker) end
 
 --- Finds the greatest (or least) concentration of squads owned by a team.
 --- This function is slow, so don't call it very often
 --- @param team TeamID
---- @param OPT_popcapOnly boolean
---- @param OPT_includeBlueprints table
---- @param OPT_excludeBlueprints table
---- @param OPT_bLeastConcentrated boolean
---- @param OPT_onlyInThisMarker MarkerID | table
+--- @param popcapOnly boolean | nil
+--- @param includeBlueprints table | nil
+--- @param excludeBlueprints table | nil
+--- @param bLeastConcentrated boolean | nil
+--- @param onlyInThisMarker MarkerID | table | nil
 --- @return unknown
-function Team_GetSquadConcentration(team, OPT_popcapOnly, OPT_includeBlueprints, OPT_excludeBlueprints, OPT_bLeastConcentrated, OPT_onlyInThisMarker) end
+function Team_GetSquadConcentration(team, popcapOnly, includeBlueprints, excludeBlueprints, bLeastConcentrated, onlyInThisMarker) end
 
 --- If there's a squad under the mouse cursor, this adds it to a unique SGroup. Return value is the SGroup it was added to, or nil if there was no squad under the mouse cursor. Pass in true for 'clearGroup' to clear the sgroup before adding the squad.
---- @param OPT_clearGroup boolean
+--- @param clearGroup boolean | nil
 --- @return unknown
-function Util_AddMouseoverSquadToSGroup(OPT_clearGroup) end
+function Util_AddMouseoverSquadToSGroup(clearGroup) end
 
 --- Applies any modifier to the target SGroup, EGroup, or Player
 --- Valid applytypes are MAT_...(Entity, Squad etc.), if left default assumption is default type for the target Cases you want to define applytype: Weapon Modifiers, Enable Modifiers, or a player modifier for all entity or squad types Valid mathtypes are MUT...(Addition, Multiplication, etc.) Exclusive modifiers will replace all pre-existing modifiers of that modifier type on the target
@@ -16968,11 +16959,11 @@ function Util_AddMouseoverSquadToSGroup(OPT_clearGroup) end
 --- @param modifier string
 --- @param scalefactor number
 --- @param mathtype number
---- @param OPT_applytype number
---- @param OPT_exclusive boolean
---- @param OPT_targetname string
+--- @param applytype number | nil
+--- @param exclusive boolean | nil
+--- @param targetname string | nil
 --- @return unknown
-function Util_ApplyModifier(groupid, modifier, scalefactor, mathtype, OPT_applytype, OPT_exclusive, OPT_targetname) end
+function Util_ApplyModifier(groupid, modifier, scalefactor, mathtype, applytype, exclusive, targetname) end
 
 --- Auto-generate an Ambient Event. These are Low priority, and will hopefully interrupt nothing.
 --- Takes a table of Actors and LOC numbers
@@ -16990,25 +16981,25 @@ function Util_AutoIntel(intelEventTable) end
 --- Takes an NISLET type and a table of parameters defining speaker(s) and line(s) NISLET_BLACK2GAME	= 1 -- starts in black and fades up, ends in gamplay NISLET_GAME2GAME 	= 2 -- transitions from game play to letterbox and backto gameplay NISLET_GAME2BLACK	= 3 -- starts in gameplay and ends in black NISLET_GAME2LETTER	= 4 -- starts in gameplay and ends in letterbox mode (for transition to sitrep) NISLET_TIME 		= 1 -- use seconds to wait on camera movements NISLET_VO			= 2 -- use voice to wait on camera movements t_eventes.nislet_start = { {camPos = pos1, waitType = NISLET_TIME, waitValue = 5}, {camPos = pos2, waitType = NISLET_VO, waitValue = {ACTOR.GenericAlly, 000000}}, }
 --- @param nisletType number
 --- @param intelEventTable table
---- @param OPT_bFOWvisible boolean
+--- @param bFOWvisible boolean | nil
 --- @return unknown
-function Util_AutoNISlet(nisletType, intelEventTable, OPT_bFOWvisible) end
+function Util_AutoNISlet(nisletType, intelEventTable, bFOWvisible) end
 
 --- Automatically save the game for the player. The savegame name is built using the abbreviated mission name + checkpoint. You can optionally have it wait until the player is out of combat.
 --- This function checks the user setting regarding autosaves (so you don't have to!), and does nothing if the player has them disabled.
---- @param OPT_waitUntilOutOfCombat boolean
---- @param OPT_onlyCareAboutCombatOnScreen boolean
---- @param OPT_maxWaitTime number
+--- @param waitUntilOutOfCombat boolean | nil
+--- @param onlyCareAboutCombatOnScreen boolean | nil
+--- @param maxWaitTime number | nil
 --- @return unknown
-function Util_AutoSave(OPT_waitUntilOutOfCombat, OPT_onlyCareAboutCombatOnScreen, OPT_maxWaitTime) end
+function Util_AutoSave(waitUntilOutOfCombat, onlyCareAboutCombatOnScreen, maxWaitTime) end
 
 --- Clears vehicle wrecks from a given area.
 --- Area can be a marker (with or without a range override), a position and range combo, or a territory sector ID. Uses EBP.WRECKED_VEHICLES unless wrecksList is defined.
 --- @param position MarkerID | Pos | SectorID
---- @param OPT_range number
---- @param OPT_wrecksList table
+--- @param range number | nil
+--- @param wrecksList table | nil
 --- @return unknown
-function Util_ClearWrecksFromMarker(position, OPT_range, OPT_wrecksList) end
+function Util_ClearWrecksFromMarker(position, range, wrecksList) end
 
 --- Helper function to process comparisons that use the Comparison enum... i.e. return true if value1 IS_LESS_THAN value2
 --- Comparison type can be IS_EQUAL, IS_LESS_THAN, IS_LESS_THAN_OR_EQUAL, IS_GREATER_THAN, IS_GREATER_THAN_OR_EQUAL or IS_NOT_EQUAL
@@ -17025,12 +17016,12 @@ function Util_Comparison(value1, comparison, value2) end
 --- @param blueprintID number
 --- @param location MarkerID | Pos
 --- @param numentities number
---- @param OPT_toward MarkerID | Pos
---- @param OPT_snapToGround boolean
---- @param OPT_skipForceConstruct boolean
---- @param OPT_useMarkerTransform boolean
+--- @param toward MarkerID | Pos | nil
+--- @param snapToGround boolean | nil
+--- @param skipForceConstruct boolean | nil
+--- @param useMarkerTransform boolean | nil
 --- @return unknown
-function Util_CreateEntities(player, egroup, blueprintID, location, numentities, OPT_toward, OPT_snapToGround, OPT_skipForceConstruct, OPT_useMarkerTransform) end
+function Util_CreateEntities(player, egroup, blueprintID, location, numentities, toward, snapToGround, skipForceConstruct, useMarkerTransform) end
 
 --- High level function to create squads and give them basic orders upon spawning. Detailed explanation found in ScarUtil.scar
 --- PlayerID player - player who will own the squads SGroupID/Table/String sgroup - sgroup that receives the new squads. Can be nil if you don't need to manage the new squads or a string if you want to create a new sgroup with that name. If a table is given, the first item will be used as the return sgroup. SquadBlueprint sbp - the blueprint for the new squads. Position location - where to spawn the squads (can be any parameter type whose position can be queried) SGroup - If the sgroup is a Hold Entity then the squad is spawned inside of it. EGroup - If the egroup is a hold entity then the squad is spawned inside of it. NOTE: if the hold is destroyed, or is full, or due to any other misc. failure case, then the squad is spawned at the player's map entry point. Pos - the squad is spawned at this location. Marker - the squad is spawned at the marker and facing the direciton of the marker. Position destination - (OPTIONAL) where the squads will move to, load into, or attack SGroup can mean two different things, if the Sgroup is owned by the player and a hold then try to enter it.  Or if the SGroup is an enemy squad, then the spawned squad should attack move the enemy.  If neither is true, then the squad just moves to the location. EGroup should be treated the same as the SGroup. Position/Marker: the squad moves to the location. Sync weapon: the squad captures the sync weapon. Integer numsquads - (OPTIONAL) how many squads to spawn Integer loadout - (OPTIONAL) max amount of units to spawn per squad Boolean attackmove - (OPTIONAL) in cases where the squads do a simple move to their destination (not attacking or loading into anything), this determines whether they attack move or not Position facing - (OPTIONAL) in cases where the squads do a simple move to their destination, this determines their facing once they reach their destination. If facing is not specified, and the squad is moving to a marker, the marker's facing is used. UpgradeBlueprint upgrades - (OPTIONAL) upgrade(s) to instantly apply to squads when they spawn Boolean useMarkerTransform -  (OPTIONAL) if no spawn_facing is passed in, this will determine if the marker's transform should be used (if true) for the squad spawn OR if the marker's direction should be used in which case it will face the same way as the marker.
@@ -17038,22 +17029,22 @@ function Util_CreateEntities(player, egroup, blueprintID, location, numentities,
 --- @param sgroup SGroupID
 --- @param sbp number
 --- @param spawn_point EGroupID
---- @param OPT_destination Position
---- @param OPT_numsquads number
---- @param OPT_loadout number
---- @param OPT_attackmove boolean
---- @param OPT_dest_facing Position
---- @param OPT_upgrades number
---- @param OPT_spawn_facing Position
---- @param OPT_spawntype string
+--- @param destination Position | nil
+--- @param numsquads number | nil
+--- @param loadout number | nil
+--- @param attackmove boolean | nil
+--- @param dest_facing Position | nil
+--- @param upgrades number | nil
+--- @param spawn_facing Position | nil
+--- @param spawntype string | nil
 --- @return unknown
-function Util_CreateSquads(player, sgroup, sbp, spawn_point, OPT_destination, OPT_numsquads, OPT_loadout, OPT_attackmove, OPT_dest_facing, OPT_upgrades, OPT_spawn_facing, OPT_spawntype) end
+function Util_CreateSquads(player, sgroup, sbp, spawn_point, destination, numsquads, loadout, attackmove, dest_facing, upgrades, spawn_facing, spawntype) end
 
 --- Takes in a table and chooses the right variable for the difficulty setting. 1-4 elements. Acquires current difficulty by default.
 --- @param difficultyVariables table
---- @param OPT_difficulty number
+--- @param difficulty number | nil
 --- @return unknown
-function Util_DifVar(difficultyVariables, OPT_difficulty) end
+function Util_DifVar(difficultyVariables, difficulty) end
 
 --- Returns the result of the dot product of two items in radians
 --- The params must be 3D vectors
@@ -17069,9 +17060,9 @@ function Util_DotProductRadians(vectorA, vectorB) end
 function Util_ElementCanSee(playerID_teamID, element) end
 
 --- Checks the entity count for the world and returns true or false depending on the result. A specific value can be passed in to override the default amount.
---- @param OPT_entityLimit number
+--- @param entityLimit number | nil
 --- @return unknown
-function Util_EntityLimit(OPT_entityLimit) end
+function Util_EntityLimit(entityLimit) end
 
 --- Try to garrison a loadable building within radius that is closer to the first squad of the sgroup than enemy
 --- Returns the entity id of the building that the squad try to garrison into. Return nil if nothing is found The squad suppression would be resetted before fallling back so that they would not succumb to pinned state
@@ -17114,20 +17105,20 @@ function Util_ForceRetreatAll(sgroup, marker, aiEncounterDisable) end
 --- @param sgroup SGroupID
 --- @param pos Position
 --- @param radius number
---- @param OPT_occupied boolean
---- @param OPT_filter SGroupID
+--- @param occupied boolean | nil
+--- @param filter SGroupID | nil
 --- @return unknown
-function Util_GarrisonNearbyBuilding(sgroup, pos, radius, OPT_occupied, OPT_filter) end
+function Util_GarrisonNearbyBuilding(sgroup, pos, radius, occupied, filter) end
 
 --- Finds a nearby vehicle to garrison. can ignore occupied [friendly] vehicles. return ID of vehicle it found, or nil if not found,
 --- Can also filter out groups not to occupy
 --- @param sgroup SGroupID
 --- @param pos Position
 --- @param radius number
---- @param OPT_occupied boolean
---- @param OPT_filter SGroupID
+--- @param occupied boolean | nil
+--- @param filter SGroupID | nil
 --- @return unknown
-function Util_GarrisonNearbyVehicle(sgroup, pos, radius, OPT_occupied, OPT_filter) end
+function Util_GarrisonNearbyVehicle(sgroup, pos, radius, occupied, filter) end
 
 --- Returns the angle (in degrees) between two items
 --- The items must of of types that can have a direction resolved on them with Util_GetDirection()
@@ -17211,10 +17202,10 @@ function Util_GetPosition(var) end
 --- Useful for dropping artillery NEAR a player, but not on him, for example. searchRadius is the area to look for the location in.  Distance is how far from the player's units the position must be.
 --- @param pos EGroupID
 --- @param player Player
---- @param OPT_searchRadius number
---- @param OPT_distance number
+--- @param searchRadius number | nil
+--- @param distance number | nil
 --- @return unknown
-function Util_GetPositionAwayFromPlayer(pos, player, OPT_searchRadius, OPT_distance) end
+function Util_GetPositionAwayFromPlayer(pos, player, searchRadius, distance) end
 
 --- Returns a position that is distance metres from point A, headed in the direction of point B.
 --- You can also pass in a percentage (0.0 to 1.0) instead of a distance in metres.
@@ -17231,10 +17222,10 @@ function Util_GetPositionFromAtoB(a, b, distance) end
 function Util_GetRandomHiddenPosition(items) end
 
 --- Returns a random position either within the marker's proximity or with a pos and range provided. Range is ignored for rectangular markers
---- @param OPT_range number
---- @param OPT_hidden boolean
+--- @param range number | nil
+--- @param hidden boolean | nil
 --- @return unknown
-function Util_GetRandomPosition(OPT_range, OPT_hidden) end
+function Util_GetRandomPosition(range, hidden) end
 
 --- Gets the relationship between two of: entity, squad, egroup, sgroup, player. for groups, the first item is used. returns R_ENEMY, R_ALLY, R_NEUTRAL, R_UNDEFINED, or nil (if world owned or invalid parameters)
 --- @param Object_1 EGroupID
@@ -17284,9 +17275,9 @@ function Util_Kill(var) end
 
 --- Tracks a syncweapon ID and destroys it (by default) or makes it uncapturable (if kill is set to false)
 --- @param syncweapon SGroupID
---- @param OPT_kill boolean
+--- @param kill boolean | nil
 --- @return unknown
-function Util_LogSyncWpn(syncweapon, OPT_kill) end
+function Util_LogSyncWpn(syncweapon, kill) end
 
 --- Play an events file at a given markers location
 --- @param markername string
@@ -17296,11 +17287,11 @@ function Util_MarkerFX(markername, eventfile) end
 
 --- Play the mission title fade.
 --- @param title string
---- @param OPT_time_fade_in number
---- @param OPT_lifetime number
---- @param OPT_time_fade_out number
+--- @param time_fade_in number | nil
+--- @param lifetime number | nil
+--- @param time_fade_out number | nil
 --- @return unknown
-function Util_MissionTitle(title, OPT_time_fade_in, OPT_lifetime, OPT_time_fade_out) end
+function Util_MissionTitle(title, time_fade_in, lifetime, time_fade_out) end
 
 --- Calls UI_NewHUDFeature() as an IntelEvent. Will get queued as any other event. See UI_NewHUDFeature() for parameter details.
 --- @param newHUDFeature HUDFeatureType
@@ -17313,13 +17304,13 @@ function Util_NewHUDFeatureEvent(newHUDFeature, featureText, featureIcon, durati
 --- Play a movie.
 --- Plays a movie file after fading out the screen. Fades back in and triggers onComplete once it ends. If fadeIn < 0, does not face back in once complete. If onCompleteAfterMovie is true, the onComplete function will play as soon as the movie is over, instead of after the fade-in
 --- @param name string
---- @param OPT_fadeOut number
---- @param OPT_fadeIn number
---- @param OPT_onComplete function
---- @param OPT_delay number
---- @param OPT_onCompleteAfterMovie boolean
+--- @param fadeOut number | nil
+--- @param fadeIn number | nil
+--- @param onComplete function | nil
+--- @param delay number | nil
+--- @param onCompleteAfterMovie boolean | nil
 --- @return unknown
-function Util_PlayMovie(name, OPT_fadeOut, OPT_fadeIn, OPT_onComplete, OPT_delay, OPT_onCompleteAfterMovie) end
+function Util_PlayMovie(name, fadeOut, fadeIn, onComplete, delay, onCompleteAfterMovie) end
 
 --- Plays music from the Data:Sound folder, and stores the music track so it can be resumed after a save/load
 --- The new music will phase out the old one. There can only be one music playing at anytime.
@@ -17334,11 +17325,11 @@ function Util_PrintIf() end
 --- Prints out the entire contents of an Object
 --- This is most useful when used in conjunction with fatal() or bug() to populate the log file. Objects can be anything (Player, SGroup, Int, Table, String, etc.), but this is most useful for Tables
 --- @param obj Object
---- @param OPT_max_depth number
---- @param OPT_data_type string
---- @param OPT_print_func function
+--- @param max_depth number | nil
+--- @param data_type string | nil
+--- @param print_func function | nil
 --- @return unknown
-function Util_PrintObject(obj, OPT_max_depth, OPT_data_type, OPT_print_func) end
+function Util_PrintObject(obj, max_depth, data_type, print_func) end
 
 --- Simply prints out everything in a table including nested tables
 --- @return unknown
@@ -17368,16 +17359,16 @@ function Util_ScarPos(xpos, zpos, ypos) end
 --- @param event function
 --- @param skippedCallback function
 --- @param noFadeIn boolean
---- @param OPT_fadeInTime number
+--- @param fadeInTime number | nil
 --- @return unknown
-function Util_SetPlayerCanSkipSequence(event, skippedCallback, noFadeIn, OPT_fadeInTime) end
+function Util_SetPlayerCanSkipSequence(event, skippedCallback, noFadeIn, fadeInTime) end
 
 --- Sets the player owner for an entity, squad, egroup or sgroup. Also sets player owner of whatever is garrisoned inside them
 --- @param Object EGroupID
 --- @param owner Player
---- @param OPT_bApplyToSquadsHeld_true boolean
+--- @param bApplyToSquadsHeld_true boolean | nil
 --- @return unknown
-function Util_SetPlayerOwner(Object, owner, OPT_bApplyToSquadsHeld_true) end
+function Util_SetPlayerOwner(Object, owner, bApplyToSquadsHeld_true) end
 
 --- Disables Util_SetPlayerCanSkipSequence
 --- @param event function
@@ -17553,7 +17544,7 @@ function World_EnableSharedLineOfSight(p0, p1, enableSharedVision) end
 function World_GetAllNeutralEntities(egroup) end
 
 --- Returns all entities with this blueprint - warning this function iterates over all entities so it is slow
---- @param pbg ScarEntityPBG
+--- @param pbg Entity
 --- @param outEntities EGroupID
 --- @return unknown
 function World_GetBlueprintEntities(pbg, outEntities) end
@@ -17701,7 +17692,7 @@ function World_GetNeutralEntitiesNearPoint(egroup, pos, radius) end
 function World_GetNeutralEntitiesWithinTerritorySector(egroup, sectorID) end
 
 --- Return the number of entities of the same ebp in the sphere volume
---- @param ebp ScarEntityPBG
+--- @param ebp Entity
 --- @param pos Position
 --- @param radius number
 --- @return unknown
@@ -17916,7 +17907,7 @@ function World_PointPointProx(p1, p2, prox) end
 --- @param x number
 --- @param y number
 --- @param z number
---- @return Position
+--- @return unknown
 function World_Pos(x, y, z) end
 
 --- Returns if given position is in playable area.

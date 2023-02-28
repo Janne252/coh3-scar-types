@@ -1,3 +1,5 @@
+---@diagnostic disable: missing-return
+
 --- Create a table that will be interpreted as a data context for UI properties.
 ---@param table table
 --- @return unknown
@@ -8,21 +10,35 @@ function UI_CreateDataContext(table) end
 --- @return unknown
 function UI_CreateCommand(cmd) end
 
----@class ResourceType : userdata
+---@alias ResourceType number
 
 ---@type ResourceType
-RT_Manpower = {}
+RT_Manpower = 0
 ---@type ResourceType
-RT_Fuel = {}
+RT_Fuel = 0
 ---@type ResourceType
-RT_Munition = {}
+RT_Munition = 0
 ---@type ResourceType
-RT_Command = {}
+RT_Command = 0
 ---@type ResourceType
-RT_Action = {}
+RT_Action = 0
+
+---@alias PBGType number
+
+---@type PBGType
+PBGTYPE_Entity = 0
+---@type PBGType
+PBGTYPE_Squad = 0
+---@type PBGType
+PBG_Race = 0
+---@type PBGType
+PBG_Ability = 0
+---@type PBGType
+PBGTYPE_Upgrade = 0
+---@type PBGType
+PBG_Weapon = 0
 
 ---@class LocString : table
-
 
 ---@param team TeamID
 ---@return TeamID
@@ -109,39 +125,23 @@ function BP_GetRaceInfo(raceBP) end
 function Entity_ExtensionExist(entity, extension) end
 
 
---- Order a squad group to retreat, optionally to a specific location. The sgroup can be deleted when in proximity of a marker (it assumes a proximity of 5 if you forget to set one on the marker)
---- vulnerableRetreat will make retreating squads take more damage
---- @param sgroup SGroupID
---- @param OPT_location Position
---- @param OPT_deleteWhenNearMarker boolean
---- @param OPT_queued boolean
---- @param OPT_saveEncounters boolean
---- @param OPT_vulnerableRetreat boolean
---- @return unknown
----@overload fun(sgroup: SGroupID)
----@overload fun(sgroup: SGroupID, OPT_location: Position)
-function Cmd_Retreat(sgroup, OPT_location, OPT_deleteWhenNearMarker, OPT_queued, OPT_saveEncounters, OPT_vulnerableRetreat) end
-
---- Add a rule to be executed every frame.
---- Returns the ID of the rule just added.
---- @param f function
---- @param OPT_data table
---- @param OPT_group EGroupID
---- @return unknown
----@overload fun(f: function)
-function Rule_Add(f, OPT_data, OPT_group) end
-
---- Add a rule to be executed once, after 'delay' seconds.
---- Returns the ID of the rule just added.
---- @param rule function
---- @param OPT_delay number
---- @param OPT_data table
---- @param OPT_group EGroupID
---- @return unknown
----@overload fun(rule: function, OPT_delay: number)
-function Rule_AddOneShot(rule, OPT_delay, OPT_data, OPT_group) end
-
 --- Sends a stop command to egroup or sgroup.
 --- @param group EGroupID | SGroupID
 --- @return unknown
 function Cmd_Stop(group) end
+
+---@param techtree_type  string
+---@return PBG
+function BP_GetTechTreeBlueprintsByType(techtree_type) end
+
+---@class TEchTreeInfo
+---@field activation_upgrade Upgrade
+---@field branches TechTreeBranch[]
+---@field name LocString
+
+---@class TechTreeBranch
+---@field upgrades Upgrade[]
+
+---@param pbg PBG
+---@return TEchTreeInfo
+function BP_GetTechTreeBPInfo(pbg) end
