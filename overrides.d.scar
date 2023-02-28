@@ -86,8 +86,9 @@ function Loc_ToAnsi(locId) end
 ---@field screenNameAlternate LocString
 ---@field helpTextAlternate LocString
 
+---@class SquadPBG : userdata
 
----@param sbp ScarSquadPBG
+---@param sbp SquadPBG
 ---@param raceBP ScarRacePBG
 ---@return UIInfo
 function BP_GetSquadUIInfo(sbp, raceBP) end
@@ -145,3 +146,14 @@ function BP_GetTechTreeBlueprintsByType(techtree_type) end
 ---@param pbg PBG
 ---@return TEchTreeInfo
 function BP_GetTechTreeBPInfo(pbg) end
+
+---@param types string[]
+---@param all boolean
+---@return EntityPBG[]
+function BP_GetEntityBlueprintsWithType_Internal(types, all) end
+
+---@param types string[]
+---@param all boolean
+---@return SquadPBG[]
+function BP_GetSquadBlueprintsWithType_Internal(types, all) end
+
