@@ -38,6 +38,16 @@ PBGTYPE_Upgrade = 0
 ---@type PBGType
 PBG_Weapon = 0
 
+---@alias OwnerType number
+---@type OwnerType
+OT_Player = 0
+---@type OwnerType
+OT_Ally = 0
+---@type OwnerType
+OT_Enemy = 0
+---@type OwnerType
+OT_Neutral = 0
+
 ---@class LocString : table
 
 ---@param team TeamID

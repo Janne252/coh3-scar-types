@@ -1,6 +1,6 @@
 window.keywords = ['nil', 'boolean', 'number', 'string', 'function', 'userdata', 'thread', 'table', 'and', 'break', 'do', 'else', 'elseif', 'end', 'false', 'for', 'function', 'goto', 'if', 'in', 'local', 'nil', 'not', 'or', 'repeat', 'return', 'then', 'true', 'until', 'while']
 window.builtInTypes = ['any']
-window.manuallyDefinedTypes = ['ResourceType', 'ANY', 'ALL']
+window.manuallyDefinedTypes = ['ResourceType', 'OwnerType', 'ANY', 'ALL']
 window.predefinedTypes = {
     'Position': 
 `---@class Position
