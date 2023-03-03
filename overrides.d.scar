@@ -167,3 +167,32 @@ function BP_GetEntityBlueprintsWithType_Internal(types, all) end
 ---@return SquadPBG[]
 function BP_GetSquadBlueprintsWithType_Internal(types, all) end
 
+--? @shortdesc Creates a reticule drawn on the ground
+--? @extdesc 'target' can be an entity, marker, position, or squad.
+--? @args StackVar target, float radius, BP reticuleBP
+--? @result reticuleID
+---@param target Entity | Marker | Position | Squad
+---@param radius number
+---@param reticuleBP PBG
+---@return number
+function UI_CreateReticule(target, radius, reticuleBP) end
+
+---@param entity Entity
+---@param reticuleBP PBG
+---@return number
+function UI_CreateReticuleOnEntity(entity, radius, reticuleBP) end
+
+---@param position Position
+---@param radius number
+---@param reticuleBP PBG
+---@return number
+function UI_CreateReticuleOnPosition(position, radius, reticuleBP) end
+
+---@param squad Squad
+---@param radius number
+---@param reticuleBP PBG
+---@return number
+function UI_CreateReticuleOnSquad(squad, radius, reticuleBP) end
+
+---@param id number
+function UI_DestroyReticule(id) end
