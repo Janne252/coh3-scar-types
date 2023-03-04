@@ -204,3 +204,16 @@ function UI_DestroyReticule(id) end
 ---@param template _UI_CreateTargetTrackingTagDataContext 
 function UI_CreateTargetTrackingTag(target, lifetime_seconds, template) end
 
+---@param ebp EntityPBG
+---@param pos Position
+---@param unknown_boolean_true true
+---@return Entity
+function Entity_CreateENV(ebp, pos, unknown_boolean_true) end
+
+
+---@param ebp EntityPBG
+---@param player Player
+---@param pos Position
+---@param unknown_boolean_true true
+---@return Entity
+function Entity_Create(ebp, player, pos, unknown_boolean_true) end
