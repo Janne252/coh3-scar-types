@@ -196,3 +196,11 @@ function UI_CreateReticuleOnSquad(squad, radius, reticuleBP) end
 
 ---@param id number
 function UI_DestroyReticule(id) end
+
+---@class _UI_CreateTargetTrackingTagDataContext : table
+---@field DataTemplate string x:Key of the template, see DATA\ui\resources\tagresources.xaml and DATA\ui\hud\pages\hudpage.xaml
+---@param target Entity | Squad | Position
+---@param lifetime_seconds number
+---@param template _UI_CreateTargetTrackingTagDataContext 
+function UI_CreateTargetTrackingTag(target, lifetime_seconds, template) end
+
