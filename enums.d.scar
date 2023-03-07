@@ -1,3 +1,4 @@
+---@meta enum-declarations
 --- @class AIBuildStyle: userdata
 
 --- @type AIBuildStyle

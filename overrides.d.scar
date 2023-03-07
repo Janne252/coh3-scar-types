@@ -1,4 +1,4 @@
----@diagnostic disable: missing-return
+---@meta declaration-overrides
 
 --- Create a table that will be interpreted as a data context for UI properties.
 ---@param table table

@@ -111,6 +111,7 @@ window.renderFunction = (f) => {
 }
 // Prevent reporting unnecessary errors for function stubs
 window.function_docs_header = `
+---@meta function-declarations
 ---@diagnostic disable: missing-return
 
 ALL = true
