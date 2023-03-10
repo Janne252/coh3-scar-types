@@ -217,3 +217,11 @@ function Entity_CreateENV(ebp, pos, unknown_boolean_true) end
 ---@param unknown_boolean_true true
 ---@return Entity
 function Entity_Create(ebp, player, pos, unknown_boolean_true) end
+
+---First index = 0, last index = return value - 1.
+---@returns integer
+function World_GetNumEntities() end
+
+---@param index integer ZERO based index.
+---@return Entity
+function World_GetEntity(index) end
