@@ -1,5 +1,9 @@
 ---@meta declaration-overrides
 
+---@param filepath string
+---Built-in method of importing SCAR files relative to the DATA:\scar folder (across all .SGAs)
+function import(filepath) end
+
 --- Create a table that will be interpreted as a data context for UI properties.
 ---@param table table
 --- @return unknown
