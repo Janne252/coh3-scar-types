@@ -229,3 +229,11 @@ function World_GetNumEntities() end
 ---@param index integer ZERO based index.
 ---@return Entity
 function World_GetEntity(index) end
+
+-- FormatID can also be string, e.g. "$<modGUID>:<locID>"
+--- Returns a formatted localized string.
+--- Use this function to format localized text. ie %1PLAYERNAME% is going to win. It accepts up to 9 additional values as parameters.
+--- @param FormatID number | string | LocString
+--- @vararg string | number
+--- @return LocString
+function Loc_FormatText(FormatID, ...) end
