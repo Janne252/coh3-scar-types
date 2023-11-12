@@ -237,3 +237,13 @@ function World_GetEntity(index) end
 --- @vararg string | number
 --- @return LocString
 function Loc_FormatText(FormatID, ...) end
+
+--- Create a squad, spawn it and assign it to a player.
+--- This will create a squad of size 'loadoutCount' and of unit type 'unit_base' (from squad blueprint)\n Note: loadoutCount will be clipped to loadoutMin and loadoutMax from the squad blueprint. A loudoutCount of zero means create the whole squad as is.
+--- @param sbp SquadPBG
+--- @param player Player
+--- @param loadoutCount number
+--- @param pos Position
+--- @param toward Position
+--- @return unknown
+function Squad_CreateAndSpawnToward(sbp, player, loadoutCount, pos, toward) end
