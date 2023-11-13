@@ -245,5 +245,5 @@ function Loc_FormatText(FormatID, ...) end
 --- @param loadoutCount number
 --- @param pos Position
 --- @param toward Position
---- @return unknown
+--- @return Squad
 function Squad_CreateAndSpawnToward(sbp, player, loadoutCount, pos, toward) end
