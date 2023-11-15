@@ -234,7 +234,7 @@ function World_GetEntity(index) end
 --- Returns a formatted localized string.
 --- Use this function to format localized text. ie %1PLAYERNAME% is going to win. It accepts up to 9 additional values as parameters.
 --- @param FormatID number | string | LocString
---- @vararg string | number
+--- @vararg string | number | LocString
 --- @return LocString
 function Loc_FormatText(FormatID, ...) end
 
@@ -247,3 +247,40 @@ function Loc_FormatText(FormatID, ...) end
 --- @param toward Position
 --- @return Squad
 function Squad_CreateAndSpawnToward(sbp, player, loadoutCount, pos, toward) end
+
+--- Creates a hintpoint attached to a Marker, EGroup, SGroup or position
+--- If range is set to 0, then the hintpoint is rangeless, see the design document for rangeless features. The following types of hintpoint actions are available. HPAT_Objective HPAT_Hint HPAT_Critical HPAT_Movement HPAT_Attack HPAT_FormationSetup HPAT_RallyPoint HPAT_DeepSnow HPAT_CoverGreen HPAT_CoverYellow HPAT_CoverRed HPAT_Detonation HPAT_Vaulting
+--- @param where any
+--- @param bVisible boolean
+--- @param hintText LocString
+--- @param height number | nil
+--- @param actionType HintPointActionType | number | nil
+--- @param iconName string | nil
+--- @param priority number | nil
+--- @param visibleInFOW boolean | nil
+--- @param dataTemplate string | nil
+--- @return unknown
+function HintPoint_Add(where, bVisible, hintText, height, actionType, iconName, priority, visibleInFOW, dataTemplate) end
+
+--- Modifies a player's incoming resource rate. Possible math types are MUT_Multiplication, MUT_Addition.
+--- @param playerId Player
+--- @param resourceType ResourceType | number
+--- @param scalefactor number
+--- @param mathtype ModifierUsageType | number | nil
+--- @return unknown
+function Modify_PlayerResourceRate(playerId, resourceType, scalefactor, mathtype) end
+
+--- Modifies the recharge time of an ability
+--- @param player_entity_squad Player | Entity | Squad
+--- @param ability Ability
+--- @param scalefactor number
+--- @param mathtype ModifierUsageType | number | nil
+--- @return unknown
+function Modify_AbilityRechargeTime(player_entity_squad, ability, scalefactor, mathtype) end
+
+--- Add a rule to be executed when the event of 'eventType' has happened, regardless of source
+--- Event types are: GE_PlayerBeingAttacked
+--- @param rule function
+--- @param eventtype SimulationEventType | number
+--- @return unknown
+function Rule_AddGlobalEvent(rule, eventtype) end
