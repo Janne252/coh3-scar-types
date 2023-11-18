@@ -284,3 +284,12 @@ function Modify_AbilityRechargeTime(player_entity_squad, ability, scalefactor, m
 --- @param eventtype SimulationEventType | number
 --- @return unknown
 function Rule_AddGlobalEvent(rule, eventtype) end
+
+
+--- Add a rule to be executed when the event of 'eventType' has happened on the 'player'
+--- Event types are: GE_PlayerBeingAttacked, GE_PlayerCommandIssued, GE_AbilityExecuted, GE_UpgradeComplete, GE_ConstructionComplete, GE_BuildItemComplete, GE_PlayerKilled, GE_SpawnActionComplete, GE_AIPlayer_EncounterNotification
+--- @param rule function
+--- @param player Player
+--- @param eventtype SimulationEventType | number
+--- @return unknown
+function Rule_AddPlayerEvent(rule, player, eventtype) end
