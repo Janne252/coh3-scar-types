@@ -107,9 +107,13 @@ function Loc_ToAnsi(locId) end
 ---@return UIInfo
 function BP_GetSquadUIInfo(sbp, raceBP) end
 
----@param ebp ScarEntityPBG
+---@param ebp EntityPBG
 ---@return UIInfo
 function BP_GetEntityUIInfo(ebp) end
+
+---@param ability  Ability
+---@return UIInfo
+function BP_GetAbilityUIInfo(ability) end
 
 ---@param blueprint  string
 ---@return ScarRacePBG
@@ -293,3 +297,9 @@ function Rule_AddGlobalEvent(rule, eventtype) end
 --- @param eventtype SimulationEventType | number
 --- @return unknown
 function Rule_AddPlayerEvent(rule, player, eventtype) end
+
+--- Return the short name of the group
+--- Example name would be "ally_mad_minute_ability"
+--- @param pbg PropertyBagGroup | Ability
+--- @return unknown
+function BP_GetName(pbg) end
