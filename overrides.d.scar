@@ -303,3 +303,13 @@ function Rule_AddPlayerEvent(rule, player, eventtype) end
 --- @param pbg PropertyBagGroup | Ability
 --- @return unknown
 function BP_GetName(pbg) end
+
+--- Returns true if an ability blueprint exists with the given name.
+--- @param pbgShortname string
+--- @return boolean
+function BP_AbilityExists(pbgShortname) end
+
+--- Returns true if an upgrade blueprint exists with the given name.
+--- @param pbgShortname string
+--- @return boolean
+function BP_UpgradeExists(pbgShortname) end
