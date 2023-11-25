@@ -313,3 +313,17 @@ function BP_AbilityExists(pbgShortname) end
 --- @param pbgShortname string
 --- @return boolean
 function BP_UpgradeExists(pbgShortname) end
+
+---@param squad Squad
+---@return Entity[]
+function Squad_GetAttachedWeapons(squad) end
+
+---@param squad Squad
+---@param item Entity
+---@param chance number
+function Squad_OverrideItemDropChance(squad, item, chance) end
+
+
+---@param squad Squad
+---@param chance number
+function Squad_SetTeamWeaponDestroyOnAbandonChance(squad, chance) end
