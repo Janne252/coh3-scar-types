@@ -115,6 +115,11 @@ function BP_GetEntityUIInfo(ebp) end
 ---@return UIInfo
 function BP_GetAbilityUIInfo(ability) end
 
+--- Returns a table containing the ui_ext info for given upgrade
+--- @param ubp Upgrade
+--- @return UIInfo
+function BP_GetUpgradeUIInfo(ubp) end
+
 ---@param blueprint  string
 ---@return ScarRacePBG
 function World_GetRaceBlueprint(blueprint) end
@@ -288,7 +293,6 @@ function Modify_AbilityRechargeTime(player_entity_squad, ability, scalefactor, m
 --- @param eventtype SimulationEventType | number
 --- @return unknown
 function Rule_AddGlobalEvent(rule, eventtype) end
-
 
 --- Add a rule to be executed when the event of 'eventType' has happened on the 'player'
 --- Event types are: GE_PlayerBeingAttacked, GE_PlayerCommandIssued, GE_AbilityExecuted, GE_UpgradeComplete, GE_ConstructionComplete, GE_BuildItemComplete, GE_PlayerKilled, GE_SpawnActionComplete, GE_AIPlayer_EncounterNotification
