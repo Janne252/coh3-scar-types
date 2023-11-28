@@ -219,17 +219,40 @@ function UI_CreateTargetTrackingTag(target, lifetime_seconds, template) end
 
 ---@param ebp EntityPBG
 ---@param pos Position
----@param unknown_boolean_true true
+---@param snapToTerrain true
 ---@return Entity
-function Entity_CreateENV(ebp, pos, unknown_boolean_true) end
+function Entity_CreateENV(ebp, pos, snapToTerrain) end
 
+---@param ebp EntityPBG
+---@param pos Position
+---@param towards Position
+---@param snapToTerrain true
+---@return Entity
+function Entity_CreateENVFacing(ebp, pos, towards, snapToTerrain) end
 
 ---@param ebp EntityPBG
 ---@param player Player
 ---@param pos Position
----@param unknown_boolean_true true
+---@param snapToTerrain true
 ---@return Entity
-function Entity_Create(ebp, player, pos, unknown_boolean_true) end
+function Entity_Create(ebp, player, pos, snapToTerrain) end
+
+---@param ebp EntityPBG
+---@param player Player
+---@param pos Position
+---@param towards Position
+---@param snapToTerrain true
+---@return Entity
+function Entity_CreateFacing(ebp, player, pos, towards, snapToTerrain) end
+
+---@param entity Entity
+---@param ebp EntityPBG
+function Entity_ConvertBlueprint(entity, ebp) end
+
+--- Returns the position of the entity.  The position is currently a lua table with three entries (x, y, z)
+--- @param entity Entity
+--- @return Position
+function Entity_GetPosition(entity) end
 
 ---First index = 0, last index = return value - 1.
 ---@returns integer
@@ -335,3 +358,18 @@ function Squad_SetTeamWeaponDestroyOnAbandonChance(squad, chance) end
 ---@param player Player
 ---@return Position
 function Player_GetMapEntryPosition(player) end
+
+--- Returns the entity at the given index.
+--- Use EGroup_GetSpawnedEntityAt or EGroup_GetDeSpawnedEntityAt if you want the spawned/despawned items in the group\n Use index 1 to get the first entity in the group.\n It is an error if index > EGroup_GetCount()\n
+--- @param group EGroupID
+--- @param int number
+--- @return Entity
+function EGroup_GetEntityAt(group, int) end
+
+
+--- Returns the squad at a certain position in the group.
+--- This is a one-based index (use index 1 to get the first squad in the group.) It is an error if index > SGroup_Count().
+--- @param group SGroupID
+--- @param int number
+--- @return Squad
+function SGroup_GetSquadAt(group, int) end
