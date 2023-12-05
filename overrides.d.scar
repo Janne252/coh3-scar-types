@@ -373,3 +373,12 @@ function EGroup_GetEntityAt(group, int) end
 --- @param int number
 --- @return Squad
 function SGroup_GetSquadAt(group, int) end
+
+---@class GameModeOptionEnum
+---@field enum_items table<string, number>
+---@field enum_value number
+
+---@param t table
+---@param name string
+---@return GameModeOptionEnum | boolean | number
+function Options_GetOption(t, name) end
