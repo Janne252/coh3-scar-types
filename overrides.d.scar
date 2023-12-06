@@ -382,3 +382,7 @@ function SGroup_GetSquadAt(group, int) end
 ---@param name string
 ---@return GameModeOptionEnum | boolean | number
 function Options_GetOption(t, name) end
+
+---@param player Player
+---@return number
+function Player_GetPopCapOverride(player) end
