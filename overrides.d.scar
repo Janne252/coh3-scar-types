@@ -219,21 +219,21 @@ function UI_CreateTargetTrackingTag(target, lifetime_seconds, template) end
 
 ---@param ebp EntityPBG
 ---@param pos Position
----@param snapToTerrain true
+---@param snapToTerrain boolean
 ---@return Entity
 function Entity_CreateENV(ebp, pos, snapToTerrain) end
 
 ---@param ebp EntityPBG
 ---@param pos Position
 ---@param towards Position
----@param snapToTerrain true
+---@param snapToTerrain boolean
 ---@return Entity
 function Entity_CreateENVFacing(ebp, pos, towards, snapToTerrain) end
 
 ---@param ebp EntityPBG
 ---@param player Player
 ---@param pos Position
----@param snapToTerrain true
+---@param snapToTerrain boolean
 ---@return Entity
 function Entity_Create(ebp, player, pos, snapToTerrain) end
 
@@ -241,7 +241,7 @@ function Entity_Create(ebp, player, pos, snapToTerrain) end
 ---@param player Player
 ---@param pos Position
 ---@param towards Position
----@param snapToTerrain true
+---@param snapToTerrain boolean
 ---@return Entity
 function Entity_CreateFacing(ebp, player, pos, towards, snapToTerrain) end
 
@@ -386,3 +386,10 @@ function Options_GetOption(t, name) end
 ---@param player Player
 ---@return number
 function Player_GetPopCapOverride(player) end
+
+--- Modifies the time taken to build a particular EBP. This only affects the given player.
+--- @param playerId Player
+--- @param ebp EntityPBG
+--- @param scalefactor number
+--- @return unknown
+function Modify_EntityBuildTime(playerId, ebp, scalefactor) end
