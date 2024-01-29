@@ -393,3 +393,15 @@ function Player_GetPopCapOverride(player) end
 --- @param scalefactor number
 --- @return unknown
 function Modify_EntityBuildTime(playerId, ebp, scalefactor) end
+
+---@param squad Squad
+---@param extensionName string
+---@param unknownBoolean boolean
+---Returns the extension ID of the extension on a squad.
+function Squad_ExtensionID(squad, extensionName, unknownBoolean) end
+
+--- Returns true if the squad has the specific extension enabled.
+--- @param pSquad Squad
+--- @param extID number
+--- @return boolean
+function Squad_ExtensionEnabled(pSquad, extID) end
