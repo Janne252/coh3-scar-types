@@ -52,6 +52,13 @@ OT_Enemy = 0
 ---@type OwnerType
 OT_Neutral = 0
 
+
+---@type number
+ITEM_UNLOCKED = unknown
+ITEM_LOCKED = unknown
+ITEM_REMOVED = unknown
+ITEM_DEFAULT = unknown
+
 ---@class LocString : table
 
 ---@param team TeamID
@@ -405,3 +412,9 @@ function Squad_ExtensionID(squad, extensionName, unknownBoolean) end
 --- @param extID number
 --- @return boolean
 function Squad_ExtensionEnabled(pSquad, extID) end
+
+--- Returns the modified cost of the given ability including all modifications added by the given player
+--- @param pPlayer Player
+--- @param pbg PropertyBagGroup
+--- @return {munition: number, requisition: number,fuel: number,manpower: number,command: number, popcap: number, ultimate:number, action:number}
+function Player_GetAbilityBPCost(pPlayer, pbg) end
