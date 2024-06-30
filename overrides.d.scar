@@ -418,3 +418,103 @@ function Squad_ExtensionEnabled(pSquad, extID) end
 --- @param pbg PropertyBagGroup
 --- @return {munition: number, requisition: number,fuel: number,manpower: number,command: number, popcap: number, ultimate:number, action:number}
 function Player_GetAbilityBPCost(pPlayer, pbg) end
+
+---
+function Camera_Pop() end
+
+---@param name string
+function Camera_Push(name) end
+
+---
+function Camera_Fov(...) end
+
+---@param name string
+function Camera_PushKeepState(name) end
+
+--#region pitch
+
+---@return number
+function Camera_GetDefaultPitch() end
+
+---@param pitch number
+function Camera_SetPitch(pitch) end
+
+---@param pitch number
+function Camera_SetPitchRelative(pitch) end
+
+--#endregion
+
+--#region yaw
+
+---@return number
+function Camera_GetDefaultYaw() end
+
+---@param yaw number
+function Camera_SetYaw(yaw) end
+
+---@param yaw number
+function Camera_SetYawRelative(yaw) end
+
+--#endregion
+
+---@return number
+function Camera_GetDefaultDistance() end
+
+---@param distance number
+function Camera_SetDistance(distance) end
+
+---@param position Position
+---@return Position
+function Camera_GetEyePositionFromTarget(position) end
+
+---@param x number
+---@param y number
+---@param z number
+---@return Position
+function Camera_InverseEuler(x, y, z) end
+
+---@return number
+function World_GetNumSquads() end
+
+---@param index number Zero-based index
+---@return Squad
+function World_GetSquad(index) end
+
+-- #region kicker message
+
+--- Create a custom kicker message on the entity and display to the player, rgb values are 0-255.
+--- @param player Player
+--- @param position Position
+--- @param message LocString
+function UI_CreatePositionKickerMessage(player, position, message) end
+
+--- Create a custom kicker message on the entity and display to the player, rgb values are 0-255.
+--- @param player Player
+--- @param entity Entity
+--- @param message LocString
+function UI_CreateEntityKickerMessage(player, entity, message) end
+
+--- Create and display kicker message on the each entity in the egroup to the player
+--- @param group EGroupID
+--- @param message LocString
+function EGroup_CreateKickerMessage(group, message) end
+
+--- Create a custom kicker message on the entity and display to the player, rgb values are 0-255.
+--- @param player Player
+--- @param squad Squad
+--- @param message LocString
+function UI_CreateSquadKickerMessage(player, squad, message) end
+
+--- Create a custom kicker message on the squad and display to the player.
+--- @param player Player
+--- @param sgroup SGroupID
+--- @param message LocString
+function UI_CreateSGroupKickerMessage(player, sgroup, message) end
+
+--- Create and display kicker message on the each squad in the sgroup to the player
+--- @param group SGroupID
+--- @param player Player
+--- @param message LocString
+function SGroup_CreateKickerMessage(group, player, message) end
+
+-- #endregion
