@@ -518,3 +518,9 @@ function UI_CreateSGroupKickerMessage(player, sgroup, message) end
 function SGroup_CreateKickerMessage(group, player, message) end
 
 -- #endregion
+
+--- Sends an instant upgrade command to a player, egroup or sgroup. accepts a single upgrade or table of upgrades.
+--- @param target Player | EGroupID | SGroupID
+--- @param blueprint Upgrade
+--- @param count number | nil
+function Cmd_InstantUpgrade(target, blueprint, count) end
