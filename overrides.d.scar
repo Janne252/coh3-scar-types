@@ -404,6 +404,7 @@ function Modify_EntityBuildTime(playerId, ebp, scalefactor) end
 ---@param squad Squad
 ---@param extensionName string
 ---@param unknownBoolean boolean
+---@return number
 ---Returns the extension ID of the extension on a squad.
 function Squad_ExtensionID(squad, extensionName, unknownBoolean) end
 
