@@ -1,5 +1,12 @@
 ---@meta declaration-overrides
 
+-- scarutil.scar
+ALL = true
+ANY = false		-- for use in "Boolean: all" parameters
+
+---@alias ALL true
+---@alias ANY false
+
 ---@param filepath string
 ---Built-in method of importing SCAR files relative to the DATA:\scar folder (across all .SGAs)
 function import(filepath) end
@@ -320,7 +327,7 @@ function Modify_AbilityRechargeTime(player_entity_squad, ability, scalefactor, m
 --- Add a rule to be executed when the event of 'eventType' has happened, regardless of source
 --- Event types are: GE_PlayerBeingAttacked
 --- @param rule function
---- @param eventtype SimulationEventType | number
+--- @param eventtype SimulationEventType | PresentationEventType | number
 --- @return unknown
 function Rule_AddGlobalEvent(rule, eventtype) end
 
@@ -416,9 +423,9 @@ function Squad_ExtensionEnabled(pSquad, extID) end
 
 --- Returns the modified cost of the given ability including all modifications added by the given player
 --- @param pPlayer Player
---- @param pbg PropertyBagGroup
+--- @param ability Ability
 --- @return {munition: number, requisition: number,fuel: number,manpower: number,command: number, popcap: number, ultimate:number, action:number}
-function Player_GetAbilityBPCost(pPlayer, pbg) end
+function Player_GetAbilityBPCost(pPlayer, ability) end
 
 ---
 function Camera_Pop() end
@@ -525,3 +532,17 @@ function SGroup_CreateKickerMessage(group, player, message) end
 --- @param blueprint Upgrade
 --- @param count number | nil
 function Cmd_InstantUpgrade(target, blueprint, count) end
+
+---@return boolean
+function UI_GetAllowLoadAndSave() end
+
+---@param upgradeTypes nil|string[]
+---@param all ALL | ANY
+---@return Upgrade[]
+function BP_GetUpgradeBlueprintsWithType_Internal(upgradeTypes, all) end
+
+--- Enables or disables the silhouettes for squads / entities
+--- @param unit Entity|EGroupID|Squad|SGroupID
+--- @param enabled boolean
+--- @return unknown
+function UI_SetSilhouetteEnabled(unit, enabled) end
