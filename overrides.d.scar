@@ -169,10 +169,10 @@ function Entity_ExtensionExist(entity, extension) end
 function Cmd_Stop(group) end
 
 ---@param techtree_type  string
----@return PBG
+---@return PBG[]
 function BP_GetTechTreeBlueprintsByType(techtree_type) end
 
----@class TEchTreeInfo
+---@class TechTreeInfo
 ---@field activation_upgrade Upgrade
 ---@field branches TechTreeBranch[]
 ---@field name LocString
@@ -181,7 +181,7 @@ function BP_GetTechTreeBlueprintsByType(techtree_type) end
 ---@field upgrades Upgrade[]
 
 ---@param pbg PBG
----@return TEchTreeInfo
+---@return TechTreeInfo
 function BP_GetTechTreeBPInfo(pbg) end
 
 ---@param types string[]
@@ -546,3 +546,10 @@ function BP_GetUpgradeBlueprintsWithType_Internal(upgradeTypes, all) end
 --- @param enabled boolean
 --- @return unknown
 function UI_SetSilhouetteEnabled(unit, enabled) end
+
+---@return string
+function Game_GetScenarioFileName() end
+
+---@param player Player
+---@return table<string, Upgrade>
+function Player_GetActiveUpgrades(player) end
