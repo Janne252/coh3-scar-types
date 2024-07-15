@@ -553,3 +553,86 @@ function Game_GetScenarioFileName() end
 ---@param player Player
 ---@return table<string, Upgrade>
 function Player_GetActiveUpgrades(player) end
+
+--- Creates a blip on the minimap; return the ID of the blip.
+--- 'where' can be an entity, marker, position, egroup, sgroup, or squad.
+--- @param where any
+--- @param lifetime number
+--- @param blipDataTemplate string|'attack_here'|'defend_here'|'question_here'|'squad_killed'|'sniped'|'in_combat'|'low_priority'|'high_priority'|'revealed'
+---@param blipRadius nil|number
+--- @return number
+function UI_CreateMinimapBlip(where, lifetime, blipDataTemplate, blipRadius) end
+
+
+--- Clear the map icon facing value.
+--- @param id number
+function MapIcon_ClearFacing(id) end
+
+--- Creates an arrow on the metamap between the two locations provided
+--- @param position_from Marker | Pos
+--- @param position_to Marker | Pos
+--- @param red number
+--- @param green number
+--- @param blue number
+--- @param alpha number
+--- @return number
+function MapIcon_CreateArrow(position_from, position_to, red, green, blue, alpha) end
+
+--- Create a map icon targetting an entity.
+--- @param entity Entity
+--- @param icon string
+--- @param scale number
+--- @param red number
+--- @param green number
+--- @param blue number
+--- @param alpha number
+--- @return number
+function MapIcon_CreateEntity(entity, icon, scale, red, green, blue, alpha) end
+
+--- Create a map icon targetting a position.
+--- @param position Position
+--- @param icon string
+--- @param scale number
+--- @param red number
+--- @param green number
+--- @param blue number
+--- @param alpha number
+--- @return number
+function MapIcon_CreatePosition(position, icon, scale, red, green, blue, alpha) end
+
+--- Create a map icon targetting a squad.
+--- @param squad Squad
+--- @param icon string
+--- @param scale number
+--- @param red number
+--- @param green number
+--- @param blue number
+--- @param alpha number
+--- @return number
+function MapIcon_CreateSquad(squad, icon, scale, red, green, blue, alpha) end
+
+--- Remove a map icon.
+--- @param id number
+function MapIcon_Destroy(id) end
+
+--- Remove all map icons.
+function MapIcon_DestroyAll() end
+
+--- Face the map icon towards this entity.
+--- @param id number
+--- @param entity Entity
+function MapIcon_SetFacingEntity(id, entity) end
+
+--- Face the map icon towards this position.
+--- @param id number
+--- @param position Position
+function MapIcon_SetFacingPosition(id, position) end
+
+--- Face the map icon towards this squad.
+--- @param id number
+--- @param squad Squad
+function MapIcon_SetFacingSquad(id, squad) end
+
+---@param delegateFunctionName string
+---@vararg any
+function Core_CallDelegateFunctions(delegateFunctionName, ...) end
