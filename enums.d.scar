@@ -1,1823 +1,3438 @@
+
 ---@meta enum-declarations
+---@diagnostic disable: assign-type-mismatch
+
+
 --- @class AIBuildStyle: userdata
 
---- @type AIBuildStyle
+--- @type AIBuildStyle AIBuildStyle(8)
 BS_AwayFromResources = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle 
 BS_Capital = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle 
 BS_COUNT = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle AIBuildStyle(19)
 BS_Dock = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle AIBuildStyle(12)
 BS_ExpansionBase = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle AIBuildStyle(2)
 BS_FinishIncompleteStructure = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle AIBuildStyle(3)
 BS_ForwardDefense = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle AIBuildStyle(5)
 BS_Gates = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle AIBuildStyle(16)
 BS_Keep = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle 
 BS_Landmark = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle 
 BS_Market = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle 
 BS_Mill = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle AIBuildStyle(1)
 BS_NearAnchor = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle AIBuildStyle(10)
 BS_NearBlueprint = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle AIBuildStyle(7)
 BS_NearResourceDropoff = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle AIBuildStyle(6)
 BS_NearResources = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle AIBuildStyle(9)
 BS_NearSameBlueprint = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle AIBuildStyle(15)
 BS_Outpost = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle AIBuildStyle(11)
 BS_ProductionBuilding = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle AIBuildStyle(0)
 BS_Secure = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle AIBuildStyle(18)
 BS_Siege = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle AIBuildStyle(14)
 BS_TargetedRequest = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle AIBuildStyle(13)
 BS_Tower = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle AIBuildStyle(17)
 BS_WallEmplacement = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle AIBuildStyle(4)
 BS_Walls = {}
---- @type AIBuildStyle
+--- @type AIBuildStyle AIBuildStyle(20)
 BS_Wonder = {}
 
 --- @class AICombatRangePolicy: userdata
 
---- @type AICombatRangePolicy
+--- @type AICombatRangePolicy 
 CombatRangePolicy_Count = {}
---- @type AICombatRangePolicy
+--- @type AICombatRangePolicy 
 CombatRangePolicy_Default = {}
---- @type AICombatRangePolicy
+--- @type AICombatRangePolicy 
 CombatRangePolicy_INVALID = {}
---- @type AICombatRangePolicy
+--- @type AICombatRangePolicy 
 CombatRangePolicy_MeleeRange = {}
---- @type AICombatRangePolicy
+--- @type AICombatRangePolicy 
 CombatRangePolicy_Ranged_MaxRange = {}
---- @type AICombatRangePolicy
+--- @type AICombatRangePolicy 
 CombatRangePolicy_Ranged_MinRange = {}
 
 --- @class AICombatType: userdata
 
---- @type AICombatType
+--- @type AICombatType AICombatType(0)
 COMBAT_Attack = {}
---- @type AICombatType
+--- @type AICombatType 
 COMBAT_COUNT = {}
---- @type AICombatType
+--- @type AICombatType AICombatType(2)
 COMBAT_Default = {}
---- @type AICombatType
+--- @type AICombatType AICombatType(1)
 COMBAT_Defend = {}
 
 --- @class AIDifficultyLevel: userdata
 
---- @type AIDifficultyLevel
+--- @type AIDifficultyLevel 
 Count = {}
---- @type AIDifficultyLevel
+--- @type AIDifficultyLevel 
 Count = {}
---- @type AIDifficultyLevel
+--- @type AIDifficultyLevel 
 Default = {}
---- @type AIDifficultyLevel
+--- @type AIDifficultyLevel 
 Easy = {}
---- @type AIDifficultyLevel
+--- @type AIDifficultyLevel 
 Expert = {}
---- @type AIDifficultyLevel
+--- @type AIDifficultyLevel 
 Hard = {}
---- @type AIDifficultyLevel
+--- @type AIDifficultyLevel 
 INT8_MAX = {}
---- @type AIDifficultyLevel
+--- @type AIDifficultyLevel 
 Invalid = {}
---- @type AIDifficultyLevel
+--- @type AIDifficultyLevel 
 Max = {}
---- @type AIDifficultyLevel
+--- @type AIDifficultyLevel 
 Normal = {}
---- @type AIDifficultyLevel
+--- @type AIDifficultyLevel 
 Normal = {}
 
 --- @class AIMilitaryTargetType: userdata
 
---- @type AIMilitaryTargetType
+--- @type AIMilitaryTargetType 
 AllyClump = {}
---- @type AIMilitaryTargetType
+--- @type AIMilitaryTargetType 
 AttackArea = {}
---- @type AIMilitaryTargetType
+--- @type AIMilitaryTargetType 
 AttackStructure = {}
---- @type AIMilitaryTargetType
+--- @type AIMilitaryTargetType 
 Capture = {}
---- @type AIMilitaryTargetType
+--- @type AIMilitaryTargetType PlayerState(10)
 COUNT = {}
---- @type AIMilitaryTargetType
+--- @type AIMilitaryTargetType 
 DefendArea = {}
---- @type AIMilitaryTargetType
+--- @type AIMilitaryTargetType 
 DefendStructure = {}
---- @type AIMilitaryTargetType
+--- @type AIMilitaryTargetType 
 EnemyClump = {}
---- @type AIMilitaryTargetType
+--- @type AIMilitaryTargetType 
 Gather = {}
---- @type AIMilitaryTargetType
+--- @type AIMilitaryTargetType 
 NeutralClump = {}
---- @type AIMilitaryTargetType
+--- @type AIMilitaryTargetType 
 NeutralStructure = {}
 
 --- @class AITacticTargetPreference: userdata
 
---- @type AITacticTargetPreference
+--- @type AITacticTargetPreference 
 TacticTargetPreference_Best = {}
---- @type AITacticTargetPreference
+--- @type AITacticTargetPreference 
 TacticTargetPreference_COUNT = {}
---- @type AITacticTargetPreference
+--- @type AITacticTargetPreference 
 TacticTargetPreference_HighDamage = {}
---- @type AITacticTargetPreference
+--- @type AITacticTargetPreference 
 TacticTargetPreference_LowHealth = {}
---- @type AITacticTargetPreference
+--- @type AITacticTargetPreference 
 TacticTargetPreference_Near = {}
---- @type AITacticTargetPreference
+--- @type AITacticTargetPreference 
 TacticTargetPreference_NearAndBest = {}
---- @type AITacticTargetPreference
+--- @type AITacticTargetPreference 
 TacticTargetPreference_None = {}
---- @type AITacticTargetPreference
+--- @type AITacticTargetPreference 
 TacticTargetPreference_Support = {}
 
 --- @class AITacticType: userdata
 
---- @type AITacticType
+--- @type AITacticType AITacticType(0)
 TACTIC_Ability = {}
---- @type AITacticType
+--- @type AITacticType AITacticType(3)
 TACTIC_Avoid = {}
---- @type AITacticType
+--- @type AITacticType AITacticType(11)
 TACTIC_CapturePoint = {}
---- @type AITacticType
+--- @type AITacticType AITacticType(7)
 TACTIC_CaptureTeamWeapon = {}
---- @type AITacticType
+--- @type AITacticType 
 TACTIC_COUNT = {}
---- @type AITacticType
+--- @type AITacticType AITacticType(1)
 TACTIC_Cover = {}
---- @type AITacticType
+--- @type AITacticType AITacticType(10)
 TACTIC_FinishHealing = {}
---- @type AITacticType
+--- @type AITacticType AITacticType(5)
 TACTIC_ForceAttack = {}
---- @type AITacticType
+--- @type AITacticType AITacticType(2)
 TACTIC_Hold = {}
---- @type AITacticType
+--- @type AITacticType AITacticType(15)
 TACTIC_Lua = {}
---- @type AITacticType
+--- @type AITacticType AITacticType(12)
 TACTIC_MinRange = {}
---- @type AITacticType
+--- @type AITacticType AITacticType(6)
 TACTIC_Pickup = {}
---- @type AITacticType
+--- @type AITacticType AITacticType(9)
 TACTIC_ProvideReinforcementPoint = {}
---- @type AITacticType
+--- @type AITacticType AITacticType(8)
 TACTIC_Recrew = {}
---- @type AITacticType
+--- @type AITacticType AITacticType(14)
 TACTIC_Sequence = {}
---- @type AITacticType
+--- @type AITacticType AITacticType(4)
 TACTIC_Vehicle = {}
---- @type AITacticType
+--- @type AITacticType AITacticType(13)
 TACTIC_VehicleDecrew = {}
 
 --- @class AITaskType: userdata
 
---- @type AITaskType
+--- @type AITaskType AITaskType(38)
 TASK_AbilityEncounter = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(35)
 TASK_AttackEncounter = {}
---- @type AITaskType
-TASK_COUNT = {}
---- @type AITaskType
+--- @type AITaskType 
+TASK_COUNT = 46
+--- @type AITaskType AITaskType(36)
 TASK_DefendEncounter = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(45)
 TASK_ENCOUNTERS_END = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(35)
 TASK_ENCOUNTERS_START = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(35)
 TASK_ENCOUNTERS_START = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(33)
 TASK_EntityAbility = {}
---- @type AITaskType
+--- @type AITaskType 
 TASK_FormationAbilityState = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(41)
 TASK_FormationAttackMoveEncounter = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(19)
 TASK_FormationAutoHealState = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(45)
 TASK_FormationDefendAreaEncounter = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(45)
 TASK_FormationDefendAreaEncounter = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(17)
 TASK_FormationFleeState = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(16)
 TASK_FormationHoldableUnloadState = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(15)
 TASK_FormationIdleState = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(11)
 TASK_FormationLoadToHoldState = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(7)
 TASK_FormationMinRangeState = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(40)
 TASK_FormationMoveEncounter = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(6)
 TASK_FormationMoveState = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(14)
 TASK_FormationPathToMeleeState = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(42)
 TASK_FormationPhaseEncounter = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(8)
 TASK_FormationProtectState = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(10)
 TASK_FormationSetupRangedAttackState = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(9)
 TASK_FormationSimpleMeleeAttackState = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(13)
 TASK_FormationTargetedAbilityState = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(18)
 TASK_FormationTargetedConstructState = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(12)
 TASK_FormationTransportMoveState = {}
---- @type AITaskType
+--- @type AITaskType 
 TASK_FormationUnitTypeAttackState = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(44)
 TASK_GatherEncounter = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(37)
 TASK_MoveEncounter = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(34)
 TASK_PlayerAbility = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(39)
 TASK_ScoutEncounter = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(30)
 TASK_SquadAbility = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(20)
 TASK_SquadCapture = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(21)
 TASK_SquadCombat = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(2)
 TASK_SquadCombatState = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(23)
 TASK_SquadConstruction = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(4)
 TASK_SquadFallbackState = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(29)
 TASK_SquadFollow = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(31)
 TASK_SquadForwardBase = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(32)
 TASK_SquadGather = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(27)
 TASK_SquadHold = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(22)
 TASK_SquadImmobileCombat = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(28)
 TASK_SquadLeader = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(1)
 TASK_SquadMoveState = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(26)
 TASK_SquadPatrol = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(25)
 TASK_SquadPickUp = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(24)
 TASK_SquadProduction = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(5)
 TASK_SquadRetreatState = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(0)
 TASK_SquadSimpleMoveState = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(3)
 TASK_SquadTacticState = {}
---- @type AITaskType
+--- @type AITaskType AITaskType(43)
 TASK_TownLifeEncounter = {}
 
 --- @class Availability: userdata
 
---- @type Availability
+--- @type Availability 
 eAvailablityCOUNT = {}
---- @type Availability
+--- @type Availability 
 eDefault = {}
---- @type Availability
+--- @type Availability 
 eLocked = {}
---- @type Availability
+--- @type Availability 
 eRemoved = {}
---- @type Availability
+--- @type Availability 
 eUnlocked = {}
 
 --- @class ButtonIconStyle: userdata
 
---- @type ButtonIconStyle
+--- @type ButtonIconStyle 
 BIS_Count = {}
---- @type ButtonIconStyle
+--- @type ButtonIconStyle ButtonIconStyle(0)
 BIS_Icon = {}
---- @type ButtonIconStyle
+--- @type ButtonIconStyle ButtonIconStyle(1)
 BIS_IconState = {}
 
 --- @class CameraMode: userdata
 
---- @type CameraMode
+--- @type CameraMode 
 CM_COUNT = {}
---- @type CameraMode
+--- @type CameraMode 
 CM_FOLLOW = {}
---- @type CameraMode
+--- @type CameraMode 
 CM_PERSON = {}
---- @type CameraMode
+--- @type CameraMode 
 CM_ROT_TRANS = {}
 
 --- @class CanProduceResult: userdata
 
---- @type CanProduceResult
+--- @type CanProduceResult CanProduceResult(2048)
 CANPRODUCE_Disabled = {}
---- @type CanProduceResult
+--- @type CanProduceResult CanProduceResult(4096)
 CANPRODUCE_Error = {}
---- @type CanProduceResult
+--- @type CanProduceResult CanProduceResult(1)
 CANPRODUCE_NoItem = {}
---- @type CanProduceResult
+--- @type CanProduceResult CanProduceResult(8)
 CANPRODUCE_NoResources = {}
---- @type CanProduceResult
+--- @type CanProduceResult CanProduceResult(0)
 CANPRODUCE_Ok = {}
---- @type CanProduceResult
+--- @type CanProduceResult CanProduceResult(512)
 CANPRODUCE_OutOfTerritory = {}
---- @type CanProduceResult
+--- @type CanProduceResult CanProduceResult(16)
 CANPRODUCE_PopulationCapFull = {}
---- @type CanProduceResult
+--- @type CanProduceResult CanProduceResult(4)
 CANPRODUCE_PrerequisitesItem = {}
---- @type CanProduceResult
+--- @type CanProduceResult CanProduceResult(2)
 CANPRODUCE_PrerequisitesProducer = {}
---- @type CanProduceResult
+--- @type CanProduceResult CanProduceResult(128)
 CANPRODUCE_ProductionItemFull = {}
---- @type CanProduceResult
+--- @type CanProduceResult CanProduceResult(64)
 CANPRODUCE_ProductionQueueFull = {}
---- @type CanProduceResult
+--- @type CanProduceResult CanProduceResult(256)
 CANPRODUCE_UpgradeItemFull = {}
---- @type CanProduceResult
+--- @type CanProduceResult 
 OutOfReinforceRadius = {}
 
 --- @class CapType: userdata
 
---- @type CapType
+--- @type CapType 
 CT_Begin = {}
---- @type CapType
+--- @type CapType 
 CT_Count = {}
---- @type CapType
+--- @type CapType 
 CT_Invalid = {}
---- @type CapType
+--- @type CapType 
 CT_Invalid = {}
---- @type CapType
+--- @type CapType CapType(2)
 CT_Medic = {}
---- @type CapType
+--- @type CapType CapType(0)
 CT_Personnel = {}
---- @type CapType
+--- @type CapType CapType(0)
 CT_Personnel = {}
---- @type CapType
+--- @type CapType CapType(1)
 CT_Vehicle = {}
 
 --- @class CheckHiddenType: userdata
 
---- @type CheckHiddenType
+--- @type CheckHiddenType CheckHiddenType(2)
 CHECK_BOTH = {}
---- @type CheckHiddenType
+--- @type CheckHiddenType 
 CHECK_COUNT = {}
---- @type CheckHiddenType
+--- @type CheckHiddenType CheckHiddenType(1)
 CHECK_IN_FOW = {}
---- @type CheckHiddenType
+--- @type CheckHiddenType CheckHiddenType(0)
 CHECK_OFFCAMERA = {}
 
 --- @class CrushMode: userdata
 
---- @type CrushMode
+--- @type CrushMode 
 Count = {}
---- @type CrushMode
+--- @type CrushMode CrushMode(0)
 Heavy = {}
---- @type CrushMode
+--- @type CrushMode CrushMode(2)
 Light = {}
---- @type CrushMode
+--- @type CrushMode CrushMode(1)
 Medium = {}
---- @type CrushMode
+--- @type CrushMode CrushMode(3)
 Off = {}
 
 --- @class DeathReason: userdata
 
---- @type DeathReason
+--- @type DeathReason DeathReason(2)
 DEATHREASON_CASUALTY = {}
---- @type DeathReason
+--- @type DeathReason 
 DEATHREASON_COUNT = {}
---- @type DeathReason
+--- @type DeathReason DeathReason(5)
 DEATHREASON_DEATH_AS_DRIVER = {}
---- @type DeathReason
+--- @type DeathReason DeathReason(0)
 DEATHREASON_NORMAL = {}
---- @type DeathReason
+--- @type DeathReason DeathReason(7)
 DEATHREASON_ON_BLUEPRINT_CONVERT = {}
---- @type DeathReason
+--- @type DeathReason DeathReason(1)
 DEATHREASON_OUTOFCONTROL = {}
---- @type DeathReason
+--- @type DeathReason DeathReason(4)
 DEATHREASON_SUBMERGE = {}
---- @type DeathReason
+--- @type DeathReason DeathReason(6)
 DEATHREASON_SYNC_KILL = {}
---- @type DeathReason
+--- @type DeathReason DeathReason(3)
 DEATHREASON_WALKABLE_SURFACE = {}
 
 --- @class DialogButton: userdata
 
---- @type DialogButton
+--- @type DialogButton DialogButton(1)
 DB_Button1 = {}
---- @type DialogButton
+--- @type DialogButton DialogButton(2)
 DB_Button2 = {}
---- @type DialogButton
+--- @type DialogButton DialogButton(3)
 DB_Button3 = {}
---- @type DialogButton
+--- @type DialogButton DialogButton(0)
 DB_Close = {}
---- @type DialogButton
+--- @type DialogButton 
 DB_Invalid = {}
 
 --- @class DialogClass: userdata
 
---- @type DialogClass
+--- @type DialogClass 
 DC_Count = {}
---- @type DialogClass
+--- @type DialogClass DialogClass(0)
 DC_Default = {}
---- @type DialogClass
+--- @type DialogClass DialogClass(1)
 DC_Iconographic = {}
 
 --- @class EasingFunction: userdata
 
---- @type EasingFunction
+--- @type EasingFunction 
 None = {}
---- @type EasingFunction
+--- @type EasingFunction 
 Sine = {}
 
 --- @class EasingType: userdata
 
---- @type EasingType
+--- @type EasingType 
 EaseIn = {}
---- @type EasingType
+--- @type EasingType 
 EaseInOut = {}
---- @type EasingType
+--- @type EasingType 
 EaseOut = {}
 
 --- @class EntityCommandType: userdata
 
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(14)
 CMD_Ability = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(10)
 CMD_Attack = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(22)
 CMD_AttackForced = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(34)
 CMD_AttackFromHold = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(11)
 CMD_AttackMove = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(21)
 CMD_AttackStop = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(46)
 CMD_Brace = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(32)
 CMD_BuildEntity = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(3)
 CMD_BuildSquad = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(6)
 CMD_BuildStructure = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(56)
 CMD_CancelConstruction = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(5)
 CMD_CancelProduction = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(13)
 CMD_Capture = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(27)
 CMD_Casualty = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(49)
 CMD_ChangeCombatSlot = {}
---- @type EntityCommandType
+--- @type EntityCommandType 
 CMD_COUNT = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(28)
 CMD_Death = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(0)
 CMD_DefaultAction = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(26)
 CMD_DefuseMine = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(2)
 CMD_Destroy = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(54)
 CMD_Disable = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(55)
 CMD_Enable = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(15)
 CMD_Evacuate = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(9)
 CMD_Face = {}
---- @type EntityCommandType
+--- @type EntityCommandType 
 CMD_FieldSupportConvert = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(8)
 CMD_FlightMove = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(47)
 CMD_Gather = {}
---- @type EntityCommandType
+--- @type EntityCommandType 
 CMD_Halt = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(58)
 CMD_HoldPositionOff = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(57)
 CMD_HoldPositionOn = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(4)
 CMD_InstantBuildSquad = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(29)
 CMD_InstantDeath = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(52)
 CMD_InstantLoad = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(41)
 CMD_InstantSetupTeamWeapon = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(17)
 CMD_InstantUpgrade = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(36)
 CMD_KnockedBack = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(18)
 CMD_Load = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(38)
 CMD_Melee = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(7)
 CMD_Move = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(43)
 CMD_MoveToCover = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(25)
 CMD_Paradrop = {}
---- @type EntityCommandType
+--- @type EntityCommandType 
 CMD_Patrol = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(48)
 CMD_PickUpSimItem = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(31)
 CMD_PlaceCharge = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(30)
 CMD_Projectile = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(12)
 CMD_RallyPoint = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(33)
 CMD_RescueCasualty = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(39)
 CMD_ResolveOverlap = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(50)
 CMD_RetreatMove = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(23)
 CMD_SetHoldHeading = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(42)
 CMD_SetupTeamWeapon = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(1)
 CMD_Stop = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(51)
 CMD_StopAbility = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(40)
 CMD_Stun = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(44)
 CMD_Taunted = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(37)
 CMD_Teardown = {}
---- @type EntityCommandType
+--- @type EntityCommandType 
 CMD_Teleport = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(45)
 CMD_Trade = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(19)
 CMD_Unload = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(20)
 CMD_UnloadSquads = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(16)
 CMD_Upgrade = {}
---- @type EntityCommandType
+--- @type EntityCommandType EntityCommandType(35)
 CMD_Vault = {}
 
 --- @class EntityStateID: userdata
 
---- @type EntityStateID
+--- @type EntityStateID 
 STATEID_Count = {}
---- @type EntityStateID
+--- @type EntityStateID EntityStateID(0)
 STATEID_Dead = {}
---- @type EntityStateID
+--- @type EntityStateID EntityStateID(1)
 STATEID_Idle = {}
---- @type EntityStateID
+--- @type EntityStateID 
 STATEID_Invalid = {}
---- @type EntityStateID
+--- @type EntityStateID 
 STATEID_Projectile = {}
 
 --- @class ExplosionDebugVisuals: userdata
 
---- @type ExplosionDebugVisuals
+--- @type ExplosionDebugVisuals 
 All = {}
---- @type ExplosionDebugVisuals
+--- @type ExplosionDebugVisuals 
 Count = {}
---- @type ExplosionDebugVisuals
+--- @type ExplosionDebugVisuals 
 None = {}
---- @type ExplosionDebugVisuals
+--- @type ExplosionDebugVisuals 
 Selected = {}
 
 --- @class FrontEnd_Layer: userdata
 
---- @type FrontEnd_Layer
+--- @type FrontEnd_Layer 
 FEL_Dialog = {}
---- @type FrontEnd_Layer
+--- @type FrontEnd_Layer 
 FEL_FullscreenModal = {}
---- @type FrontEnd_Layer
+--- @type FrontEnd_Layer 
 FEL_Hud = {}
---- @type FrontEnd_Layer
+--- @type FrontEnd_Layer 
 FEL_Modal = {}
---- @type FrontEnd_Layer
+--- @type FrontEnd_Layer 
 FEL_Modal2 = {}
---- @type FrontEnd_Layer
+--- @type FrontEnd_Layer 
 FEL_Screen = {}
---- @type FrontEnd_Layer
+--- @type FrontEnd_Layer 
 FEL_SemiModal = {}
---- @type FrontEnd_Layer
+--- @type FrontEnd_Layer 
 FEL_Video = {}
---- @type FrontEnd_Layer
+--- @type FrontEnd_Layer 
 FEL_VideoBackground = {}
---- @type FrontEnd_Layer
+--- @type FrontEnd_Layer 
 FEL_Widget = {}
 
 --- @class HintPointActionType: userdata
 
---- @type HintPointActionType
+--- @type HintPointActionType HintPointActionType(8)
 HPAT_Artillery = {}
---- @type HintPointActionType
+--- @type HintPointActionType HintPointActionType(4)
 HPAT_Attack = {}
---- @type HintPointActionType
+--- @type HintPointActionType HintPointActionType(16)
 HPAT_AttackLooping = {}
---- @type HintPointActionType
+--- @type HintPointActionType HintPointActionType(14)
 HPAT_Bonus = {}
---- @type HintPointActionType
+--- @type HintPointActionType 
 HPAT_Count = {}
---- @type HintPointActionType
+--- @type HintPointActionType HintPointActionType(9)
 HPAT_CoverGreen = {}
---- @type HintPointActionType
+--- @type HintPointActionType HintPointActionType(11)
 HPAT_CoverRed = {}
---- @type HintPointActionType
+--- @type HintPointActionType HintPointActionType(10)
 HPAT_CoverYellow = {}
---- @type HintPointActionType
+--- @type HintPointActionType HintPointActionType(2)
 HPAT_Critical = {}
---- @type HintPointActionType
+--- @type HintPointActionType HintPointActionType(7)
 HPAT_DeepSnow = {}
---- @type HintPointActionType
+--- @type HintPointActionType HintPointActionType(12)
 HPAT_Detonation = {}
---- @type HintPointActionType
+--- @type HintPointActionType HintPointActionType(5)
 HPAT_FormationSetup = {}
---- @type HintPointActionType
+--- @type HintPointActionType HintPointActionType(1)
 HPAT_Hint = {}
---- @type HintPointActionType
+--- @type HintPointActionType HintPointActionType(3)
 HPAT_Movement = {}
---- @type HintPointActionType
+--- @type HintPointActionType HintPointActionType(15)
 HPAT_MovementLooping = {}
---- @type HintPointActionType
+--- @type HintPointActionType HintPointActionType(0)
 HPAT_Objective = {}
---- @type HintPointActionType
+--- @type HintPointActionType HintPointActionType(6)
 HPAT_RallyPoint = {}
---- @type HintPointActionType
+--- @type HintPointActionType HintPointActionType(13)
 HPAT_Vaulting = {}
 
 --- @class HUDFeatureType: userdata
 
---- @type HUDFeatureType
+--- @type HUDFeatureType HUDFeatureType(0)
 HUDF_AbilityCard = {}
---- @type HUDFeatureType
+--- @type HUDFeatureType HUDFeatureType(3)
 HUDF_CommandCard = {}
---- @type HUDFeatureType
+--- @type HUDFeatureType 
 HUDF_Count = {}
---- @type HUDFeatureType
+--- @type HUDFeatureType HUDFeatureType(1)
 HUDF_MiniMap = {}
---- @type HUDFeatureType
+--- @type HUDFeatureType HUDFeatureType(4)
 HUDF_None = {}
---- @type HUDFeatureType
+--- @type HUDFeatureType HUDFeatureType(2)
 HUDF_Upgrades = {}
 
 --- @class InputEnabledFlag: userdata
 
---- @type InputEnabledFlag
+--- @type InputEnabledFlag InputEnabledFlag(7)
 IEF_All = {}
---- @type InputEnabledFlag
+--- @type InputEnabledFlag InputEnabledFlag(7)
 IEF_All = {}
---- @type InputEnabledFlag
+--- @type InputEnabledFlag InputEnabledFlag(1)
 IEF_Camera = {}
---- @type InputEnabledFlag
+--- @type InputEnabledFlag InputEnabledFlag(1)
 IEF_Camera = {}
---- @type InputEnabledFlag
+--- @type InputEnabledFlag InputEnabledFlag(4)
 IEF_Command = {}
---- @type InputEnabledFlag
+--- @type InputEnabledFlag InputEnabledFlag(4)
 IEF_Command = {}
---- @type InputEnabledFlag
+--- @type InputEnabledFlag InputEnabledFlag(7)
 IEF_Default = {}
---- @type InputEnabledFlag
+--- @type InputEnabledFlag InputEnabledFlag(0)
 IEF_None = {}
---- @type InputEnabledFlag
+--- @type InputEnabledFlag InputEnabledFlag(2)
 IEF_Selection = {}
---- @type InputEnabledFlag
+--- @type InputEnabledFlag InputEnabledFlag(2)
 IEF_Selection = {}
---- @type InputEnabledFlag
+--- @type InputEnabledFlag 
 x0000 = {}
---- @type InputEnabledFlag
+--- @type InputEnabledFlag 
 x0001 = {}
---- @type InputEnabledFlag
+--- @type InputEnabledFlag 
 x0002 = {}
---- @type InputEnabledFlag
+--- @type InputEnabledFlag 
 x0004 = {}
 
 --- @class LabelAlignHorizontal: userdata
 
---- @type LabelAlignHorizontal
+--- @type LabelAlignHorizontal LabelAlignHorizontal(2)
 LAH_Center = {}
---- @type LabelAlignHorizontal
+--- @type LabelAlignHorizontal 
 LAH_Count = {}
---- @type LabelAlignHorizontal
+--- @type LabelAlignHorizontal LabelAlignHorizontal(0)
 LAH_Justify = {}
---- @type LabelAlignHorizontal
+--- @type LabelAlignHorizontal LabelAlignHorizontal(1)
 LAH_Left = {}
---- @type LabelAlignHorizontal
+--- @type LabelAlignHorizontal LabelAlignHorizontal(3)
 LAH_Right = {}
 
 --- @class LabelAlignVertical: userdata
 
---- @type LabelAlignVertical
+--- @type LabelAlignVertical LabelAlignVertical(3)
 LAV_Bottom = {}
---- @type LabelAlignVertical
+--- @type LabelAlignVertical LabelAlignVertical(2)
 LAV_Center = {}
---- @type LabelAlignVertical
+--- @type LabelAlignVertical 
 LAV_Count = {}
---- @type LabelAlignVertical
+--- @type LabelAlignVertical LabelAlignVertical(0)
 LAV_None = {}
---- @type LabelAlignVertical
+--- @type LabelAlignVertical LabelAlignVertical(1)
 LAV_Top = {}
 
 --- @class LoopType: userdata
 
---- @type LoopType
+--- @type LoopType 
 LOOP_INVALID = {}
---- @type LoopType
+--- @type LoopType LoopType(0)
 LOOP_NONE = {}
---- @type LoopType
+--- @type LoopType LoopType(1)
 LOOP_NORMAL = {}
---- @type LoopType
+--- @type LoopType LoopType(2)
 LOOP_TOGGLE_DIRECTION = {}
 
 --- @class ModalAbilityPhase: userdata
 
---- @type ModalAbilityPhase
+--- @type ModalAbilityPhase 
 Cancelled = {}
---- @type ModalAbilityPhase
+--- @type ModalAbilityPhase 
 Count = {}
---- @type ModalAbilityPhase
+--- @type ModalAbilityPhase 
 Facing = {}
---- @type ModalAbilityPhase
+--- @type ModalAbilityPhase 
 Issued = {}
---- @type ModalAbilityPhase
+--- @type ModalAbilityPhase 
 None = {}
---- @type ModalAbilityPhase
+--- @type ModalAbilityPhase 
 Position = {}
---- @type ModalAbilityPhase
+--- @type ModalAbilityPhase 
 TargetingPhase = {}
---- @type ModalAbilityPhase
+--- @type ModalAbilityPhase 
 TargetingPhase = {}
---- @type ModalAbilityPhase
+--- @type ModalAbilityPhase 
 TargetingPhase = {}
---- @type ModalAbilityPhase
+--- @type ModalAbilityPhase 
 TargetingPhase = {}
---- @type ModalAbilityPhase
+--- @type ModalAbilityPhase 
 TargetingPhase = {}
---- @type ModalAbilityPhase
+--- @type ModalAbilityPhase 
 TargetingPhase = {}
---- @type ModalAbilityPhase
+--- @type ModalAbilityPhase ModalAbilityPhase(3)
 TP_Cancelled = {}
---- @type ModalAbilityPhase
+--- @type ModalAbilityPhase 
 TP_Count = {}
---- @type ModalAbilityPhase
+--- @type ModalAbilityPhase ModalAbilityPhase(1)
 TP_Facing = {}
---- @type ModalAbilityPhase
+--- @type ModalAbilityPhase ModalAbilityPhase(2)
 TP_Issued = {}
---- @type ModalAbilityPhase
+--- @type ModalAbilityPhase 
 TP_None = {}
---- @type ModalAbilityPhase
+--- @type ModalAbilityPhase ModalAbilityPhase(0)
 TP_Position = {}
 
 --- @class ModifierApplicationType: userdata
 
---- @type ModifierApplicationType
+--- @type ModifierApplicationType ModifierApplicationType(8)
 MAT_Ability = {}
---- @type ModifierApplicationType
+--- @type ModifierApplicationType ModifierApplicationType(13)
 MAT_AbilityTypeAndDescendants = {}
---- @type ModifierApplicationType
+--- @type ModifierApplicationType ModifierApplicationType(1)
 MAT_Entity = {}
---- @type ModifierApplicationType
+--- @type ModifierApplicationType ModifierApplicationType(0)
 MAT_EntityType = {}
---- @type ModifierApplicationType
+--- @type ModifierApplicationType ModifierApplicationType(9)
 MAT_EntityTypeAndDescendants = {}
---- @type ModifierApplicationType
+--- @type ModifierApplicationType 
 MAT_NUMBER_OF_TYPES = {}
---- @type ModifierApplicationType
+--- @type ModifierApplicationType ModifierApplicationType(2)
 MAT_Player = {}
---- @type ModifierApplicationType
+--- @type ModifierApplicationType ModifierApplicationType(3)
 MAT_Squad = {}
---- @type ModifierApplicationType
+--- @type ModifierApplicationType ModifierApplicationType(4)
 MAT_SquadType = {}
---- @type ModifierApplicationType
+--- @type ModifierApplicationType ModifierApplicationType(10)
 MAT_SquadTypeAndDescendants = {}
---- @type ModifierApplicationType
+--- @type ModifierApplicationType ModifierApplicationType(7)
 MAT_Upgrade = {}
---- @type ModifierApplicationType
+--- @type ModifierApplicationType ModifierApplicationType(12)
 MAT_UpgradeTypeAndDescendants = {}
---- @type ModifierApplicationType
+--- @type ModifierApplicationType ModifierApplicationType(5)
 MAT_Weapon = {}
---- @type ModifierApplicationType
+--- @type ModifierApplicationType 
 MAT_WeaponCategory = {}
---- @type ModifierApplicationType
+--- @type ModifierApplicationType ModifierApplicationType(6)
 MAT_WeaponType = {}
---- @type ModifierApplicationType
+--- @type ModifierApplicationType ModifierApplicationType(14)
 MAT_WeaponTypeAndDescendants = {}
 
 --- @class ModifierUsageType: userdata
 
---- @type ModifierUsageType
+--- @type ModifierUsageType ModifierUsageType(0)
 MUT_Addition = {}
---- @type ModifierUsageType
+--- @type ModifierUsageType ModifierUsageType(3)
 MUT_Enable = {}
---- @type ModifierUsageType
+--- @type ModifierUsageType ModifierUsageType(1)
 MUT_Multiplication = {}
---- @type ModifierUsageType
+--- @type ModifierUsageType ModifierUsageType(4)
 MUT_MultiplicationAddition = {}
---- @type ModifierUsageType
+--- @type ModifierUsageType ModifierUsageType(2)
 MUT_MultiplyAdd = {}
---- @type ModifierUsageType
+--- @type ModifierUsageType 
 MUT_NUMBER_OF_TYPES = {}
---- @type ModifierUsageType
+--- @type ModifierUsageType ModifierUsageType(5)
 MUT_Set = {}
 
 --- @class MoodMode: userdata
 
---- @type MoodMode
+--- @type MoodMode MoodMode(0)
 MM_Auto = {}
---- @type MoodMode
+--- @type MoodMode MoodMode(2)
 MM_ForceCalm = {}
---- @type MoodMode
+--- @type MoodMode MoodMode(1)
 MM_ForceTense = {}
---- @type MoodMode
+--- @type MoodMode 
 MM_NumMoodModes = {}
 
 --- @class ObjectiveFunction: userdata
 
---- @type ObjectiveFunction
+--- @type ObjectiveFunction ObjectiveFunction(3)
 FN_LuaTableQuery = {}
---- @type ObjectiveFunction
+--- @type ObjectiveFunction 
 FN_NumFunctions = {}
---- @type ObjectiveFunction
+--- @type ObjectiveFunction ObjectiveFunction(2)
 FN_OnActivate = {}
---- @type ObjectiveFunction
+--- @type ObjectiveFunction ObjectiveFunction(1)
 FN_OnSelect = {}
---- @type ObjectiveFunction
+--- @type ObjectiveFunction ObjectiveFunction(0)
 FN_OnShow = {}
 
 --- @class ObjectiveState: userdata
 
---- @type ObjectiveState
+--- @type ObjectiveState 
 Disabled = {}
---- @type ObjectiveState
+--- @type ObjectiveState 
 IdleDisplacement = {}
---- @type ObjectiveState
+--- @type ObjectiveState 
 StrafeEntry = {}
 
 --- @class ObjectiveType: userdata
 
---- @type ObjectiveType
+--- @type ObjectiveType ObjectiveType(2)
 OT_Bonus = {}
---- @type ObjectiveType
+--- @type ObjectiveType ObjectiveType(3)
 OT_Information = {}
---- @type ObjectiveType
+--- @type ObjectiveType 
 OT_NumTypes = {}
---- @type ObjectiveType
+--- @type ObjectiveType ObjectiveType(0)
 OT_Primary = {}
---- @type ObjectiveType
+--- @type ObjectiveType ObjectiveType(1)
 OT_Secondary = {}
 
 --- @class OwnerType: userdata
 
---- @type OwnerType
+--- @type OwnerType 
 Default = {}
---- @type OwnerType
+--- @type OwnerType 
 LocalEntity = {}
---- @type OwnerType
+--- @type OwnerType 
 LocalSquad = {}
---- @type OwnerType
+--- @type OwnerType 
 Player = {}
 
 --- @class PlayerCommandType: userdata
 
---- @type PlayerCommandType
+--- @type PlayerCommandType 
 FCMD_COUNT = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType PlayerCommandType(132)
 PCMD_Ability = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType PlayerCommandType(144)
 PCMD_AIPlayer = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType PlayerCommandType(145)
 PCMD_AIPlayer_EncounterNotification = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType PlayerCommandType(149)
 PCMD_AIPlayer_EncounterSniped = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType PlayerCommandType(150)
 PCMD_AIPlayer_ResourceBonus = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType 
 PCMD_BroadcastMessage = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType PlayerCommandType(142)
 PCMD_CancelProduction = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType 
 PCMD_ChatCheat = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType PlayerCommandType(133)
 PCMD_CheatBuildTime = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType PlayerCommandType(134)
 PCMD_CheatIgnoreCosts = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType PlayerCommandType(130)
 PCMD_CheatResources = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType PlayerCommandType(131)
 PCMD_CheatRevealAll = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType 
 PCMD_COUNT = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType PlayerCommandType(143)
 PCMD_DetonateCharges = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType 
 PCMD_EndTurn = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType PlayerCommandType(152)
 PCMD_FormationSquadGroupAddSquad = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType PlayerCommandType(151)
 PCMD_FormationSquadGroupCreateBegin = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType PlayerCommandType(153)
 PCMD_FormationSquadGroupCreateEnd = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType PlayerCommandType(136)
 PCMD_InstantUpgrade = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType PlayerCommandType(128)
 PCMD_PlaceAndConstructEntities = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType PlayerCommandType(129)
 PCMD_ResourceDonation = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType 
 PCMD_SlotItemRemove = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType PlayerCommandType(155)
 PCMD_StopAbility = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType PlayerCommandType(146)
 PCMD_Surrender = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType 
 PCMD_TentativeUpgrade = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType 
 PCMD_TentativeUpgradePurchaseAll = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType 
 PCMD_TentativeUpgradeRemoveAll = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType PlayerCommandType(135)
 PCMD_Upgrade = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType PlayerCommandType(139)
 PCMD_UpgradeRemove = {}
---- @type PlayerCommandType
+--- @type PlayerCommandType 
 PCMD_WaitObjectDone = {}
 
 --- @class PlayerState: userdata
 
---- @type PlayerState
+--- @type PlayerState PlayerState(1)
 ABORTED = {}
---- @type PlayerState
+--- @type PlayerState PlayerState(10)
 COUNT = {}
---- @type PlayerState
+--- @type PlayerState PlayerState(0)
 DISCONNECTED = {}
---- @type PlayerState
+--- @type PlayerState PlayerState(9)
 INVALID = {}
---- @type PlayerState
+--- @type PlayerState PlayerState(4)
 KICKED = {}
---- @type PlayerState
+--- @type PlayerState PlayerState(3)
 KILLED = {}
---- @type PlayerState
+--- @type PlayerState 
 LOST = {}
---- @type PlayerState
+--- @type PlayerState PlayerState(2)
 OUTOFSYNC = {}
---- @type PlayerState
+--- @type PlayerState PlayerState(6)
 PLAYING = {}
---- @type PlayerState
+--- @type PlayerState PlayerState(7)
 SURRENDERED = {}
---- @type PlayerState
+--- @type PlayerState PlayerState(5)
 WON = {}
 
---- @class PresentationEventType: userdata
+--- @class PresentationEventType: number
 
---- @type PresentationEventType
-GE_CommandReceiverStatusUpdate = {}
---- @type PresentationEventType
-GE_CommandStatusUpdate = {}
---- @type PresentationEventType
-GE_DefaultCommandIssued = {}
---- @type PresentationEventType
-GE_EntityCommandIssued = {}
---- @type PresentationEventType
-GE_EntityPrecached = {}
---- @type PresentationEventType
-GE_FormationSquadGroupCommandIssued = {}
---- @type PresentationEventType
-GE_GameOver = {}
---- @type PresentationEventType
-GE_GameStart = {}
---- @type PresentationEventType
-GE_MusicIntensityChange = {}
---- @type PresentationEventType
-GE_Ping = {}
---- @type PresentationEventType
-GE_PlayerCommandIssued = {}
---- @type PresentationEventType
-GE_PlayerDropped = {}
---- @type PresentationEventType
-GE_PlayerEndStateChanged = {}
---- @type PresentationEventType
-GE_PlayerHostMigrated = {}
---- @type PresentationEventType
-GE_PlayerKicked = {}
---- @type PresentationEventType
-GE_PlayerKilled = {}
---- @type PresentationEventType
-GE_PlayerLagComplaint = {}
---- @type PresentationEventType
-GE_PlayerLose = {}
---- @type PresentationEventType
-GE_PlayerPingOfShame = {}
---- @type PresentationEventType
-GE_PlayerPingOfShameLocal = {}
---- @type PresentationEventType
-GE_PlayerWin = {}
---- @type PresentationEventType
+--- @type PresentationEventType 
+GE_CommandReceiverStatusUpdate = 1704192
+--- @type PresentationEventType 
+GE_CommandStatusUpdate = 1638656
+--- @type PresentationEventType 
+GE_DefaultCommandIssued = 852224
+--- @type PresentationEventType 
+GE_EntityCommandIssued = 721152
+--- @type PresentationEventType 
+GE_EntityPrecached = 1179904
+--- @type PresentationEventType 
+GE_FormationSquadGroupCommandIssued = 590080
+--- @type PresentationEventType 
+GE_GameOver = 983296
+--- @type PresentationEventType 
+GE_GameStart = 917760
+--- @type PresentationEventType 
+GE_MusicIntensityChange = 1769728
+--- @type PresentationEventType 
+GE_Ping = 459008
+--- @type PresentationEventType 
+GE_PlayerCommandIssued = 786688
+--- @type PresentationEventType 
+GE_PlayerDropped = 196864
+--- @type PresentationEventType 
+GE_PlayerEndStateChanged = 2162944
+--- @type PresentationEventType 
+GE_PlayerHostMigrated = 393472
+--- @type PresentationEventType 
+GE_PlayerKicked = 262400
+--- @type PresentationEventType 
+GE_PlayerKilled = 327936
+--- @type PresentationEventType 
+GE_PlayerLagComplaint = 131328
+--- @type PresentationEventType 
+GE_PlayerLose = 1114368
+--- @type PresentationEventType 
+GE_PlayerPingOfShame = 256
+--- @type PresentationEventType 
+GE_PlayerPingOfShameLocal = 65792
+--- @type PresentationEventType 
+GE_PlayerWin = 1048832
+--- @type PresentationEventType 
 GE_PresentationSoundEvent = {}
---- @type PresentationEventType
-GE_SectorOutOfSupply = {}
---- @type PresentationEventType
-GE_SelectionChanged = {}
---- @type PresentationEventType
-GE_SpeechTelemetryEvent = {}
---- @type PresentationEventType
-GE_SquadAudioGameObjectRemoved = {}
---- @type PresentationEventType
-GE_SquadBuildCommandIssued = {}
---- @type PresentationEventType
-GE_SquadCommandIssued = {}
---- @type PresentationEventType
+--- @type PresentationEventType 
+GE_SectorOutOfSupply = 9961472
+--- @type PresentationEventType 
+GE_SelectionChanged = 1442048
+--- @type PresentationEventType 
+GE_SpeechTelemetryEvent = 2097408
+--- @type PresentationEventType 
+GE_SquadAudioGameObjectRemoved = 1310976
+--- @type PresentationEventType 
+GE_SquadBuildCommandIssued = 524544
+--- @type PresentationEventType 
+GE_SquadCommandIssued = 655616
+--- @type PresentationEventType 
 GE_SquadHitEvent = {}
---- @type PresentationEventType
-GE_SquadPrecached = {}
---- @type PresentationEventType
-GE_SubselectionChanged = {}
---- @type PresentationEventType
+--- @type PresentationEventType 
+GE_SquadPrecached = 1245440
+--- @type PresentationEventType 
+GE_SubselectionChanged = 1507584
+--- @type PresentationEventType 
 PE_ControlGroupChanged = {}
---- @type PresentationEventType
+--- @type PresentationEventType 
 PE_PlayerWinOrLose = {}
---- @type PresentationEventType
+--- @type PresentationEventType 
 PE_Taunt = {}
---- @type PresentationEventType
+--- @type PresentationEventType 
 PresentationEvent_Count = {}
 
 --- @class ProductionItemType: userdata
 
---- @type ProductionItemType
+--- @type ProductionItemType 
 Count = {}
---- @type ProductionItemType
+--- @type ProductionItemType ProductionItemType(4)
 PITEM_PlayerUpgrade = {}
---- @type ProductionItemType
+--- @type ProductionItemType ProductionItemType(1)
 PITEM_Spawn = {}
---- @type ProductionItemType
+--- @type ProductionItemType ProductionItemType(3)
 PITEM_SquadReinforce = {}
---- @type ProductionItemType
+--- @type ProductionItemType ProductionItemType(2)
 PITEM_SquadUpgrade = {}
---- @type ProductionItemType
+--- @type ProductionItemType ProductionItemType(0)
 PITEM_Upgrade = {}
---- @type ProductionItemType
+--- @type ProductionItemType 
 SelfConstructed = {}
 
 --- @class RuleComparison: userdata
 
---- @type RuleComparison
+--- @type RuleComparison RuleComparison(0)
 IS_EQUAL = {}
---- @type RuleComparison
+--- @type RuleComparison RuleComparison(4)
 IS_GREATER_THAN = {}
---- @type RuleComparison
+--- @type RuleComparison RuleComparison(5)
 IS_GREATER_THAN_OR_EQUAL = {}
---- @type RuleComparison
+--- @type RuleComparison RuleComparison(2)
 IS_LESS_THAN = {}
---- @type RuleComparison
+--- @type RuleComparison RuleComparison(3)
 IS_LESS_THAN_OR_EQUAL = {}
---- @type RuleComparison
+--- @type RuleComparison RuleComparison(1)
 IS_NOT_EQUAL = {}
 
 --- @class RuleSelection: userdata
 
---- @type RuleSelection
+--- @type RuleSelection RuleSelection(0)
 ALL_UNITS = {}
---- @type RuleSelection
+--- @type RuleSelection RuleSelection(1)
 ANY_ENTITY = {}
---- @type RuleSelection
+--- @type RuleSelection RuleSelection(2)
 ANY_SQUAD = {}
 
 --- @class SaveTriggerType: userdata
 
---- @type SaveTriggerType
+--- @type SaveTriggerType 
 STT_Auto = {}
---- @type SaveTriggerType
+--- @type SaveTriggerType 
 STT_Count = {}
---- @type SaveTriggerType
+--- @type SaveTriggerType 
 STT_Dev = {}
---- @type SaveTriggerType
+--- @type SaveTriggerType 
 STT_Quick = {}
---- @type SaveTriggerType
+--- @type SaveTriggerType 
 STT_Standard = {}
 
 --- @class ScarType: userdata
 
---- @type ScarType
+--- @type ScarType ScarType(23)
 ST_AIENCOUNTER = {}
---- @type ScarType
+--- @type ScarType ScarType(22)
 ST_AIENTITY = {}
---- @type ScarType
+--- @type ScarType ScarType(20)
 ST_AIPLAYER = {}
---- @type ScarType
+--- @type ScarType ScarType(21)
 ST_AISQUAD = {}
---- @type ScarType
+--- @type ScarType ScarType(1)
 ST_BOOLEAN = {}
---- @type ScarType
+--- @type ScarType ScarType(12)
 ST_CONSTENTITY = {}
---- @type ScarType
+--- @type ScarType ScarType(17)
 ST_CONSTPLAYER = {}
---- @type ScarType
+--- @type ScarType ScarType(15)
 ST_CONSTSQUAD = {}
---- @type ScarType
+--- @type ScarType 
 ST_CONSTVALTABLE = {}
---- @type ScarType
+--- @type ScarType 
 ST_Count = {}
---- @type ScarType
+--- @type ScarType 
 ST_CUSTOM_TYPES_COUNT = {}
---- @type ScarType
+--- @type ScarType 
 ST_CUSTOM_TYPES_END = {}
---- @type ScarType
+--- @type ScarType 
 ST_CUSTOM_TYPES_END = {}
---- @type ScarType
+--- @type ScarType 
 ST_CUSTOM_TYPES_START = {}
---- @type ScarType
+--- @type ScarType 
 ST_CUSTOM_TYPES_START = {}
---- @type ScarType
+--- @type ScarType 
 ST_CUSTOM_TYPES_START = {}
---- @type ScarType
+--- @type ScarType ScarType(10)
 ST_EGROUP = {}
---- @type ScarType
+--- @type ScarType ScarType(11)
 ST_ENTITY = {}
---- @type ScarType
+--- @type ScarType ScarType(8)
 ST_ENUM = {}
---- @type ScarType
+--- @type ScarType ScarType(7)
 ST_FUNCTION = {}
---- @type ScarType
+--- @type ScarType 
 ST_INTEGER = {}
---- @type ScarType
+--- @type ScarType ScarType(24)
 ST_LOCSTRING = {}
---- @type ScarType
+--- @type ScarType ScarType(18)
 ST_MARKER = {}
---- @type ScarType
+--- @type ScarType ScarType(25)
 ST_MODIFIER = {}
---- @type ScarType
+--- @type ScarType ScarType(0)
 ST_NIL = {}
---- @type ScarType
+--- @type ScarType ScarType(2)
 ST_NUMBER = {}
---- @type ScarType
+--- @type ScarType ScarType(19)
 ST_PBG = {}
---- @type ScarType
+--- @type ScarType ScarType(16)
 ST_PLAYER = {}
---- @type ScarType
+--- @type ScarType ScarType(28)
 ST_PREFAB = {}
---- @type ScarType
+--- @type ScarType ScarType(26)
 ST_RESOURCEAMOUNT = {}
---- @type ScarType
+--- @type ScarType ScarType(9)
 ST_SCARPOS = {}
---- @type ScarType
+--- @type ScarType ScarType(13)
 ST_SGROUP = {}
---- @type ScarType
+--- @type ScarType ScarType(29)
 ST_SPLAT = {}
---- @type ScarType
+--- @type ScarType ScarType(29)
 ST_SPLAT = {}
---- @type ScarType
+--- @type ScarType ScarType(14)
 ST_SQUAD = {}
---- @type ScarType
+--- @type ScarType ScarType(4)
 ST_STRING = {}
---- @type ScarType
+--- @type ScarType ScarType(5)
 ST_TABLE = {}
---- @type ScarType
+--- @type ScarType ScarType(27)
 ST_UIGAMEITEMINFO = {}
---- @type ScarType
+--- @type ScarType ScarType(30)
 ST_UNKNOWN = {}
 
---- @class SimulationEventType: userdata
+--- @class SimulationEventType: number
 
---- @type SimulationEventType
-GE_AbilityCanCast = {}
---- @type SimulationEventType
-GE_AbilityComplete = {}
---- @type SimulationEventType
-GE_AbilityExecuted = {}
---- @type SimulationEventType
-GE_AbilityRecharged = {}
---- @type SimulationEventType
-GE_AccessoryWeaponFired = {}
---- @type SimulationEventType
-GE_AIPlayer_EncounterNotification = {}
---- @type SimulationEventType
-GE_AIPlayer_EncounterSniped = {}
---- @type SimulationEventType
-GE_AIPlayer_Migrated = {}
---- @type SimulationEventType
-GE_AITakeOver = {}
---- @type SimulationEventType
-GE_AnimatorSwap = {}
---- @type SimulationEventType
-GE_ArtilleryFired = {}
---- @type SimulationEventType
-GE_BoobyTrapTriggered = {}
---- @type SimulationEventType
-GE_BroadcastMessage = {}
---- @type SimulationEventType
-GE_BuildItemCancelled = {}
---- @type SimulationEventType
-GE_BuildItemComplete = {}
---- @type SimulationEventType
-GE_BuildItemStart = {}
---- @type SimulationEventType
-GE_CasualtySquadSpawned = {}
---- @type SimulationEventType
-GE_ChallengeCustomEvent = {}
---- @type SimulationEventType
-GE_CommandReceiverStatusUpdate = {}
---- @type SimulationEventType
-GE_CommandStatusUpdate = {}
---- @type SimulationEventType
-GE_ConstructionCancelled = {}
---- @type SimulationEventType
-GE_ConstructionComplete = {}
---- @type SimulationEventType
-GE_ConstructionFieldComplete = {}
---- @type SimulationEventType
-GE_ConstructionPlanComplete = {}
---- @type SimulationEventType
-GE_ConstructionStart = {}
---- @type SimulationEventType
-GE_CustomUIEvent = {}
---- @type SimulationEventType
-GE_DamageArea = {}
---- @type SimulationEventType
-GE_DamageReceived = {}
---- @type SimulationEventType
-GE_DistrictChanged = {}
---- @type SimulationEventType
-GE_DistrictCreated = {}
---- @type SimulationEventType
-GE_DistrictRatingChanged = {}
---- @type SimulationEventType
-GE_DistrictRemoved = {}
---- @type SimulationEventType
-GE_DriverDecrewed = {}
---- @type SimulationEventType
-GE_DriverRecrewed = {}
---- @type SimulationEventType
-GE_EnemyActivitySpotted = {}
---- @type SimulationEventType
-GE_EnemyTerritoryEntered = {}
---- @type SimulationEventType
-GE_EntityAbandoned = {}
---- @type SimulationEventType
-GE_EntityBlueprintChanged = {}
---- @type SimulationEventType
-GE_EntityCrushed = {}
---- @type SimulationEventType
-GE_EntityDespawn = {}
---- @type SimulationEventType
-GE_EntityKilled = {}
---- @type SimulationEventType
+--- @type SimulationEventType 
+GE_AbilityCanCast = 8323072
+--- @type SimulationEventType 
+GE_AbilityComplete = 2555904
+--- @type SimulationEventType 
+GE_AbilityExecuted = 2490368
+--- @type SimulationEventType 
+GE_AbilityRecharged = 2621440
+--- @type SimulationEventType 
+GE_AccessoryWeaponFired = 3014656
+--- @type SimulationEventType 
+GE_AIPlayer_EncounterNotification = 6946816
+--- @type SimulationEventType 
+GE_AIPlayer_EncounterSniped = 7012352
+--- @type SimulationEventType 
+GE_AIPlayer_Migrated = 7077888
+--- @type SimulationEventType 
+GE_AITakeOver = 6881280
+--- @type SimulationEventType 
+GE_AnimatorSwap = 9175040
+--- @type SimulationEventType 
+GE_ArtilleryFired = 2293760
+--- @type SimulationEventType 
+GE_BoobyTrapTriggered = 3407872
+--- @type SimulationEventType 
+GE_BroadcastMessage = 8126464
+--- @type SimulationEventType 
+GE_BuildItemCancelled = 8388608
+--- @type SimulationEventType 
+GE_BuildItemComplete = 1703936
+--- @type SimulationEventType 
+GE_BuildItemStart = 1638400
+--- @type SimulationEventType 
+GE_CasualtySquadSpawned = 4521984
+--- @type SimulationEventType 
+GE_ChallengeCustomEvent = 9764864
+--- @type SimulationEventType 
+GE_CommandReceiverStatusUpdate = 1704192
+--- @type SimulationEventType 
+GE_CommandStatusUpdate = 1638656
+--- @type SimulationEventType 
+GE_ConstructionCancelled = 983040
+--- @type SimulationEventType 
+GE_ConstructionComplete = 1048576
+--- @type SimulationEventType 
+GE_ConstructionFieldComplete = 1179648
+--- @type SimulationEventType 
+GE_ConstructionPlanComplete = 1114112
+--- @type SimulationEventType 
+GE_ConstructionStart = 917504
+--- @type SimulationEventType 
+GE_CustomUIEvent = 7536640
+--- @type SimulationEventType 
+GE_DamageArea = 7340032
+--- @type SimulationEventType 
+GE_DamageReceived = 5505024
+--- @type SimulationEventType 
+GE_DistrictChanged = 9502720
+--- @type SimulationEventType 
+GE_DistrictCreated = 9371648
+--- @type SimulationEventType 
+GE_DistrictRatingChanged = 9568256
+--- @type SimulationEventType 
+GE_DistrictRemoved = 9437184
+--- @type SimulationEventType 
+GE_DriverDecrewed = 7667712
+--- @type SimulationEventType 
+GE_DriverRecrewed = 7733248
+--- @type SimulationEventType 
+GE_EnemyActivitySpotted = 8257536
+--- @type SimulationEventType 
+GE_EnemyTerritoryEntered = 6422528
+--- @type SimulationEventType 
+GE_EntityAbandoned = 3538944
+--- @type SimulationEventType 
+GE_EntityBlueprintChanged = 393216
+--- @type SimulationEventType 
+GE_EntityCrushed = 589824
+--- @type SimulationEventType 
+GE_EntityDespawn = 262144
+--- @type SimulationEventType 
+GE_EntityKilled = 458752
+--- @type SimulationEventType 
 GE_EntityLandmarkDestroyed = {}
---- @type SimulationEventType
-GE_EntityOwnerChange = {}
---- @type SimulationEventType
-GE_EntityParadropComplete = {}
---- @type SimulationEventType
-GE_EntityRecrewed = {}
---- @type SimulationEventType
-GE_EntityRestored = {}
---- @type SimulationEventType
-GE_EntitySelectionVisualChanged = {}
---- @type SimulationEventType
-GE_EntitySpawn = {}
---- @type SimulationEventType
-GE_EntityTeleported = {}
---- @type SimulationEventType
-GE_EntityWrecked = {}
---- @type SimulationEventType
-GE_ExperienceGranted = {}
---- @type SimulationEventType
-GE_FieldSupportChange = {}
---- @type SimulationEventType
-GE_Garrison = {}
---- @type SimulationEventType
-GE_GarrisonSquad = {}
---- @type SimulationEventType
-GE_ImportantUnitSighted = {}
---- @type SimulationEventType
-GE_InfluenceUpdate = {}
---- @type SimulationEventType
-GE_ItemAvailabilityChanged = {}
---- @type SimulationEventType
+--- @type SimulationEventType 
+GE_EntityOwnerChange = 327680
+--- @type SimulationEventType 
+GE_EntityParadropComplete = 2359296
+--- @type SimulationEventType 
+GE_EntityRecrewed = 3604480
+--- @type SimulationEventType 
+GE_EntityRestored = 720896
+--- @type SimulationEventType 
+GE_EntitySelectionVisualChanged = 9043968
+--- @type SimulationEventType 
+GE_EntitySpawn = 196608
+--- @type SimulationEventType 
+GE_EntityTeleported = 524288
+--- @type SimulationEventType 
+GE_EntityWrecked = 655360
+--- @type SimulationEventType 
+GE_ExperienceGranted = 5570560
+--- @type SimulationEventType 
+GE_FieldSupportChange = 3670016
+--- @type SimulationEventType 
+GE_Garrison = 1507328
+--- @type SimulationEventType 
+GE_GarrisonSquad = 1572864
+--- @type SimulationEventType 
+GE_ImportantUnitSighted = 3473408
+--- @type SimulationEventType 
+GE_InfluenceUpdate = 9633792
+--- @type SimulationEventType 
+GE_ItemAvailabilityChanged = 7929856
+--- @type SimulationEventType 
 GE_LocalPlayerChanged = {}
---- @type SimulationEventType
-GE_MineDefused = {}
---- @type SimulationEventType
-GE_MoveFailed = {}
---- @type SimulationEventType
+--- @type SimulationEventType 
+GE_MineDefused = 2424832
+--- @type SimulationEventType 
+GE_MoveFailed = 3145728
+--- @type SimulationEventType 
 GE_MovementNodeUpdated = {}
---- @type SimulationEventType
-GE_NonGlobalCamoDetected = {}
---- @type SimulationEventType
-GE_OccupiedBuildingChangedOwner = {}
---- @type SimulationEventType
-GE_OnHealthExtBPConvert = {}
---- @type SimulationEventType
-GE_PathfindingBlockersUpdated = {}
---- @type SimulationEventType
-GE_PathfindingCanBuildBlockersAdded = {}
---- @type SimulationEventType
-GE_PathfindingCanBuildBlockersRemoved = {}
---- @type SimulationEventType
-GE_PathFound = {}
---- @type SimulationEventType
-GE_PlannedStructureCancelled = {}
---- @type SimulationEventType
-GE_PlannedStructurePlaced = {}
---- @type SimulationEventType
-GE_PlayerAddEntity = {}
---- @type SimulationEventType
-GE_PlayerAddResource = {}
---- @type SimulationEventType
-GE_PlayerBeingAttacked = {}
---- @type SimulationEventType
-GE_PlayerCheat = {}
---- @type SimulationEventType
-GE_PlayerDebug_DELETED = {}
---- @type SimulationEventType
-GE_PlayerDebugBuildOrder = {}
---- @type SimulationEventType
-GE_PlayerDebugBuildTime = {}
---- @type SimulationEventType
-GE_PlayerDebugDestroy = {}
---- @type SimulationEventType
-GE_PlayerDebugEndMatch = {}
---- @type SimulationEventType
-GE_PlayerDebugFogOfWar = {}
---- @type SimulationEventType
-GE_PlayerDonation = {}
---- @type SimulationEventType
-GE_PlayerFormationFinalized = {}
---- @type SimulationEventType
-GE_PlayerNameChanged = {}
---- @type SimulationEventType
-GE_PlayerObjectiveChanged = {}
---- @type SimulationEventType
-GE_PlayerObjectiveDeleted = {}
---- @type SimulationEventType
-GE_PlayerPhaseUp = {}
---- @type SimulationEventType
-GE_PlayerRemoveEntity = {}
---- @type SimulationEventType
-GE_PlayerRemoveSquad = {}
---- @type SimulationEventType
-GE_PlayerResourcesAwarded = {}
---- @type SimulationEventType
-GE_PlayerSetResource = {}
---- @type SimulationEventType
-GE_PlayerSquadInitialized = {}
---- @type SimulationEventType
-GE_PlayerSubResource = {}
---- @type SimulationEventType
-GE_PlayerSurrendered = {}
---- @type SimulationEventType
-GE_PlayerTeamIdUpdated = {}
---- @type SimulationEventType
-GE_ProjectileFired = {}
---- @type SimulationEventType
-GE_ProjectileLanded = {}
---- @type SimulationEventType
-GE_ReinforcementCreated = {}
---- @type SimulationEventType
-GE_ResourceDepleted = {}
---- @type SimulationEventType
-GE_ResourceGathererAtCapacity = {}
---- @type SimulationEventType
-GE_SectorLinkProviderChanged = {}
---- @type SimulationEventType
-GE_SectorOutOfSupply = {}
---- @type SimulationEventType
-GE_SpawnActionComplete = {}
---- @type SimulationEventType
-GE_SpeechAction = {}
---- @type SimulationEventType
-GE_SpeechWarningAction = {}
---- @type SimulationEventType
-GE_SquadCalledIn = {}
---- @type SimulationEventType
-GE_SquadCold = {}
---- @type SimulationEventType
-GE_SquadFormation = {}
---- @type SimulationEventType
-GE_SquadFreezing = {}
---- @type SimulationEventType
-GE_SquadIdleEnter = {}
---- @type SimulationEventType
-GE_SquadIdleExit = {}
---- @type SimulationEventType
-GE_SquadItemDeposit = {}
---- @type SimulationEventType
-GE_SquadItemPickup = {}
---- @type SimulationEventType
-GE_SquadKilled = {}
---- @type SimulationEventType
-GE_SquadMembersChanged = {}
---- @type SimulationEventType
-GE_SquadMerge = {}
---- @type SimulationEventType
-GE_SquadOwnerChange = {}
---- @type SimulationEventType
-GE_SquadParadropComplete = {}
---- @type SimulationEventType
-GE_SquadPinned = {}
---- @type SimulationEventType
-GE_SquadProductionQueue = {}
---- @type SimulationEventType
-GE_SquadReplaced = {}
---- @type SimulationEventType
-GE_SquadRetreat = {}
---- @type SimulationEventType
-GE_SquadRetreatMsgReceived = {}
---- @type SimulationEventType
-GE_SquadSizeChanged = {}
---- @type SimulationEventType
-GE_SquadSpawn = {}
---- @type SimulationEventType
-GE_SquadSplit = {}
---- @type SimulationEventType
-GE_SquadTeleported = {}
---- @type SimulationEventType
-GE_SquadUnloaded = {}
---- @type SimulationEventType
-GE_SquadVeterancyRank = {}
---- @type SimulationEventType
-GE_StatsCustomEvent = {}
---- @type SimulationEventType
-GE_StrategicPointChanged = {}
---- @type SimulationEventType
-GE_StructureReplaced = {}
---- @type SimulationEventType
-GE_SuperAbility = {}
---- @type SimulationEventType
-GE_TerrainAreaDeformed = {}
---- @type SimulationEventType
-GE_TerritoryCornerDeoccupied = {}
---- @type SimulationEventType
-GE_TerritoryEdgeDeoccupied = {}
---- @type SimulationEventType
-GE_TerritoryEntered = {}
---- @type SimulationEventType
-GE_TickerValuesUpdated = {}
---- @type SimulationEventType
-GE_UpgradeCancelled = {}
---- @type SimulationEventType
-GE_UpgradeComplete = {}
---- @type SimulationEventType
-GE_UpgradeRemoved = {}
---- @type SimulationEventType
-GE_UpgradeStart = {}
---- @type SimulationEventType
-GE_UpgradeTentative = {}
---- @type SimulationEventType
-GE_WaitObjectDone = {}
---- @type SimulationEventType
-GE_WalkableSurfacePurgeOrphans = {}
---- @type SimulationEventType
-GE_WallCombatEnded = {}
---- @type SimulationEventType
-GE_WallCombatStarted = {}
---- @type SimulationEventType
-GE_WallWalked = {}
---- @type SimulationEventType
+--- @type SimulationEventType 
+GE_NonGlobalCamoDetected = 2228224
+--- @type SimulationEventType 
+GE_OccupiedBuildingChangedOwner = 1376256
+--- @type SimulationEventType 
+GE_OnHealthExtBPConvert = 1441792
+--- @type SimulationEventType 
+GE_PathfindingBlockersUpdated = 3342336
+--- @type SimulationEventType 
+GE_PathfindingCanBuildBlockersAdded = 3211264
+--- @type SimulationEventType 
+GE_PathfindingCanBuildBlockersRemoved = 3276800
+--- @type SimulationEventType 
+GE_PathFound = 3080192
+--- @type SimulationEventType 
+GE_PlannedStructureCancelled = 1966080
+--- @type SimulationEventType 
+GE_PlannedStructurePlaced = 1900544
+--- @type SimulationEventType 
+GE_PlayerAddEntity = 8650752
+--- @type SimulationEventType 
+GE_PlayerAddResource = 8519680
+--- @type SimulationEventType 
+GE_PlayerBeingAttacked = 5439488
+--- @type SimulationEventType 
+GE_PlayerCheat = 5636096
+--- @type SimulationEventType 
+GE_PlayerDebug_DELETED = 5701632
+--- @type SimulationEventType 
+GE_PlayerDebugBuildOrder = 5963776
+--- @type SimulationEventType 
+GE_PlayerDebugBuildTime = 5898240
+--- @type SimulationEventType 
+GE_PlayerDebugDestroy = 6029312
+--- @type SimulationEventType 
+GE_PlayerDebugEndMatch = 5767168
+--- @type SimulationEventType 
+GE_PlayerDebugFogOfWar = 5832704
+--- @type SimulationEventType 
+GE_PlayerDonation = 6488064
+--- @type SimulationEventType 
+GE_PlayerFormationFinalized = 9109504
+--- @type SimulationEventType 
+GE_PlayerNameChanged = 6553600
+--- @type SimulationEventType 
+GE_PlayerObjectiveChanged = 6684672
+--- @type SimulationEventType 
+GE_PlayerObjectiveDeleted = 6619136
+--- @type SimulationEventType 
+GE_PlayerPhaseUp = 6750208
+--- @type SimulationEventType 
+GE_PlayerRemoveEntity = 8716288
+--- @type SimulationEventType 
+GE_PlayerRemoveSquad = 8847360
+--- @type SimulationEventType 
+GE_PlayerResourcesAwarded = 6815744
+--- @type SimulationEventType 
+GE_PlayerSetResource = 9699328
+--- @type SimulationEventType 
+GE_PlayerSquadInitialized = 8781824
+--- @type SimulationEventType 
+GE_PlayerSubResource = 8585216
+--- @type SimulationEventType 
+GE_PlayerSurrendered = 7471104
+--- @type SimulationEventType 
+GE_PlayerTeamIdUpdated = 8978432
+--- @type SimulationEventType 
+GE_ProjectileFired = 2686976
+--- @type SimulationEventType 
+GE_ProjectileLanded = 2752512
+--- @type SimulationEventType 
+GE_ReinforcementCreated = 1769472
+--- @type SimulationEventType 
+GE_ResourceDepleted = 2097152
+--- @type SimulationEventType 
+GE_ResourceGathererAtCapacity = 2162688
+--- @type SimulationEventType 
+GE_SectorLinkProviderChanged = 7602176
+--- @type SimulationEventType 
+GE_SectorOutOfSupply = 9961472
+--- @type SimulationEventType 
+GE_SpawnActionComplete = 7274496
+--- @type SimulationEventType 
+GE_SpeechAction = 7798784
+--- @type SimulationEventType 
+GE_SpeechWarningAction = 8192000
+--- @type SimulationEventType 
+GE_SquadCalledIn = 4980736
+--- @type SimulationEventType 
+GE_SquadCold = 4849664
+--- @type SimulationEventType 
+GE_SquadFormation = 4456448
+--- @type SimulationEventType 
+GE_SquadFreezing = 4915200
+--- @type SimulationEventType 
+GE_SquadIdleEnter = 4194304
+--- @type SimulationEventType 
+GE_SquadIdleExit = 4259840
+--- @type SimulationEventType 
+GE_SquadItemDeposit = 4128768
+--- @type SimulationEventType 
+GE_SquadItemPickup = 4063232
+--- @type SimulationEventType 
+GE_SquadKilled = 3801088
+--- @type SimulationEventType 
+GE_SquadMembersChanged = 4784128
+--- @type SimulationEventType 
+GE_SquadMerge = 4718592
+--- @type SimulationEventType 
+GE_SquadOwnerChange = 5242880
+--- @type SimulationEventType 
+GE_SquadParadropComplete = 4587520
+--- @type SimulationEventType 
+GE_SquadPinned = 3866624
+--- @type SimulationEventType 
+GE_SquadProductionQueue = 3932160
+--- @type SimulationEventType 
+GE_SquadReplaced = 5046272
+--- @type SimulationEventType 
+GE_SquadRetreat = 4325376
+--- @type SimulationEventType 
+GE_SquadRetreatMsgReceived = 4390912
+--- @type SimulationEventType 
+GE_SquadSizeChanged = 8060928
+--- @type SimulationEventType 
+GE_SquadSpawn = 3735552
+--- @type SimulationEventType 
+GE_SquadSplit = 4653056
+--- @type SimulationEventType 
+GE_SquadTeleported = 5308416
+--- @type SimulationEventType 
+GE_SquadUnloaded = 5177344
+--- @type SimulationEventType 
+GE_SquadVeterancyRank = 3997696
+--- @type SimulationEventType 
+GE_StatsCustomEvent = 9830400
+--- @type SimulationEventType 
+GE_StrategicPointChanged = 1835008
+--- @type SimulationEventType 
+GE_StructureReplaced = 2031616
+--- @type SimulationEventType 
+GE_SuperAbility = 7208960
+--- @type SimulationEventType 
+GE_TerrainAreaDeformed = 7405568
+--- @type SimulationEventType 
+GE_TerritoryCornerDeoccupied = 1310720
+--- @type SimulationEventType 
+GE_TerritoryEdgeDeoccupied = 1245184
+--- @type SimulationEventType 
+GE_TerritoryEntered = 6356992
+--- @type SimulationEventType 
+GE_TickerValuesUpdated = 8912896
+--- @type SimulationEventType 
+GE_UpgradeCancelled = 7995392
+--- @type SimulationEventType 
+GE_UpgradeComplete = 65536
+--- @type SimulationEventType 
+GE_UpgradeRemoved = 7864320
+--- @type SimulationEventType 
+GE_UpgradeStart = 0
+--- @type SimulationEventType 
+GE_UpgradeTentative = 131072
+--- @type SimulationEventType 
+GE_WaitObjectDone = 8454144
+--- @type SimulationEventType 
+GE_WalkableSurfacePurgeOrphans = 9895936
+--- @type SimulationEventType 
+GE_WallCombatEnded = 6225920
+--- @type SimulationEventType 
+GE_WallCombatStarted = 6160384
+--- @type SimulationEventType 
+GE_WallWalked = 6094848
+--- @type SimulationEventType 
 GE_WeaponChanged = {}
 
 --- @class SquadCommandType: userdata
 
---- @type SquadCommandType
+--- @type SquadCommandType 
 CMD_COUNT = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(93)
 SCMD_AbandonTeamWeapon = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(72)
 SCMD_Ability = {}
---- @type SquadCommandType
+--- @type SquadCommandType 
 SCMD_AddPatrolPoint = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(67)
 SCMD_Attack = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(71)
 SCMD_AttackMove = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(106)
 SCMD_AttackWithinLeashArea = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(97)
 SCMD_BuildSquad = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(65)
 SCMD_BuildStructure = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(70)
 SCMD_CancelProduction = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(112)
 SCMD_CancelQueuedCommand = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(66)
 SCMD_Capture = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(79)
 SCMD_CaptureTeamWeapon = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(103)
 SCMD_CombatStance = {}
---- @type SquadCommandType
+--- @type SquadCommandType 
 SCMD_COUNT = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(0)
 SCMD_DefaultAction = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(84)
 SCMD_DefuseCharge = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(87)
 SCMD_DefuseMine = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(64)
 SCMD_Destroy = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(88)
 SCMD_DoPlan = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(110)
 SCMD_Evacuate = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(96)
 SCMD_Face = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(105)
 SCMD_Gather = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(109)
 SCMD_HoldPosition = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(74)
 SCMD_InstantLoad = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(81)
 SCMD_InstantReinforceUnit = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(91)
 SCMD_InstantSetupTeamWeapon = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(82)
 SCMD_InstantUpgrade = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(107)
 SCMD_JoinFormationSquadGroup = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(73)
 SCMD_Load = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(101)
 SCMD_Merge = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(62)
 SCMD_Move = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(104)
 SCMD_MoveToCover = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(89)
 SCMD_Patrol = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(86)
 SCMD_PickUpSimItem = {}
---- @type SquadCommandType
+--- @type SquadCommandType 
 SCMD_PickUpSlotItem = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(83)
 SCMD_PlaceCharge = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(98)
 SCMD_RallyPoint = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(100)
 SCMD_Recrew = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(68)
 SCMD_ReinforceUnit = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(99)
 SCMD_RescueCasualty = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(113)
 SCMD_RespondToBeingBreached = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(78)
 SCMD_Retreat = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(95)
 SCMD_RevertFieldSupport = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(80)
 SCMD_SetMoveType = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(92)
 SCMD_SetupTeamWeapon = {}
---- @type SquadCommandType
+--- @type SquadCommandType 
 SCMD_SlotItemRemove = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(94)
 SCMD_StationaryAttack = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(63)
 SCMD_Stop = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(114)
 SCMD_StopAbility = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(90)
 SCMD_Surprise = {}
---- @type SquadCommandType
+--- @type SquadCommandType 
 SCMD_Teleport = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(108)
 SCMD_Trade = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(76)
 SCMD_Unload = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(75)
 SCMD_UnloadSquads = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(69)
 SCMD_Upgrade = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(111)
 SCMD_Vault = {}
---- @type SquadCommandType
+--- @type SquadCommandType SquadCommandType(102)
 SCMD_WeaponPreference = {}
 
 --- @class StanceType: userdata
 
---- @type StanceType
+--- @type StanceType StanceType(2)
 STANCE_Attack = {}
---- @type StanceType
+--- @type StanceType StanceType(0)
 STANCE_CeaseFire = {}
---- @type StanceType
+--- @type StanceType 
 STANCE_Count = {}
---- @type StanceType
+--- @type StanceType StanceType(1)
 STANCE_StandGround = {}
 
 --- @class UIEventType: userdata
 
---- @type UIEventType
+--- @type UIEventType 
 AbilityExectued = {}
---- @type UIEventType
+--- @type UIEventType 
 AllyAttacked = {}
---- @type UIEventType
+--- @type UIEventType 
 BoobyTrap = {}
---- @type UIEventType
+--- @type UIEventType 
 CallToAction = {}
---- @type UIEventType
+--- @type UIEventType 
 CasualtySquadSpawned = {}
---- @type UIEventType
+--- @type UIEventType 
 CommandPointGained = {}
---- @type UIEventType
+--- @type UIEventType 
 ConstructionComplete = {}
---- @type UIEventType
+--- @type UIEventType 
 Count = {}
---- @type UIEventType
+--- @type UIEventType 
 Default = {}
---- @type UIEventType
+--- @type UIEventType 
 EnemyReveal = {}
---- @type UIEventType
+--- @type UIEventType 
 EnemyTerritoryEntered = {}
---- @type UIEventType
+--- @type UIEventType 
 InfantryAttacked = {}
---- @type UIEventType
+--- @type UIEventType 
 InfantryComplete = {}
---- @type UIEventType
+--- @type UIEventType 
 InfantryReplaced = {}
---- @type UIEventType
+--- @type UIEventType 
 MineDetected = {}
---- @type UIEventType
+--- @type UIEventType 
 PhaseUp = {}
---- @type UIEventType
+--- @type UIEventType 
 PlayerAttacked = {}
---- @type UIEventType
+--- @type UIEventType 
 ResourceDepleted = {}
---- @type UIEventType
+--- @type UIEventType 
 Sniped = {}
---- @type UIEventType
+--- @type UIEventType 
 SquadCold = {}
---- @type UIEventType
+--- @type UIEventType 
 SquadFreezing = {}
---- @type UIEventType
+--- @type UIEventType 
 SquadPinned = {}
---- @type UIEventType
+--- @type UIEventType 
 SquadVeterancy = {}
---- @type UIEventType
+--- @type UIEventType 
 StrategicPointCaptured = {}
---- @type UIEventType
+--- @type UIEventType 
 StrategicPointReverting = {}
---- @type UIEventType
+--- @type UIEventType 
 StrategicPointSecured = {}
---- @type UIEventType
+--- @type UIEventType 
 SuperAbility = {}
---- @type UIEventType
+--- @type UIEventType 
 TerritoryEntered = {}
---- @type UIEventType
+--- @type UIEventType 
 UpgradeComplete = {}
---- @type UIEventType
+--- @type UIEventType 
 VehicleAttacked = {}
---- @type UIEventType
+--- @type UIEventType 
 VehicleComplete = {}
---- @type UIEventType
+--- @type UIEventType 
 VehicleReplaced = {}
 
 --- @class UpgradeOwnerType: userdata
 
---- @type UpgradeOwnerType
+--- @type UpgradeOwnerType 
 UOT_COUNT = {}
---- @type UpgradeOwnerType
+--- @type UpgradeOwnerType 
 UOT_EntityInSquad = {}
---- @type UpgradeOwnerType
+--- @type UpgradeOwnerType UpgradeOwnerType(0)
 UOT_None = {}
---- @type UpgradeOwnerType
+--- @type UpgradeOwnerType UpgradeOwnerType(2)
 UOT_Player = {}
---- @type UpgradeOwnerType
+--- @type UpgradeOwnerType UpgradeOwnerType(1)
 UOT_Self = {}
 
 --- @class VisibilityFlag: userdata
 
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(4194303)
 VF_All = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(4194303)
 VF_All = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(256)
 VF_ComponentChatControl = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(256)
 VF_ComponentChatControl = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(1)
 VF_ComponentDecorators = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(1)
 VF_ComponentDecorators = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(8)
 VF_ComponentHintPoint = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(8)
 VF_ComponentHintPoint = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(128)
 VF_ComponentKickers = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(128)
 VF_ComponentKickers = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(16)
 VF_ComponentReplayControls = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(16)
 VF_ComponentReplayControls = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(32)
 VF_ComponentReplayTaskbar = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(32)
 VF_ComponentReplayTaskbar = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(511)
 VF_Components = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(511)
 VF_Components = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(2)
 VF_ComponentSimulation = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(2)
 VF_ComponentSimulation = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(4)
 VF_ComponentTaskbar = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(4)
 VF_ComponentTaskbar = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(64)
 VF_ComponentTitles = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(64)
 VF_ComponentTitles = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(4194303)
 VF_Default = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(2097152)
 VF_MiscPaused = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(2097152)
 VF_MiscPaused = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(0)
 VF_None = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(512)
 VF_VisualArcs = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(512)
 VF_VisualArcs = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(1024)
 VF_VisualCoverPreview = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(1024)
 VF_VisualCoverPreview = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(262144)
 VF_VisualDistricts = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(262144)
 VF_VisualDistricts = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(2048)
 VF_VisualEntityColors = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(2048)
 VF_VisualEntityColors = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(524288)
 VF_VisualMissionArea = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(524288)
 VF_VisualMissionArea = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(4096)
 VF_VisualModals = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(4096)
 VF_VisualModals = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(8192)
 VF_VisualPathPreview = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(8192)
 VF_VisualPathPreview = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(2096640)
 VF_Visuals = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(2096640)
 VF_Visuals = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(16384)
 VF_VisualSelectionSilhouettes = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(16384)
 VF_VisualSelectionSilhouettes = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(65536)
 VF_VisualTerritoryCapturePoint = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(65536)
 VF_VisualTerritoryCapturePoint = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(32768)
 VF_VisualTerritoryOutOfBoundsBorders = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(32768)
 VF_VisualTerritoryOutOfBoundsBorders = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(131072)
 VF_VisualTerritorySectors = {}
---- @type VisibilityFlag
+--- @type VisibilityFlag VisibilityFlag(131072)
 VF_VisualTerritorySectors = {}
 
 --- @class WeaponPreference: userdata
 
---- @type WeaponPreference
+--- @type WeaponPreference 
 WP_Count = {}
---- @type WeaponPreference
+--- @type WeaponPreference WeaponPreference(0)
 WP_Melee = {}
---- @type WeaponPreference
+--- @type WeaponPreference WeaponPreference(1)
 WP_Ranged = {}
+
+---@type boolean 
+__g_playIntelEvents = true
+
+---@type boolean 
+__prefabDebug = false
+
+---@type number 
+__stagRetreatID = 0
+
+---@type boolean 
+_allow_spectators = true
+
+---@type number 
+_StartMission_HoldReferenceCount = 0
+
+---@type string 
+_VERSION = "Lua 5.3"
+
+---@type boolean 
+_view_display = false
+
+---@type userdata AICombatRangePolicy(0)
+AICombatRangePolicy_Default = {}
+
+---@type userdata AICombatRangePolicy(3)
+AICombatRangePolicy_MeleeRange = {}
+
+---@type userdata AICombatRangePolicy(2)
+AICombatRangePolicy_Ranged_MaxRange = {}
+
+---@type userdata AICombatRangePolicy(1)
+AICombatRangePolicy_Ranged_MinRange = {}
+
+---@type number 
+AID_EASY = 0
+
+---@type number 
+AID_EXPERT = 3
+
+---@type number 
+AID_HARD = 2
+
+---@type number 
+AID_INVALID = 127
+
+---@type number 
+AID_NORMAL = 1
+
+---@type number 
+AIEncounterNotification_Cancelled = 3
+
+---@type number 
+AIEncounterNotification_Failure = 1
+
+---@type number 
+AIEncounterNotification_StateTreeExit = 4
+
+---@type number 
+AIEncounterNotification_Success = 0
+
+---@type number 
+AIEncounterNotification_Transition = 2
+
+---@type number 
+AIEncounterStage_Engaged = 3
+
+---@type number 
+AIEncounterStage_Fallback = 4
+
+---@type number 
+AIEncounterStage_Idle = 1
+
+---@type number 
+AIEncounterStage_Moving = 2
+
+---@type number 
+AIEncounterType_Ability = 3
+
+---@type number 
+AIEncounterType_AttackArea = 1
+
+---@type number 
+AIEncounterType_DefendArea = 0
+
+---@type number 
+AIEncounterType_FormationAttackMove = 5
+
+---@type number 
+AIEncounterType_FormationDefendArea = 6
+
+---@type number 
+AIEncounterType_FormationMove = 4
+
+---@type number 
+AIEncounterType_FormationPhase = 8
+
+---@type number 
+AIEncounterType_Move = 2
+
+---@type number 
+AIEncounterType_TownLife = 7
+
+---@type number 
+AIFormationPhaseEncounter_EndReason_AtDestination = 1
+
+---@type number 
+AIFormationPhaseEncounter_EndReason_CannotReachDestination = 7
+
+---@type number 
+AIFormationPhaseEncounter_EndReason_CombatThreshold = 3
+
+---@type number 
+AIFormationPhaseEncounter_EndReason_EnemiesAtTargetCleared = 5
+
+---@type number 
+AIFormationPhaseEncounter_EndReason_Invalid = 0
+
+---@type number 
+AIFormationPhaseEncounter_EndReason_SelfSquadsAllDead = 10
+
+---@type number 
+AIFormationPhaseEncounter_EndReason_ShouldFallback = 4
+
+---@type number 
+AIFormationPhaseEncounter_EndReason_TargetEscapedLOS = 8
+
+---@type number 
+AIFormationPhaseEncounter_EndReason_Timeout = 2
+
+---@type number 
+AIFormationPhaseEncounter_EndReason_Torndown = 9
+
+---@type number 
+AIFormationPhaseEncounter_EndReason_WasAttacked = 6
+
+---@type userdata AIType(2)
+AII_LocalHumanTakeover = {}
+
+---@type userdata AIType(0)
+AII_None = {}
+
+---@type userdata AIType(1)
+AII_Normal = {}
+
+---@type userdata AIType(3)
+AII_RemoteAITakeover = {}
+
+---@type userdata AIType(4)
+AII_RemoteHumanTakeover = {}
+
+---@type userdata AIIslandDecision::Field(1)
+AIIslandDecision_Build = {}
+
+---@type userdata AIIslandDecision::Field(4)
+AIIslandDecision_Combat = {}
+
+---@type userdata AIIslandDecision::Field(0)
+AIIslandDecision_Gather = {}
+
+---@type userdata AIIslandDecision::Field(3)
+AIIslandDecision_Inhabit = {}
+
+---@type userdata AIIslandDecision::Field(2)
+AIIslandDecision_Scout = {}
+
+---@type userdata AIMilitaryTargetType(5)
+AIMET_AllyClump = {}
+
+---@type userdata AIMilitaryTargetType(8)
+AIMET_AttackArea = {}
+
+---@type userdata AIMilitaryTargetType(1)
+AIMET_AttackStructure = {}
+
+---@type userdata AIMilitaryTargetType(3)
+AIMET_Capture = {}
+
+---@type userdata AIMilitaryTargetType(9)
+AIMET_DefendArea = {}
+
+---@type userdata AIMilitaryTargetType(0)
+AIMET_DefendStructure = {}
+
+---@type userdata AIMilitaryTargetType(6)
+AIMET_EnemyClump = {}
+
+---@type userdata AIMilitaryTargetType(4)
+AIMET_Gather = {}
+
+---@type userdata AIMilitaryTargetType(7)
+AIMET_NeutralClump = {}
+
+---@type userdata AIMilitaryTargetType(2)
+AIMET_NeutralStructure = {}
+
+---@type number 
+AIMTT_capture = 0
+
+---@type number 
+AIMTT_hq = 1
+
+---@type number 
+AIMTT_INVALID = 2147483647
+
+---@type number 
+AIMTT_relic = 2
+
+---@type number 
+AIMTT_relic_dropoff = 3
+
+---@type number 
+AIMTT_squad = 4
+
+---@type number 
+AIMTT_structure = 5
+
+---@type number 
+AIMTT_victory_point = 6
+
+---@type number 
+AIMTT_wall = 7
+
+---@type number 
+AIMTT_wonder = 8
+
+---@type number 
+AISniperReactionMode_FallbackAnyDamaged = 3
+
+---@type number 
+AISniperReactionMode_FallbackSelfDamaged = 2
+
+---@type number 
+AISniperReactionMode_None = 0
+
+---@type number 
+AISniperReactionMode_Respond = 1
+
+---@type userdata AITacticTargetPreference(5)
+AITacticTargetPreference_Best = {}
+
+---@type userdata AITacticTargetPreference(3)
+AITacticTargetPreference_HighDamage = {}
+
+---@type userdata AITacticTargetPreference(2)
+AITacticTargetPreference_LowHealth = {}
+
+---@type userdata AITacticTargetPreference(1)
+AITacticTargetPreference_Near = {}
+
+---@type userdata AITacticTargetPreference(6)
+AITacticTargetPreference_NearAndBest = {}
+
+---@type userdata AITacticTargetPreference(0)
+AITacticTargetPreference_None = {}
+
+---@type userdata AITacticTargetPreference(4)
+AITacticTargetPreference_Support = {}
+
+---@type number 
+AIWanderRadiusMode_Leash = 0
+
+---@type number 
+AIWanderRadiusMode_Override = 2
+
+---@type number 
+AIWanderRadiusMode_TargetArea = 1
+
+---@type boolean 
+ALL = true
+
+---@type boolean 
+ANY = false
+
+---@type userdata CanProduceResult(1024)
+CANPRODUCE_OutOfReinforceRadius = {}
+
+---@type number 
+CE_ACHIEV20KILLS1FLAK36 = 0
+
+---@type number 
+CE_ACHIEV3BREACHES1SQUAD = 1
+
+---@type number 
+CE_ACHIEVALLBRITVEHICLES = 2
+
+---@type number 
+CE_ACHIEVALLSOLDIERSTORIES = 3
+
+---@type number 
+CE_ACHIEVBARIEVENT = 4
+
+---@type number 
+CE_ACHIEVBEERRUN = 5
+
+---@type number 
+CE_ACHIEVBRITNEUTRALWEAPONS = 6
+
+---@type number 
+CE_ACHIEVCRABSFORSTEVE = 7
+
+---@type number 
+CE_ACHIEVDEFYBUCKRAM = 8
+
+---@type number 
+CE_ACHIEVDEFYNORTON = 9
+
+---@type number 
+CE_ACHIEVDEFYVALENTI = 10
+
+---@type number 
+CE_ACHIEVFLAWLESSVICTORY = 11
+
+---@type number 
+CE_ACHIEVICECREAMEVENT = 12
+
+---@type number 
+CE_ACHIEVKILLRETREATINGENEMY = 13
+
+---@type number 
+CE_ACHIEVLOYALBUCKRAM = 14
+
+---@type number 
+CE_ACHIEVLOYALNORTON = 15
+
+---@type number 
+CE_ACHIEVLOYALVALENTI = 16
+
+---@type number 
+CE_ACHIEVMAJOROBJECTIVEA = 17
+
+---@type number 
+CE_ACHIEVMAJOROBJECTIVEB = 18
+
+---@type number 
+CE_ACHIEVMAJOROBJECTIVEC = 19
+
+---@type number 
+CE_ACHIEVMAXOUTCOMPANY = 20
+
+---@type number 
+CE_ACHIEVMONTECASSINOBOMBING = 21
+
+---@type number 
+CE_ACHIEVNEBELWERFERMULTIKILL = 22
+
+---@type number 
+CE_ACHIEVNOLOSTSQUAD = 23
+
+---@type number 
+CE_ACHIEVNOREINFORCE = 24
+
+---@type number 
+CE_ACHIEVPURCHASEDETACHMENT = 25
+
+---@type number 
+CE_ACHIEVSNIPEWHOLEMGTEAM = 26
+
+---@type number 
+CE_ACHIEVSPENDSKILLPOINT = 27
+
+---@type number 
+CE_ACHIEVTOWENEMYGUN = 28
+
+---@type number 
+CE_ACHIEVTRUEALLIES = 29
+
+---@type number 
+CE_ACHIEVUPGRADE5SQUADS = 30
+
+---@type number 
+CE_ACHIEVWINANZIO = 31
+
+---@type number 
+CE_ACHIEVWINCALABRIA = 32
+
+---@type number 
+CE_ACHIEVWINCAMPAIGN = 33
+
+---@type number 
+CE_ACHIEVWINMISSIONZERO = 34
+
+---@type number 
+CE_ACHIEVWINNORTHAFRICA = 35
+
+---@type number 
+CE_ACSUPPRESSED = 36
+
+---@type number 
+CE_ACUK_RETREAT_PINNED = 37
+
+---@type number 
+CE_ACUS_ANTI_TANK_ROUNDS = 38
+
+---@type number 
+CE_ACUS_REINFORCE_PARADROP = 39
+
+---@type number 
+CE_ACVETERANCYLEVEL1 = 40
+
+---@type number 
+CE_Begin = 0
+
+---@type number 
+CE_Count = 43
+
+---@type number 
+CE_E02_REPAIR_ALLY_VEHICLES = 41
+
+---@type number 
+CE_E02_REPAIR_CRITICALS_ON_VEHICLES = 42
+
+---@type userdata EntityCommandType(59)
+CMD_CancelRestoreWreck = {}
+
+---@type userdata EntityCommandType(60)
+CMD_Repair = {}
+
+---@type userdata EntityCommandType(53)
+CMD_RestoreWreck = {}
+
+---@type userdata EntityCommandType(24)
+CMD_StopMove = {}
+
+---@type number 
+Count_Current = 0
+
+---@type number 
+Count_CurrentTeam = 2
+
+---@type number 
+Count_Produced = 1
+
+---@type number 
+Count_ProducedTeam = 3
+
+---@type number 
+COUNTER_Count = 2
+
+---@type number 
+COUNTER_CountUpTo = 3
+
+---@type number 
+COUNTER_None = -1
+
+---@type number 
+COUNTER_TimerDecreasing = 0
+
+---@type number 
+COUNTER_TimerIncreasing = 1
+
+---@type number 
+COUNTER_TurnsDecreasing = 4
+
+---@type number 
+COUNTER_TurnsIncreasing = 5
+
+---@type userdata ChangeType(0)
+CT_Captured = {}
+
+---@type userdata ChangeType(1)
+CT_Reverting = {}
+
+---@type userdata ChangeType(2)
+CT_Secured = {}
+
+---@type userdata ChangeType(4)
+CT_Seized = {}
+
+---@type userdata ChangeType(5)
+CT_StartedCapture = {}
+
+---@type userdata ChangeType(6)
+CT_StartedCooldown = {}
+
+---@type userdata ChangeType(7)
+CT_StartedRevertingCooldown = {}
+
+---@type userdata ChangeType(3)
+CT_UnCaptured = {}
+
+---@type number 
+DO_NOTHING = 0
+
+---@type number 
+DST_CLOSEST_HIDDEN = 2
+
+---@type number 
+DST_CLOSEST_VISIBLE = 3
+
+---@type number 
+DST_FURTHEST_HIDDEN = 0
+
+---@type number 
+DST_FURTHEST_VISIBLE = 1
+
+---@type userdata DecoratorVisibility(7)
+DV_Count = {}
+
+---@type userdata DecoratorVisibility(2)
+DV_Default = {}
+
+---@type userdata DecoratorVisibility(4)
+DV_EnemyOnly = {}
+
+---@type userdata DecoratorVisibility(0)
+DV_Hidden = {}
+
+---@type userdata DecoratorVisibility(1)
+DV_MouseOver = {}
+
+---@type userdata DecoratorVisibility(5)
+DV_MouseOverOrDamagedEnemy = {}
+
+---@type userdata DecoratorVisibility(6)
+DV_MouseOverOrDamagedRecently = {}
+
+---@type userdata DecoratorVisibility(3)
+DV_Visible = {}
+
+---@type userdata EasingType(0)
+Ease_In = {}
+
+---@type userdata EasingFunction(0)
+Ease_None = {}
+
+---@type userdata EasingType(1)
+Ease_Out = {}
+
+---@type userdata EasingFunction(1)
+Ease_Sine = {}
+
+---@type userdata EventCueActionVisibility(10)
+ECAV_AlliedToTargetAndExecuterIsEnemy = {}
+
+---@type userdata EventCueActionVisibility(6)
+ECAV_CanEnemySeeExecutor = {}
+
+---@type userdata EventCueActionVisibility(3)
+ECAV_CanSeeExecutor = {}
+
+---@type userdata EventCueActionVisibility(4)
+ECAV_CanSeeTarget = {}
+
+---@type userdata EventCueActionVisibility(14)
+ECAV_CanSeeTargetAndExecutorIsOwn = {}
+
+---@type userdata EventCueActionVisibility(13)
+ECAV_CanSeeTargetAndExecutorIsOwnOrAlly = {}
+
+---@type userdata EventCueActionVisibility(12)
+ECAV_ExecuterIsAlly = {}
+
+---@type userdata EventCueActionVisibility(2)
+ECAV_ExecuterIsEnemy = {}
+
+---@type userdata EventCueActionVisibility(18)
+ECAV_ExecuterIsEnemyAndTargetNearbyAnyAllyEntities = {}
+
+---@type userdata EventCueActionVisibility(17)
+ECAV_ExecuterIsEnemyAndTargetNearbyAnyOwnEntities = {}
+
+---@type userdata EventCueActionVisibility(11)
+ECAV_ExecuterIsOwn = {}
+
+---@type userdata EventCueActionVisibility(1)
+ECAV_ExecuterIsOwnOrAlly = {}
+
+---@type userdata EventCueActionVisibility(0)
+ECAV_Global = {}
+
+---@type userdata EventCueActionVisibility(9)
+ECAV_OwnsTargetAndExecuterIsEnemy = {}
+
+---@type userdata EventCueActionVisibility(8)
+ECAV_TargetIsAlly = {}
+
+---@type userdata EventCueActionVisibility(7)
+ECAV_TargetIsOwn = {}
+
+---@type userdata EventCueVisibility(0)
+ECV_None = {}
+
+---@type userdata EventCueVisibility(1)
+ECV_Queue = {}
+
+---@type userdata EventCueVisibility(2)
+ECV_Title = {}
+
+---@type number 
+EVENT_AMBIENT = 2
+
+---@type number 
+EVENT_INTEL = 1
+
+---@type number 
+EVENT_NIS = 0
+
+---@type string 
+EXTID_Ability = "ability_ext"
+
+---@type string 
+EXTID_ActionApply = "action_apply_ext"
+
+---@type string 
+EXTID_AideStation = "aide_station_ext"
+
+---@type string 
+EXTID_AttachmentChild = "attachment_child_ext"
+
+---@type string 
+EXTID_Attention = "attention_ext"
+
+---@type string 
+EXTID_AttentionGen = "attention_gen_ext"
+
+---@type string 
+EXTID_Burn = "burn_ext"
+
+---@type string 
+EXTID_Camouflage = "camouflage_ext"
+
+---@type string 
+EXTID_Casualty = "casualty_ext"
+
+---@type string 
+EXTID_Combat = "combat_ext"
+
+---@type string 
+EXTID_Construction = "construction_ext"
+
+---@type string 
+EXTID_Cost = "cost_ext"
+
+---@type string 
+EXTID_Cover = "cover_ext"
+
+---@type string 
+EXTID_Crew = "crew_ext"
+
+---@type string 
+EXTID_Crush = "crush_ext"
+
+---@type string 
+EXTID_Crushee = "crushee_ext"
+
+---@type string 
+EXTID_Demolishable = "demolishable_ext"
+
+---@type string 
+EXTID_DemolitionCharge = "demolition_charge_ext"
+
+---@type string 
+EXTID_Element = "element_ext"
+
+---@type string 
+EXTID_Explosion = "explosion_ext"
+
+---@type string 
+EXTID_FieldSupport = "field_support_ext"
+
+---@type string 
+EXTID_Flight = "flight_ext"
+
+---@type string 
+EXTID_Health = "health_ext"
+
+---@type string 
+EXTID_Hold = "hold_ext"
+
+---@type string 
+EXTID_Holdable = "holdable_ext"
+
+---@type string 
+EXTID_InteractiveObject = "interactive_object_ext"
+
+---@type string 
+EXTID_Market = "market_ext"
+
+---@type string 
+EXTID_Medic = "medic_ext"
+
+---@type string 
+EXTID_Mine = "mine_ext"
+
+---@type string 
+EXTID_MineClearer = "mine_clearer_ext"
+
+---@type string 
+EXTID_Modifier = "modifier_ext"
+
+---@type string 
+EXTID_ModifierApply = "modifier_apply_ext"
+
+---@type string 
+EXTID_MovementBlocker = "movement_blocker_ext"
+
+---@type string 
+EXTID_MoveType = "movetype_ext"
+
+---@type string 
+EXTID_Moving = "moving_ext"
+
+---@type string 
+EXTID_MultiControlTerritoryController = "multi_control_territory_controller_ext"
+
+---@type string 
+EXTID_ObjCover = "obj_cover_ext"
+
+---@type string 
+EXTID_OOCTarget = "ooc_target_ext"
+
+---@type string 
+EXTID_Paradrop = "paradrop_ext"
+
+---@type string 
+EXTID_PersonnelStation = "personnel_station_ext"
+
+---@type string 
+EXTID_Posture = "posture_ext"
+
+---@type string 
+EXTID_PresentationOverride = "presentation_override_ext"
+
+---@type string 
+EXTID_ProductionQueue = "production_queue_ext"
+
+---@type string 
+EXTID_Projectile = "projectile_ext"
+
+---@type string 
+EXTID_Recrewable = "recrewable_ext"
+
+---@type string 
+EXTID_RepairEngineer = "repair_engineer_ext"
+
+---@type string 
+EXTID_RepairStation = "repair_station_ext"
+
+---@type string 
+EXTID_Resource = "resource_ext"
+
+---@type string 
+EXTID_Road = "road_ext"
+
+---@type string 
+EXTID_Sight = "sight_ext"
+
+---@type string 
+EXTID_Spawner = "spawn_ext"
+
+---@type string 
+EXTID_StimulusEmission = "stimulus_emission_ext"
+
+---@type string 
+EXTID_StimulusPerception = "stimulus_perception_ext"
+
+---@type string 
+EXTID_StrategicPoint = "strategic_point_ext"
+
+---@type string 
+EXTID_Supply = "supply_ext"
+
+---@type string 
+EXTID_SupplyRoad = "supply_road_ext"
+
+---@type string 
+EXTID_TeamWeaponUser = "team_weapon_user_ext"
+
+---@type string 
+EXTID_Territory = "territory_ext"
+
+---@type string 
+EXTID_UI = "ui_ext"
+
+---@type string 
+EXTID_Upgrade = "upgrade_ext"
+
+---@type string 
+EXTID_WalkableSurface = "walkable_surface_ext"
+
+---@type string 
+EXTID_Wall = "wall_ext"
+
+---@type string 
+EXTID_Weapon = "weapon_ext"
+
+---@type boolean 
+FADE_IN = false
+
+---@type boolean 
+FADE_OUT = true
+
+---@type userdata FELoadResult(1)
+FELoadResult_Cancelled = {}
+
+---@type userdata FELoadResult(0)
+FELoadResult_Finished = {}
+
+---@type userdata FELoadStatus(2)
+FELoadStatus_Finished = {}
+
+---@type userdata FELoadStatus(1)
+FELoadStatus_Loading = {}
+
+---@type userdata FELoadStatus(0)
+FELoadStatus_NotLoaded = {}
+
+---@type number 
+FILTER_KEEP = 0
+
+---@type number 
+FILTER_REMOVE = 1
+
+---@type number 
+g_introSequence = 3
+
+---@type number 
+g_PartialSaveVersion = 0
+
+---@type number 
+g_TimerRate = 1
+
+---@type number 
+GAMEOVER_OBJECTIVE_TIME = 6.5
+
+---@type number 
+GAMEOVER_PRESENTATION_TIME = 15.0
+
+---@type number 
+GD_EASY = 0
+
+---@type number 
+GD_EXPERT = 3
+
+---@type number 
+GD_HARD = 2
+
+---@type number 
+GD_INVALID = 127
+
+---@type number 
+GD_NORMAL = 1
+
+---@type number 
+GE_AIPlayer_DifficultyChanged = 7143424
+
+---@type number 
+GE_CameraKeyOrbit = 2687232
+
+---@type number 
+GE_CameraKeyPan = 2621696
+
+---@type number 
+GE_CameraMousePan = 2752768
+
+---@type number 
+GE_CameraOrbit = 2818304
+
+---@type number 
+GE_CameraOverviewMode = 3080448
+
+---@type number 
+GE_CameraScreenPan = 2883840
+
+---@type number 
+GE_CamerGamepadOrbit = 3014912
+
+---@type number 
+GE_CamerGamepadPan = 2949376
+
+---@type number 
+GE_CampaignSkirmishAutoResolved = 2556160
+
+---@type number 
+GE_ChallengeDefinitionsUpdated = 3211520
+
+---@type number 
+GE_InteractiveOptionInitialized = 2425088
+
+---@type number 
+GE_InteractiveOptionSelected = 2490624
+
+---@type number 
+GE_PlantDemolitionIssued = 6291456
+
+---@type number 
+GE_PresentationMapStateEvent = 1900800
+
+---@type number 
+GE_PresentationPauseMenuStateEvent = 2031872
+
+---@type number 
+GE_PresentationSimPauseStateEvent = 1966336
+
+---@type number 
+GE_PresentatonSoundEvent = 1835264
+
+---@type number 
+GE_SquadModifyResource = 5373952
+
+---@type number 
+GE_TacticalPause = 2359552
+
+---@type number 
+GE_TerritoryControllerChangedOwner = 10092544
+
+---@type number 
+GE_TurnAdvancement = 10158080
+
+---@type number 
+GE_WeaponSetup = 2818048
+
+---@type number 
+GE_WeaponTeardown = 2883584
+
+---@type number 
+GE_WreckRecovered = 851968
+
+---@type number 
+GE_WreckSalvaged = 786432
+
+---@type userdata HintPointActionType(-1)
+HPAT_None = {}
+
+---@type userdata HintPointActionType(17)
+HPAT_PinPrimary = {}
+
+---@type userdata HintPointActionType(18)
+HPAT_PinSecondary = {}
+
+---@type boolean 
+HS_CLOSEST = false
+
+---@type boolean 
+HS_FURTHEST = true
+
+---@type number 
+INVALID_AISQUADID = 0
+
+---@type userdata Availability(3)
+ITEM_DEFAULT = {}
+
+---@type userdata Availability(0)
+ITEM_LOCKED = {}
+
+---@type userdata Availability(2)
+ITEM_REMOVED = {}
+
+---@type userdata Availability(1)
+ITEM_UNLOCKED = {}
+
+---@type userdata KillPlayerReason(8)
+KPR_COUNT = {}
+
+---@type userdata KillPlayerReason(1)
+KPR_Endgame = {}
+
+---@type userdata KillPlayerReason(7)
+KPR_Lost = {}
+
+---@type userdata KillPlayerReason(3)
+KPR_NetworkAbort = {}
+
+---@type userdata KillPlayerReason(4)
+KPR_NetworkDisconnected = {}
+
+---@type userdata KillPlayerReason(5)
+KPR_NetworkKickedOut = {}
+
+---@type userdata KillPlayerReason(2)
+KPR_NetworkOutOfSync = {}
+
+---@type userdata KillPlayerReason(6)
+KPR_Surrendered = {}
+
+---@type userdata KillPlayerReason(0)
+KPR_UnusedPlayer = {}
+
+---@type string 
+MUSIC_COMBAT = "mus_combat_intensity_state_comb"
+
+---@type string 
+MUSIC_DEFAULT = "mus_combat_intensity_state_ambient"
+
+---@type string 
+MUSIC_EXPLORE = "mus_combat_intensity_state_ambient"
+
+---@type string 
+MUSIC_SILENT = "silent"
+
+---@type string 
+MUSIC_UNLOCK_INTENSITY = "MUSIC_UNLOCK_INTENSITY"
+
+---@type number 
+NIS_CLOSING = 2
+
+---@type number 
+NIS_CLOSING_NOFADE = 6
+
+---@type number 
+NIS_MID = 1
+
+---@type number 
+NIS_OPENING = 0
+
+---@type number 
+NIS_OPENING_BLACK = 3
+
+---@type number 
+NIS_OPENING_BLEND = 5
+
+---@type number 
+NIS_OPENING_FULLSCREEN = 4
+
+---@type number 
+NIS_PERF_TEST = 7
+
+---@type number 
+NISLET_BLACK2GAME = 1
+
+---@type number 
+NISLET_GAME2BLACK = 3
+
+---@type number 
+NISLET_GAME2GAME = 2
+
+---@type number 
+NISLET_GAME2LETTER = 4
+
+---@type number 
+NISLET_TIME = 1
+
+---@type number 
+NISLET_VO = 2
+
+---@type boolean 
+NO_ATTACK = false
+
+---@type boolean 
+NO_QUEUE = false
+
+---@type number 
+OFFSET_BACK = 4
+
+---@type number 
+OFFSET_BACK_LEFT = 5
+
+---@type number 
+OFFSET_BACK_RIGHT = 3
+
+---@type number 
+OFFSET_FRONT = 0
+
+---@type number 
+OFFSET_FRONT_LEFT = 7
+
+---@type number 
+OFFSET_FRONT_RIGHT = 1
+
+---@type number 
+OFFSET_LEFT = 6
+
+---@type number 
+OFFSET_RIGHT = 2
+
+---@type userdata ObjectiveState(2)
+OS_Complete = {}
+
+---@type userdata ObjectiveState(3)
+OS_Failed = {}
+
+---@type userdata ObjectiveState(1)
+OS_Incomplete = {}
+
+---@type userdata ObjectiveState(0)
+OS_Off = {}
+
+---@type userdata OwnerType(1)
+OT_Ally = {}
+
+---@type userdata OwnerType(2)
+OT_Enemy = {}
+
+---@type userdata OwnerType(3)
+OT_Neutral = {}
+
+---@type userdata OwnerType(0)
+OT_Player = {}
+
+---@type number 
+PBG_Ability = 0
+
+---@type number 
+PBG_Camera = 4718848
+
+---@type number 
+PBG_EntityProperties = 1245184
+
+---@type number 
+PBG_Formation = 1310720
+
+---@type number 
+PBG_HitMaterial = 1572864
+
+---@type number 
+PBG_Material = 1900544
+
+---@type number 
+PBG_MoveType = 2097152
+
+---@type number 
+PBG_PassType = 2555904
+
+---@type number 
+PBG_Posture = 2818048
+
+---@type number 
+PBG_Race = 2228224
+
+---@type number 
+PBG_SquadFormation = 2949120
+
+---@type number 
+PBG_SquadProperties = 3014656
+
+---@type number 
+PBG_Tuning = 3276800
+
+---@type number 
+PBG_TurnPlan = 3342336
+
+---@type number 
+PBG_UIMissionArea = 4325632
+
+---@type number 
+PBG_UISelection = 3604480
+
+---@type number 
+PBG_UITacticalMap = 4522240
+
+---@type number 
+PBG_UITerritory = 3735552
+
+---@type number 
+PBG_Upgrade = 3407872
+
+---@type number 
+PBG_Weapon = 3866624
+
+---@type number 
+PBGTYPE_Entity = 1245184
+
+---@type number 
+PBGTYPE_Squad = 3014656
+
+---@type number 
+PBGTYPE_Upgrade = 3407872
+
+---@type number 
+PROX_CENTER = 2
+
+---@type number 
+PROX_LONGEST = 1
+
+---@type number 
+PROX_SHORTEST = 0
+
+---@type userdata Relationship(2)
+R_ALLY = {}
+
+---@type userdata Relationship(1)
+R_ENEMY = {}
+
+---@type userdata Relationship(3)
+R_NEUTRAL = {}
+
+---@type userdata Relationship(0)
+R_UNDEFINED = {}
+
+---@type number 
+RT_Action = 0
+
+---@type number 
+RT_Begin = 0
+
+---@type number 
+RT_Command = 1
+
+---@type number 
+RT_Count = 8
+
+---@type number 
+RT_Fuel = 2
+
+---@type number 
+RT_Manpower = 3
+
+---@type number 
+RT_Munition = 4
+
+---@type number 
+RT_Popcap = 5
+
+---@type number 
+RT_Requisition = 6
+
+---@type number 
+RT_Ultimate = 7
+
+---@type number 
+SCARTYPE_AIENCOUNTER = 1634297198
+
+---@type number 
+SCARTYPE_AIENTITY = 1634297204
+
+---@type number 
+SCARTYPE_AIPLAYER = 1634300012
+
+---@type number 
+SCARTYPE_AISQUAD = 1634300785
+
+---@type number 
+SCARTYPE_CONSTENTITY = 1667591796
+
+---@type number 
+SCARTYPE_CONSTPLAYER = 1668312178
+
+---@type number 
+SCARTYPE_CONSTSQUAD = 1668510052
+
+---@type number 
+SCARTYPE_EGROUP = 1701257248
+
+---@type number 
+SCARTYPE_ENTITY = 1701737504
+
+---@type number 
+SCARTYPE_LOCSTRING = 1970562616
+
+---@type number 
+SCARTYPE_MARKER = 1835758112
+
+---@type number 
+SCARTYPE_MODIFIER = 1836016754
+
+---@type number 
+SCARTYPE_PBG = 1885497120
+
+---@type number 
+SCARTYPE_PLAYER = 1886157170
+
+---@type number 
+SCARTYPE_PREFAB = 1885757794
+
+---@type number 
+SCARTYPE_RESOURCEAMOUNT = 1919251297
+
+---@type number 
+SCARTYPE_SCARPOS = 1936748403
+
+---@type number 
+SCARTYPE_SGROUP = 1936138272
+
+---@type number 
+SCARTYPE_SQUAD = 1936811040
+
+---@type userdata SquadCommandType(121)
+SCMD_AnimatedSpawn = {}
+
+---@type userdata SquadCommandType(118)
+SCMD_AttachingTrailer = {}
+
+---@type userdata SquadCommandType(117)
+SCMD_BeingTowed = {}
+
+---@type userdata SquadCommandType(119)
+SCMD_DetachingTrailer_UNUSED = {}
+
+---@type userdata SquadCommandType(85)
+SCMD_DropTrailer_UNUSED = {}
+
+---@type userdata SquadCommandType(115)
+SCMD_InstantParadropReinforceUnit = {}
+
+---@type userdata SquadCommandType(116)
+SCMD_MoveUntilInsidePlayableArea = {}
+
+---@type userdata SquadCommandType(77)
+SCMD_PickupTrailer_UNUSED = {}
+
+---@type userdata SquadCommandType(120)
+SCMD_RestoreWreck_UNUSED = {}
+
+---@type userdata PauseFlag(7)
+SimulationPause_All = {}
+
+---@type userdata PauseFlag(13)
+SimulationPause_Break = {}
+
+---@type userdata PauseFlag(5)
+SimulationPause_Error = {}
+
+---@type userdata PauseFlag(15)
+SimulationPause_Game = {}
+
+---@type userdata PauseFlag(2)
+SimulationPause_Input = {}
+
+---@type userdata PauseFlag(8)
+SimulationPause_Movies = {}
+
+---@type userdata PauseFlag(4)
+SimulationPause_Music = {}
+
+---@type userdata PauseFlag(0)
+SimulationPause_None = {}
+
+---@type userdata PauseFlag(1)
+SimulationPause_Simulation = {}
+
+---@type userdata PauseFlag(3)
+SimulationPause_SimulationInput = {}
+
+---@type userdata PauseFlag(7)
+SimulationPause_Video = {}
+
+---@type number 
+SPAWN_ATMARKER = 1
+
+---@type number 
+SPAWN_ATSQUAD = 2
+
+---@type string 
+SQUADEXTID_Ability = "squad_ability_ext"
+
+---@type string 
+SQUADEXTID_ActionApply = "squad_action_apply_ext"
+
+---@type string 
+SQUADEXTID_Attention = "squad_attention_ext"
+
+---@type string 
+SQUADEXTID_Audio = "squad_audio_ext"
+
+---@type string 
+SQUADEXTID_CombatBehaviour = "squad_combat_behaviour_ext"
+
+---@type string 
+SQUADEXTID_CombatStance = "squad_combat_stance_ext"
+
+---@type string 
+SQUADEXTID_Experience = "squad_experience_ext"
+
+---@type string 
+SQUADEXTID_Formation = "squad_formation_ext"
+
+---@type string 
+SQUADEXTID_Health = "squad_health_ext"
+
+---@type string 
+SQUADEXTID_Holdable = "squad_holdable_ext"
+
+---@type string 
+SQUADEXTID_Item = "squad_item_ext"
+
+---@type string 
+SQUADEXTID_ItemSlot = "squad_item_slot_ext"
+
+---@type string 
+SQUADEXTID_Loadout = "squad_loadout_ext"
+
+---@type string 
+SQUADEXTID_Modifier = "squad_modifier_ext"
+
+---@type string 
+SQUADEXTID_MoveType = "squad_move_type_ext"
+
+---@type string 
+SQUADEXTID_PlantDemolition = "squad_plant_demolition_ext"
+
+---@type string 
+SQUADEXTID_Production = "squad_production_queue_ext"
+
+---@type string 
+SQUADEXTID_Resource = "squad_resource_ext"
+
+---@type string 
+SQUADEXTID_TeamWeapon = "squad_team_weapon_ext"
+
+---@type string 
+SQUADEXTID_UI = "squad_ui_ext"
+
+---@type string 
+SQUADEXTID_Upgrade = "squad_upgrade_ext"
+
+---@type string 
+SQUADEXTID_Veterancy = "squad_veterancy_ext"
+
+---@type userdata TypeExtInfo::TargetingType(0)
+Targeting_Automatic = {}
+
+---@type userdata TypeExtInfo::TargetingType(1)
+Targeting_Manual = {}
+
+---@type userdata TypeExtInfo::TargetingType(2)
+Targeting_None = {}
+
+---@type number 
+TEAM_NEUTRAL = 10001
+
+---@type number 
+TFF_All = 0
+
+---@type number 
+TFF_CausingSuppression = 8
+
+---@type number 
+TFF_FriendlyTargets = 512
+
+---@type number 
+TFF_InEnemySectors = 64
+
+---@type number 
+TFF_Infantry = 2
+
+---@type number 
+TFF_InFriendlySectors = 32
+
+---@type number 
+TFF_InjuredInfantry = 1024
+
+---@type number 
+TFF_InMostClumpedSector = 128
+
+---@type number 
+TFF_InSectorProducingResources = 2048
+
+---@type number 
+TFF_MeleeCombat = 4096
+
+---@type number 
+TFF_NotNearPlayerStartingPositions = 256
+
+---@type number 
+TFF_NotVisible = 16
+
+---@type number 
+TFF_RangedCombat = 8192
+
+---@type number 
+TFF_Vehicle = 4
+
+---@type number 
+TFF_Visible = 1
+
+---@type number 
+TIMER_PAUSED = math.huge
+
+---@type userdata UICombineType(0)
+UI_DoNotCombine = {}
+
+---@type userdata UICombineType(1)
+UI_Intersection = {}
+
+---@type number 
+UI_TYPE_COMMAND = 1
+
+---@type number 
+UI_TYPE_DATA_CONTEXT = 2
+
+---@type userdata UICombineType(2)
+UI_Union = {}
+
+---@type userdata UIEventType(15)
+UIE_AbilityExectued = {}
+
+---@type userdata UIEventType(9)
+UIE_AllyAttacked = {}
+
+---@type userdata UIEventType(18)
+UIE_BoobyTrap = {}
+
+---@type userdata UIEventType(30)
+UIE_CallToAction = {}
+
+---@type userdata UIEventType(25)
+UIE_CasualtySquadSpawned = {}
+
+---@type userdata UIEventType(28)
+UIE_CommandPointGained = {}
+
+---@type userdata UIEventType(1)
+UIE_ConstructionComplete = {}
+
+---@type userdata UIEventType(0)
+UIE_Default = {}
+
+---@type userdata UIEventType(20)
+UIE_EnemyReveal = {}
+
+---@type userdata UIEventType(11)
+UIE_EnemyTerritoryEntered = {}
+
+---@type userdata UIEventType(6)
+UIE_InfantryAttacked = {}
+
+---@type userdata UIEventType(2)
+UIE_InfantryComplete = {}
+
+---@type userdata UIEventType(22)
+UIE_InfantryReplaced = {}
+
+---@type userdata UIEventType(17)
+UIE_MineDetected = {}
+
+---@type userdata UIEventType(5)
+UIE_PhaseUp = {}
+
+---@type userdata UIEventType(8)
+UIE_PlayerAttacked = {}
+
+---@type userdata UIEventType(16)
+UIE_ResourceDepleted = {}
+
+---@type userdata UIEventType(19)
+UIE_Sniped = {}
+
+---@type userdata UIEventType(26)
+UIE_SquadCold = {}
+
+---@type userdata UIEventType(27)
+UIE_SquadFreezing = {}
+
+---@type userdata UIEventType(31)
+UIE_SquadKilled = {}
+
+---@type userdata UIEventType(21)
+UIE_SquadPinned = {}
+
+---@type userdata UIEventType(24)
+UIE_SquadVeterancy = {}
+
+---@type userdata UIEventType(13)
+UIE_StrategicPointCaptured = {}
+
+---@type userdata UIEventType(12)
+UIE_StrategicPointReverting = {}
+
+---@type userdata UIEventType(14)
+UIE_StrategicPointSecured = {}
+
+---@type userdata UIEventType(29)
+UIE_SuperAbility = {}
+
+---@type userdata UIEventType(10)
+UIE_TerritoryEntered = {}
+
+---@type userdata UIEventType(4)
+UIE_UpgradeComplete = {}
+
+---@type userdata UIEventType(7)
+UIE_VehicleAttacked = {}
+
+---@type userdata UIEventType(3)
+UIE_VehicleComplete = {}
+
+---@type userdata UIEventType(23)
+UIE_VehicleReplaced = {}
+
+---@type string 
+WM_ACCURACY = "accuracy_weapon_modifier"
+
+---@type string 
+WM_BURST = "burst_weapon_modifier"
+
+---@type string 
+WM_COOLDOWN = "cooldown_weapon_modifier"
+
+---@type string 
+WM_DAMAGE = "damage_weapon_modifier"
+
+---@type string 
+WM_ENABLE = "enable_weapon_modifier"
+
+---@type string 
+WM_PENETRATION = "weapon_penetration_modifier"
+
+---@type string 
+WM_RANGE = "range_weapon_modifier"
+
+---@type string 
+WM_RELOAD = "reload_weapon_modifier"
+
+---@type number 
+WR_ANNIHILATE = 0
+
+---@type number 
+WR_Begin = 0
+
+---@type number 
+WR_Count = 4
+
+---@type number 
+WR_NONE = 1
+
+---@type number 
+WR_SURRENDER = 2
+
+---@type number 
+WR_VICTORY_POINT = 3

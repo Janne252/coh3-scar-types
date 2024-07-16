@@ -1,12 +1,5 @@
 ---@meta declaration-overrides
 
--- scarutil.scar
-ALL = true
-ANY = false		-- for use in "Boolean: all" parameters
-
----@alias ALL true
----@alias ANY false
-
 ---@param filepath string
 ---Built-in method of importing SCAR files relative to the DATA:\scar folder (across all .SGAs)
 function import(filepath) end
@@ -22,49 +15,8 @@ function UI_CreateDataContext(table) end
 function UI_CreateCommand(cmd) end
 
 ---@alias ResourceType number
-
----@type ResourceType
-RT_Manpower = 0
----@type ResourceType
-RT_Fuel = 0
----@type ResourceType
-RT_Munition = 0
----@type ResourceType
-RT_Command = 0
----@type ResourceType
-RT_Action = 0
-
 ---@alias PBGType number
-
----@type PBGType
-PBGTYPE_Entity = 0
----@type PBGType
-PBGTYPE_Squad = 0
----@type PBGType
-PBG_Race = 0
----@type PBGType
-PBG_Ability = 0
----@type PBGType
-PBGTYPE_Upgrade = 0
----@type PBGType
-PBG_Weapon = 0
-
 ---@alias OwnerType number
----@type OwnerType
-OT_Player = 0
----@type OwnerType
-OT_Ally = 0
----@type OwnerType
-OT_Enemy = 0
----@type OwnerType
-OT_Neutral = 0
-
-
----@type number
-ITEM_UNLOCKED = unknown
-ITEM_LOCKED = unknown
-ITEM_REMOVED = unknown
-ITEM_DEFAULT = unknown
 
 ---@class LocString : table
 
