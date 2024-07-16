@@ -9,6 +9,9 @@ window.predefinedTypes = {
 ---@field z number
 `
 }
+// -> .overrides.d.scar.functions -> `node generate-predefined-functions.mjs`
+window.predefinedFunctions = ["import","UI_CreateDataContext","UI_CreateCommand","Team_GetEnemyTeam","UI_GetColourAsString","fatal","Player_GetMaxPopulation","Loc_ToAnsi","BP_GetSquadUIInfo","BP_GetEntityUIInfo","BP_GetAbilityUIInfo","BP_GetUpgradeUIInfo","World_GetRaceBlueprint","BP_GetRaceInfo","Entity_ExtensionExist","Cmd_Stop","BP_GetTechTreeBlueprintsByType","BP_GetTechTreeBPInfo","BP_GetEntityBlueprintsWithType_Internal","BP_GetSquadBlueprintsWithType_Internal","UI_CreateReticule","UI_CreateReticuleOnEntity","UI_CreateReticuleOnPosition","UI_CreateReticuleOnSquad","UI_DestroyReticule","UI_CreateTargetTrackingTag","Entity_CreateENV","Entity_CreateENVFacing","Entity_Create","Entity_CreateFacing","Entity_ConvertBlueprint","Entity_GetPosition","World_GetNumEntities","World_GetEntity","Loc_FormatText","Squad_CreateAndSpawnToward","HintPoint_Add","Modify_PlayerResourceRate","Modify_AbilityRechargeTime","Rule_AddGlobalEvent","Rule_AddPlayerEvent","BP_GetName","BP_AbilityExists","BP_UpgradeExists","Squad_GetAttachedWeapons","Squad_OverrideItemDropChance","Squad_SetTeamWeaponDestroyOnAbandonChance","Player_GetMapEntryPosition","EGroup_GetEntityAt","SGroup_GetSquadAt","Options_GetOption","Player_GetPopCapOverride","Modify_EntityBuildTime","Squad_ExtensionID","Squad_ExtensionEnabled","Player_GetAbilityBPCost","Camera_Pop","Camera_Push","Camera_Fov","Camera_PushKeepState","Camera_GetDefaultPitch","Camera_SetPitch","Camera_SetPitchRelative","Camera_GetDefaultYaw","Camera_SetYaw","Camera_SetYawRelative","Camera_GetDefaultDistance","Camera_SetDistance","Camera_GetEyePositionFromTarget","Camera_InverseEuler","World_GetNumSquads","World_GetSquad","UI_CreatePositionKickerMessage","UI_CreateEntityKickerMessage","EGroup_CreateKickerMessage","UI_CreateSquadKickerMessage","UI_CreateSGroupKickerMessage","SGroup_CreateKickerMessage","Cmd_InstantUpgrade","UI_GetAllowLoadAndSave","BP_GetUpgradeBlueprintsWithType_Internal","UI_SetSilhouetteEnabled","Game_GetScenarioFileName","Player_GetActiveUpgrades","UI_CreateMinimapBlip","MapIcon_ClearFacing","MapIcon_CreateArrow","MapIcon_CreateEntity","MapIcon_CreatePosition","MapIcon_CreateSquad","MapIcon_Destroy","MapIcon_DestroyAll","MapIcon_SetFacingEntity","MapIcon_SetFacingPosition","MapIcon_SetFacingSquad","Core_CallDelegateFunctions"]
+
 window.types = new Set()
 window.generics = new Set()
 window.normalizetype = (/**@type {string} */type) => {
@@ -63,7 +66,7 @@ window.functions = [...document.querySelectorAll('span.function')]
     .map(f => {
             const declaredParameterNames = new Set()
             return { 
-            name: f.childNodes[01].textContent.trim().replace(/[\(\)]/g, '').trim(), 
+            name: f.childNodes[1].textContent.trim().replace(/[\(\)]/g, '').trim(), 
             description: [...f.parentElement.parentElement.parentElement.querySelectorAll('p')].map(p => p.textContent.trim()).join('\n'), 
             parameters: [...f.childNodes]
                 .slice(2).map((e, i, a) => i % 2 == 0 ? [e, a[i + 1]] : undefined)
@@ -114,9 +117,7 @@ window.function_docs_header = `
 ---@meta function-declarations
 ---@diagnostic disable: missing-return
 
-ALL = true
-ANY = false
 `
-window.function_docs = window.functions.map(window.renderFunction)
+window.function_docs = window.functions.filter((f) => !window.predefinedFunctions.includes(f.name)).map(window.renderFunction)
 
 console.log(`${window.function_docs_header.trim()}\n\n${[...window.generics].map(g => `---@generic ${g}`).join('\n')}\n\n${Object.values(window.predefinedTypes).join('\n\n')}\n\n${[...window.types].map(t => `---@class ${t}\n${t} = {}`).join('\n')}\n\n${window.function_docs.join('\n\n')}`)

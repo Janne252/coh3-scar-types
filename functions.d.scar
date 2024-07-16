@@ -1,7 +1,5 @@
 ---@meta function-declarations
-
-ALL = true
-ANY = false
+---@diagnostic disable: missing-return
 
 
 
@@ -2626,16 +2624,6 @@ function Event_Save(type) end
 --- @param fileName string
 --- @return unknown
 function Event_SaveWithName(type, fileName) end
-
---- Throws an error to lua and print out the error message
---- @param state lua_State
---- @return unknown
-function fatal(state) end
-
---- Throws an error to lua and print out the error message
---- @param state lua_State
---- @return unknown
-function fatal(state) end
 
 --- Calculate the dimensions and centre offset of a formation for given squads.  Returns as a ScarPosition {x = Width, y = Height, z = centre offset along forward (Height) direction}.  Returns a zero vector if error.
 --- @param sgroup SGroupID
@@ -5720,11 +5708,6 @@ function BP_GetEntityTypeExtRaceBlueprintAtIndex(pbgShortname, index) end
 --- @return unknown
 function BP_GetEntityTypeExtRaceCount(pbgShortname) end
 
---- Returns a table containing the ui_ext info for given entity
---- @param ebp Entity
---- @return unknown
-function BP_GetEntityUIInfo(ebp) end
-
 --- Returns a map pool property bag group.
 --- @param pbgShortname string
 --- @return unknown
@@ -5744,12 +5727,6 @@ function BP_GetMoveTypeBlueprint(pbgShortname) end
 --- @param pbgID number
 --- @return unknown
 function BP_GetMoveTypeBlueprintByPbgID(pbgID) end
-
---- Return the short name of the group
---- Example name would be "ally_mad_minute_ability"
---- @param pbg PropertyBagGroup
---- @return unknown
-function BP_GetName(pbg) end
 
 --- Returns an pass type property bag group.
 --- @param pbgShortname string
@@ -5832,12 +5809,6 @@ function BP_GetSquadTypeExtRaceBlueprintAtIndex(pbgShortname, index) end
 --- @return unknown
 function BP_GetSquadTypeExtRaceCount(pbgShortname) end
 
---- Returns a table containing the ui_ext info for given squad and race
---- @param sbp Squad
---- @param rbp ScarRacePBG
---- @return unknown
-function BP_GetSquadUIInfo(sbp, rbp) end
-
 --- Returns the type of a blueprint.
 --- @param v any
 --- @return unknown
@@ -5852,11 +5823,6 @@ function BP_GetUpgradeBlueprint(pbgShortname) end
 --- @param pbgID number
 --- @return unknown
 function BP_GetUpgradeBlueprintByPbgID(pbgID) end
-
---- Returns a table containing the ui_ext info for given upgrade
---- @param ubp Upgrade
---- @return unknown
-function BP_GetUpgradeUIInfo(ubp) end
 
 --- Returns a weapon property bag group.
 --- @param pbgShortname string
@@ -6101,13 +6067,6 @@ function Cmd_InstantReinforceUnit(sgroup, count) end
 --- @return unknown
 function Cmd_InstantSetupTeamWeapon(sgroupid, queued) end
 
---- Sends an instant upgrade command to a player, egroup or sgroup. accepts a single upgrade or table of upgrades.
---- @param target EGroupID
---- @param blueprint number
---- @param count number | nil
---- @return unknown
-function Cmd_InstantUpgrade(target, blueprint, count) end
-
 --- Move a squad group to a given position.
 --- Supports facing, 'offset' movement, and can find cover. The sgroup can be deleted when in proximity of a marker (it assumes a proximity of 5 if you forget to set one on the marker)
 --- @param sgroup SGroupID
@@ -6248,11 +6207,6 @@ function Cmd_SquadPatrolMarker(sgroup, marker) end
 --- @param vulnerableRetreat boolean | nil
 --- @return unknown
 function Cmd_StaggeredRetreat(sgroup, markers, maxTries, vulnerableRetreat) end
-
---- Sends a stop command to egroup or sgroup.
---- @param group EGroupID
---- @return unknown
-function Cmd_Stop(group) end
 
 --- Orders a squad to surrender and awards the local player with an appropriate number of action points
 --- Use the optional parameter to assign action points to override the default number.  The function automatically addresses squads that are in buildings or vehicles by ordering them out of the vehicle. The command will also overwrite the exit position as well, if you do not want the squads to exit at the map entry point.
@@ -7337,12 +7291,6 @@ function EGroup_Create(name) end
 --- @return unknown
 function EGroup_CreateIfNotFound(egroupname) end
 
---- Create and display kicker message on the each entity in the egroup to the player
---- @param group EGroupID
---- @param textid string
---- @return unknown
-function EGroup_CreateKickerMessage(group, textid) end
-
 --- Returns an EGroup with a unique name, prefixed by the 'prefix' parameter.
 --- @param prefix string | nil
 --- @return unknown
@@ -7483,13 +7431,6 @@ function EGroup_GetClosestEntity(egroupid, position) end
 --- @param int number
 --- @return unknown
 function EGroup_GetDeSpawnedEntityAt(group, int) end
-
---- Returns the entity at the given index.
---- Use EGroup_GetSpawnedEntityAt or EGroup_GetDeSpawnedEntityAt if you want the spawned/despawned items in the group\n Use index 1 to get the first entity in the group.\n It is an error if index > EGroup_GetCount()\n
---- @param group EGroupID
---- @param int number
---- @return unknown
-function EGroup_GetEntityAt(group, int) end
 
 --- Check invulnerablity state for ALL or ANY entity in an entity group.
 --- Set all param to true to check for ALL or set to false to check for ANY.
@@ -8483,12 +8424,6 @@ function Entity_ClearTagDebug() end
 --- @return unknown
 function Entity_CompleteUpgrade(pEntity, upgradePBG) end
 
---- Converts Entity's blueprint to the specified blueprint.
---- @param entity Entity
---- @param pbg PropertyBagGroup
---- @return unknown
-function Entity_ConvertBlueprint(entity, pbg) end
-
 --- Cycle through the existing list built for the originally tagged entity
 --- @return unknown
 function Entity_CycleDebug() end
@@ -8723,11 +8658,6 @@ function Entity_GetOnFireHealthPercentThreshold(entity) end
 --- @param entity Entity
 --- @return unknown
 function Entity_GetPlayerOwner(entity) end
-
---- Returns the position of the entity.  The position is currently a lua table with three entries (x, y, z)
---- @param entity Entity
---- @return unknown
-function Entity_GetPosition(entity) end
 
 --- Returns the blueprint for a production queue item with index.
 --- @param entity Entity
@@ -10240,14 +10170,6 @@ function Modify_AbilityMinCastRange(player, ability, scalefactor) end
 --- @return unknown
 function Modify_AbilityMunitionsCost(player, ability, scalefactor, mathtype) end
 
---- Modifies the recharge time of an ability
---- @param player_entity_squad Player | Entity | Squad
---- @param ability Ability
---- @param scalefactor number
---- @param mathtype number | nil
---- @return unknown
-function Modify_AbilityRechargeTime(player_entity_squad, ability, scalefactor, mathtype) end
-
 --- Modifies a squad or entity's armor
 --- @param group EGroupID
 --- @param scalefactor number
@@ -10278,13 +10200,6 @@ function Modify_DisableHold(group, disable) end
 --- @param disable boolean
 --- @return unknown
 function Modify_EnableCamoflage(group, disable) end
-
---- Modifies the time taken to build a particular EBP. This only affects the given player.
---- @param playerId Player
---- @param ebp string
---- @param scalefactor number
---- @return unknown
-function Modify_EntityBuildTime(playerId, ebp, scalefactor) end
 
 --- Modifies an entity's construction time
 --- Should only be used on entities, NOT squads
@@ -10345,14 +10260,6 @@ function Modify_PlayerProductionRate(sgroup, scalefactor) end
 --- @param mathtype number | nil
 --- @return unknown
 function Modify_PlayerResourceCap(playerId, resourceType, scalefactor, mathtype) end
-
---- Modifies a player's incoming resource rate. Possible math types are MUT_Multiplication, MUT_Addition.
---- @param playerId Player
---- @param resourceType number
---- @param scalefactor number
---- @param mathtype number | nil
---- @return unknown
-function Modify_PlayerResourceRate(playerId, resourceType, scalefactor, mathtype) end
 
 --- Modifies the sight radius for a player.
 --- @param player Player
@@ -11226,12 +11133,6 @@ function Player_FindFirstNeutralPlayer(player) end
 --- @param id number
 --- @return unknown
 function Player_FromId(id) end
-
---- Returns the modified cost of the given ability including all modifications added by the given player
---- @param pPlayer Player
---- @param pbg PropertyBagGroup
---- @return unknown
-function Player_GetAbilityBPCost(pPlayer, pbg) end
 
 --- Returns the type of the given player if it is an AI.
 --- @param player Player
@@ -12518,13 +12419,6 @@ function Rule_AddEventFilter_EntityType(rule, context, op, includeTypes, exclude
 --- @return unknown
 function Rule_AddEventFilter_StateModelBool(rule, context, op, includeTypes, excludeTypes) end
 
---- Add a rule to be executed when the event of 'eventType' has happened, regardless of source
---- Event types are: GE_PlayerBeingAttacked
---- @param rule function
---- @param eventtype number
---- @return unknown
-function Rule_AddGlobalEvent(rule, eventtype) end
-
 --- Add a rule to be executed. Can include a start delay, an interval between rule calls and a count of how many times the rule is called.
 --- interval can be a number (the interval between subsequent rule calls) or a table with the keys: "delay", "interval" and "count". Returns the ID of the rule just added.
 --- @param f function
@@ -12542,14 +12436,6 @@ function Rule_AddInterval(f, interval, data, group) end
 --- @param group EGroupID | nil
 --- @return unknown
 function Rule_AddOneShot(rule, delay, data, group) end
-
---- Add a rule to be executed when the event of 'eventType' has happened on the 'player'
---- Event types are: GE_PlayerBeingAttacked, GE_PlayerCommandIssued, GE_AbilityExecuted, GE_UpgradeComplete, GE_ConstructionComplete, GE_BuildItemComplete, GE_PlayerKilled, GE_SpawnActionComplete, GE_AIPlayer_EncounterNotification
---- @param rule function
---- @param player Player
---- @param eventtype number
---- @return unknown
-function Rule_AddPlayerEvent(rule, player, eventtype) end
 
 --- Add a rule to be executed when the event of 'eventType' has happened on squads in the 'sgroup'
 --- Event types are: GE_SquadKilled, GE_SquadPinned, GE_SquadParadropComplete, GE_SquadCommandIssued, GE_AbilityExecuted, GE_SpawnActionComplete
@@ -12972,13 +12858,6 @@ function SGroup_Create(name) end
 --- @return unknown
 function SGroup_CreateIfNotFound(name) end
 
---- Create and display kicker message on the each squad in the sgroup to the player
---- @param group SGroupID
---- @param player Player
---- @param textid string
---- @return unknown
-function SGroup_CreateKickerMessage(group, player, textid) end
-
 --- Returns an SGroup with a unique name, prefixed by the 'prefix' parameter.
 --- @param prefix string | nil
 --- @return unknown
@@ -13287,13 +13166,6 @@ function SGroup_GetSpawnedSquadAt(group, int) end
 --- @param sgroup SGroupID
 --- @return unknown
 function SGroup_GetSpread(sgroup) end
-
---- Returns the squad at a certain position in the group.
---- This is a one-based index (use index 1 to get the first squad in the group.) It is an error if index > SGroup_Count().
---- @param group SGroupID
---- @param int number
---- @return unknown
-function SGroup_GetSquadAt(group, int) end
 
 --- Returns an sgroup containing all squads held by any squad in an sgroup
 --- @param sgroup SGroupID
@@ -14040,16 +13912,6 @@ function Squad_CompleteUpgrade(pSquad, upgradePBG) end
 --- @return unknown
 function Squad_Count(squad) end
 
---- Create a squad, spawn it and assign it to a player.
---- This will create a squad of size 'loadoutCount' and of unit type 'unit_base' (from squad blueprint)\n Note: loadoutCount will be clipped to loadoutMin and loadoutMax from the squad blueprint. A loudoutCount of zero means create the whole squad as is.
---- @param sbp Squad
---- @param player Player
---- @param loadoutCount number
---- @param pos Position
---- @param toward Position
---- @return unknown
-function Squad_CreateAndSpawnToward(sbp, player, loadoutCount, pos, toward) end
-
 --- Despawn the entire squad at its current position.
 --- @param squad Squad
 --- @return unknown
@@ -14081,12 +13943,6 @@ function Squad_EntityAt(squad, index) end
 --- Returns total squad extension count.
 --- @return unknown
 function Squad_ExtensionCount() end
-
---- Returns true if the squad has the specific extension enabled.
---- @param pSquad Squad
---- @param extID ComponentDependencyIndex
---- @return unknown
-function Squad_ExtensionEnabled(pSquad, extID) end
 
 --- Returns a string name of the given extension on the squad.
 --- @param pSquad Squad
@@ -15558,20 +15414,6 @@ function HintMouseover_Add(hintText, hintTarget, targetRadius, looping) end
 --- @return unknown
 function HintMouseover_Remove(hintText, hintTarget) end
 
---- Creates a hintpoint attached to a Marker, EGroup, SGroup or position
---- If range is set to 0, then the hintpoint is rangeless, see the design document for rangeless features. The following types of hintpoint actions are available. HPAT_Objective HPAT_Hint HPAT_Critical HPAT_Movement HPAT_Attack HPAT_FormationSetup HPAT_RallyPoint HPAT_DeepSnow HPAT_CoverGreen HPAT_CoverYellow HPAT_CoverRed HPAT_Detonation HPAT_Vaulting
---- @param where any
---- @param bVisible boolean
---- @param hintText string
---- @param height number | nil
---- @param actionType number | nil
---- @param iconName string | nil
---- @param priority number | nil
---- @param visibleInFOW boolean | nil
---- @param dataTemplate string | nil
---- @return unknown
-function HintPoint_Add(where, bVisible, hintText, height, actionType, iconName, priority, visibleInFOW, dataTemplate) end
-
 --- Deprecated.
 --- @param egroup EGroupID
 --- @param priority number
@@ -15707,81 +15549,6 @@ function HintPoint_SetVisible(HintPointID, bVisible) end
 --- @param visible boolean
 --- @return unknown
 function HintPoint_SetVisibleInternal(id, visible) end
-
---- Clear the map icon facing value.
---- @param id number
---- @return unknown
-function MapIcon_ClearFacing(id) end
-
---- Creates an arrow on the metamap between the two locations provided
---- @param position_from Marker | Pos
---- @param position_to Marker | Pos
---- @param red number
---- @param green number
---- @param blue number
---- @param alpha number
---- @return unknown
-function MapIcon_CreateArrow(position_from, position_to, red, green, blue, alpha) end
-
---- Create a map icon targetting an entity.
---- @param entity Entity
---- @param icon string
---- @param scale number
---- @param red number
---- @param green number
---- @param blue number
---- @param alpha number
---- @return unknown
-function MapIcon_CreateEntity(entity, icon, scale, red, green, blue, alpha) end
-
---- Create a map icon targetting a position.
---- @param position Position
---- @param icon string
---- @param scale number
---- @param red number
---- @param green number
---- @param blue number
---- @param alpha number
---- @return unknown
-function MapIcon_CreatePosition(position, icon, scale, red, green, blue, alpha) end
-
---- Create a map icon targetting a squad.
---- @param squad Squad
---- @param icon string
---- @param scale number
---- @param red number
---- @param green number
---- @param blue number
---- @param alpha number
---- @return unknown
-function MapIcon_CreateSquad(squad, icon, scale, red, green, blue, alpha) end
-
---- Remove a map icon.
---- @param id number
---- @return unknown
-function MapIcon_Destroy(id) end
-
---- Remove all map icons.
---- @return unknown
-function MapIcon_DestroyAll() end
-
---- Face the map icon towards this entity.
---- @param id number
---- @param entity Entity
---- @return unknown
-function MapIcon_SetFacingEntity(id, entity) end
-
---- Face the map icon towards this position.
---- @param id number
---- @param position Position
---- @return unknown
-function MapIcon_SetFacingPosition(id, position) end
-
---- Face the map icon towards this squad.
---- @param id number
---- @param squad Squad
---- @return unknown
-function MapIcon_SetFacingSquad(id, squad) end
 
 --- Appends the provided EntityIDs to the EGroup
 --- @param group EGroupID
@@ -16279,10 +16046,6 @@ function UI_CoverPreviewHide() end
 --- @return unknown
 function UI_CoverPreviewShow() end
 
---- Create a table that will be interpreted as a command for UI properties.
---- @return unknown
-function UI_CreateCommand() end
-
 --- Create a event cue from a sender.
 --- @param player__Can_be_null__Used_for_retrieving_player_information__E_g__team_color_ sender
 --- @param type_id event
@@ -16296,17 +16059,6 @@ function UI_CreateCommand() end
 --- @param event_cue_visibility_in_action_ECAV_Global_ECAV_ExecuterIsOwnOrAlly_ECAV_ExecuterIsEnemy_ECAV_CanSeeExecutor_ECAV_CanSeeTarget_ECAV_CanEnemySeeExecutor_ECAV_TargetIsOwn_ECAV_TargetIsAlly_ECAV_OwnsTargetAndExecuterIsEnemy_ECAV_AlliedToTargetAndExecuterIsEnemy_ECAV_ExecuterIsOwn_ECAV_ExecuterIsAlly_ECAV_CanSeeTargetAndExecutorIsOwnOrAlly_ECAV_CanSeeTargetAndExecutorIsOwn Control
 --- @return unknown
 function UI_CreateCustomEventCueFrom(player__Can_be_null__Used_for_retrieving_player_information__E_g__team_color_, type_id, duration_of_the_event_cue_, repeat_filtering_if___0__Make_the_event_cue_alive_but_not_visible_beyond_its_lifetime_, repeatTime___0__how_many_times_a_event_cue_with_the_same_customEventType_can_be_repeated_during_repeatTime, repeatTime___0__filter_out_a_event_cue_if_it_s_within_the_range_of_a_existing_one_with_the_same_customEventType, data_template_of_the_event_cue_, cue_visibility_flags__ECV_None__not_visible_ECV_Queue__visible_in_the_queue_ECV_Title__visible_as_title_ECV_Queue___ECV_Title___both, cue_visibility_flags_, event_cue_visibility_in_action_ECAV_Global_ECAV_ExecuterIsOwnOrAlly_ECAV_ExecuterIsEnemy_ECAV_CanSeeExecutor_ECAV_CanSeeTarget_ECAV_CanEnemySeeExecutor_ECAV_TargetIsOwn_ECAV_TargetIsAlly_ECAV_OwnsTargetAndExecuterIsEnemy_ECAV_AlliedToTargetAndExecuterIsEnemy_ECAV_ExecuterIsOwn_ECAV_ExecuterIsAlly_ECAV_CanSeeTargetAndExecutorIsOwnOrAlly_ECAV_CanSeeTargetAndExecutorIsOwn) end
-
---- Create a table that will be interpreted as a data context for UI properties.
---- @return unknown
-function UI_CreateDataContext() end
-
---- Create a custom kicker message on the entity and display to the player, rgb values are 0-255.
---- @param player Player
---- @param entity Entity
---- @param message string
---- @return unknown
-function UI_CreateEntityKickerMessage(player, entity, message) end
 
 --- Creates an event cue without a callback (you won't know when it's clicked).
 --- @param title string
@@ -16355,14 +16107,6 @@ function UI_CreateEventCueClickable(customEventType, lifetime, repeatCount, repe
 --- @return unknown
 function UI_CreateEventCueClickableByType(eventType, lifetime, title, description, dataTemplate, iconPath, soundPath, red, green, blue, alpha, visibility, _function) end
 
---- Creates a blip on the minimap; return the ID of the blip.
---- 'where' can be an entity, marker, position, egroup, sgroup, or squad.
---- @param where any
---- @param lifetime number
---- @param blipDataTemplate string
---- @return unknown
-function UI_CreateMinimapBlip(where, lifetime, blipDataTemplate) end
-
 --- Create a blips on a ScarMarker from a sender. sender is used for retrieving player information like team color
 --- @param sender Player
 --- @param marker MarkerID
@@ -16378,27 +16122,6 @@ function UI_CreateMinimapBlipOnMarkerFrom(sender, marker, lifeTime, dataTemplate
 --- @param dataTemplate string
 --- @return unknown
 function UI_CreateMinimapBlipOnPosFrom(sender, position, lifeTime, dataTemplate) end
-
---- Create a custom kicker message on the entity and display to the player, rgb values are 0-255.
---- @param player Player
---- @param position Position
---- @param message string
---- @return unknown
-function UI_CreatePositionKickerMessage(player, position, message) end
-
---- Create a custom kicker message on the squad and display to the player.
---- @param player Player
---- @param sgroup SGroupID
---- @param message string
---- @return unknown
-function UI_CreateSGroupKickerMessage(player, sgroup, message) end
-
---- Create a custom kicker message on the entity and display to the player, rgb values are 0-255.
---- @param player Player
---- @param squad Squad
---- @param message string
---- @return unknown
-function UI_CreateSquadKickerMessage(player, squad, message) end
 
 --- Create a position tag.
 --- @param scar_position__Won_t_accept_a_position_extremely_close__std__numeric_limits_float___min____to_the_existing_ones_ a
@@ -16560,10 +16283,6 @@ function UI_FlashUSSSquadButton(squad, stopOnClick) end
 --- @param abilityBag Ability
 --- @return unknown
 function UI_GetAbilityIconName(abilityBag) end
-
---- Converts a colour table to an ARGB hex string (e.g. {a=0, r=255, g=204, b=136} => #00FFCC88).
---- @return unknown
-function UI_GetColourAsString() end
 
 --- Returns whether all decorators are enabled or not
 --- @return unknown
@@ -16732,12 +16451,6 @@ function UI_SetModalHoverCallback(_function) end
 --- @return unknown
 function UI_SetSGroupSpecialLevel(sgroup, level) end
 
---- Enables or disables the silhouettes for squads / entities
---- @param unit EGroupID
---- @param enabled boolean
---- @return unknown
-function UI_SetSilhouetteEnabled(unit, enabled) end
-
 --- Sets a callback firing when user try to skip the NIS
 --- @param _function function
 --- @return unknown
@@ -16853,13 +16566,6 @@ function Game_FadeToBlack(direction, length) end
 --- @param Path string
 --- @return unknown
 function Import_Once(Path) end
-
---- Returns a formatted localized string.
---- Use this function to format localized text. ie %1PLAYERNAME% is going to win. It accepts up to 9 additional values as parameters.
---- @param FormatID number
---- @param parameters argc | nil
---- @return unknown
-function Loc_FormatText(FormatID, parameters) end
 
 --- Modify whether or not the group is revealed in the fog of war.
 --- @param group EGroupID
@@ -17746,11 +17452,6 @@ function World_GetPossibleSquadsBlueprint(racePBG, index) end
 --- @param racePBG ScarRacePBG
 --- @return unknown
 function World_GetPossibleSquadsCount(racePBG) end
-
---- Returns the race index of a race, given its name (from the ME).
---- @param racename string
---- @return unknown
-function World_GetRaceBlueprint(racename) end
 
 --- Returns a random integer with range [min, max]
 --- It is recommended you use this instead of luas math.random function

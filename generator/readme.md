@@ -2,7 +2,10 @@
 ! NOTE: `./data/scardocs` is currently based on Age of Empires IV.
 
 ### Functions
-1. Open [`data/scardocs/html/function_list.htm`](./data/scardocs//html/function_list.htm) in Chrome
+1. Update [`functions.js`](./functions.js) `window.predefinedFunctions` variable:
+    1. run `node generate-predefined-functions.mjs`
+    1. Assign [`functions.js`](./functions.js) `window.predefinedFunctions` to the text content of [`..overrides.d.scar.functions.json`](./.overrides.d.scar.functions.json) (JSON array)
+1. Open [`data/scardocs/html/function_list.htm`](./data/scardocs/html/function_list.htm) in a web browser, e.g. Google Chrome
 1. Open browser developer tools console
 1. Paste in contents of [`./functions.js`](./functions.js)
 1. Press Enter & Copy the text outputted to the console
