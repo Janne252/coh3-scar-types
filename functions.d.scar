@@ -10095,11 +10095,6 @@ function MarkerCountFromName(name, type) end
 --- @return unknown
 function Modifier_IsEnabledOnEGroup(egroup, modifier, modtype, all, bEnabledByDefault) end
 
---- Remove an applied modifier.
---- @param modifier modids
---- @return unknown
-function Modifier_Remove(modifier) end
-
 --- Removes all SCAR-applied modifiers for a specific EGroup.
 --- @param egroup EGroupID
 --- @return unknown
@@ -11711,13 +11706,6 @@ function Player_RestrictBuildingList(playerid, blueprintlist) end
 --- @param list string
 --- @return unknown
 function Player_RestrictResearchList(playerid, list) end
-
---- Sets the availability of an ability. Availability can be either ITEM_LOCKED, ITEM_UNLOCKED, ITEM_REMOVED or ITEM_DEFAULT
---- @param player Player
---- @param bp number
---- @param availability number
---- @return unknown
-function Player_SetAbilityAvailability(player, bp, availability) end
 
 --- Sets availability of ALL entity, squad and player commands.
 --- @param player Player

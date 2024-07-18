@@ -1,5 +1,8 @@
 ---@meta declaration-overrides
 
+---@alias ALL true
+---@alias ANY false
+
 ---@param filepath string
 ---Built-in method of importing SCAR files relative to the DATA:\scar folder (across all .SGAs)
 function import(filepath) end
@@ -588,3 +591,13 @@ function MapIcon_SetFacingSquad(id, squad) end
 ---@param delegateFunctionName string
 ---@vararg any
 function Core_CallDelegateFunctions(delegateFunctionName, ...) end
+
+--- Remove an applied modifier.
+--- @param modifierId number
+function Modifier_Remove(modifierId) end
+
+--- Sets the availability of an ability. Availability can be either ITEM_LOCKED, ITEM_UNLOCKED, ITEM_REMOVED or ITEM_DEFAULT
+--- @param player Player
+--- @param bp number
+--- @param availability userdata
+function Player_SetAbilityAvailability(player, bp, availability) end
