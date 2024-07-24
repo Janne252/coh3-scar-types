@@ -601,3 +601,7 @@ function Modifier_Remove(modifierId) end
 --- @param bp number
 --- @param availability userdata
 function Player_SetAbilityAvailability(player, bp, availability) end
+
+---@param bp EntityPBG
+---@return {revert_time: number, capture_time: number}
+function BP_GetEntityBPStrategicPointInfo(bp) end
