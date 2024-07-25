@@ -605,3 +605,12 @@ function Player_SetAbilityAvailability(player, bp, availability) end
 ---@param bp EntityPBG
 ---@return {revert_time: number, capture_time: number}
 function BP_GetEntityBPStrategicPointInfo(bp) end
+
+--- Sends an ability command to a player, egroup or sgroup. extra parameters are provided if the ability requires them.
+--- @param user Squad|SGroupID|EGroupID|Player
+--- @param blueprint Ability
+--- @param target? Position|SGroupID|EGroupID
+--- @param direction? Position
+--- @param skipCostPrereq? boolean
+--- @param queued? boolean
+function Cmd_Ability(user, blueprint, target, direction, skipCostPrereq, queued) end
