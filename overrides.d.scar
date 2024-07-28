@@ -370,6 +370,13 @@ function Modify_EntityBuildTime(playerId, ebp, scalefactor) end
 ---Returns the extension ID of the extension on a squad.
 function Squad_ExtensionID(squad, extensionName, unknownBoolean) end
 
+---@param entity Entity
+---@param extensionName string
+---@param unknownBoolean boolean
+---@return number
+---Returns the extension ID of the extension on an entity.
+function Entity_ExtensionID(entity, extensionName, unknownBoolean) end
+
 --- Returns true if the squad has the specific extension enabled.
 --- @param pSquad Squad
 --- @param extID number
