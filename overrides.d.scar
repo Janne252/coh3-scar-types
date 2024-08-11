@@ -621,3 +621,11 @@ function BP_GetEntityBPStrategicPointInfo(bp) end
 --- @param skipCostPrereq? boolean
 --- @param queued? boolean
 function Cmd_Ability(user, blueprint, target, direction, skipCostPrereq, queued) end
+
+---@param target Position|Marker|Entity|Squad|EGroupID|SGroupID
+---@return Position
+function Util_GetPosition(target) end
+
+---@param entity Entity
+---@return boolean
+function Entity_IsInInteractiveArea(entity) end
