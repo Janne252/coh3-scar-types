@@ -629,3 +629,7 @@ function Util_GetPosition(target) end
 ---@param entity Entity
 ---@return boolean
 function Entity_IsInInteractiveArea(entity) end
+
+---@param entity Entity
+---@return number
+function Entity_GetRadius(entity) end
