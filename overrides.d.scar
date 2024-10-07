@@ -633,3 +633,9 @@ function Entity_IsInInteractiveArea(entity) end
 ---@param entity Entity
 ---@return number
 function Entity_GetRadius(entity) end
+
+--- Sets the availability of an upgrade. Availability can be either ITEM_LOCKED, ITEM_UNLOCKED, ITEM_REMOVED or ITEM_DEFAULT
+--- @param player Player
+--- @param bp Upgrade
+--- @param availability number|userdata
+function Player_SetUpgradeAvailability(player, bp, availability) end
