@@ -183,7 +183,7 @@ function UI_DestroyReticule(id) end
 ---@field DataTemplate string x:Key of the template, see DATA\ui\resources\tagresources.xaml and DATA\ui\hud\pages\hudpage.xaml
 ---@param target Entity | Squad | Position
 ---@param lifetime_seconds number
----@param template _UI_CreateTargetTrackingTagDataContext 
+---@param template _UI_CreateTargetTrackingTagDataContext
 function UI_CreateTargetTrackingTag(target, lifetime_seconds, template) end
 
 ---@param ebp EntityPBG
@@ -639,3 +639,7 @@ function Entity_GetRadius(entity) end
 --- @param bp Upgrade
 --- @param availability number|userdata
 function Player_SetUpgradeAvailability(player, bp, availability) end
+
+---@param entity Entity
+---@return boolean
+function Entity_IsSpawner(entity) end
