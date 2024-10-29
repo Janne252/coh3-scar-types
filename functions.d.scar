@@ -5603,16 +5603,6 @@ function Squad_IsInAIEncounter(squad) end
 --- @return unknown
 function SquadGroup_CountSpawnedAndStatsInitialized(sgroup, player) end
 
---- Returns an ability property bag group.
---- @param pbgShortname string
---- @return unknown
-function BP_GetAbilityBlueprint(pbgShortname) end
-
---- Returns an ability property bag group.
---- @param pbgID number
---- @return unknown
-function BP_GetAbilityBlueprintByPbgID(pbgID) end
-
 --- Returns an AIAbility property bag group.
 --- @param pbgShortname string
 --- @return unknown
@@ -5652,16 +5642,6 @@ function BP_GetAIStateModelTuningsBlueprint(pbgShortname) end
 --- @param pbgID number
 --- @return unknown
 function BP_GetAIStateModelTuningsBlueprintByPbgID(pbgID) end
-
---- Returns an entity property bag group.
---- @param pbgShortname string
---- @return unknown
-function BP_GetEntityBlueprint(pbgShortname) end
-
---- Returns an entity property bag group.
---- @param pbgID number
---- @return unknown
-function BP_GetEntityBlueprintByPbgID(pbgID) end
 
 --- Returns the unmodified build time in seconds from cost_ext for a given entity blueprint.
 --- @param entityBag Entity
@@ -5766,16 +5746,6 @@ function BP_GetSlotItemBlueprint(pbgShortname) end
 --- @return unknown
 function BP_GetSlotItemBlueprintByPbgID(pbgID) end
 
---- Returns a squad property bag group.
---- @param pbgShortname string
---- @return unknown
-function BP_GetSquadBlueprint(pbgShortname) end
-
---- Returns a squad property bag group.
---- @param pbgID string
---- @return unknown
-function BP_GetSquadBlueprintByPbgID(pbgID) end
-
 --- Returns the child blueprint of the specified squad blueprint at specified index.
 --- @param pbgShortname string
 --- @param index number
@@ -5813,16 +5783,6 @@ function BP_GetSquadTypeExtRaceCount(pbgShortname) end
 --- @param v any
 --- @return unknown
 function BP_GetType(v) end
-
---- Returns an upgrade property bag group.
---- @param pbgShortname string
---- @return unknown
-function BP_GetUpgradeBlueprint(pbgShortname) end
-
---- Returns an upgrade property bag group.
---- @param pbgID number
---- @return unknown
-function BP_GetUpgradeBlueprintByPbgID(pbgID) end
 
 --- Returns a weapon property bag group.
 --- @param pbgShortname string
@@ -5960,16 +5920,6 @@ function CheatMenu_RegisterCheatFunction(cheatFunction, title, restartMission) e
 --- @param queued boolean | nil
 --- @return unknown
 function Cmd_AbandonTeamWeapon(sgroupid, preserveCrew, queued) end
-
---- Sends an ability command to a player, egroup or sgroup. extra parameters are provided if the ability requires them.
---- @param user EGroupID
---- @param blueprint number
---- @param target EGroupID | nil
---- @param direction Position | nil
---- @param skipCostPrereq boolean | nil
---- @param queued boolean | nil
---- @return unknown
-function Cmd_Ability(user, blueprint, target, direction, skipCostPrereq, queued) end
 
 --- Attach the squad from sgroupnameAttachee to sgroupname.  Both SGroups must contain only one squad.
 --- @param sgroup SGroupID
@@ -11798,13 +11748,6 @@ function Player_SetResourceInternal(player, type, amt, reason) end
 --- @return unknown
 function Player_SetResources(player, resourceAmount) end
 
---- Sets the availability of a squad production item. Availability can be either ITEM_LOCKED, ITEM_UNLOCKED, ITEM_REMOVED or ITEM_DEFAULT
---- @param player Player
---- @param bp number
---- @param availability number
---- @return unknown
-function Player_SetSquadProductionAvailability(player, bp, availability) end
-
 --- Sets a boolean value in the Player's state model corresponding to the given key.
 --- @param player Player
 --- @param key string
@@ -11909,13 +11852,6 @@ function Player_SetStateModelSquadTarget(player, key, value) end
 --- @param value Position
 --- @return unknown
 function Player_SetStateModelVector3f(player, key, value) end
-
---- Sets the availability of an upgrade. Availability can be either ITEM_LOCKED, ITEM_UNLOCKED, ITEM_REMOVED or ITEM_DEFAULT
---- @param player Player
---- @param bp number
---- @param availability number
---- @return unknown
-function Player_SetUpgradeAvailability(player, bp, availability) end
 
 --- Abruptly stops an active ability
 --- @param player Player
@@ -16884,11 +16820,6 @@ function Util_GetOffsetPosition(pos, offset, distance) end
 --- @param Object EGroupID
 --- @return unknown
 function Util_GetPlayerOwner(Object) end
-
---- Returns a position from entity/marker/pos/egroup/sgroup/squad
---- @param var Variable
---- @return unknown
-function Util_GetPosition(var) end
 
 --- Returns a random position within an area that is not near a player
 --- Useful for dropping artillery NEAR a player, but not on him, for example. searchRadius is the area to look for the location in.  Distance is how far from the player's units the position must be.

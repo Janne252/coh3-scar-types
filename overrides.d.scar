@@ -605,9 +605,15 @@ function Modifier_Remove(modifierId) end
 
 --- Sets the availability of an ability. Availability can be either ITEM_LOCKED, ITEM_UNLOCKED, ITEM_REMOVED or ITEM_DEFAULT
 --- @param player Player
---- @param bp number
+--- @param bp Ability
 --- @param availability userdata
 function Player_SetAbilityAvailability(player, bp, availability) end
+
+--- Sets the availability of a squad production item. Availability can be either ITEM_LOCKED, ITEM_UNLOCKED, ITEM_REMOVED or ITEM_DEFAULT
+--- @param player Player
+--- @param bp SquadPBG
+--- @param availability userdata
+function Player_SetSquadProductionAvailability(player, bp, availability) end
 
 ---@param bp EntityPBG
 ---@return {revert_time: number, capture_time: number}
@@ -643,3 +649,43 @@ function Player_SetUpgradeAvailability(player, bp, availability) end
 ---@param entity Entity
 ---@return boolean
 function Entity_IsSpawner(entity) end
+
+--- Returns an ability property bag group.
+--- @param pbgShortname string
+--- @return Ability
+function BP_GetAbilityBlueprint(pbgShortname) end
+
+--- Returns an ability property bag group.
+--- @param pbgID number
+--- @return Ability
+function BP_GetAbilityBlueprintByPbgID(pbgID) end
+
+--- Returns an entity property bag group.
+--- @param pbgShortname string
+--- @return EntityPBG
+function BP_GetEntityBlueprint(pbgShortname) end
+
+--- Returns an entity property bag group.
+--- @param pbgID number
+--- @return EntityPBG
+function BP_GetEntityBlueprintByPbgID(pbgID) end
+
+--- Returns a squad property bag group.
+--- @param pbgShortname string
+--- @return SquadPBG
+function BP_GetSquadBlueprint(pbgShortname) end
+
+--- Returns a squad property bag group.
+--- @param pbgID string
+--- @return SquadPBG
+function BP_GetSquadBlueprintByPbgID(pbgID) end
+
+--- Returns an upgrade property bag group.
+--- @param pbgShortname string
+--- @return Upgrade
+function BP_GetUpgradeBlueprint(pbgShortname) end
+
+--- Returns an upgrade property bag group.
+--- @param pbgID number
+--- @return Upgrade
+function BP_GetUpgradeBlueprintByPbgID(pbgID) end
