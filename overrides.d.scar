@@ -745,3 +745,9 @@ function Entity_Precache(ebp, skinItemDefinitionID, player, resourceContainerCac
 --- @param source string
 --- @param id string
 function Squad_Precache(sbp, skinItemDefinitionID, player, resourceContainerCacheName, source, id) end
+
+
+--- Returns all active upgrades this squad has.
+--- @param squad Squad
+--- @return table<string, Upgrade>
+function Squad_GetActiveUpgrades(squad) end

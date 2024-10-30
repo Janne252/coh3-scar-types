@@ -13886,11 +13886,6 @@ function Squad_FindCoverCompareCurrent(squad, pos, coverSearchRadius, maxPathDis
 --- @return unknown
 function Squad_FromID(id) end
 
---- Returns all active upgrades this squad has.
---- @param squad Squad
---- @return unknown
-function Squad_GetActiveUpgrades(squad) end
-
 --- Find the squad member current or forced targets. The sgroup is cleared, and any attack target squads found are added to the sgroup. Entity targets like buildings are ignored.
 --- @param squad Squad
 --- @param sgroup SGroupID
