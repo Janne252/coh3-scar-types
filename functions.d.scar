@@ -12198,17 +12198,6 @@ function Decal_Destroy(decalID) end
 --- @return unknown
 function Decal_GetInvalidID() end
 
---- Precache entity resources and listen for event GE_EntityPrecached that it is done
---- callback example: Rule_AddGlobalEvent(EntityPrecacheComplete, GE_EntityPrecached) Params: ebp - entity blueprint skinID - this is the server item id for a skin, it will precache and equip it player - the player that we want to precache the entity or squad for cacheName - name of cache where resource will be loaded into source - helps identify who requested the precaching id - id to table of data that will be used once entity/squad is loaded
---- @param ebp Entity
---- @param skinItemDefinitionID number
---- @param player Player
---- @param resourceContainerCacheName string
---- @param source string
---- @param id string
---- @return unknown
-function Entity_Precache(ebp, skinItemDefinitionID, player, resourceContainerCacheName, source, id) end
-
 --- Cleanup resources in cache. Only for debug purposes, not in RTM.
 --- @param cacheName string
 --- @return unknown
@@ -12249,17 +12238,6 @@ function Splat_Destroy(handle) end
 --- Get the Splat ID that represents an invalid splat (useful to check if creation failed)
 --- @return unknown
 function Splat_GetInvalidID() end
-
---- Precache squad resources and listen for event GE_EntityPrecached that it is done
---- callback example: Rule_AddGlobalEvent(EntityPrecacheComplete, GE_SquadPrecached) Params: sbp - squad blueprint skinID - this is the server item id for a skin, it will precache and equip it player - the player that we want to precache the entity or squad for cacheName - name of cache where resource will be loaded into source - helps identify who requested the precaching id - id to table of data that will be used once entity/squad is loaded
---- @param sbp Squad
---- @param skinItemDefinitionID number
---- @param player Player
---- @param resourceContainerCacheName string
---- @param source string
---- @param id string
---- @return unknown
-function Squad_Precache(sbp, skinItemDefinitionID, player, resourceContainerCacheName, source, id) end
 
 --- Load the saved terrain height map. This will restore the state of the terrain height map to
 --- @return unknown
@@ -17324,43 +17302,6 @@ function World_GetNumEntitiesNearPoint(ebp, pos, radius) end
 --- Returns the number of strategic points on this map (does not count strat. objectives)
 --- @return unknown
 function World_GetNumStrategicPoints() end
-
---- Returns a position that is offset a certain distance from the position/heading passed in. see ScarUtil.scar for explanation of 'offset' parameter.
---- @param position Position
---- @param heading Position
---- @param offset number
---- @param distance number
---- @return unknown
-function World_GetOffsetPosition(position, heading, offset, distance) end
-
---- Offsets the input position relative to the facing target
---- @param position Position
---- @param facingTarget Position
---- @param offset number
---- @return unknown
-function World_GetOffsetPositionRelativeToFacingTarget(position, facingTarget, offset) end
-
---- Returns a position that is offset from the input position by the offset vector rotated by the direction supplied
---- @param position Position
---- @param heading Position
---- @param offset Position
---- @return unknown
-function World_GetOffsetVectorPosition(position, heading, offset) end
-
---- Returns the player at a given index, numbers start at one
---- @param index number
---- @return unknown
-function World_GetPlayerAt(index) end
-
---- Return the total number of players in the world
---- @return unknown
-function World_GetPlayerCount() end
-
---- Returns the player index given the Player*
---- @param player Player
---- @return unknown
-function World_GetPlayerIndex(player) end
-
 --- Returns the blueprint of a chosen squad for a race
 --- @param racePBG ScarRacePBG
 --- @param index number

@@ -450,6 +450,42 @@ function World_GetNumSquads() end
 ---@return Squad
 function World_GetSquad(index) end
 
+--- Returns a position that is offset a certain distance from the position/heading passed in. see ScarUtil.scar for explanation of 'offset' parameter.
+--- @param position Position
+--- @param heading Position
+--- @param offset number
+--- @param distance number
+--- @return Position
+function World_GetOffsetPosition(position, heading, offset, distance) end
+
+--- Offsets the input position relative to the facing target
+--- @param position Position
+--- @param facingTarget Position
+--- @param offset number
+--- @return Position
+function World_GetOffsetPositionRelativeToFacingTarget(position, facingTarget, offset) end
+
+--- Returns a position that is offset from the input position by the offset vector rotated by the direction supplied
+--- @param position Position
+--- @param heading Position
+--- @param offset Position
+--- @return Position
+function World_GetOffsetVectorPosition(position, heading, offset) end
+
+--- Returns the player at a given index, numbers start at one
+--- @param index number
+--- @return Player
+function World_GetPlayerAt(index) end
+
+--- Return the total number of players in the world
+--- @return number
+function World_GetPlayerCount() end
+
+--- Returns the player index given the Player*
+--- @param player Player
+--- @return number
+function World_GetPlayerIndex(player) end
+
 -- #region kicker message
 
 --- Create a custom kicker message on the entity and display to the player, rgb values are 0-255.
@@ -689,3 +725,23 @@ function BP_GetUpgradeBlueprint(pbgShortname) end
 --- @param pbgID number
 --- @return Upgrade
 function BP_GetUpgradeBlueprintByPbgID(pbgID) end
+
+--- Precache entity resources and listen for event GE_EntityPrecached that it is done
+--- callback example: Rule_AddGlobalEvent(EntityPrecacheComplete, GE_EntityPrecached) Params: ebp - entity blueprint skinID - this is the server item id for a skin, it will precache and equip it player - the player that we want to precache the entity or squad for cacheName - name of cache where resource will be loaded into source - helps identify who requested the precaching id - id to table of data that will be used once entity/squad is loaded
+--- @param ebp EntityPBG
+--- @param skinItemDefinitionID number
+--- @param player Player
+--- @param resourceContainerCacheName string
+--- @param source string
+--- @param id string
+function Entity_Precache(ebp, skinItemDefinitionID, player, resourceContainerCacheName, source, id) end
+
+--- Precache squad resources and listen for event GE_EntityPrecached that it is done
+--- callback example: Rule_AddGlobalEvent(EntityPrecacheComplete, GE_SquadPrecached) Params: sbp - squad blueprint skinID - this is the server item id for a skin, it will precache and equip it player - the player that we want to precache the entity or squad for cacheName - name of cache where resource will be loaded into source - helps identify who requested the precaching id - id to table of data that will be used once entity/squad is loaded
+--- @param sbp SquadPBG
+--- @param skinItemDefinitionID number
+--- @param player Player
+--- @param resourceContainerCacheName string
+--- @param source string
+--- @param id string
+function Squad_Precache(sbp, skinItemDefinitionID, player, resourceContainerCacheName, source, id) end
