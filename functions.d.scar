@@ -933,24 +933,6 @@ function AITactic_AICommandSquadMove(aiSquad, target, acceptableProximity, rever
 --- @return unknown
 function AITactic_GetTacticPriority(pSquad, tacticType) end
 
---- Get a table of all of the EBPs that match a particular EntityType. You can pass in a table of multiple EntityTypes to get a list EBPs that match ANY of the types listed.
---- If you want a blueprint to match a bunch of EntityTypes at the same time (i.e. AND instead of OR) then those types should be listed together in a sub-table. This function can potentially be quite slow as it has to parse every EBP in the game, so be careful about how you use it.
---- @param types EntityType | table
---- @return unknown
-function BP_GetEntityBlueprintsWithType(types) end
-
---- Get a table of all of the SBPs that match a particular SquadType. You can pass in a table of multiple SquadTypes to get a list SBPs that match ANY of the types listed.
---- If you want a blueprint to match a bunch of SquadTypes at the same time (i.e. AND instead of OR) then those types should be listed together in a sub-table. This function can potentially be quite slow as it has to parse every SBP in the game, so be careful about how you use it.
---- @param types SquadType | table
---- @return unknown
-function BP_GetSquadBlueprintsWithType(types) end
-
---- Get a table of all of the UBPs that match a particular UpgradeType. You can pass in a table of multiple UpgradeTypes to get a list UBPs that match ANY of the types listed.
---- If you want a blueprint to match a bunch of UpgradeType at the same time (i.e. AND instead of OR) then those types should be listed together in a sub-table. This function can potentially be quite slow as it has to parse every SBP in the game, so be careful about how you use it.
---- @param types UpgradeType | table
---- @return unknown
-function BP_GetUpgradesMatchingTypes(types) end
-
 --- Get current AI player ID
 --- @return unknown
 function AI_GetDebugAIPlayerID() end
