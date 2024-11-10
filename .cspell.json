@@ -1,0 +1,20 @@
+{
+	"dictionaries": ["coh3", "essence-engine", "lua"],
+	"dictionaryDefinitions": [
+		{
+			"name": "coh3",
+			"path": "./.cspell/coh3.txt",
+			"addWords": true
+		},
+		{
+			"name": "essence-engine",
+			"path": "./.cspell/essence-engine.txt",
+			"addWords": true
+		},
+		{
+			"name": "lua",
+			"path": "./.cspell/lua.txt",
+			"addWords": true
+		}
+	]
+}

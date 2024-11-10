@@ -1,0 +1,14 @@
+EBPs
+SCMD
+egroup
+sgroup
+hardpoint
+Hardpoints
+hintpoint
+wincondition
+winconditions
+scartype
+savegame
+victorypoint
+hitbox
+Hitboxes

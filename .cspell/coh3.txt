@@ -1,0 +1,8 @@
+Battlegroup
+battlegroups
+cooldown
+halftracks
+Korps
+leaderboard
+leaderboards
+Veterancy
