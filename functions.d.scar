@@ -7262,13 +7262,6 @@ function EGroup_Duplicate(egroupid1, egroupid2) end
 --- @return unknown
 function EGroup_EnableMinimapIndicator(egroup, enable) end
 
---- Enable or disable decorators on all entities in the egroup. Sets selection visuals as well unless enableSelection is specified.
---- @param group SGroupID
---- @param enable boolean
---- @param enableSelection boolean
---- @return unknown
-function EGroup_EnableUIDecorator(group, enable, enableSelection) end
-
 --- Returns true if the entity group with the given name exists
 --- @param name string
 --- @return unknown

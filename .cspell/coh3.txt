@@ -5,4 +5,5 @@ halftracks
 Korps
 leaderboard
 leaderboards
+panzerpioneer
 Veterancy

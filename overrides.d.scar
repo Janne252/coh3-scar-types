@@ -769,3 +769,9 @@ function BP_GetSquadBlueprintsWithType(types) end
 --- @param types UpgradeType | table
 --- @return Upgrade[]
 function BP_GetUpgradesMatchingTypes(types) end
+
+--- Enable or disable decorators on all entities in the egroup. Sets selection visuals as well unless enableSelection is specified.
+--- @param group EGroupID
+--- @param enable boolean
+--- @param enableSelection boolean
+function EGroup_EnableUIDecorator(group, enable, enableSelection) end
