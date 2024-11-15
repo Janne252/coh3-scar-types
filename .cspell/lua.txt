@@ -1,3 +1,5 @@
+gsub
+ipairs
 loadfile
 luac
 pcall

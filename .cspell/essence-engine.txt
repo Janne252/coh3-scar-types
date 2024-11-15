@@ -5,6 +5,7 @@ Hardpoints
 hintpoint
 hitbox
 Hitboxes
+Locstring
 Precache
 savegame
 scartype
