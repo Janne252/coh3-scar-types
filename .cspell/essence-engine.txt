@@ -7,6 +7,8 @@ hitbox
 Hitboxes
 Locstring
 Precache
+Precached
+Precaching
 savegame
 scartype
 SCMD
