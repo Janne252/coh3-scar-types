@@ -775,3 +775,7 @@ function BP_GetUpgradesMatchingTypes(types) end
 --- @param enable boolean
 --- @param enableSelection boolean
 function EGroup_EnableUIDecorator(group, enable, enableSelection) end
+
+---@param squad Squad
+---@return number[]
+function Squad_GetVeterancyTable(squad) end

@@ -2,9 +2,11 @@ EBPs
 egroup
 hardpoint
 Hardpoints
+healthbar
 hintpoint
 hitbox
 Hitboxes
+Hitpoints
 Locstring
 Precache
 Precached
