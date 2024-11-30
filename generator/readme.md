@@ -16,8 +16,8 @@
 1. Update [`./enums.js`](./enums.js) `window.dumpedConstants` variable:
     1. Launch CoH3 in `-dev` mode and load into a 2v2 Skirmish in standard Victory Point Control mode
     1. Pause the game after a few seconds
-    1. Open the in-game SCAR console and run `loadfile([[J:\dev\coh3\mods\game_modes_plus\assets\scar\types\generator\dump-globals.lua]])()`
-    1. Assign [`./enums.js`](./enums.js) `window.dumpedConstants` to the text content of `\Documents\My Games\Company of Heroes 3\.dumped-globals.json` (JSON array)
+    1. Open the in-game console and run `Scar_DoString([[loadfile('D:\\dev\\coh3\\mods\\ccm\\assets\\scar\\types\\generator\\dump-globals.lua')()]])`
+    1. Assign [`./enums.js`](./enums.js) `window.dumpedConstants` to the text content of `\Documents\My Games\Company of Heroes 3\_G.json` (JSON array)
 1. Open [`data/scardocs/html/enum_list.htm`](./data/scardocs/html/enum_list.htm) in a web browser, e.g. Google Chrome
 1. Open browser developer tools console
 1. Paste in contents of [`./enums.js`](./enums.js)

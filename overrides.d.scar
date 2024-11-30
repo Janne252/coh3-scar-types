@@ -779,3 +779,7 @@ function EGroup_EnableUIDecorator(group, enable, enableSelection) end
 ---@param squad Squad
 ---@return number[]
 function Squad_GetVeterancyTable(squad) end
+
+---Replaced UI_IsReplay
+---@return boolean
+function UI_IsLiveOrRecordedReplay() end

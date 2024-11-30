@@ -4,3 +4,4 @@ loadfile
 luac
 pcall
 tostring
+vararg

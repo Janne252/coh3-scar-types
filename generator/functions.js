@@ -9,12 +9,12 @@ window.predefinedTypes = {
 ---@field z number
 `
 }
+window.deprecations = {['UI_IsReplay']: 'Removed in version 1.9.0. Use UI_IsLiveOrRecordedReplay instead.'}
 // -> .overrides.d.scar.functions -> `node generate-predefined-functions.mjs`
-window.predefinedFunctions = ["import","UI_CreateDataContext","UI_CreateCommand","Team_GetEnemyTeam","UI_GetColourAsString","fatal","Player_GetMaxPopulation","Loc_ToAnsi","BP_GetSquadUIInfo","BP_GetEntityUIInfo","BP_GetAbilityUIInfo","BP_GetUpgradeUIInfo","World_GetRaceBlueprint","BP_GetRaceInfo","Entity_ExtensionExist","Cmd_Stop","BP_GetTechTreeBlueprintsByType","BP_GetTechTreeBPInfo","BP_GetEntityBlueprintsWithType_Internal","BP_GetSquadBlueprintsWithType_Internal","UI_CreateReticule","UI_CreateReticuleOnEntity","UI_CreateReticuleOnPosition","UI_CreateReticuleOnSquad","UI_DestroyReticule","UI_CreateTargetTrackingTag","Entity_CreateENV","Entity_CreateENVFacing","Entity_Create","Entity_CreateFacing","Entity_ConvertBlueprint","Entity_GetPosition","World_GetNumEntities","World_GetEntity","Loc_FormatText","Squad_CreateAndSpawnToward","HintPoint_Add","Modify_PlayerResourceRate","Modify_AbilityRechargeTime","Rule_AddGlobalEvent","Rule_AddPlayerEvent","BP_GetName","BP_AbilityExists","BP_UpgradeExists","Squad_GetAttachedWeapons","Squad_OverrideItemDropChance","Squad_SetTeamWeaponDestroyOnAbandonChance","Player_GetMapEntryPosition","EGroup_GetEntityAt","SGroup_GetSquadAt","Options_GetOption","Player_GetPopCapOverride","Modify_EntityBuildTime","Squad_ExtensionID","Entity_ExtensionID","Squad_ExtensionEnabled","Player_GetAbilityBPCost","Camera_Pop","Camera_Push","Camera_Fov","Camera_PushKeepState","Camera_GetDefaultPitch","Camera_SetPitch","Camera_SetPitchRelative","Camera_GetDefaultYaw","Camera_SetYaw","Camera_SetYawRelative","Camera_GetDefaultDistance","Camera_SetDistance","Camera_GetEyePositionFromTarget","Camera_InverseEuler","World_GetNumSquads","World_GetSquad","UI_CreatePositionKickerMessage","UI_CreateEntityKickerMessage","EGroup_CreateKickerMessage","UI_CreateSquadKickerMessage","UI_CreateSGroupKickerMessage","SGroup_CreateKickerMessage","Cmd_InstantUpgrade","UI_GetAllowLoadAndSave","BP_GetUpgradeBlueprintsWithType_Internal","UI_SetSilhouetteEnabled","Game_GetScenarioFileName","Player_GetActiveUpgrades","UI_CreateMinimapBlip","MapIcon_ClearFacing","MapIcon_CreateArrow","MapIcon_CreateEntity","MapIcon_CreatePosition","MapIcon_CreateSquad","MapIcon_Destroy","MapIcon_DestroyAll","MapIcon_SetFacingEntity","MapIcon_SetFacingPosition","MapIcon_SetFacingSquad","Core_CallDelegateFunctions","Modifier_Remove","Player_SetAbilityAvailability","BP_GetEntityBPStrategicPointInfo","Cmd_Ability","Util_GetPosition","Entity_IsInInteractiveArea","Entity_GetRadius","Player_SetUpgradeAvailability","Entity_IsSpawner","BP_GetAbilityBlueprint","BP_GetAbilityBlueprintByPbgID","BP_GetEntityBlueprint","BP_GetEntityBlueprintByPbgID","BP_GetSquadBlueprint","BP_GetSquadBlueprintByPbgID","BP_GetUpgradeBlueprint","BP_GetUpgradeBlueprintByPbgID"];
-
+window.predefinedFunctions = ["import","UI_CreateDataContext","UI_CreateCommand","Team_GetEnemyTeam","UI_GetColourAsString","fatal","Player_GetMaxPopulation","Loc_ToAnsi","BP_GetSquadUIInfo","BP_GetEntityUIInfo","BP_GetAbilityUIInfo","BP_GetUpgradeUIInfo","World_GetRaceBlueprint","BP_GetRaceInfo","Entity_ExtensionExist","Cmd_Stop","BP_GetTechTreeBlueprintsByType","BP_GetTechTreeBPInfo","BP_GetEntityBlueprintsWithType_Internal","BP_GetSquadBlueprintsWithType_Internal","UI_CreateReticule","UI_CreateReticuleOnEntity","UI_CreateReticuleOnPosition","UI_CreateReticuleOnSquad","UI_DestroyReticule","UI_CreateTargetTrackingTag","Entity_CreateENV","Entity_CreateENVFacing","Entity_Create","Entity_CreateFacing","Entity_ConvertBlueprint","Entity_GetPosition","World_GetNumEntities","World_GetEntity","Loc_FormatText","Squad_CreateAndSpawnToward","HintPoint_Add","Modify_PlayerResourceRate","Modify_AbilityRechargeTime","Rule_AddGlobalEvent","Rule_AddPlayerEvent","BP_GetName","BP_AbilityExists","BP_UpgradeExists","Squad_GetAttachedWeapons","Squad_OverrideItemDropChance","Squad_SetTeamWeaponDestroyOnAbandonChance","Player_GetMapEntryPosition","EGroup_GetEntityAt","SGroup_GetSquadAt","Options_GetOption","Player_GetPopCapOverride","Modify_EntityBuildTime","Squad_ExtensionID","Entity_ExtensionID","Squad_ExtensionEnabled","Player_GetAbilityBPCost","Camera_Pop","Camera_Push","Camera_Fov","Camera_PushKeepState","Camera_GetDefaultPitch","Camera_SetPitch","Camera_SetPitchRelative","Camera_GetDefaultYaw","Camera_SetYaw","Camera_SetYawRelative","Camera_GetDefaultDistance","Camera_SetDistance","Camera_GetEyePositionFromTarget","Camera_InverseEuler","World_GetNumSquads","World_GetSquad","World_GetOffsetPosition","World_GetOffsetPositionRelativeToFacingTarget","World_GetOffsetVectorPosition","World_GetPlayerAt","World_GetPlayerCount","World_GetPlayerIndex","UI_CreatePositionKickerMessage","UI_CreateEntityKickerMessage","EGroup_CreateKickerMessage","UI_CreateSquadKickerMessage","UI_CreateSGroupKickerMessage","SGroup_CreateKickerMessage","Cmd_InstantUpgrade","UI_GetAllowLoadAndSave","BP_GetUpgradeBlueprintsWithType_Internal","UI_SetSilhouetteEnabled","Game_GetScenarioFileName","Player_GetActiveUpgrades","UI_CreateMinimapBlip","MapIcon_ClearFacing","MapIcon_CreateArrow","MapIcon_CreateEntity","MapIcon_CreatePosition","MapIcon_CreateSquad","MapIcon_Destroy","MapIcon_DestroyAll","MapIcon_SetFacingEntity","MapIcon_SetFacingPosition","MapIcon_SetFacingSquad","Core_CallDelegateFunctions","Modifier_Remove","Player_SetAbilityAvailability","Player_SetSquadProductionAvailability","BP_GetEntityBPStrategicPointInfo","Cmd_Ability","Util_GetPosition","Entity_IsInInteractiveArea","Entity_GetRadius","Player_SetUpgradeAvailability","Entity_IsSpawner","BP_GetAbilityBlueprint","BP_GetAbilityBlueprintByPbgID","BP_GetEntityBlueprint","BP_GetEntityBlueprintByPbgID","BP_GetSquadBlueprint","BP_GetSquadBlueprintByPbgID","BP_GetUpgradeBlueprint","BP_GetUpgradeBlueprintByPbgID","Entity_Precache","Squad_Precache","Squad_GetActiveUpgrades","BP_GetEntityBlueprintsWithType","BP_GetSquadBlueprintsWithType","BP_GetUpgradesMatchingTypes","EGroup_EnableUIDecorator","Squad_GetVeterancyTable"]
 window.types = new Set()
 window.generics = new Set()
-window.normalizetype = (/**@type {string} */type) => {
+window.normalizeType = (/**@type {string} */type) => {
     type = type.trim().replace(/[*&]$/, '') // trim * or & suffix (pointer-like)
     let normalized = type.toLowerCase()
     let result
@@ -36,14 +36,14 @@ window.normalizetype = (/**@type {string} */type) => {
     const genericMatch = /(?<genericType>.*?)<(?<typeVar>.*?)>/
     if (genericMatch.test(type)) {
         const match = genericMatch.exec(type)
-        const genericType = window.normalizetype(match.groups.genericType)
-        const typeVar = window.normalizetype(match.groups.typeVar)
+        const genericType = window.normalizeType(match.groups.genericType)
+        const typeVar = window.normalizeType(match.groups.typeVar)
         isComplex = true
         result = `${genericType}<${typeVar}>`
     }else if (Array.isArray(aliased)) {
         result = aliased[0]
     } else if (type.includes('/')) {
-        const subTypes = type.split('/').filter(t => t.trim().length > 0).map(t => window.normalizetype(t))
+        const subTypes = type.split('/').filter(t => t.trim().length > 0).map(t => window.normalizeType(t))
         result = subTypes.join(' | ')
         isComplex = true
     }
@@ -65,14 +65,16 @@ window.normalizetype = (/**@type {string} */type) => {
 window.functions = [...document.querySelectorAll('span.function')]
     .map(f => {
             const declaredParameterNames = new Set()
+			const name = f.childNodes[1].textContent.trim().replace(/[\(\)]/g, '').trim()
             return {
-            name: f.childNodes[1].textContent.trim().replace(/[\(\)]/g, '').trim(),
+			deprecation: window.deprecations[name],
+            name: name,
             description: [...f.parentElement.parentElement.parentElement.querySelectorAll('p')].map(p => p.textContent.trim()).join('\n'),
             parameters: [...f.childNodes]
                 .slice(2).map((e, i, a) => i % 2 == 0 ? [e, a[i + 1]] : undefined)
                 .filter(e => e !== undefined)
                 .map(([type, name], index) => {
-                    type = window.normalizetype(type.textContent)
+                    type = window.normalizeType(type.textContent)
                     let parameterName = name.textContent.replace(/,\s$/, '').replace(/\s\)\s+$/, '').trim().replace(/[^a-zA-Z0-9_]/g, '_')
                     if (parameterName.startsWith('OPT_')) {
                         type = `${type} | nil`
@@ -108,9 +110,13 @@ window.functions = [...document.querySelectorAll('span.function')]
     .filter(f => f.name !== '0')
 
 window.renderFunction = (f) => {
-    const description = f.description.split('\n').map(r => `--- ${r}`).join('\n')
-    const parameters = f.parameters.map(p => `--- @param ${p.name} ${p.type}`).join('\n')
-    return `${description}${description ? '\n' : ''}${parameters}${parameters ? '\n' : ''}--- @return unknown\nfunction ${f.name}(${f.parameters.map(p => `${p.name}`).join(', ')}) end`
+    const description = [
+		...f.description.split('\n'),
+		...f.deprecation !== undefined ? [f.deprecation] : [],
+	].map(r => `--- ${r}`).join('\n')
+    const parameters = f.parameters.map(p => `---@param ${p.name} ${p.type}`).join('\n')
+	const deprecation = f.deprecation !== undefined ? `---@deprecated\n` : ''
+    return `${description}${description ? '\n' : ''}${deprecation}${parameters}${parameters ? '\n' : ''}---@return unknown\nfunction ${f.name}(${f.parameters.map(p => `${p.name}`).join(', ')}) end`
 }
 // Prevent reporting unnecessary errors for function stubs
 window.function_docs_header = `
