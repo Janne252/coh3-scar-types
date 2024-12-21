@@ -1,6 +1,7 @@
 Battlegroup
 battlegroups
 cooldown
+gamemode
 halftracks
 Korps
 leaderboard

@@ -783,3 +783,21 @@ function Squad_GetVeterancyTable(squad) end
 ---Replaced UI_IsReplay
 ---@return boolean
 function UI_IsLiveOrRecordedReplay() end
+
+---@return Player
+function UI_GetReplayOriginalLocalPlayer() end
+
+---@return boolean
+function UI_IsLiveOrRecordedReplayCasterModeWithSidesFlipped() end
+
+---Used in win_tickets.scar "Ensure all clients have the same value": Misc_SyncCheckVariable("Player_".. World_GetPlayerIndex(player).."_Tickets", team.tickets)
+---Unknown if this actually works.
+---@param name string
+---@param value any
+function Misc_SyncCheckVariable(name, value) end
+
+---@param ticket_meter_visible boolean
+---@param vp_indicator_visible boolean
+---@param game_timer_visible boolean
+---@param game_timer_spacing number
+function TicketUI_SetVisibility(ticket_meter_visible, vp_indicator_visible, game_timer_visible, game_timer_spacing) end
