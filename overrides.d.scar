@@ -153,7 +153,7 @@ function BP_GetSquadBlueprintsWithType_Internal(types, all) end
 --? @extdesc 'target' can be an entity, marker, position, or squad.
 --? @args StackVar target, float radius, BP reticuleBP
 --? @result reticuleID
----@param target Entity | Marker | Position | Squad
+---@param target Entity | MarkerID | Position | Squad
 ---@param radius number
 ---@param reticuleBP PBG
 ---@return number
@@ -249,7 +249,7 @@ function Loc_FormatText(FormatID, ...) end
 --- @return Squad
 function Squad_CreateAndSpawnToward(sbp, player, loadoutCount, pos, toward) end
 
---- Creates a hintpoint attached to a Marker, EGroup, SGroup or position
+--- Creates a hintpoint attached to a MarkerID, EGroup, SGroup or position
 --- If range is set to 0, then the hintpoint is rangeless, see the design document for rangeless features. The following types of hintpoint actions are available. HPAT_Objective HPAT_Hint HPAT_Critical HPAT_Movement HPAT_Attack HPAT_FormationSetup HPAT_RallyPoint HPAT_DeepSnow HPAT_CoverGreen HPAT_CoverYellow HPAT_CoverRed HPAT_Detonation HPAT_Vaulting
 --- @param where any
 --- @param bVisible boolean
@@ -567,8 +567,8 @@ function UI_CreateMinimapBlip(where, lifetime, blipDataTemplate, blipRadius) end
 function MapIcon_ClearFacing(id) end
 
 --- Creates an arrow on the metamap between the two locations provided
---- @param position_from Marker | Pos
---- @param position_to Marker | Pos
+--- @param position_from MarkerID | Pos
+--- @param position_to MarkerID | Pos
 --- @param red number
 --- @param green number
 --- @param blue number
@@ -664,7 +664,7 @@ function BP_GetEntityBPStrategicPointInfo(bp) end
 --- @param queued? boolean
 function Cmd_Ability(user, blueprint, target, direction, skipCostPrereq, queued) end
 
----@param target Position|Marker|Entity|Squad|EGroupID|SGroupID
+---@param target Position|MarkerID|Entity|Squad|EGroupID|SGroupID
 ---@return Position
 function Util_GetPosition(target) end
 
@@ -801,3 +801,127 @@ function Misc_SyncCheckVariable(name, value) end
 ---@param game_timer_visible boolean
 ---@param game_timer_spacing number
 function TicketUI_SetVisibility(ticket_meter_visible, vp_indicator_visible, game_timer_visible, game_timer_spacing) end
+
+--- Returns a newly created marker with the given attributes [direction] is expecting a direction vector and not a position relative to [pos]
+---@param name string
+---@param type string
+---@param pos Position
+---@param direction Position
+---@param radius number
+---@return MarkerID
+function Marker_Create(name, type, pos, direction, radius) end
+
+--- Finds a marker in an entity, creates a SCAR marker there and returns the new marker's name.
+--- Uses the MarkerExt to find a marker inside an entity. Creates a SCAR marker at the internal marker's location. Returns the new SCAR marker's name.
+---@param entity Entity
+---@param internalMarker string
+---@param newMarker string
+---@return MarkerID
+function Marker_CreateMarkerFromEntityMarker(entity, internalMarker, newMarker) end
+
+--- Delete this marker, only recommended for dynamically created markers
+---@param marker MarkerID
+function Marker_Destroy(marker) end
+
+--- Returns true if a generic number attribute exists for the marker type.
+---@param marker MarkerID
+---@param name string
+---@return boolean
+function Marker_DoesNumberAttributeExist(marker, name) end
+
+--- Returns true if a generic string attribute exists for the marker type.
+---@param marker MarkerID
+---@param name string
+---@return boolean
+function Marker_DoesStringAttributeExist(marker, name) end
+
+--- Returns true if marker exists. If you don't care about the type, pass in an empty string ( "" )
+---@param name string
+---@param type string
+---@return boolean
+function Marker_Exists(name, type) end
+
+--- Returns a ScarMarker from the Scenario Editor. If you don't care about the type, pass in an empty string ( "" )
+--- The type is defined on the ScarMarkerBlueprint in the Scenario Editor\n
+---@param name string
+---@param type string
+---@return MarkerID
+function Marker_FromName(name, type) end
+
+--- Returns a vector for the marker direction
+---@param marker MarkerID
+---@return Position
+function Marker_GetDirection(marker) end
+
+--- Returns the name of a given marker.  This value gets set in the Scenario Editor.
+---@param marker MarkerID
+---@return string
+function Marker_GetName(marker) end
+
+--- Returns a generic number attribute defined in a marker.
+--- Different marker types have different attributes. Note: All marker types have Name and Proximity. Do not use this function to retrieve these values, use Marker_GetName and Marker_GetProximity instead.
+---@param marker MarkerID
+---@param name string
+---@return number
+function Marker_GetNumberAttribute(marker, name) end
+
+--- Returns the position of a given marker.
+---@param marker MarkerID
+---@return Position
+function Marker_GetPosition(marker) end
+
+--- Returns the proximity dimensions of a given marker.  If non rectangular, default value is returned Dimensions are 2d but returned in 3d world space (terrain mapped to x,z) This value gets set in the Scenario Editor.
+---@param marker MarkerID
+---@param defaultWidth number
+---@param defaultHeight number
+---@return unknown
+function Marker_GetProximityDimensionsOrDefault(marker, defaultWidth, defaultHeight) end
+
+--- Returns the proximity radius of a given marker.  If non circular, default value is returned This value gets set in the Scenario Editor.
+---@param marker MarkerID
+---@return number
+function Marker_GetProximityRadius(marker) end
+
+--- Returns the proximity radius of a given marker.  If non circular, default value is returned This value gets set in the Scenario Editor.
+---@param marker MarkerID
+---@param defaultValue number
+---@return number
+function Marker_GetProximityRadiusOrDefault(marker, defaultValue) end
+
+--- Returns a generic string attribute defined in a marker.
+--- Different marker types can have different attributes.\n Note: All marker types have Name and Proximity. Do not use this function to retrieve these values, use Marker_GetName and Marker_GetProximity instead.\n See markertypes.lua for a listing of all the marker types.
+---@param marker MarkerID
+---@param name string
+---@return string
+function Marker_GetStringAttribute(marker, name) end
+
+--- Returns the typename of a given marker. This is the typename from the Scenario Editor (name displayed when placing markers)
+---@param marker MarkerID
+---@return string
+function Marker_GetType(marker) end
+
+--- Returns if a marker has a defined (non-default) proximity range
+---@param marker MarkerID
+---@return boolean
+function Marker_HasProximityRange(marker) end
+
+--- Returns true if the given position is in the markers proximity radius or proximity rectangle (depending on the type).
+---@param marker MarkerID
+---@param pos Position
+---@return boolean
+function Marker_InProximity(marker, pos) end
+
+--- Set the proximity shape of a marker to a circle with size radius
+---@param marker MarkerID
+---@param radius number
+function Marker_SetProximityCircle(marker, radius) end
+
+--- Set the proximity shape of a marker to point marker (no proximity)
+---@param marker MarkerID
+function Marker_SetProximityPoint(marker) end
+
+--- Set the proximity shape of a marker to a rectangle with dimensions width and height
+---@param marker MarkerID
+---@param width number
+---@param height number
+function Marker_SetProximityRectangle(marker, width, height) end

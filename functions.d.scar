@@ -169,8 +169,6 @@ GameUICore = {}
 List = {}
 ---@class EBP
 EBP = {}
----@class Marker
-Marker = {}
 ---@class TeamID
 TeamID = {}
 ---@class EncounterData
@@ -2918,134 +2916,6 @@ function Loc_GetString(id) end
 --- Run simulation and presentation in lockstep, with simulation ticked every frame (useful for debugging sync errors)
 ---@return unknown
 function lockstep_simulation_presentation_toggle() end
-
---- Returns a newly created marker with the given attributes [direction] is expecting a direction vector and not a position relative to [pos]
----@param name string
----@param type string
----@param pos Position
----@param direction Position
----@param radius number
----@return unknown
-function Marker_Create(name, type, pos, direction, radius) end
-
---- Finds a marker in an entity, creates a SCAR marker there and returns the new marker's name.
---- Uses the MarkerExt to find a marker inside an entity. Creates a SCAR marker at the internal marker's location. Returns the new SCAR marker's name.
----@param entity Entity
----@param internalMarker string
----@param newMarker string
----@return unknown
-function Marker_CreateMarkerFromEntityMarker(entity, internalMarker, newMarker) end
-
---- Delete this marker, only recommended for dynamically created markers
----@param marker MarkerID
----@return unknown
-function Marker_Destroy(marker) end
-
---- Returns true if a generic number attribute exists for the marker type.
----@param marker MarkerID
----@param name string
----@return unknown
-function Marker_DoesNumberAttributeExist(marker, name) end
-
---- Returns true if a generic string attribute exists for the marker type.
----@param marker MarkerID
----@param name string
----@return unknown
-function Marker_DoesStringAttributeExist(marker, name) end
-
---- Returns true if marker exists. If you don't care about the type, pass in an empty string ( "" )
----@param name string
----@param type string
----@return unknown
-function Marker_Exists(name, type) end
-
---- Returns a ScarMarker from the Scenario Editor. If you don't care about the type, pass in an empty string ( "" )
---- The type is defined on the ScarMarkerBlueprint in the Scenario Editor\n
----@param name string
----@param type string
----@return unknown
-function Marker_FromName(name, type) end
-
---- Returns a vector for the marker direction
----@param marker MarkerID
----@return unknown
-function Marker_GetDirection(marker) end
-
---- Returns the name of a given marker.  This value gets set in the Scenario Editor.
----@param marker MarkerID
----@return unknown
-function Marker_GetName(marker) end
-
---- Returns a generic number attribute defined in a marker.
---- Different marker types have different attributes. Note: All marker types have Name and Proximity. Do not use this function to retrieve these values, use Marker_GetName and Marker_GetProximity instead.
----@param marker MarkerID
----@param name string
----@return unknown
-function Marker_GetNumberAttribute(marker, name) end
-
---- Returns the position of a given marker.
----@param marker MarkerID
----@return unknown
-function Marker_GetPosition(marker) end
-
---- Returns the proximity dimensions of a given marker.  If non rectangular, default value is returned Dimensions are 2d but returned in 3d world space (terrain mapped to x,z) This value gets set in the Scenario Editor.
----@param marker MarkerID
----@param defaultWidth number
----@param defaultHeight number
----@return unknown
-function Marker_GetProximityDimensionsOrDefault(marker, defaultWidth, defaultHeight) end
-
---- Returns the proximity radius of a given marker.  If non circular, default value is returned This value gets set in the Scenario Editor.
----@param marker MarkerID
----@return unknown
-function Marker_GetProximityRadius(marker) end
-
---- Returns the proximity radius of a given marker.  If non circular, default value is returned This value gets set in the Scenario Editor.
----@param marker MarkerID
----@param defaultValue number
----@return unknown
-function Marker_GetProximityRadiusOrDefault(marker, defaultValue) end
-
---- Returns a generic string attribute defined in a marker.
---- Different marker types can have different attributes.\n Note: All marker types have Name and Proximity. Do not use this function to retrieve these values, use Marker_GetName and Marker_GetProximity instead.\n See markertypes.lua for a listing of all the marker types.
----@param marker MarkerID
----@param name string
----@return unknown
-function Marker_GetStringAttribute(marker, name) end
-
---- Returns the typename of a given marker. This is the typename from the Scenario Editor (name displayed when placing markers)
----@param marker MarkerID
----@return unknown
-function Marker_GetType(marker) end
-
---- Returns if a marker has a defined (non-default) proximity range
----@param marker MarkerID
----@return unknown
-function Marker_HasProximityRange(marker) end
-
---- Returns true if the given position is in the markers proximity radius or proximity rectangle (depending on the type).
----@param marker MarkerID
----@param pos Position
----@return unknown
-function Marker_InProximity(marker, pos) end
-
---- Set the proximity shape of a marker to a circle with size radius
----@param marker MarkerID
----@param radius number
----@return unknown
-function Marker_SetProximityCircle(marker, radius) end
-
---- Set the proximity shape of a marker to point marker (no proximity)
----@param marker MarkerID
----@return unknown
-function Marker_SetProximityPoint(marker) end
-
---- Set the proximity shape of a marker to a rectangle with dimensions width and height
----@param marker MarkerID
----@param width number
----@param height number
----@return unknown
-function Marker_SetProximityRectangle(marker, width, height) end
 
 --- Start an Action at the given position.  Returns the id so the Action can be stopped using Marker_StopActionById.
 ---@param name string
@@ -7346,7 +7216,7 @@ function EGroup_GetClosestEntities() end
 
 --- Get the closest entity in an egroup to a given position
 ---@param egroupid EGroupID
----@param position Marker | Pos
+---@param position MarkerID | Pos
 ---@return unknown
 function EGroup_GetClosestEntity(egroupid, position) end
 
@@ -8007,9 +7877,9 @@ function Encounter(data, spawnNow, spawnStaggered) end
 --- Create a new encounter with a generic FormationAttack goal.
 ---@param name string
 ---@param encUnits SBP | table
----@param spawnLoc Marker | Pos
+---@param spawnLoc MarkerID | Pos
 ---@param encTarget EGroupID
----@param dynamicSpawn Marker | Pos | nil
+---@param dynamicSpawn MarkerID | Pos | nil
 ---@param encRange number | nil
 ---@param encLeash number | nil
 ---@return unknown
@@ -8018,9 +7888,9 @@ function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, encRange, 
 --- Create a new encounter with a generic FormationAttack goal.
 ---@param name string
 ---@param encUnits SBP | table
----@param spawnLoc Marker | Pos
+---@param spawnLoc MarkerID | Pos
 ---@param encTarget EGroupID
----@param dynamicSpawn Marker | Pos | nil
+---@param dynamicSpawn MarkerID | Pos | nil
 ---@param encRange number | nil
 ---@param encLeash number | nil
 ---@return unknown
@@ -8029,9 +7899,9 @@ function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, encRange, 
 --- Create a new encounter with a generic Attack goal.
 ---@param name string
 ---@param encUnits SBP | table
----@param spawnLoc Marker | Pos
+---@param spawnLoc MarkerID | Pos
 ---@param encTarget EGroupID
----@param dynamicSpawn Marker | Pos | nil
+---@param dynamicSpawn MarkerID | Pos | nil
 ---@param encRange number | nil
 ---@param encLeash number | nil
 ---@return unknown
@@ -8040,9 +7910,9 @@ function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, encRange, 
 --- Create a new encounter with a generic Defend goal.
 ---@param name string
 ---@param encUnits SBP | table
----@param spawnLoc Marker | Pos
+---@param spawnLoc MarkerID | Pos
 ---@param encTarget EGroupID
----@param dynamicSpawn Marker | Pos | nil
+---@param dynamicSpawn MarkerID | Pos | nil
 ---@param encRange number | nil
 ---@param encLeash number | nil
 ---@return unknown
@@ -8052,9 +7922,9 @@ function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, encRange, 
 --- pathLoop can be: LOOP_NONE, LOOP_NORMAL, LOOP_TOGGLE_DIRECTION
 ---@param name string
 ---@param encUnits SBP | table
----@param spawnLoc Marker | Pos
+---@param spawnLoc MarkerID | Pos
 ---@param encPath string
----@param dynamicSpawn Marker | Pos | nil
+---@param dynamicSpawn MarkerID | Pos | nil
 ---@param pathWait number | nil
 ---@param pathLoop number | nil
 ---@return unknown
@@ -8063,9 +7933,9 @@ function Encounter(name, encUnits, spawnLoc, encPath, dynamicSpawn, pathWait, pa
 --- Create a new encounter with a generic Move goal.
 ---@param name string
 ---@param encUnits SBP | table
----@param spawnLoc Marker | Pos
+---@param spawnLoc MarkerID | Pos
 ---@param encTarget EGroupID
----@param dynamicSpawn Marker | Pos | nil
+---@param dynamicSpawn MarkerID | Pos | nil
 ---@param moveRange number | nil
 ---@return unknown
 function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, moveRange) end
@@ -8073,9 +7943,9 @@ function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, moveRange)
 --- Create a new encounter with a generic Ability goal.
 ---@param name string
 ---@param encUnits SBP | table
----@param spawnLoc Marker | Pos
+---@param spawnLoc MarkerID | Pos
 ---@param encTarget EGroupID
----@param dynamicSpawn Marker | Pos | nil
+---@param dynamicSpawn MarkerID | Pos | nil
 ---@param moveRange number | nil
 ---@return unknown
 function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, moveRange) end
@@ -8083,18 +7953,18 @@ function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, moveRange)
 --- Create a new encounter with a generic TownLife goal.
 ---@param name string
 ---@param encUnits SBP | table
----@param spawnLoc Marker | Pos
+---@param spawnLoc MarkerID | Pos
 ---@param encTarget EGroupID
----@param dynamicSpawn Marker | Pos | nil
+---@param dynamicSpawn MarkerID | Pos | nil
 ---@param townLifeRange number | nil
 ---@return unknown
 function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, townLifeRange) end
 
 --- Create a new basic encounter.
 ---@param name string
----@param spawnLoc Marker | Pos
+---@param spawnLoc MarkerID | Pos
 ---@param encUnits SBP | table
----@param dynamicSpawn Marker | Pos | nil
+---@param dynamicSpawn MarkerID | Pos | nil
 ---@return unknown
 function Encounter(name, spawnLoc, encUnits, dynamicSpawn) end
 
@@ -9649,7 +9519,7 @@ function Event_EncounterCanSeePlayerSquads(callback, data, encounter, player, de
 ---@param data table
 ---@param target ConstTargetHandle
 ---@param arequireAll boolean
----@param location Marker
+---@param location MarkerID
 ---@param range number
 ---@param _repeat boolean
 ---@param triggerOnEnter boolean
@@ -9661,7 +9531,7 @@ function Event_EnterProximity(callback, data, target, arequireAll, location, ran
 ---@param data table
 ---@param target ConstTargetHandle
 ---@param arequireAll boolean
----@param location Marker
+---@param location MarkerID
 ---@param range number
 ---@param _repeat boolean
 ---@param triggerOnEnter boolean
@@ -9740,7 +9610,7 @@ function Event_PlayerCanSeeElement(callback, data, team, element) end
 ---@param callback function
 ---@param data table
 ---@param target ConstTargetHandle
----@param location Marker
+---@param location MarkerID
 ---@param range number
 ---@param delay number
 ---@return unknown
@@ -9760,7 +9630,7 @@ function Event_SGroupCountMember(callback, data, group, amount__value_to_be_comp
 ---@param data table
 ---@param target ConstTargetHandle
 ---@param arequireAll boolean
----@param location Marker
+---@param location MarkerID
 ---@param range number
 ---@param _repeat boolean
 ---@param triggerOnEnter boolean
@@ -10571,7 +10441,7 @@ function NIS_StoreCurrentCameraPos() end
 --- Adds a map highlight around a specific point
 --- AreaType is AT_CIRCLE (the default) or AT_SQUARE. Color is a table with three values for red, green and blue - i.e. {255, 0, 0}.
 ---@param objTable LuaTable
----@param pos Marker | Position | Group
+---@param pos MarkerID | Position | Group
 ---@param areatype AreaType | nil
 ---@param scale number | nil
 ---@param color table | nil
@@ -10582,7 +10452,7 @@ function Objective_AddAreaHighlight(objTable, pos, areatype, scale, color, alpha
 --- Adds a visual splat on the ground in the world around a certain position, returning the ID
 --- The reticule blueprint (the circle on the ground) and the hintpoint template (the arrow) are by defualt taken from the objective type, but you can override them or set them to false to turn that element off.
 ---@param objTable LuaTable
----@param position Marker | Pos
+---@param position MarkerID | Pos
 ---@param size number | nil
 ---@param reticuleBlueprint BP | nil
 ---@param hintpointTemplate string | nil
@@ -12346,7 +12216,7 @@ function Rule_ChangeIntervalWithID(id, interval) end
 ---@param f function
 ---@param all boolean
 ---@param who EGroupID
----@param where Marker
+---@param where MarkerID
 ---@param range number | nil
 ---@param recur boolean | nil
 ---@param data table | nil
@@ -12367,7 +12237,7 @@ function Rule_ExistsWithID(id) end
 ---@param f function
 ---@param all boolean
 ---@param who EGroupID
----@param where Marker
+---@param where MarkerID
 ---@param range number | nil
 ---@param recur boolean | nil
 ---@param data table | nil
@@ -12486,7 +12356,7 @@ function Rule_UnpauseWithID(id) end
 ---@param f function
 ---@param all boolean
 ---@param who EGroupID
----@param where Marker
+---@param where MarkerID
 ---@param range number | nil
 ---@param interval number | nil
 ---@param recur boolean | nil
@@ -12944,7 +12814,7 @@ function SGroup_GetAvgShieldPercentage(sgroup) end
 
 --- Get the closest squad in an sgroup to a given position
 ---@param sgroupid SGroupID
----@param position Marker | Pos
+---@param position MarkerID | Pos
 ---@return unknown
 function SGroup_GetClosestSquad(sgroupid, position) end
 
@@ -15820,8 +15690,8 @@ function ThreatArrow_Add(GroupID, Threat, icon) end
 
 --- Creates a group of threats that are represented by a single arrow. Threats can be entities, squads, egroups, sgroups, positions or markers
 ---@param dataTemplate string
----@param target1 Marker | Pos | Entity | Squad | Group
----@param target2___ Marker | Pos | Entity | Squad | Group | nil
+---@param target1 MarkerID | Pos | Entity | Squad | Group
+---@param target2___ MarkerID | Pos | Entity | Squad | Group | nil
 ---@return unknown
 function ThreatArrow_CreateGroup(dataTemplate, target1, target2___) end
 
@@ -16673,7 +16543,7 @@ function Util_FindVisibleSpawn(origin, destination, furthest) end
 
 --- Forces all squads given to retreat, regardless of whether they are on team weapons or not. Disables aiEncounters input (true disables all encounters).
 ---@param sgroup SGroupID
----@param marker Marker
+---@param marker MarkerID
 ---@param aiEncounterDisable boolean
 ---@return unknown
 function Util_ForceRetreatAll(sgroup, marker, aiEncounterDisable) end
