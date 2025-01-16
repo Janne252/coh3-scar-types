@@ -52,6 +52,8 @@ scardocs
 SCARPOS
 scartype
 SCMD
+setautoclear
+setdisplay
 setsimframecap
 setsimpause
 setsimrate
