@@ -3,5 +3,6 @@ ipairs
 loadfile
 luac
 pcall
+tonumber
 tostring
 vararg
