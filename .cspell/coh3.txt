@@ -1,11 +1,15 @@
+afrika
+Afrikakorps
 Battlegroup
 battlegroups
 cooldown
 gamemode
 halftracks
+Kommand
 Korps
 leaderboard
 leaderboards
+Panzerjager
 panzerpioneer
 Veterancy
 Warbond
