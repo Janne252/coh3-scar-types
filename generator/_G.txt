@@ -584,6 +584,7 @@ AutoTest_SaveLoadTestSetupDone
 Autotest_TestFramework_OnInit
 AutoTest_TestrunFinished
 AutoTest_TestrunStarted
+bind
 BP_AbilityExists
 BP_AbilityIDExists
 BP_ApplyBlueprintNameMigration
@@ -661,6 +662,7 @@ BP_GetUpgradeBlueprintsWithType
 BP_GetUpgradeBlueprintsWithType_Internal
 BP_GetUpgradeTypes
 BP_GetUpgradeUIInfo
+BP_GetUpgradeUIMenuPBG
 BP_GetWeaponBlueprint
 BP_GetWeaponBlueprintByPbgID
 BP_GetWeaponBlueprintInfo
@@ -928,6 +930,7 @@ EGroup_EnableMinimapIndicator
 EGroup_EnableUIDecorator
 EGroup_Exists
 EGroup_Filter
+EGroup_FilterByUpgrade
 EGroup_FilterCamouflaged
 EGroup_FilterOnScreen
 EGroup_FilterUnderConstruction
@@ -1019,6 +1022,7 @@ Entity_CalculatePassableSpawnPosition
 Entity_CanAttackNow
 Entity_CancelProductionQueueItem
 Entity_CanLoadSquad
+Entity_CanProduceUpgrade
 Entity_CanSeeEntity
 Entity_CanSeeSquad
 Entity_CanTargetEntity
@@ -1106,6 +1110,7 @@ Entity_GetProductionQueueItemType
 Entity_GetProductionQueueSize
 Entity_GetProjectileBlocksPerAttacks
 Entity_GetRadius
+Entity_GetRallyPointPosition
 Entity_GetRangedBlocksPerAttacks
 Entity_GetReinforcementAbilitiesOnMovementNode
 Entity_GetRemainingResourceDepositAmount
@@ -1147,6 +1152,7 @@ Entity_HandleAllAsserts
 Entity_HasAbility
 Entity_HasBlueprint
 Entity_HasProductionQueue
+Entity_HasRallyPointPosition
 Entity_HasStateModelBool
 Entity_HasStateModelFloat
 Entity_HasStateModelInt
@@ -1229,12 +1235,16 @@ Entity_RequiresSlottedSplineUpdateAfterBlueprintConversion
 Entity_ResetMeleeBlocksPerAttacks
 Entity_ResetProjectileBlocksPerAttacks
 Entity_ResetRangedBlocksPerAttacks
+Entity_ResetUpgradeGlobalStatetreeHandle
 Entity_RestoreTargetingType
 Entity_SetAnimatorAction
 Entity_SetAnimatorActionParameter
 Entity_SetAnimatorEvent
+Entity_SetAnimatorEventEx
 Entity_SetAnimatorState
+Entity_SetAnimatorStateEx
 Entity_SetAnimatorVariable
+Entity_SetAnimatorVariableEx
 Entity_SetBackground
 Entity_SetBurnExtEnabled
 Entity_SetCaptureResistance
@@ -1943,6 +1953,7 @@ Player_AddResources
 Player_AddSquadsToSGroup
 Player_AddUnspentCommandPoints
 Player_AreSquadsNearMarker
+Player_CanAddUpgrade
 Player_CanCastAbilityOnEntity
 Player_CanCastAbilityOnPlayer
 Player_CanCastAbilityOnPosition
@@ -1950,6 +1961,7 @@ Player_CanCastAbilityOnSquad
 Player_CanConstruct
 Player_CanConstructOnPosition
 Player_CanPlaceStructureOnPosition
+Player_CanProduceUpgrade
 Player_CanSeeEGroup
 Player_CanSeeEntity
 Player_CanSeePosition
@@ -1962,6 +1974,7 @@ Player_ClearStateModelEnumTableTarget
 Player_ClearStateModelPBG
 Player_ClearStateModelTarget
 Player_CompleteUpgrade
+Player_CompleteUpgradeEx
 Player_DrawInfoText
 Player_FindFirstEnemyPlayer
 Player_FindFirstNeutralPlayer
@@ -1979,6 +1992,7 @@ Player_GetBuildingsCount
 Player_GetBuildingsCountExcept
 Player_GetBuildingsCountOnly
 Player_GetBuildingUnderConstructionID
+Player_GetCompletedUpgrades
 Player_GetControlledTerritories
 Player_GetCurrentPopulation
 Player_GetDebugPlayer
@@ -1998,6 +2012,7 @@ Player_GetNumStrategicPoints
 Player_GetNumVictoryPoints
 Player_GetPopCapOverride
 Player_GetPopulationPercentage
+Player_GetPossibleUpgrades
 Player_GetRace
 Player_GetRaceName
 Player_GetRelationship
@@ -2053,6 +2068,7 @@ Player_HasStateModelBool
 Player_HasStateModelFloat
 Player_HasStateModelInt
 Player_HasStateModelList
+Player_HasStateModelPBG
 Player_HasStateModelTarget
 Player_HasStateModelVector3f
 Player_HasUpgrade
@@ -2505,6 +2521,7 @@ Squad_CanLoadSquad
 Squad_CanNodePathToDestination
 Squad_CanPickupItem
 Squad_CanProceedToSkirmish
+Squad_CanProduceUpgrade
 Squad_CanRecrew
 Squad_CanSeeEntity
 Squad_CanSeeSquad
@@ -2598,6 +2615,7 @@ Squad_GetProductionQueueItem
 Squad_GetProductionQueueItemType
 Squad_GetProductionQueueSize
 Squad_GetRace
+Squad_GetRallyPointPosition
 Squad_GetRemainingInventoryCapacity
 Squad_GetResource
 Squad_GetShieldPercentage
@@ -2642,6 +2660,7 @@ Squad_HasEntityWithNInteractors
 Squad_HasHeavyWeapon
 Squad_HasInfantry
 Squad_HasProductionQueue
+Squad_HasRallyPointPosition
 Squad_HasSetupTeamWeapon
 Squad_HasStateModelBool
 Squad_HasStateModelFloat
@@ -2942,6 +2961,20 @@ TimeRule_UnpauseWithID
 ToggleCameraSwitchboardDebugDraw
 tonumber
 tostring
+Tuning_CustomPropertyExists
+Tuning_GetCustomPropertyAttribEnum
+Tuning_GetCustomPropertyBool
+Tuning_GetCustomPropertyDeferredEntityStateNodePath
+Tuning_GetCustomPropertyEntityStateNodePath
+Tuning_GetCustomPropertyFloat
+Tuning_GetCustomPropertyHashKey
+Tuning_GetCustomPropertyInt
+Tuning_GetCustomPropertyLocString
+Tuning_GetCustomPropertyPBG
+Tuning_GetCustomPropertyPhysicalStateNodePath
+Tuning_GetCustomPropertySimGlobalStateNodePath
+Tuning_GetCustomPropertySquadStateNodePath
+Tuning_GetCustomPropertyVector3f
 type
 UI_AddChild
 UI_AddCommandBinding
@@ -2972,6 +3005,7 @@ UI_CoverPreviewHide
 UI_CoverPreviewShow
 UI_CreateCommand
 UI_CreateCustomEventCueFrom
+UI_CreateCustomKickerMessage
 UI_CreateDataContext
 UI_CreateEntityKickerMessage
 UI_CreateEventCue
@@ -3014,6 +3048,7 @@ UI_CursorHide
 UI_CursorShow
 UI_DeleteMinimapBlip
 UI_DeleteMinimapBlipInternal
+UI_DestroyCustomKickerMessage
 UI_DestroyReticule
 UI_DestroyTag
 UI_DestroyTagForEntity
@@ -3026,6 +3061,7 @@ UI_DestroyTagForSquadWithSubkey
 UI_DestroyTagForUID
 UI_DestroyTagForUIDWithSubkey
 UI_DestroyTargetTrackingTag
+UI_EnableCustomEventCueType
 UI_EnableEntityDecorator
 UI_EnableEntityMinimapIndicator
 UI_EnableEntitySelectionVisuals
@@ -3061,6 +3097,7 @@ UI_GetDecoratorVisibilityEntity
 UI_GetDecoratorVisibilitySquad
 UI_GetReplayOriginalLocalPlayer
 UI_GetShowHUDSubtitleOption
+UI_GetUIMenuPBG
 UI_GetViewportHeight
 UI_GetViewportWidth
 UI_HasInGameScreenUIOpen
@@ -3148,6 +3185,7 @@ UI_ToggleDecorators
 UI_ToggleTacticalPause
 UI_UnrestrictBuildingPlacement
 UIWarning_Show
+unbind
 UnitEntry_AllUnits_HaveFinishedMoving
 UnitEntry_CancelDeployment
 UnitEntry_CompleteAllDeploymentsImmediately
@@ -3465,6 +3503,12 @@ World_GetThresholdModifiersForSquad
 World_GetVeterancyPointsPerObjective_High
 World_GetVeterancyPointsPerObjective_Low
 World_GetWidth
+World_HasStateModelBool
+World_HasStateModelFloat
+World_HasStateModelInt
+World_HasStateModelPBG
+World_HasStateModelTarget
+World_HasStateModelVector3f
 World_IncrementCurrentMapEntryIndex
 World_InteractiveOptionInitialized
 World_InteractiveOptionSelected
@@ -3942,21 +3986,21 @@ GD_EXPERT = 3  (NUMBER)
 GD_HARD = 2  (NUMBER)
 GD_INVALID = 127  (NUMBER)
 GD_NORMAL = 1  (NUMBER)
-GE_AbilityCanCast = 8323072  (NUMBER)
+GE_AbilityCanCast = 8388608  (NUMBER)
 GE_AbilityComplete = 2555904  (NUMBER)
 GE_AbilityExecuted = 2490368  (NUMBER)
 GE_AbilityRecharged = 2621440  (NUMBER)
 GE_AccessoryWeaponFired = 3014656  (NUMBER)
-GE_AIPlayer_DifficultyChanged = 7143424  (NUMBER)
-GE_AIPlayer_EncounterNotification = 6946816  (NUMBER)
-GE_AIPlayer_EncounterSniped = 7012352  (NUMBER)
-GE_AIPlayer_Migrated = 7077888  (NUMBER)
-GE_AITakeOver = 6881280  (NUMBER)
-GE_AnimatorSwap = 9175040  (NUMBER)
+GE_AIPlayer_DifficultyChanged = 7208960  (NUMBER)
+GE_AIPlayer_EncounterNotification = 7012352  (NUMBER)
+GE_AIPlayer_EncounterSniped = 7077888  (NUMBER)
+GE_AIPlayer_Migrated = 7143424  (NUMBER)
+GE_AITakeOver = 6946816  (NUMBER)
+GE_AnimatorSwap = 9240576  (NUMBER)
 GE_ArtilleryFired = 2293760  (NUMBER)
 GE_BoobyTrapTriggered = 3407872  (NUMBER)
-GE_BroadcastMessage = 8126464  (NUMBER)
-GE_BuildItemCancelled = 8388608  (NUMBER)
+GE_BroadcastMessage = 8192000  (NUMBER)
+GE_BuildItemCancelled = 8454144  (NUMBER)
 GE_BuildItemComplete = 1703936  (NUMBER)
 GE_BuildItemStart = 1638400  (NUMBER)
 GE_CameraKeyOrbit = 2687232  (NUMBER)
@@ -3969,7 +4013,7 @@ GE_CamerGamepadOrbit = 3014912  (NUMBER)
 GE_CamerGamepadPan = 2949376  (NUMBER)
 GE_CampaignSkirmishAutoResolved = 2556160  (NUMBER)
 GE_CasualtySquadSpawned = 4521984  (NUMBER)
-GE_ChallengeCustomEvent = 9764864  (NUMBER)
+GE_ChallengeCustomEvent = 9830400  (NUMBER)
 GE_ChallengeDefinitionsUpdated = 3211520  (NUMBER)
 GE_CommandReceiverStatusUpdate = 1704192  (NUMBER)
 GE_CommandStatusUpdate = 1638656  (NUMBER)
@@ -3978,18 +4022,19 @@ GE_ConstructionComplete = 1048576  (NUMBER)
 GE_ConstructionFieldComplete = 1179648  (NUMBER)
 GE_ConstructionPlanComplete = 1114112  (NUMBER)
 GE_ConstructionStart = 917504  (NUMBER)
-GE_CustomUIEvent = 7536640  (NUMBER)
-GE_DamageArea = 7340032  (NUMBER)
-GE_DamageReceived = 5505024  (NUMBER)
+GE_CustomUIEvent = 7602176  (NUMBER)
+GE_DamageArea = 7405568  (NUMBER)
+GE_DamageReceived = 5570560  (NUMBER)
+GE_DataCustomEvent = 10420224  (NUMBER)
 GE_DefaultCommandIssued = 852224  (NUMBER)
-GE_DistrictChanged = 9502720  (NUMBER)
-GE_DistrictCreated = 9371648  (NUMBER)
-GE_DistrictRatingChanged = 9568256  (NUMBER)
-GE_DistrictRemoved = 9437184  (NUMBER)
-GE_DriverDecrewed = 7667712  (NUMBER)
-GE_DriverRecrewed = 7733248  (NUMBER)
-GE_EnemyActivitySpotted = 8257536  (NUMBER)
-GE_EnemyTerritoryEntered = 6422528  (NUMBER)
+GE_DistrictChanged = 9568256  (NUMBER)
+GE_DistrictCreated = 9437184  (NUMBER)
+GE_DistrictRatingChanged = 9633792  (NUMBER)
+GE_DistrictRemoved = 9502720  (NUMBER)
+GE_DriverDecrewed = 7733248  (NUMBER)
+GE_DriverRecrewed = 7798784  (NUMBER)
+GE_EnemyActivitySpotted = 8323072  (NUMBER)
+GE_EnemyTerritoryEntered = 6488064  (NUMBER)
 GE_EntityAbandoned = 3538944  (NUMBER)
 GE_EntityBlueprintChanged = 393216  (NUMBER)
 GE_EntityCommandIssued = 721152  (NUMBER)
@@ -4001,11 +4046,11 @@ GE_EntityParadropComplete = 2359296  (NUMBER)
 GE_EntityPrecached = 1179904  (NUMBER)
 GE_EntityRecrewed = 3604480  (NUMBER)
 GE_EntityRestored = 720896  (NUMBER)
-GE_EntitySelectionVisualChanged = 9043968  (NUMBER)
+GE_EntitySelectionVisualChanged = 9109504  (NUMBER)
 GE_EntitySpawn = 196608  (NUMBER)
 GE_EntityTeleported = 524288  (NUMBER)
 GE_EntityWrecked = 655360  (NUMBER)
-GE_ExperienceGranted = 5570560  (NUMBER)
+GE_ExperienceGranted = 5636096  (NUMBER)
 GE_FieldSupportChange = 3670016  (NUMBER)
 GE_FormationSquadGroupCommandIssued = 590080  (NUMBER)
 GE_GameOver = 983296  (NUMBER)
@@ -4013,10 +4058,10 @@ GE_GameStart = 917760  (NUMBER)
 GE_Garrison = 1507328  (NUMBER)
 GE_GarrisonSquad = 1572864  (NUMBER)
 GE_ImportantUnitSighted = 3473408  (NUMBER)
-GE_InfluenceUpdate = 9633792  (NUMBER)
+GE_InfluenceUpdate = 9699328  (NUMBER)
 GE_InteractiveOptionInitialized = 2425088  (NUMBER)
 GE_InteractiveOptionSelected = 2490624  (NUMBER)
-GE_ItemAvailabilityChanged = 7929856  (NUMBER)
+GE_ItemAvailabilityChanged = 7995392  (NUMBER)
 GE_MineDefused = 2424832  (NUMBER)
 GE_MoveFailed = 3145728  (NUMBER)
 GE_MusicIntensityChange = 1769728  (NUMBER)
@@ -4030,41 +4075,41 @@ GE_PathFound = 3080192  (NUMBER)
 GE_Ping = 459008  (NUMBER)
 GE_PlannedStructureCancelled = 1966080  (NUMBER)
 GE_PlannedStructurePlaced = 1900544  (NUMBER)
-GE_PlantDemolitionIssued = 6291456  (NUMBER)
-GE_PlayerAddEntity = 8650752  (NUMBER)
-GE_PlayerAddResource = 8519680  (NUMBER)
-GE_PlayerBeingAttacked = 5439488  (NUMBER)
-GE_PlayerCheat = 5636096  (NUMBER)
+GE_PlantDemolitionIssued = 6356992  (NUMBER)
+GE_PlayerAddEntity = 8716288  (NUMBER)
+GE_PlayerAddResource = 8585216  (NUMBER)
+GE_PlayerBeingAttacked = 5505024  (NUMBER)
+GE_PlayerCheat = 5701632  (NUMBER)
 GE_PlayerCommandIssued = 786688  (NUMBER)
-GE_PlayerDebug_DELETED = 5701632  (NUMBER)
-GE_PlayerDebugBuildOrder = 5963776  (NUMBER)
-GE_PlayerDebugBuildTime = 5898240  (NUMBER)
-GE_PlayerDebugDestroy = 6029312  (NUMBER)
-GE_PlayerDebugEndMatch = 5767168  (NUMBER)
-GE_PlayerDebugFogOfWar = 5832704  (NUMBER)
-GE_PlayerDonation = 6488064  (NUMBER)
+GE_PlayerDebug_DELETED = 5767168  (NUMBER)
+GE_PlayerDebugBuildOrder = 6029312  (NUMBER)
+GE_PlayerDebugBuildTime = 5963776  (NUMBER)
+GE_PlayerDebugDestroy = 6094848  (NUMBER)
+GE_PlayerDebugEndMatch = 5832704  (NUMBER)
+GE_PlayerDebugFogOfWar = 5898240  (NUMBER)
+GE_PlayerDonation = 6553600  (NUMBER)
 GE_PlayerDropped = 196864  (NUMBER)
 GE_PlayerEndStateChanged = 2162944  (NUMBER)
-GE_PlayerFormationFinalized = 9109504  (NUMBER)
+GE_PlayerFormationFinalized = 9175040  (NUMBER)
 GE_PlayerHostMigrated = 393472  (NUMBER)
 GE_PlayerKicked = 262400  (NUMBER)
 GE_PlayerKilled = 327936  (NUMBER)
 GE_PlayerLagComplaint = 131328  (NUMBER)
 GE_PlayerLose = 1114368  (NUMBER)
-GE_PlayerNameChanged = 6553600  (NUMBER)
-GE_PlayerObjectiveChanged = 6684672  (NUMBER)
-GE_PlayerObjectiveDeleted = 6619136  (NUMBER)
-GE_PlayerPhaseUp = 6750208  (NUMBER)
+GE_PlayerNameChanged = 6619136  (NUMBER)
+GE_PlayerObjectiveChanged = 6750208  (NUMBER)
+GE_PlayerObjectiveDeleted = 6684672  (NUMBER)
+GE_PlayerPhaseUp = 6815744  (NUMBER)
 GE_PlayerPingOfShame = 256  (NUMBER)
 GE_PlayerPingOfShameLocal = 65792  (NUMBER)
-GE_PlayerRemoveEntity = 8716288  (NUMBER)
-GE_PlayerRemoveSquad = 8847360  (NUMBER)
-GE_PlayerResourcesAwarded = 6815744  (NUMBER)
-GE_PlayerSetResource = 9699328  (NUMBER)
-GE_PlayerSquadInitialized = 8781824  (NUMBER)
-GE_PlayerSubResource = 8585216  (NUMBER)
-GE_PlayerSurrendered = 7471104  (NUMBER)
-GE_PlayerTeamIdUpdated = 8978432  (NUMBER)
+GE_PlayerRemoveEntity = 8781824  (NUMBER)
+GE_PlayerRemoveSquad = 8912896  (NUMBER)
+GE_PlayerResourcesAwarded = 6881280  (NUMBER)
+GE_PlayerSetResource = 9764864  (NUMBER)
+GE_PlayerSquadInitialized = 8847360  (NUMBER)
+GE_PlayerSubResource = 8650752  (NUMBER)
+GE_PlayerSurrendered = 7536640  (NUMBER)
+GE_PlayerTeamIdUpdated = 9043968  (NUMBER)
 GE_PlayerWin = 1048832  (NUMBER)
 GE_PresentationMapStateEvent = 1900800  (NUMBER)
 GE_PresentationPauseMenuStateEvent = 2031872  (NUMBER)
@@ -4075,14 +4120,15 @@ GE_ProjectileLanded = 2752512  (NUMBER)
 GE_ReinforcementCreated = 1769472  (NUMBER)
 GE_ResourceDepleted = 2097152  (NUMBER)
 GE_ResourceGathererAtCapacity = 2162688  (NUMBER)
-GE_SectorLinkProviderChanged = 7602176  (NUMBER)
-GE_SectorOutOfSupply = 9961472  (NUMBER)
+GE_SectorLinkProviderChanged = 7667712  (NUMBER)
+GE_SectorOutOfSupply = 10027008  (NUMBER)
 GE_SelectionChanged = 1442048  (NUMBER)
-GE_SpawnActionComplete = 7274496  (NUMBER)
-GE_SpeechAction = 7798784  (NUMBER)
+GE_SpawnActionComplete = 7340032  (NUMBER)
+GE_SpeechAction = 7864320  (NUMBER)
 GE_SpeechTelemetryEvent = 2097408  (NUMBER)
-GE_SpeechWarningAction = 8192000  (NUMBER)
+GE_SpeechWarningAction = 8257536  (NUMBER)
 GE_SquadAudioGameObjectRemoved = 1310976  (NUMBER)
+GE_SquadBlueprintChanged = 5439488  (NUMBER)
 GE_SquadBuildCommandIssued = 524544  (NUMBER)
 GE_SquadCalledIn = 4980736  (NUMBER)
 GE_SquadCold = 4849664  (NUMBER)
@@ -4105,35 +4151,35 @@ GE_SquadProductionQueue = 3932160  (NUMBER)
 GE_SquadReplaced = 5046272  (NUMBER)
 GE_SquadRetreat = 4325376  (NUMBER)
 GE_SquadRetreatMsgReceived = 4390912  (NUMBER)
-GE_SquadSizeChanged = 8060928  (NUMBER)
+GE_SquadSizeChanged = 8126464  (NUMBER)
 GE_SquadSpawn = 3735552  (NUMBER)
 GE_SquadSplit = 4653056  (NUMBER)
 GE_SquadTeleported = 5308416  (NUMBER)
 GE_SquadUnloaded = 5177344  (NUMBER)
 GE_SquadVeterancyRank = 3997696  (NUMBER)
-GE_StatsCustomEvent = 9830400  (NUMBER)
+GE_StatsCustomEvent = 9895936  (NUMBER)
 GE_StrategicPointChanged = 1835008  (NUMBER)
 GE_StructureReplaced = 2031616  (NUMBER)
 GE_SubselectionChanged = 1507584  (NUMBER)
-GE_SuperAbility = 7208960  (NUMBER)
+GE_SuperAbility = 7274496  (NUMBER)
 GE_TacticalPause = 2359552  (NUMBER)
-GE_TerrainAreaDeformed = 7405568  (NUMBER)
-GE_TerritoryControllerChangedOwner = 10092544  (NUMBER)
+GE_TerrainAreaDeformed = 7471104  (NUMBER)
+GE_TerritoryControllerChangedOwner = 10158080  (NUMBER)
 GE_TerritoryCornerDeoccupied = 1310720  (NUMBER)
 GE_TerritoryEdgeDeoccupied = 1245184  (NUMBER)
-GE_TerritoryEntered = 6356992  (NUMBER)
-GE_TickerValuesUpdated = 8912896  (NUMBER)
-GE_TurnAdvancement = 10158080  (NUMBER)
-GE_UpgradeCancelled = 7995392  (NUMBER)
+GE_TerritoryEntered = 6422528  (NUMBER)
+GE_TickerValuesUpdated = 8978432  (NUMBER)
+GE_TurnAdvancement = 10223616  (NUMBER)
+GE_UpgradeCancelled = 8060928  (NUMBER)
 GE_UpgradeComplete = 65536  (NUMBER)
-GE_UpgradeRemoved = 7864320  (NUMBER)
+GE_UpgradeRemoved = 7929856  (NUMBER)
 GE_UpgradeStart = 0  (NUMBER)
 GE_UpgradeTentative = 131072  (NUMBER)
-GE_WaitObjectDone = 8454144  (NUMBER)
-GE_WalkableSurfacePurgeOrphans = 9895936  (NUMBER)
-GE_WallCombatEnded = 6225920  (NUMBER)
-GE_WallCombatStarted = 6160384  (NUMBER)
-GE_WallWalked = 6094848  (NUMBER)
+GE_WaitObjectDone = 8519680  (NUMBER)
+GE_WalkableSurfacePurgeOrphans = 9961472  (NUMBER)
+GE_WallCombatEnded = 6291456  (NUMBER)
+GE_WallCombatStarted = 6225920  (NUMBER)
+GE_WallWalked = 6160384  (NUMBER)
 GE_WeaponSetup = 2818048  (NUMBER)
 GE_WeaponTeardown = 2883584  (NUMBER)
 GE_WreckRecovered = 851968  (NUMBER)
@@ -4252,7 +4298,7 @@ NISLET_TIME = 1  (NUMBER)
 NISLET_VO = 2  (NUMBER)
 NO_ATTACK = false  (BOOLEAN)
 NO_QUEUE = false  (BOOLEAN)
-Off = {} CrushMode(3) (ENUM)
+Off = {} CrushMode(4) (ENUM)
 OFFSET_BACK = 4  (NUMBER)
 OFFSET_BACK_LEFT = 5  (NUMBER)
 OFFSET_BACK_RIGHT = 3  (NUMBER)
@@ -4327,6 +4373,10 @@ PLAYING = {} PlayerState(6) (ENUM)
 PROX_CENTER = 2  (NUMBER)
 PROX_LONGEST = 1  (NUMBER)
 PROX_SHORTEST = 0  (NUMBER)
+PUR_Instant = {} PlayerUpgradeRoute(2) (ENUM)
+PUR_InstantWithRequirementCheck = {} PlayerUpgradeRoute(3) (ENUM)
+PUR_Normal = {} PlayerUpgradeRoute(0) (ENUM)
+PUR_Tentative = {} PlayerUpgradeRoute(1) (ENUM)
 R_ALLY = {} Relationship(2) (ENUM)
 R_ENEMY = {} Relationship(1) (ENUM)
 R_NEUTRAL = {} Relationship(3) (ENUM)
