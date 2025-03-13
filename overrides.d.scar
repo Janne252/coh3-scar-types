@@ -925,3 +925,22 @@ function Marker_SetProximityPoint(marker) end
 ---@param width number
 ---@param height number
 function Marker_SetProximityRectangle(marker, width, height) end
+
+--- Set animation state of a state machine for an entity. Please only use this for simple animations
+---@param pEntity Entity
+---@param stateMachineName string
+---@param stateName string
+---@param unknownBoolean01 boolean
+---@param unknownBoolean02 boolean
+function Entity_SetAnimatorStateEx(pEntity, stateMachineName, stateName, unknownBoolean01, unknownBoolean02) end
+
+---@param player Player
+---@param position Position
+---@param message LocString
+---@param unknownFloat number
+---@param icon string
+---@param unknownString01 string
+---@param unknownString02 string
+---@param unknownBoolean boolean
+---@return number kickerMessageId
+function UI_CreateCustomKickerMessage(player, position, message, unknownFloat, icon, unknownString01, unknownString02, unknownBoolean) end
