@@ -926,21 +926,103 @@ function Marker_SetProximityPoint(marker) end
 ---@param height number
 function Marker_SetProximityRectangle(marker, width, height) end
 
---- Set animation state of a state machine for an entity. Please only use this for simple animations
----@param pEntity Entity
+--- Set animation event for an entity. Propagate to children setting follows sim animator tuning defaults.
+---@param entity Entity
+---@param eventName string
+function Entity_SetAnimatorEvent(entity, eventName) end
+
+--- Set animation event for an entity. Extended: Specifies whether to propagate to children.
+---@param entity Entity
+---@param eventName string
+---@param propagateToChildren boolean
+function Entity_SetAnimatorEventEx(entity, eventName, propagateToChildren) end
+
+--- Set animation state of a state machine for an entity. Propagate to children setting follows sim animator tuning defaults.
+---@param entity Entity
 ---@param stateMachineName string
 ---@param stateName string
----@param unknownBoolean01 boolean
----@param unknownBoolean02 boolean
-function Entity_SetAnimatorStateEx(pEntity, stateMachineName, stateName, unknownBoolean01, unknownBoolean02) end
+function Entity_SetAnimatorState(entity, stateMachineName, stateName) end
 
+--- Set animation state of a state machine for an entity. Extended: Specify whether it propagates to children, and whether to bypass dca value validation.
+---@param entity Entity
+---@param stateMachineName string
+---@param stateName string
+---@param propagateToChildren boolean
+---@param bypassValidation boolean
+function Entity_SetAnimatorStateEx(entity, stateMachineName, stateName, propagateToChildren, bypassValidation) end
+
+--- Set animation variable value for an entity. Interpolates by default.
+---@param entity Entity
+---@param variableName string
+---@param value number
+function Entity_SetAnimatorVariable(entity, variableName, value) end
+
+--- Set animation variable value for an entity. Extended: Specify whether to interpolate the variable, and whether to bypass dca value validation.
+---@param entity Entity
+---@param variableName string
+---@param value number
+---@param interpolate boolean
+---@param bypassValidation boolean
+function Entity_SetAnimatorVariableEx(entity, variableName, value, interpolate, bypassValidation) end
+
+--- Finish upgrade for a player. uses PUR_Instant
 ---@param player Player
----@param position Position
+---@param upgrade Upgrade
+function Player_CompleteUpgrade(player, upgrade) end
+
+--- Extended: Finish upgrade for a player with additional parameters.
+---@param player Player
+---@param upgrade Upgrade
+---@param upgradeRoute UpgradeRoute
+function Player_CompleteUpgradeEx(player, upgrade, upgradeRoute) end
+
+--- Return true if the entity can produce the specified upgrade.
+---@param entity Entity
+---@param upgrade Upgrade
+function Entity_CanProduceUpgrade(entity, upgrade) end
+
+--- Returns true if the upgrade can be added to the player right now. Ignores prerequisites and costs.
+---@param player Player
+---@param upgrade Upgrade
+function Player_CanAddUpgrade(player, upgrade) end
+
+--- Returns true if the upgrade can be produced by the player right now. Checks prerequisites and costs.
+---@param player Player
+---@param upgrade Upgrade
+---@param ignoreAvailability boolean
+function Player_CanProduceUpgrade( player, upgrade, ignoreAvailability) end
+
+--- Returns all completed upgrades this player has.
+---@param player Player
+---@return Upgrade[]
+function Player_GetCompletedUpgrades(player) end
+
+--- Returns all upgrades this player has access to.
+---@param player Player
+---@return Upgrade[]
+function Player_GetPossibleUpgrades(player) end
+
+--- Returns true if a valid entry can be found at the given key.
+---@param player Player
+---@param key string
+---@return boolean
+function Player_HasStateModelPBG(player, key) end
+
+--- Return true if the squad can produce the specified upgrade.
+---@param squad Squad
+---@param upgrade Upgrade
+---@return boolean
+function Squad_CanProduceUpgrade(squad, upgrade) end
+
+--- You can pass in squad, entity or position, unlike other kicker message API that are target type specific
+--- you can customize duration of the kicker, and the look of the kicker via the data template and icon / symbol
+---@param player Player
+---@param pos Position|Entity|Squad
 ---@param message LocString
----@param unknownFloat number
----@param icon string
----@param unknownString01 string
----@param unknownString02 string
----@param unknownBoolean boolean
----@return number kickerMessageId
-function UI_CreateCustomKickerMessage(player, position, message, unknownFloat, icon, unknownString01, unknownString02, unknownBoolean) end
+---@param durationSeconds number
+---@param icon string e.g. "icons\common\resources\resource_munition"
+---@param symbol string
+---@param dataTemplate string e.g. "supply_truck_reward" "status_neutral"
+---@param teamOnly boolean
+---@return number
+function UI_CreateCustomKickerMessage(player, pos, message, durationSeconds, icon, symbol, dataTemplate, teamOnly) end

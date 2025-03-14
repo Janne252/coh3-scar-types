@@ -11,16 +11,12 @@
 
 ---@class Player
 Player = {}
----@class ScoringFunction
-ScoringFunction = {}
----@class vector
-vector = {}
 ---@class Squad
 Squad = {}
 ---@class Entity
 Entity = {}
----@class PropertyBagGroup
-PropertyBagGroup = {}
+---@class PBG
+PBG = {}
 ---@class AITacticType
 AITacticType = {}
 ---@class EntityType
@@ -43,8 +39,6 @@ UniqueID = {}
 ConstTargetHandle = {}
 ---@class Ability
 Ability = {}
----@class Key
-Key = {}
 ---@class EntityPBG
 EntityPBG = {}
 ---@class AIScoreMultiplierID
@@ -55,8 +49,6 @@ StackVarTable = {}
 RenderModel = {}
 ---@class Transform
 Transform = {}
----@class variable
-variable = {}
 ---@class SaveTriggerType
 SaveTriggerType = {}
 ---@class lua_State
@@ -87,8 +79,6 @@ SyncWeaponID = {}
 LuaTable = {}
 ---@class Item
 Item = {}
----@class Variable
-Variable = {}
 ---@class OBJECT
 OBJECT = {}
 ---@class a
@@ -109,8 +99,6 @@ FrontEnd_Layer = {}
 DialogResult = {}
 ---@class DeploymentID
 DeploymentID = {}
----@class Pos
-Pos = {}
 ---@class WinReason
 WinReason = {}
 ---@class KillPlayerReason
@@ -139,8 +127,6 @@ PropertyBagGroupType = {}
 Upgrade = {}
 ---@class CapType
 CapType = {}
----@class ScarFn
-ScarFn = {}
 ---@class CamouflageStanceID
 CamouflageStanceID = {}
 ---@class EntityCommandType
@@ -167,8 +153,6 @@ winReason = {}
 GameUICore = {}
 ---@class List
 List = {}
----@class EBP
-EBP = {}
 ---@class TeamID
 TeamID = {}
 ---@class EncounterData
@@ -199,8 +183,6 @@ ANY_SQUAD = {}
 modids = {}
 ---@class MUT
 MUT = {}
----@class PBG
-PBG = {}
 ---@class Group
 Group = {}
 ---@class AreaType
@@ -221,8 +203,6 @@ Relation = {}
 BaseType = {}
 ---@class AddResourceReason
 AddResourceReason = {}
----@class Var
-Var = {}
 ---@class ActorTable
 ActorTable = {}
 ---@class ProxType
@@ -233,8 +213,6 @@ TerrainSplatObject = {}
 RuleFilterContext = {}
 ---@class RuleFilterOperator
 RuleFilterOperator = {}
----@class Array
-Array = {}
 ---@class Comparison
 Comparison = {}
 ---@class ScarSlotItemPBG
@@ -289,8 +267,6 @@ HUDFeatureType = {}
 ErrorMessage = {}
 ---@class argc
 argc = {}
----@class Vector
-Vector = {}
 
 --- Create a AlliedCombatFitness scoring function.
 --- Returns 1.0 to 0.0, based on how the allied combat fitness is. 1.0 if the allied fitness is at or below minFitness, 0.0 if fitness is above the maxFitness, smooth transition in between. If highFitnessIsGood, returns 0.0 to 1.0 instead. 0.0 if at or below minFitness and 1.0 if at or above maxFitness.
@@ -340,7 +316,7 @@ function AIProductionScoring_CanPushProductionScoringFunction(aiPlayer) end
 ---@param aiPlayer Player
 ---@param min number
 ---@param max number
----@param innerScoringFunction ScoringFunction
+---@param innerScoringFunction function
 ---@return unknown
 function AIProductionScoring_ClampedScoringFunction(aiPlayer, min, max, innerScoringFunction) end
 
@@ -418,7 +394,7 @@ function AIProductionScoring_MaxPopCapPercentage(aiPlayer, targetPopulationPerce
 --- Create a MaxScoringFunction scoring function.
 --- Returns the max value of the inner scoring functions
 ---@param aiPlayer Player
----@param innerScoringFunction vector<ScoringFunction>
+---@param innerScoringFunction table<function>
 ---@return unknown
 function AIProductionScoring_MaxScoringFunction(aiPlayer, innerScoringFunction) end
 
@@ -453,7 +429,7 @@ function AIProductionScoring_MultipleProduced(aiPlayer, additionalFactor) end
 --- Create a MultiplyListScoringFunction scoring function.
 --- Takes a list of scoring functions and multiplies them together. This scoring function can be paired with MaxScoringFunction to generate OR scoring expressions, such as Max(IslandNeedingExpansionBase, (ProductionQueueContention * TimeToAcquire))
 ---@param aiPlayer Player
----@param innerScoringFunction vector<ScoringFunction>
+---@param innerScoringFunction table<function>
 ---@return unknown
 function AIProductionScoring_MultiplyListScoringFunction(aiPlayer, innerScoringFunction) end
 
@@ -838,7 +814,7 @@ function AISquad_SetStateModelEnumTableInt(aiSquad, key, tableRowIndex, value) e
 ---@param aiSquad Squad
 ---@param key string
 ---@param tableRowIndex number
----@param value PropertyBagGroup
+---@param value PBG
 ---@return unknown
 function AISquad_SetStateModelEnumTablePBG(aiSquad, key, tableRowIndex, value) end
 
@@ -883,7 +859,7 @@ function AISquad_SetStateModelInt(aiSquad, key, value) end
 --- Sets a pbg value in the AISquad's state model corresponding to the given key.
 ---@param aiSquad Squad
 ---@param key string
----@param value PropertyBagGroup
+---@param value PBG
 ---@return unknown
 function AISquad_SetStateModelPBG(aiSquad, key, value) end
 
@@ -910,7 +886,7 @@ function AISquad_SetStateModelVector3f(aiSquad, key, value) end
 
 --- calculates a valid target position for a jump slide ability
 ---@param aiSquad Squad
----@param abilityPBG PropertyBagGroup
+---@param abilityPBG PBG
 ---@param slideOffset number
 ---@param targetPosition Position
 ---@return unknown
@@ -1567,10 +1543,10 @@ function AI_CacheCombatFeatureTrainingData(conflictID, playerA, playerB) end
 --- Buildings will be filtered from attacking team
 ---@param teamASquads SGroupID
 ---@param teamAEntities EGroupID
----@param teamAPBGs PropertyBagGroup
+---@param teamAPBGs PBG
 ---@param teamBSquads SGroupID
 ---@param teamBEntities EGroupID
----@param teamBPBGs PropertyBagGroup
+---@param teamBPBGs PBG
 ---@param aiPlayerA Player
 ---@param playerB Player
 ---@param playerAIsAttacker boolean
@@ -1616,12 +1592,12 @@ function AI_ClearPrefabAIIntents(prefabId, player) end
 
 --- Returns true if the configured input feature calculators characterizes this squad
 ---@param player Player
----@param squadPBG PropertyBagGroup
+---@param squadPBG PBG
 ---@return unknown
 function AI_CombatFitnessCharacterizesSquad(player, squadPBG) end
 
 --- Returns the defensive upgrades for this structure archetype member
----@param memberPBG PropertyBagGroup
+---@param memberPBG PBG
 ---@return unknown
 function AI_CombatFitnessGetDefensiveUpgradesForStructureArchetypeMember(memberPBG) end
 
@@ -1630,7 +1606,7 @@ function AI_CombatFitnessGetDefensiveUpgradesForStructureArchetypeMember(memberP
 function AI_CombatFitnessGetHealerPBGs() end
 
 --- Returns the offensive upgrades for this structure archetype member
----@param memberPBG PropertyBagGroup
+---@param memberPBG PBG
 ---@return unknown
 function AI_CombatFitnessGetOffensiveUpgradesForStructureArchetypeMember(memberPBG) end
 
@@ -1664,21 +1640,21 @@ function AI_CreateAICombatFitnessLogs() end
 function AI_DebugLogGroupCombatRatings(sgroup, egroup, player) end
 
 --- Prints detailed rating debug info in the AILog for all the PBGs in the list
----@param pbgList PropertyBagGroup
+---@param pbgList PBG
 ---@param player Player
 ---@return unknown
 function AI_DebugLogPBGCombatRatings(pbgList, player) end
 
 --- Find the closest open position from a given position for a given ability blueprint
 ---@param caster ConstTargetHandle
----@param pAbilityPBG PropertyBagGroup
+---@param pAbilityPBG PBG
 ---@param posIn Position
 ---@return unknown
 function AI_FindClosestOpenPositionForAbility(caster, pAbilityPBG, posIn) end
 
 --- Find the closest open position from a given position and ability blueprint, taking into account a min
 ---@param caster ConstTargetHandle
----@param pAbilityPBG PropertyBagGroup
+---@param pAbilityPBG PBG
 ---@param posIn Position
 ---@param minDist number
 ---@param maxDist number
@@ -1687,7 +1663,7 @@ function AI_FindClosestOpenPositionForAbilityWithinRange(caster, pAbilityPBG, po
 
 --- Find the closest open position from a given position for a given Entity blueprint
 ---@param aiPlayer Player
----@param pEntityPBG PropertyBagGroup
+---@param pEntityPBG PBG
 ---@param posIn Position
 ---@return unknown
 function AI_FindClosestOpenPositionForStructure(aiPlayer, pEntityPBG, posIn) end
@@ -1815,7 +1791,7 @@ function AIPlayer_GetAnchorPosition(aiPlayer) end
 --- returns a 0-based index of the best clump of enemy squads within the given tolerance to the position passed in
 ---@param pPlayer Player
 ---@param position Position
----@param pAbilityPBG PropertyBagGroup
+---@param pAbilityPBG PBG
 ---@param minRange number
 ---@param maxRange number
 ---@param targetFilterFlags number
@@ -1826,7 +1802,7 @@ function AIPlayer_GetBestClumpForPositionIdx(pPlayer, position, pAbilityPBG, min
 --- returns a 0-based index of the best clump of enemy squads within the given tolerance to the AI squad
 ---@param pPlayer Player
 ---@param pSquad Squad
----@param pAbilityPBG PropertyBagGroup
+---@param pAbilityPBG PBG
 ---@param minRange number
 ---@param maxRange number
 ---@param targetFilterFlags number
@@ -1846,7 +1822,7 @@ function AIPlayer_GetBestClumpIdx(pPlayer, minRange, maxRange, clumpSelectionGlo
 
 --- returns a 0-based index of the best clump of allied or enemy squads within the given tolerance to the AI player
 ---@param pPlayer Player
----@param pAbilityPBG PropertyBagGroup
+---@param pAbilityPBG PBG
 ---@param minRange number
 ---@param maxRange number
 ---@param clumpSelectionGlobalBestMinRatio number
@@ -1867,7 +1843,7 @@ function AIPlayer_GetBestOwnedClumpIdx(pPlayer, minRange, maxRange, clumpSelecti
 
 --- returns a 0-based index of the best clump of owned squads within the given tolerance to the AI player
 ---@param pPlayer Player
----@param pAbilityPBG PropertyBagGroup
+---@param pAbilityPBG PBG
 ---@param minRange number
 ---@param maxRange number
 ---@param clumpSelectionGlobalBestMinRatio number
@@ -1912,7 +1888,7 @@ function AIPlayer_GetDistanceToEnemyTerritory(player, position) end
 --- Calculate product of all multipliers in tableName
 --- The result is intended to be applied to the tuning value corresponding to tableName, for use in the AI military target scoring function Allowable strings for tableName: front_line
 ---@param aiPlayer Player
----@param tableName Key
+---@param tableName string
 ---@return unknown
 function AIPlayer_GetDynamicMultiplier(aiPlayer, tableName) end
 
@@ -1981,7 +1957,7 @@ function AIPlayer_GetSquadPBGProductionUtility(aiPlayer, squadPBG) end
 --- Has path to target passes through a netural damaged structure
 ---@param aiPlayer Player
 ---@param squad Squad
----@param structurePbg PropertyBagGroup
+---@param structurePbg PBG
 ---@param damagePercentage number
 ---@param searchRadius number
 ---@param targetPosition Position
@@ -2010,7 +1986,7 @@ function AIPlayer_IsPointThreatened(aiPlayer, pos, filterEnemyBuildings, thresho
 --- Remove a multiplier previously applied to change the weight of a criteria in target scoring
 --- The multiplier will be removed from the table for the given tuningValueName. Pass in the multiplier id returned from AIPlayer_PushScoreMultiplier. Allowable strings for tuningValueName: front_line
 ---@param aiPlayer Player
----@param tuningValueName Key
+---@param tuningValueName string
 ---@param id AIScoreMultiplierID
 ---@return unknown
 function AIPlayer_PopScoreMultiplier(aiPlayer, tuningValueName, id) end
@@ -2018,7 +1994,7 @@ function AIPlayer_PopScoreMultiplier(aiPlayer, tuningValueName, id) end
 --- Remove a multiplier previously applied to a unit type for target scoring
 --- The multiplier will be removed from the table for the given unitTypeName. Pass in the multiplier id used earlier with AIPlayer_PushScoreMultiplier.
 ---@param aiPlayer Player
----@param unitTypeName Key
+---@param unitTypeName string
 ---@param id AIScoreMultiplierID
 ---@return unknown
 function AIPlayer_PopUnitTypeScoreMultiplier(aiPlayer, unitTypeName, id) end
@@ -2032,7 +2008,7 @@ function AIPlayer_ProcessedPathSuccessful(aiPlayer, processedPathRequestID) end
 --- Add a multiplier to change the weight of a criteria in target scoring
 --- The multiplier will be pushed to a table for the given tuningValueName. All multipliers in the table will be multiplied together and applied to the corresponding static tuning value. The  multiplierID passed in can be passed to AIPlayer_PopScoreMultiplier to remove it. Allowable strings for tuningValueName: front_line DefendStructure AttackStructure EnemyClump
 ---@param aiPlayer Player
----@param tuningValueName Key
+---@param tuningValueName string
 ---@param multiplier number
 ---@param multiplierID AIScoreMultiplierID
 ---@return unknown
@@ -2041,7 +2017,7 @@ function AIPlayer_PushScoreMultiplier(aiPlayer, tuningValueName, multiplier, mul
 --- Add a multiplier to give weight to a unit type in target scoring
 --- The multiplier will be pushed to a table for the given unitTypeName. All multipliers in the table will be multiplied together and applied to targets with the corresponding unit type. multiplierId identifies the
 ---@param aiPlayer Player
----@param unitTypeName Key
+---@param unitTypeName string
 ---@param multiplier number
 ---@param multiplierID AIScoreMultiplierID
 ---@return unknown
@@ -2064,33 +2040,33 @@ function AIPlayer_RemoveSquadHomebase(aiPlayer, sGroup) end
 ---@param requestingID number
 ---@param start Position
 ---@param _end Position
----@param pathingEntityPBG PropertyBagGroup
+---@param pathingEntityPBG PBG
 ---@param requiresPartialPath boolean
 ---@return unknown
 function AIPlayer_RequestHighPath(player, requestingID, start, _end, pathingEntityPBG, requiresPartialPath) end
 
 --- Clears the ability priority override
 ---@param player Player
----@param abilityPBG PropertyBagGroup
+---@param abilityPBG PBG
 ---@return unknown
 function AIPlayer_ResetAbilityPriorityOverride(player, abilityPBG) end
 
 --- Clears the ability priority override for all the abilities contained in the AIAbilityBag
 ---@param player Player
----@param aiAbilityPBG PropertyBagGroup
+---@param aiAbilityPBG PBG
 ---@return unknown
 function AIPlayer_ResetAIAbilityPriorityOverride(player, aiAbilityPBG) end
 
 --- Sets the ability priority override for all the AISquads owned by the player. -1 to disable the ability. NOTE: Encounter overrides have higher priority.
 ---@param player Player
----@param abilityPBG PropertyBagGroup
+---@param abilityPBG PBG
 ---@param priority number
 ---@return unknown
 function AIPlayer_SetAbilityPriorityOverride(player, abilityPBG, priority) end
 
 --- Sets the ability priority override for all the abilities contained in the AIAbilityBag for all the AISquads owned by the player. -1 to disable the ability. NOTE: Encounter overrides have higher priority.
 ---@param player Player
----@param aiAbilityPBG PropertyBagGroup
+---@param aiAbilityPBG PBG
 ---@param priority number
 ---@return unknown
 function AIPlayer_SetAIAbilityPriorityOverride(player, aiAbilityPBG, priority) end
@@ -2171,7 +2147,7 @@ function AISquad_GetClosestObstruction(pSquad, radius, bFilterAllied) end
 --- Returns the closest obstruction entity to the given squad
 ---@param pSquad Squad
 ---@param radius number
----@param pbgtype PropertyBagGroup
+---@param pbgtype PBG
 ---@return unknown
 function AISquad_GetClosestObstructionOfType(pSquad, radius, pbgtype) end
 
@@ -2579,7 +2555,7 @@ function DrawOBB(pModel, transform) end
 --- Example: EGroup_CallEntityFunction( eg_emplacements, Entity_SetAnimatorAction, actionName ) will call Entity_SetAnimatorAction( entity, actionName ) for every entity in eg_emplacements The first parameter of the supplied function must be EntityID
 ---@param egroup EGroupID
 ---@param entityFunction function
----@param argument_list variable
+---@param argument_list any
 ---@return unknown
 function EGroup_CallEntityFunction(egroup, entityFunction, argument_list) end
 
@@ -2588,7 +2564,7 @@ function EGroup_CallEntityFunction(egroup, entityFunction, argument_list) end
 ---@param egroup EGroupID
 ---@param all boolean
 ---@param entityFunction function
----@param argument_list variable
+---@param argument_list any
 ---@return unknown
 function EGroup_CallEntityFunctionAllOrAny(egroup, all, entityFunction, argument_list) end
 
@@ -2835,22 +2811,22 @@ function Initialize() end
 function inv_dump() end
 
 --- Returns true if the pbg class list contains a type that has economic utility
----@param pbg PropertyBagGroup
+---@param pbg PBG
 ---@return unknown
 function IsEconomyClassStructure_CS(pbg) end
 
 --- Can this structure be used to secure territory
----@param pbg PropertyBagGroup
+---@param pbg PBG
 ---@return unknown
 function IsSecuringStructure_CS(pbg) end
 
 --- Can this structure be used to secure territory
----@param pbg PropertyBagGroup
+---@param pbg PBG
 ---@return unknown
 function IsSecuringStructurePlacedOnPoint_CS(pbg) end
 
 --- Returns true if this object is a structure (something with a site_ext)
----@param pbg PropertyBagGroup
+---@param pbg PBG
 ---@return unknown
 function IsStructure_CS(pbg) end
 
@@ -3435,7 +3411,7 @@ function Setup_SetPlayerTeam(p, team_id) end
 --- Example: SGroup_CallEntityFunction( sg_riflemen, Entity_SetCrushable, false ) will call Entity_SetCrushable( entity, false ) for every entity in sg_riflemen. The first parameter of the supplied function must be EntityID
 ---@param sgroup SGroupID
 ---@param entityFunction function
----@param argument_list variable
+---@param argument_list any
 ---@return unknown
 function SGroup_CallEntityFunction(sgroup, entityFunction, argument_list) end
 
@@ -3443,7 +3419,7 @@ function SGroup_CallEntityFunction(sgroup, entityFunction, argument_list) end
 --- Example: SGroup_CallSquadFunction( sg_riflemen, Squad_IncreaseVeterancyRank, 2, true ) will call Squad_IncreaseVeterancyRank( squad, 2, true ) for every squad in sg_riflemen. The first parameter of the supplied function must be SquadID
 ---@param sgroup SGroupID
 ---@param squadFunction function
----@param argument_list variable
+---@param argument_list any
 ---@return unknown
 function SGroup_CallSquadFunction(sgroup, squadFunction, argument_list) end
 
@@ -3452,7 +3428,7 @@ function SGroup_CallSquadFunction(sgroup, squadFunction, argument_list) end
 ---@param sgroup SGroupID
 ---@param all boolean
 ---@param squadFunction function
----@param argument_list variable
+---@param argument_list any
 ---@return unknown
 function SGroup_CallSquadFunctionAllOrAny(sgroup, all, squadFunction, argument_list) end
 
@@ -3687,7 +3663,7 @@ function Table_GetRandomItem(table, numberofitems) end
 
 --- CHecks if a table contains the specified key
 ---@param table LuaTable
----@param key Variable
+---@param key any
 ---@return unknown
 function Table_HasKey(table, key) end
 
@@ -4041,7 +4017,7 @@ function UnitEntry_CompleteDeploymentImmediately(deployment) end
 ---@param player Player
 ---@param sgroup SGroupID
 ---@param units table
----@param spawn MarkerID | Pos
+---@param spawn MarkerID | Position
 ---@param entryMethod table | nil
 ---@param stagger number | nil
 ---@param options table | nil
@@ -4218,7 +4194,7 @@ function AI_FindBestProducibleSquadPBGforSquadTypes(player, squadTypeNames) end
 
 --- Find a valid construction location for a pbg, using a spiral search. Returns INVALID_POS if it fails.
 ---@param pPlayer Player
----@param pPbg PropertyBagGroup
+---@param pPbg PBG
 ---@param position Position
 ---@return unknown
 function AI_FindConstructionLocation(pPlayer, pPbg, position) end
@@ -4336,7 +4312,7 @@ function AI_PlayerDataDictionarySetNumber(player, varName, value) end
 --- Set a named PBG value in the AIPlayer DataDictionary
 ---@param player Player
 ---@param varName string
----@param value PropertyBagGroup
+---@param value PBG
 ---@return unknown
 function AI_PlayerDataDictionarySetPBG(player, varName, value) end
 
@@ -4458,7 +4434,7 @@ function AI_SquadDataDictionarySetNumber(squad, varName, value) end
 --- Set a named PBG value in the AISquad DataDictionary
 ---@param squad Squad
 ---@param varName string
----@param value PropertyBagGroup
+---@param value PBG
 ---@return unknown
 function AI_SquadDataDictionarySetPBG(squad, varName, value) end
 
@@ -4504,7 +4480,7 @@ function AI_UpdateStatics(pPlayer) end
 
 --- Set ability for ability encounter
 ---@param pEncounter AIEncounterID
----@param abilityPBG PropertyBagGroup
+---@param abilityPBG PBG
 ---@return unknown
 function AIAbilityEncounter_AbilityGuidance_SetAbilityPBG(pEncounter, abilityPBG) end
 
@@ -4602,7 +4578,7 @@ function AIEncounter_DataDictionarySetNumber(pEncounter, varName, value) end
 --- Set a named PBG value in the Encounter DataDictionary
 ---@param pEncounter AIEncounterID
 ---@param varName string
----@param value PropertyBagGroup
+---@param value PBG
 ---@return unknown
 function AIEncounter_DataDictionarySetPBG(pEncounter, varName, value) end
 
@@ -4881,7 +4857,7 @@ function AIEncounter_FormationPhase_HasValidExitInfo(encounterID) end
 
 --- Assign a property bag contains data to support sub task coordination for combat encounters
 ---@param encounter AIEncounterID
----@param coordinatorPBG PropertyBagGroup
+---@param coordinatorPBG PBG
 ---@return unknown
 function AIEncounter_FormationPhaseGuidance_SetCombatCoordinator(encounter, coordinatorPBG) end
 
@@ -4927,7 +4903,7 @@ function AIEncounter_FormationPhaseGuidance_SetMoveExitParams(encounter, timeout
 ---@param repositionIntervalSecs number
 ---@param useTactics boolean
 ---@param unitTypeNames string
----@param targetPriorityPBG PropertyBagGroup
+---@param targetPriorityPBG PBG
 ---@return unknown
 function AIEncounter_FormationTaskStateGuidance_MinRange(encounter, priority, minSquads, maxSquads, maxTasks, repositionIntervalSecs, useTactics, unitTypeNames, targetPriorityPBG) end
 
@@ -4941,7 +4917,7 @@ function AIEncounter_FormationTaskStateGuidance_MinRange(encounter, priority, mi
 ---@param repositionIntervalSecs number
 ---@param useTactics boolean
 ---@param unitTypeNames string
----@param targetPriorityPBG PropertyBagGroup
+---@param targetPriorityPBG PBG
 ---@param protectMinSquads number
 ---@param protectMaxSquads number
 ---@param protectProportionSquads number
@@ -4970,7 +4946,7 @@ function AIEncounter_FormationTaskStateGuidance_Move(encounter, attackMove, prio
 ---@param maxSquads number
 ---@param maxTasks number
 ---@param unitTypeNames string
----@param targetPriorityPBG PropertyBagGroup
+---@param targetPriorityPBG PBG
 ---@return unknown
 function AIEncounter_FormationTaskStateGuidance_SetupRanged(encounter, priority, minSquads, maxSquads, maxTasks, unitTypeNames, targetPriorityPBG) end
 
@@ -4981,7 +4957,7 @@ function AIEncounter_FormationTaskStateGuidance_SetupRanged(encounter, priority,
 ---@param maxSquads number
 ---@param maxTasks number
 ---@param unitTypeNames string
----@param targetPriorityPBG PropertyBagGroup
+---@param targetPriorityPBG PBG
 ---@param protectMinSquads number
 ---@param protectMaxSquads number
 ---@param protectProportionSquads number
@@ -4999,7 +4975,7 @@ function AIEncounter_FormationTaskStateGuidance_SetupRangedWithProtect(encounter
 ---@param maxSquads number
 ---@param maxTasks number
 ---@param unitTypeNames string
----@param targetPriorityPBG PropertyBagGroup
+---@param targetPriorityPBG PBG
 ---@return unknown
 function AIEncounter_FormationTaskStateGuidance_SimpleMelee(encounter, priority, minSquads, maxSquads, maxTasks, unitTypeNames, targetPriorityPBG) end
 
@@ -5012,9 +4988,9 @@ function AIEncounter_FormationTaskStateGuidance_SimpleMelee(encounter, priority,
 ---@param unitTypeNames string
 ---@param minPassengerSquads number
 ---@param maxPassengerSquadsPerTransport number
----@param unloadAbilityPBG PropertyBagGroup
+---@param unloadAbilityPBG PBG
 ---@param passengerUnitTypeNames string
----@param targetPriorityPBG PropertyBagGroup
+---@param targetPriorityPBG PBG
 ---@return unknown
 function AIEncounter_FormationTaskStateGuidance_TransportMove(encounter, priority, minSquads, maxSquads, maxTasks, unitTypeNames, minPassengerSquads, maxPassengerSquadsPerTransport, unloadAbilityPBG, passengerUnitTypeNames, targetPriorityPBG) end
 
@@ -5137,7 +5113,7 @@ function AIEncounter_TacticFilter_ResetAbilityGuidance(pEncounter) end
 
 --- Reset ability priority for all squads in encounter
 ---@param pEncounter AIEncounterID
----@param abilityPBG PropertyBagGroup
+---@param abilityPBG PBG
 ---@return unknown
 function AIEncounter_TacticFilter_ResetAbilityPriority(pEncounter, abilityPBG) end
 
@@ -5160,7 +5136,7 @@ function AIEncounter_TacticFilter_ResetTargetGuidance(pEncounter) end
 --- Set tactic ability constraints for encounter
 --- maxCasters is maximum concurrent casters of this ability (-1 is unlimited), waitRetrySecs is time in seconds between ability tactic retrying ability retry, wait[self/encounter], and timeout Secs are: the number of seconds to try doing a tactic after a previous try; seconds after last successful try; how long the successful tactic can run. initialWait is true if the waitTime applies before the first ability use. maxRange is the maximum range to look for ability target from caster (other range constraints may limit the max range to a smaller value) castChanceOverride is the probability to cast the ability, must be between 0.0 and 1.0
 ---@param pEncounter AIEncounterID
----@param ability PropertyBagGroup
+---@param ability PBG
 ---@param maxCasters number
 ---@param retrySecs number
 ---@param waitSelfSecs number
@@ -5174,7 +5150,7 @@ function AIEncounter_TacticFilter_SetAbilityGuidance(pEncounter, ability, maxCas
 
 --- Set ability priority for all squads in encounter; negative priority disables
 ---@param pEncounter AIEncounterID
----@param abilityPBG PropertyBagGroup
+---@param abilityPBG PBG
 ---@param priority number
 ---@return unknown
 function AIEncounter_TacticFilter_SetAbilityPriority(pEncounter, abilityPBG, priority) end
@@ -5182,7 +5158,7 @@ function AIEncounter_TacticFilter_SetAbilityPriority(pEncounter, abilityPBG, pri
 --- Set ability priority for squad in encounter
 ---@param pEncounter AIEncounterID
 ---@param squad Squad
----@param abilityPBG PropertyBagGroup
+---@param abilityPBG PBG
 ---@param priority number
 ---@return unknown
 function AIEncounter_TacticFilter_SetAbilityPriorityForSquad(pEncounter, squad, abilityPBG, priority) end
@@ -5418,7 +5394,7 @@ function AISquad_FindSafePositionInEncounterLeash(aiSquad, maxRadius) end
 
 --- returns true if the AISquad is currently running the AISquadAbilityTactic for the passed abilityPBG
 ---@param aiSquad Squad
----@param abilityPBG PropertyBagGroup
+---@param abilityPBG PBG
 ---@return unknown
 function AISquad_IsRunningSquadTacticAbility(aiSquad, abilityPBG) end
 
@@ -5664,7 +5640,7 @@ function EBP_Exists(pbgShortname) end
 function EBP_IsOfRace(pbgShortname, race) end
 
 --- get Entity blueprint pop cost, use CT_Personnel, CT_Vehicle, CT_Medic for captype
----@param ebpUnit PropertyBagGroup
+---@param ebpUnit PBG
 ---@param player Player
 ---@param type CapType
 ---@return unknown
@@ -5683,7 +5659,7 @@ function SBP_IsOfRace(pbgShortname, race) end
 
 --- Queue moving the camera along a spline consisting of entity/marker/pos/egroup/sgroup/squad objects within seconds.
 --- The camera will move from the position that was in front of it in the pan queue along the positions provided. Catmull-Rom interpolation between points is used
----@param var Variable
+---@param var any
 ---@param seconds number
 ---@param keepQueue boolean
 ---@param controlRotation boolean
@@ -5694,19 +5670,19 @@ function Camera_CatromSplinePanOverTime(var, seconds, keepQueue, controlRotation
 ---@param list table
 ---@param pan boolean | nil
 ---@param panRate number | nil
----@param callback ScarFn | nil
+---@param callback function | nil
 ---@return unknown
 function Camera_CyclePositions(list, pan, panRate, callback) end
 
 --- Set the camera to follow an sgroup/squad/egroup/entity.
 --- The camera will follow them until the player takes control again.
----@param var Variable
+---@param var any
 ---@return unknown
 function Camera_Follow(var) end
 
 --- Queue moving the camera along a spline consisting of entity/marker/pos/egroup/sgroup/squad objects within seconds.
 --- The camera will move from the position that was in front of it in the pan queue along the positions provided. Linear interpolation between points is used
----@param var Variable
+---@param var any
 ---@param seconds number
 ---@param keepQueue boolean
 ---@param controlRotation boolean
@@ -5714,7 +5690,7 @@ function Camera_Follow(var) end
 function Camera_LinearSplinePanOverTime(var, seconds, keepQueue, controlRotation) end
 
 --- Move the camera to an entity/marker/pos/egroup/sgroup/squad at a given speed
----@param var Variable
+---@param var any
 ---@param pan boolean
 ---@param panRate number
 ---@param keepInputLocked boolean
@@ -5724,7 +5700,7 @@ function Camera_MoveTo(var, pan, panRate, keepInputLocked, resetToDefault) end
 
 --- Slightly refocus the camera to rest on an entity/squad/squad/sgroup/egroup/pos/marker if it's close by.
 --- This function can be called through a CTRL object in NISlets.
----@param var Variable
+---@param var any
 ---@return unknown
 function Camera_MoveToIfClose(var) end
 
@@ -5738,7 +5714,7 @@ function Camera_PanOverTimeRelative(delta, seconds, keepQueue) end
 
 --- Queue moving the camera to an entity/marker/pos/egroup/sgroup/squad within seconds.
 --- The camera will move from the position that was in front of it in the queue.
----@param var Variable
+---@param var any
 ---@param seconds number
 ---@param keepQueue boolean
 ---@return unknown
@@ -5886,7 +5862,7 @@ function Cmd_Move(sgroup, position, queued, deleteWhenNearMarker, facing, offset
 --- Move a squad group out of a position to a certain radius
 --- All squads in the group will move away from the centre position from its current position
 ---@param sgroup SGroupID
----@param position Pos
+---@param position Position
 ---@param radius number
 ---@param queued boolean | nil
 ---@return unknown
@@ -6205,7 +6181,7 @@ function LocalCommand_PlayerExt(player, dest, playerCommand, cmdparam, queued) e
 
 --- Send a player a command to use a multi-target ability on the given targets.
 ---@param caster Player
----@param targets vector<ConstTargetHandle>
+---@param targets table<ConstTargetHandle>
 ---@param abilityPBG Ability
 ---@param skipCostAndPrereq boolean
 ---@return unknown
@@ -6550,7 +6526,7 @@ function LocalCommand_SquadMovePosFacing(player, sgroup, target, facing, queued,
 
 --- Send a squad a command to use a multi-target ability on the given targets.
 ---@param caster Squad
----@param targets vector<ConstTargetHandle>
+---@param targets table<ConstTargetHandle>
 ---@param abilityPBG Ability
 ---@param skipCostAndPrereq boolean
 ---@param queued boolean
@@ -7038,7 +7014,7 @@ function EGroup_Compare(group1, group2) end
 
 --- Check if a group contains ALL or ANY of the blueprints.
 ---@param egroup EGroupID
----@param blueprint EBP | EntityType | table
+---@param blueprint EntityPBG | EntityType | table
 ---@param all boolean
 ---@return unknown
 function EGroup_ContainsBlueprints(egroup, blueprint, all) end
@@ -7216,7 +7192,7 @@ function EGroup_GetClosestEntities() end
 
 --- Get the closest entity in an egroup to a given position
 ---@param egroupid EGroupID
----@param position MarkerID | Pos
+---@param position MarkerID | Position
 ---@return unknown
 function EGroup_GetClosestEntity(egroupid, position) end
 
@@ -7307,7 +7283,7 @@ function EGroup_HasAbility(egroup, ability, all) end
 --- Check if ANY or ALL of the entities in a group match the blueprint specified.
 --- The blueprint can be a table of blueprints or types (see Entity_HasBlueprint() for details)
 ---@param egroup EGroupID
----@param blueprint EBP | EntityType | table
+---@param blueprint EntityPBG | EntityType | table
 ---@param all boolean
 ---@return unknown
 function EGroup_HasBlueprint(egroup, blueprint, all) end
@@ -7877,9 +7853,9 @@ function Encounter(data, spawnNow, spawnStaggered) end
 --- Create a new encounter with a generic FormationAttack goal.
 ---@param name string
 ---@param encUnits SBP | table
----@param spawnLoc MarkerID | Pos
+---@param spawnLoc MarkerID | Position
 ---@param encTarget EGroupID
----@param dynamicSpawn MarkerID | Pos | nil
+---@param dynamicSpawn MarkerID | Position | nil
 ---@param encRange number | nil
 ---@param encLeash number | nil
 ---@return unknown
@@ -7888,9 +7864,9 @@ function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, encRange, 
 --- Create a new encounter with a generic FormationAttack goal.
 ---@param name string
 ---@param encUnits SBP | table
----@param spawnLoc MarkerID | Pos
+---@param spawnLoc MarkerID | Position
 ---@param encTarget EGroupID
----@param dynamicSpawn MarkerID | Pos | nil
+---@param dynamicSpawn MarkerID | Position | nil
 ---@param encRange number | nil
 ---@param encLeash number | nil
 ---@return unknown
@@ -7899,9 +7875,9 @@ function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, encRange, 
 --- Create a new encounter with a generic Attack goal.
 ---@param name string
 ---@param encUnits SBP | table
----@param spawnLoc MarkerID | Pos
+---@param spawnLoc MarkerID | Position
 ---@param encTarget EGroupID
----@param dynamicSpawn MarkerID | Pos | nil
+---@param dynamicSpawn MarkerID | Position | nil
 ---@param encRange number | nil
 ---@param encLeash number | nil
 ---@return unknown
@@ -7910,9 +7886,9 @@ function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, encRange, 
 --- Create a new encounter with a generic Defend goal.
 ---@param name string
 ---@param encUnits SBP | table
----@param spawnLoc MarkerID | Pos
+---@param spawnLoc MarkerID | Position
 ---@param encTarget EGroupID
----@param dynamicSpawn MarkerID | Pos | nil
+---@param dynamicSpawn MarkerID | Position | nil
 ---@param encRange number | nil
 ---@param encLeash number | nil
 ---@return unknown
@@ -7922,9 +7898,9 @@ function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, encRange, 
 --- pathLoop can be: LOOP_NONE, LOOP_NORMAL, LOOP_TOGGLE_DIRECTION
 ---@param name string
 ---@param encUnits SBP | table
----@param spawnLoc MarkerID | Pos
+---@param spawnLoc MarkerID | Position
 ---@param encPath string
----@param dynamicSpawn MarkerID | Pos | nil
+---@param dynamicSpawn MarkerID | Position | nil
 ---@param pathWait number | nil
 ---@param pathLoop number | nil
 ---@return unknown
@@ -7933,9 +7909,9 @@ function Encounter(name, encUnits, spawnLoc, encPath, dynamicSpawn, pathWait, pa
 --- Create a new encounter with a generic Move goal.
 ---@param name string
 ---@param encUnits SBP | table
----@param spawnLoc MarkerID | Pos
+---@param spawnLoc MarkerID | Position
 ---@param encTarget EGroupID
----@param dynamicSpawn MarkerID | Pos | nil
+---@param dynamicSpawn MarkerID | Position | nil
 ---@param moveRange number | nil
 ---@return unknown
 function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, moveRange) end
@@ -7943,9 +7919,9 @@ function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, moveRange)
 --- Create a new encounter with a generic Ability goal.
 ---@param name string
 ---@param encUnits SBP | table
----@param spawnLoc MarkerID | Pos
+---@param spawnLoc MarkerID | Position
 ---@param encTarget EGroupID
----@param dynamicSpawn MarkerID | Pos | nil
+---@param dynamicSpawn MarkerID | Position | nil
 ---@param moveRange number | nil
 ---@return unknown
 function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, moveRange) end
@@ -7953,18 +7929,18 @@ function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, moveRange)
 --- Create a new encounter with a generic TownLife goal.
 ---@param name string
 ---@param encUnits SBP | table
----@param spawnLoc MarkerID | Pos
+---@param spawnLoc MarkerID | Position
 ---@param encTarget EGroupID
----@param dynamicSpawn MarkerID | Pos | nil
+---@param dynamicSpawn MarkerID | Position | nil
 ---@param townLifeRange number | nil
 ---@return unknown
 function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, townLifeRange) end
 
 --- Create a new basic encounter.
 ---@param name string
----@param spawnLoc MarkerID | Pos
+---@param spawnLoc MarkerID | Position
 ---@param encUnits SBP | table
----@param dynamicSpawn MarkerID | Pos | nil
+---@param dynamicSpawn MarkerID | Position | nil
 ---@return unknown
 function Encounter(name, spawnLoc, encUnits, dynamicSpawn) end
 
@@ -8069,7 +8045,7 @@ function Encounter() end
 function Encounter(includeUnits) end
 
 --- Sets a new onDeath callback for the encounter
----@param func ScarFn
+---@param func function
 ---@return unknown
 function Encounter(func) end
 
@@ -8343,7 +8319,7 @@ function Entity_GetCoverValue(entity) end
 function Entity_GetDebugEntity() end
 
 --- Returns number of entities that will be placed if this ebp is built in a fence.
----@param ebp PropertyBagGroup
+---@param ebp PBG
 ---@param startPos Position
 ---@param endPos Position
 ---@return unknown
@@ -8683,7 +8659,7 @@ function Entity_HasAbility(entity, ability) end
 --- Checks whether an entity is of any of the Blueprints or EntityTypes specified.
 --- Blueprint can be a single Blueprint, a single EntityType, or a table of multiple Blueprints or EntityTypes. If you want to see if an entity has ALL of a set of EntityTypes, then wrap them all in a sub-table.
 ---@param entity Entity
----@param blueprints EBP | EntityType | table
+---@param blueprints EntityPBG | EntityType | table
 ---@return unknown
 function Entity_HasBlueprint(entity, blueprints) end
 
@@ -9045,26 +9021,6 @@ function Entity_SetAnimatorAction(pEntity, actionName) end
 ---@param actionParameterValue string
 ---@return unknown
 function Entity_SetAnimatorActionParameter(pEntity, actionParameterName, actionParameterValue) end
-
---- Set animation event for an entity. Please only use this for simple animations
----@param pEntity Entity
----@param eventName string
----@return unknown
-function Entity_SetAnimatorEvent(pEntity, eventName) end
-
---- Set animation state of a state machine for an entity. Please only use this for simple animations
----@param pEntity Entity
----@param stateMachineName string
----@param stateName string
----@return unknown
-function Entity_SetAnimatorState(pEntity, stateMachineName, stateName) end
-
---- Set animation variable value for an entity. Please only use this for simple animations
----@param pEntity Entity
----@param variableName string
----@param value number
----@return unknown
-function Entity_SetAnimatorVariable(pEntity, variableName, value) end
 
 --- Sets the entity to be in the background or foreground. By default, all entities are in the foreground
 ---@param pEntity Entity
@@ -9466,7 +9422,7 @@ function Misc_FindDepositsCloseToSquad(group, squad, searchRange) end
 --- Finds resource deposits of given type within the specified range of a position, that can be collected by the provided gathererEBP
 --- Returns an egroup of resource deposits named "eg_Misc_FindNearbyDepositOfType_result", sorted by proximity to the position
 ---@param resourceType ResourceType
----@param gathererEBP EBP
+---@param gathererEBP EntityPBG
 ---@param position Position
 ---@param searchRange number
 ---@return unknown
@@ -10452,7 +10408,7 @@ function Objective_AddAreaHighlight(objTable, pos, areatype, scale, color, alpha
 --- Adds a visual splat on the ground in the world around a certain position, returning the ID
 --- The reticule blueprint (the circle on the ground) and the hintpoint template (the arrow) are by defualt taken from the objective type, but you can override them or set them to false to turn that element off.
 ---@param objTable LuaTable
----@param position MarkerID | Pos
+---@param position MarkerID | Position
 ---@param size number | nil
 ---@param reticuleBlueprint BP | nil
 ---@param hintpointTemplate string | nil
@@ -10815,7 +10771,7 @@ function Player_CanCastAbilityOnSquad(player, abilityPBG, targetSquad) end
 
 --- Tests if the player is able to construct a given blueprint
 ---@param player Player
----@param pbg PropertyBagGroup
+---@param pbg PBG
 ---@return unknown
 function Player_CanConstruct(player, pbg) end
 
@@ -10903,12 +10859,6 @@ function Player_ClearStateModelEnumTableTarget(player, key, tableRowIndex) end
 ---@return unknown
 function Player_ClearStateModelTarget(player, key) end
 
---- Finish upgrade for a player
----@param pPlayer Player
----@param pUpgradePBG Upgrade
----@return unknown
-function Player_CompleteUpgrade(pPlayer, pUpgradePBG) end
-
 --- Searches the player list in the world and returns the id of the first enemy player
 ---@param player Player
 ---@return unknown
@@ -10954,7 +10904,7 @@ function Player_GetAllEntitiesFromType(player, unitType) end
 --- You can override a marker's normal proximity by specifying a range.
 ---@param playerid Player
 ---@param egroup EGroupID
----@param position MarkerID | Pos | SectorID
+---@param position MarkerID | Position | SectorID
 ---@param range number | nil
 ---@return unknown
 function Player_GetAllEntitiesNearMarker(playerid, egroup, position, range) end
@@ -10963,7 +10913,7 @@ function Player_GetAllEntitiesNearMarker(playerid, egroup, position, range) end
 --- You can override a marker's normal proximity by specifying a range.
 ---@param player Player
 ---@param sgroup SGroupID
----@param position MarkerID | Pos | SectorID
+---@param position MarkerID | Position | SectorID
 ---@param range number | nil
 ---@return unknown
 function Player_GetAllSquadsNearMarker(player, sgroup, position, range) end
@@ -11038,7 +10988,7 @@ function Player_GetEntitiesFromType(player, unitType) end
 
 --- Returns the modified cost of the given entity including all modifications added by the given player
 ---@param player Player
----@param pbg PropertyBagGroup
+---@param pbg PBG
 ---@return unknown
 function Player_GetEntityBPCost(player, pbg) end
 
@@ -11150,7 +11100,7 @@ function Player_GetSlotIndex(player) end
 
 --- Returns the modified cost of the given unit including all modifications added by the given player
 ---@param pPlayer Player
----@param pbg PropertyBagGroup
+---@param pbg PBG
 ---@return unknown
 function Player_GetSquadBPCost(pPlayer, pbg) end
 
@@ -11726,8 +11676,8 @@ function Prefab_ApplyDefaults(instance_data, prefab_schema) end
 --- Example: Calling the "Trigger" action on an instance that is a PlaneCrash prefab will look for a function called "PlaneCrash_Trigger"
 ---@param instance_data string
 ---@param actionName string
----@param param1 Var | nil
----@param param2___ Var | nil
+---@param param1 any | nil
+---@param param2___ any | nil
 ---@return unknown
 function Prefab_DoAction(instance_data, actionName, param1, param2___) end
 
@@ -11814,7 +11764,7 @@ function Prox_AreEntitiesNearMarker(egroup, position, all, range) end
 ---@param position MarkerID | Position | SectorID
 ---@param all boolean
 ---@param range number | nil
----@param filterlist EBP | table | nil
+---@param filterlist EntityPBG | table | nil
 ---@param filtertype number | nil
 ---@param ignore_camouflage boolean | nil
 ---@return unknown
@@ -12131,8 +12081,8 @@ function Rule_AddEntityEvent(rule, entity, eventtype) end
 ---@param rule function
 ---@param context RuleFilterContext
 ---@param op RuleFilterOperator
----@param includeTypes Array
----@param excludeTypes Array
+---@param includeTypes table
+---@param excludeTypes table
 ---@return unknown
 function Rule_AddEventFilter_EntityBlueprint(rule, context, op, includeTypes, excludeTypes) end
 
@@ -12141,8 +12091,8 @@ function Rule_AddEventFilter_EntityBlueprint(rule, context, op, includeTypes, ex
 ---@param rule function
 ---@param context RuleFilterContext
 ---@param op RuleFilterOperator
----@param includeTypes Array
----@param excludeTypes Array
+---@param includeTypes table
+---@param excludeTypes table
 ---@return unknown
 function Rule_AddEventFilter_EntityPlayerOwner(rule, context, op, includeTypes, excludeTypes) end
 
@@ -12151,8 +12101,8 @@ function Rule_AddEventFilter_EntityPlayerOwner(rule, context, op, includeTypes, 
 ---@param rule function
 ---@param context RuleFilterContext
 ---@param op RuleFilterOperator
----@param includeTypes Array
----@param excludeTypes Array
+---@param includeTypes table
+---@param excludeTypes table
 ---@return unknown
 function Rule_AddEventFilter_EntityType(rule, context, op, includeTypes, excludeTypes) end
 
@@ -12161,8 +12111,8 @@ function Rule_AddEventFilter_EntityType(rule, context, op, includeTypes, exclude
 ---@param rule function
 ---@param context RuleFilterContext
 ---@param op RuleFilterOperator
----@param includeTypes Array
----@param excludeTypes Array
+---@param includeTypes table
+---@param excludeTypes table
 ---@return unknown
 function Rule_AddEventFilter_StateModelBool(rule, context, op, includeTypes, excludeTypes) end
 
@@ -12701,7 +12651,7 @@ function SGroup_Filter(sgroup, blueprint, filtertype, splitSGroup) end
 
 --- Filters an sgroup base on proximity. Use FILTER_KEEP to keep the affected units, or FILTER_REMOVE to remove them. Set invertPosition to TRUE to affect the units outside the position.
 ---@param sgroup SGroupID
----@param position Pos
+---@param position Position
 ---@param filtertype number
 ---@param OPT_range number | nil
 ---@param OPT_splitSGroup SGroupID | nil
@@ -12814,7 +12764,7 @@ function SGroup_GetAvgShieldPercentage(sgroup) end
 
 --- Get the closest squad in an sgroup to a given position
 ---@param sgroupid SGroupID
----@param position MarkerID | Pos
+---@param position MarkerID | Position
 ---@return unknown
 function SGroup_GetClosestSquad(sgroupid, position) end
 
@@ -15690,8 +15640,8 @@ function ThreatArrow_Add(GroupID, Threat, icon) end
 
 --- Creates a group of threats that are represented by a single arrow. Threats can be entities, squads, egroups, sgroups, positions or markers
 ---@param dataTemplate string
----@param target1 MarkerID | Pos | Entity | Squad | Group
----@param target2___ MarkerID | Pos | Entity | Squad | Group | nil
+---@param target1 MarkerID | Position | Entity | Squad | Group
+---@param target2___ MarkerID | Position | Entity | Squad | Group | nil
 ---@return unknown
 function ThreatArrow_CreateGroup(dataTemplate, target1, target2___) end
 
@@ -15998,7 +15948,7 @@ function UI_FlashProductionBuildingButton(type, stopOnClick) end
 
 --- Flash a production item command button.  Pass the return value to UI_StopFlashing to stop flashing the button.
 ---@param type ProductionItemType
----@param pbg PropertyBagGroup
+---@param pbg PBG
 ---@param stopOnClick boolean
 ---@return unknown
 function UI_FlashProductionButton(type, pbg, stopOnClick) end
@@ -16443,7 +16393,7 @@ function Util_AutoSave(waitUntilOutOfCombat, onlyCareAboutCombatOnScreen, maxWai
 
 --- Clears vehicle wrecks from a given area.
 --- Area can be a marker (with or without a range override), a position and range combo, or a territory sector ID. Uses EBP.WRECKED_VEHICLES unless wrecksList is defined.
----@param position MarkerID | Pos | SectorID
+---@param position MarkerID | Position | SectorID
 ---@param range number | nil
 ---@param wrecksList table | nil
 ---@return unknown
@@ -16462,9 +16412,9 @@ function Util_Comparison(value1, comparison, value2) end
 ---@param player Player
 ---@param egroup EGroupID
 ---@param blueprintID number
----@param location MarkerID | Pos
+---@param location MarkerID | Position
 ---@param numentities number
----@param toward MarkerID | Pos | nil
+---@param toward MarkerID | Position | nil
 ---@param snapToGround boolean | nil
 ---@param skipForceConstruct boolean | nil
 ---@param useMarkerTransform boolean | nil
@@ -16496,8 +16446,8 @@ function Util_DifVar(difficultyVariables, difficulty) end
 
 --- Returns the result of the dot product of two items in radians
 --- The params must be 3D vectors
----@param vectorA Vector
----@param vectorB Vector
+---@param vectorA table
+---@param vectorB table
 ---@return unknown
 function Util_DotProductRadians(vectorA, vectorB) end
 
@@ -16576,7 +16526,7 @@ function Util_GarrisonNearbyVehicle(sgroup, pos, radius, occupied, filter) end
 function Util_GetAngleDifference(item1, item2) end
 
 --- Returns the closest MarkerID to the entity/marker/pos/egroup/sgroup/squad from the table of markers provided
----@param var Variable
+---@param var any
 ---@param markers table
 ---@return unknown
 function Util_GetClosestMarker(var, markers) end
@@ -16652,8 +16602,8 @@ function Util_GetPositionAwayFromPlayer(pos, player, searchRadius, distance) end
 
 --- Returns a position that is distance metres from point A, headed in the direction of point B.
 --- You can also pass in a percentage (0.0 to 1.0) instead of a distance in metres.
----@param a MarkerID | Pos
----@param b MarkerID | Pos
+---@param a MarkerID | Position
+---@param b MarkerID | Position
 ---@param distance number
 ---@return unknown
 function Util_GetPositionFromAtoB(a, b, distance) end
@@ -16696,7 +16646,7 @@ function Util_GetSquadsByBP(sourcegroup, destgroup, sbp) end
 function Util_GetTrailingNumber(val) end
 
 --- Returns true if given entity/marker/pos/egroup/sgroup/squad has a position; if false, Util_GetPosition will fail.
----@param var Variable
+---@param var any
 ---@return unknown
 function Util_HasPosition(var) end
 
@@ -16994,7 +16944,7 @@ function World_GetBlueprintEntities(pbg, outEntities) end
 
 --- Returns the closest object from the table of marker/pos/egroup/sgroup to the closest marker/pos/egroup/sgroup specified
 --- The table may mix together objects of different types.
----@param var Variable
+---@param var any
 ---@param items EGroupID
 ---@return unknown
 function World_GetClosest(var, items) end
@@ -17035,7 +16985,7 @@ function World_GetEntitiesWithinTerritorySector(player, egroup, inSectorID, owne
 
 --- Returns the furthest object from the table of marker/pos/egroup/sgroup to the furthest marker/pos/egroup/sgroup specified.
 --- The table may mix together objects of different types.
----@param var Variable
+---@param var any
 ---@param items LuaTable
 ---@return unknown
 function World_GetFurthest(var, items) end

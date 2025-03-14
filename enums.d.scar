@@ -401,7 +401,7 @@ Heavy = {}
 Light = {}
 --- @type CrushMode CrushMode(1)
 Medium = {}
---- @type CrushMode CrushMode(3)
+--- @type CrushMode CrushMode(4)
 Off = {}
 
 --- @class DeathReason: userdata
@@ -1044,7 +1044,7 @@ GE_PlayerWin = 1048832
 --- @type PresentationEventType
 GE_PresentationSoundEvent = {}
 --- @type PresentationEventType
-GE_SectorOutOfSupply = 9961472
+GE_SectorOutOfSupply = 10027008
 --- @type PresentationEventType
 GE_SelectionChanged = 1442048
 --- @type PresentationEventType
@@ -1208,7 +1208,7 @@ ST_UNKNOWN = {}
 --- @class SimulationEventType: number
 
 --- @type SimulationEventType
-GE_AbilityCanCast = 8323072
+GE_AbilityCanCast = 8388608
 --- @type SimulationEventType
 GE_AbilityComplete = 2555904
 --- @type SimulationEventType
@@ -1218,23 +1218,23 @@ GE_AbilityRecharged = 2621440
 --- @type SimulationEventType
 GE_AccessoryWeaponFired = 3014656
 --- @type SimulationEventType
-GE_AIPlayer_EncounterNotification = 6946816
+GE_AIPlayer_EncounterNotification = 7012352
 --- @type SimulationEventType
-GE_AIPlayer_EncounterSniped = 7012352
+GE_AIPlayer_EncounterSniped = 7077888
 --- @type SimulationEventType
-GE_AIPlayer_Migrated = 7077888
+GE_AIPlayer_Migrated = 7143424
 --- @type SimulationEventType
-GE_AITakeOver = 6881280
+GE_AITakeOver = 6946816
 --- @type SimulationEventType
-GE_AnimatorSwap = 9175040
+GE_AnimatorSwap = 9240576
 --- @type SimulationEventType
 GE_ArtilleryFired = 2293760
 --- @type SimulationEventType
 GE_BoobyTrapTriggered = 3407872
 --- @type SimulationEventType
-GE_BroadcastMessage = 8126464
+GE_BroadcastMessage = 8192000
 --- @type SimulationEventType
-GE_BuildItemCancelled = 8388608
+GE_BuildItemCancelled = 8454144
 --- @type SimulationEventType
 GE_BuildItemComplete = 1703936
 --- @type SimulationEventType
@@ -1242,7 +1242,7 @@ GE_BuildItemStart = 1638400
 --- @type SimulationEventType
 GE_CasualtySquadSpawned = 4521984
 --- @type SimulationEventType
-GE_ChallengeCustomEvent = 9764864
+GE_ChallengeCustomEvent = 9830400
 --- @type SimulationEventType
 GE_CommandReceiverStatusUpdate = 1704192
 --- @type SimulationEventType
@@ -1258,27 +1258,27 @@ GE_ConstructionPlanComplete = 1114112
 --- @type SimulationEventType
 GE_ConstructionStart = 917504
 --- @type SimulationEventType
-GE_CustomUIEvent = 7536640
+GE_CustomUIEvent = 7602176
 --- @type SimulationEventType
-GE_DamageArea = 7340032
+GE_DamageArea = 7405568
 --- @type SimulationEventType
-GE_DamageReceived = 5505024
+GE_DamageReceived = 5570560
 --- @type SimulationEventType
-GE_DistrictChanged = 9502720
+GE_DistrictChanged = 9568256
 --- @type SimulationEventType
-GE_DistrictCreated = 9371648
+GE_DistrictCreated = 9437184
 --- @type SimulationEventType
-GE_DistrictRatingChanged = 9568256
+GE_DistrictRatingChanged = 9633792
 --- @type SimulationEventType
-GE_DistrictRemoved = 9437184
+GE_DistrictRemoved = 9502720
 --- @type SimulationEventType
-GE_DriverDecrewed = 7667712
+GE_DriverDecrewed = 7733248
 --- @type SimulationEventType
-GE_DriverRecrewed = 7733248
+GE_DriverRecrewed = 7798784
 --- @type SimulationEventType
-GE_EnemyActivitySpotted = 8257536
+GE_EnemyActivitySpotted = 8323072
 --- @type SimulationEventType
-GE_EnemyTerritoryEntered = 6422528
+GE_EnemyTerritoryEntered = 6488064
 --- @type SimulationEventType
 GE_EntityAbandoned = 3538944
 --- @type SimulationEventType
@@ -1300,7 +1300,7 @@ GE_EntityRecrewed = 3604480
 --- @type SimulationEventType
 GE_EntityRestored = 720896
 --- @type SimulationEventType
-GE_EntitySelectionVisualChanged = 9043968
+GE_EntitySelectionVisualChanged = 9109504
 --- @type SimulationEventType
 GE_EntitySpawn = 196608
 --- @type SimulationEventType
@@ -1308,7 +1308,7 @@ GE_EntityTeleported = 524288
 --- @type SimulationEventType
 GE_EntityWrecked = 655360
 --- @type SimulationEventType
-GE_ExperienceGranted = 5570560
+GE_ExperienceGranted = 5636096
 --- @type SimulationEventType
 GE_FieldSupportChange = 3670016
 --- @type SimulationEventType
@@ -1318,9 +1318,9 @@ GE_GarrisonSquad = 1572864
 --- @type SimulationEventType
 GE_ImportantUnitSighted = 3473408
 --- @type SimulationEventType
-GE_InfluenceUpdate = 9633792
+GE_InfluenceUpdate = 9699328
 --- @type SimulationEventType
-GE_ItemAvailabilityChanged = 7929856
+GE_ItemAvailabilityChanged = 7995392
 --- @type SimulationEventType
 GE_LocalPlayerChanged = {}
 --- @type SimulationEventType
@@ -1348,53 +1348,53 @@ GE_PlannedStructureCancelled = 1966080
 --- @type SimulationEventType
 GE_PlannedStructurePlaced = 1900544
 --- @type SimulationEventType
-GE_PlayerAddEntity = 8650752
+GE_PlayerAddEntity = 8716288
 --- @type SimulationEventType
-GE_PlayerAddResource = 8519680
+GE_PlayerAddResource = 8585216
 --- @type SimulationEventType
-GE_PlayerBeingAttacked = 5439488
+GE_PlayerBeingAttacked = 5505024
 --- @type SimulationEventType
-GE_PlayerCheat = 5636096
+GE_PlayerCheat = 5701632
 --- @type SimulationEventType
-GE_PlayerDebug_DELETED = 5701632
+GE_PlayerDebug_DELETED = 5767168
 --- @type SimulationEventType
-GE_PlayerDebugBuildOrder = 5963776
+GE_PlayerDebugBuildOrder = 6029312
 --- @type SimulationEventType
-GE_PlayerDebugBuildTime = 5898240
+GE_PlayerDebugBuildTime = 5963776
 --- @type SimulationEventType
-GE_PlayerDebugDestroy = 6029312
+GE_PlayerDebugDestroy = 6094848
 --- @type SimulationEventType
-GE_PlayerDebugEndMatch = 5767168
+GE_PlayerDebugEndMatch = 5832704
 --- @type SimulationEventType
-GE_PlayerDebugFogOfWar = 5832704
+GE_PlayerDebugFogOfWar = 5898240
 --- @type SimulationEventType
-GE_PlayerDonation = 6488064
+GE_PlayerDonation = 6553600
 --- @type SimulationEventType
-GE_PlayerFormationFinalized = 9109504
+GE_PlayerFormationFinalized = 9175040
 --- @type SimulationEventType
-GE_PlayerNameChanged = 6553600
+GE_PlayerNameChanged = 6619136
 --- @type SimulationEventType
-GE_PlayerObjectiveChanged = 6684672
+GE_PlayerObjectiveChanged = 6750208
 --- @type SimulationEventType
-GE_PlayerObjectiveDeleted = 6619136
+GE_PlayerObjectiveDeleted = 6684672
 --- @type SimulationEventType
-GE_PlayerPhaseUp = 6750208
+GE_PlayerPhaseUp = 6815744
 --- @type SimulationEventType
-GE_PlayerRemoveEntity = 8716288
+GE_PlayerRemoveEntity = 8781824
 --- @type SimulationEventType
-GE_PlayerRemoveSquad = 8847360
+GE_PlayerRemoveSquad = 8912896
 --- @type SimulationEventType
-GE_PlayerResourcesAwarded = 6815744
+GE_PlayerResourcesAwarded = 6881280
 --- @type SimulationEventType
-GE_PlayerSetResource = 9699328
+GE_PlayerSetResource = 9764864
 --- @type SimulationEventType
-GE_PlayerSquadInitialized = 8781824
+GE_PlayerSquadInitialized = 8847360
 --- @type SimulationEventType
-GE_PlayerSubResource = 8585216
+GE_PlayerSubResource = 8650752
 --- @type SimulationEventType
-GE_PlayerSurrendered = 7471104
+GE_PlayerSurrendered = 7536640
 --- @type SimulationEventType
-GE_PlayerTeamIdUpdated = 8978432
+GE_PlayerTeamIdUpdated = 9043968
 --- @type SimulationEventType
 GE_ProjectileFired = 2686976
 --- @type SimulationEventType
@@ -1406,15 +1406,15 @@ GE_ResourceDepleted = 2097152
 --- @type SimulationEventType
 GE_ResourceGathererAtCapacity = 2162688
 --- @type SimulationEventType
-GE_SectorLinkProviderChanged = 7602176
+GE_SectorLinkProviderChanged = 7667712
 --- @type SimulationEventType
-GE_SectorOutOfSupply = 9961472
+GE_SectorOutOfSupply = 10027008
 --- @type SimulationEventType
-GE_SpawnActionComplete = 7274496
+GE_SpawnActionComplete = 7340032
 --- @type SimulationEventType
-GE_SpeechAction = 7798784
+GE_SpeechAction = 7864320
 --- @type SimulationEventType
-GE_SpeechWarningAction = 8192000
+GE_SpeechWarningAction = 8257536
 --- @type SimulationEventType
 GE_SquadCalledIn = 4980736
 --- @type SimulationEventType
@@ -1452,7 +1452,7 @@ GE_SquadRetreat = 4325376
 --- @type SimulationEventType
 GE_SquadRetreatMsgReceived = 4390912
 --- @type SimulationEventType
-GE_SquadSizeChanged = 8060928
+GE_SquadSizeChanged = 8126464
 --- @type SimulationEventType
 GE_SquadSpawn = 3735552
 --- @type SimulationEventType
@@ -1464,43 +1464,43 @@ GE_SquadUnloaded = 5177344
 --- @type SimulationEventType
 GE_SquadVeterancyRank = 3997696
 --- @type SimulationEventType
-GE_StatsCustomEvent = 9830400
+GE_StatsCustomEvent = 9895936
 --- @type SimulationEventType
 GE_StrategicPointChanged = 1835008
 --- @type SimulationEventType
 GE_StructureReplaced = 2031616
 --- @type SimulationEventType
-GE_SuperAbility = 7208960
+GE_SuperAbility = 7274496
 --- @type SimulationEventType
-GE_TerrainAreaDeformed = 7405568
+GE_TerrainAreaDeformed = 7471104
 --- @type SimulationEventType
 GE_TerritoryCornerDeoccupied = 1310720
 --- @type SimulationEventType
 GE_TerritoryEdgeDeoccupied = 1245184
 --- @type SimulationEventType
-GE_TerritoryEntered = 6356992
+GE_TerritoryEntered = 6422528
 --- @type SimulationEventType
-GE_TickerValuesUpdated = 8912896
+GE_TickerValuesUpdated = 8978432
 --- @type SimulationEventType
-GE_UpgradeCancelled = 7995392
+GE_UpgradeCancelled = 8060928
 --- @type SimulationEventType
 GE_UpgradeComplete = 65536
 --- @type SimulationEventType
-GE_UpgradeRemoved = 7864320
+GE_UpgradeRemoved = 7929856
 --- @type SimulationEventType
 GE_UpgradeStart = 0
 --- @type SimulationEventType
 GE_UpgradeTentative = 131072
 --- @type SimulationEventType
-GE_WaitObjectDone = 8454144
+GE_WaitObjectDone = 8519680
 --- @type SimulationEventType
-GE_WalkableSurfacePurgeOrphans = 9895936
+GE_WalkableSurfacePurgeOrphans = 9961472
 --- @type SimulationEventType
-GE_WallCombatEnded = 6225920
+GE_WallCombatEnded = 6291456
 --- @type SimulationEventType
-GE_WallCombatStarted = 6160384
+GE_WallCombatStarted = 6225920
 --- @type SimulationEventType
-GE_WallWalked = 6094848
+GE_WallWalked = 6160384
 --- @type SimulationEventType
 GE_WeaponChanged = {}
 
@@ -2670,7 +2670,7 @@ GD_INVALID = 127
 GD_NORMAL = 1
 
 ---@type number
-GE_AIPlayer_DifficultyChanged = 7143424
+GE_AIPlayer_DifficultyChanged = 7208960
 
 ---@type number
 GE_CameraKeyOrbit = 2687232
@@ -2703,13 +2703,16 @@ GE_CampaignSkirmishAutoResolved = 2556160
 GE_ChallengeDefinitionsUpdated = 3211520
 
 ---@type number
+GE_DataCustomEvent = 10420224
+
+---@type number
 GE_InteractiveOptionInitialized = 2425088
 
 ---@type number
 GE_InteractiveOptionSelected = 2490624
 
 ---@type number
-GE_PlantDemolitionIssued = 6291456
+GE_PlantDemolitionIssued = 6356992
 
 ---@type number
 GE_PresentationMapStateEvent = 1900800
@@ -2724,16 +2727,19 @@ GE_PresentationSimPauseStateEvent = 1966336
 GE_PresentatonSoundEvent = 1835264
 
 ---@type number
+GE_SquadBlueprintChanged = 5439488
+
+---@type number
 GE_SquadModifyResource = 5373952
 
 ---@type number
 GE_TacticalPause = 2359552
 
 ---@type number
-GE_TerritoryControllerChangedOwner = 10092544
+GE_TerritoryControllerChangedOwner = 10158080
 
 ---@type number
-GE_TurnAdvancement = 10158080
+GE_TurnAdvancement = 10223616
 
 ---@type number
 GE_WeaponSetup = 2818048
@@ -2992,6 +2998,18 @@ PROX_LONGEST = 1
 
 ---@type number
 PROX_SHORTEST = 0
+
+---@type userdata PlayerUpgradeRoute(2)
+PUR_Instant = {}
+
+---@type userdata PlayerUpgradeRoute(3)
+PUR_InstantWithRequirementCheck = {}
+
+---@type userdata PlayerUpgradeRoute(0)
+PUR_Normal = {}
+
+---@type userdata PlayerUpgradeRoute(1)
+PUR_Tentative = {}
 
 ---@type userdata Relationship(2)
 R_ALLY = {}
