@@ -11133,11 +11133,6 @@ function Player_GetSquads(player) end
 ---@return unknown
 function Player_GetSquadsFromType(player, unitType) end
 
---- Returns the starting position for this player
----@param player Player
----@return unknown
-function Player_GetStartingPosition(player) end
-
 --- Returns a boolean value from the Player's state model corresponding to the given key.
 ---@param player Player
 ---@param key string

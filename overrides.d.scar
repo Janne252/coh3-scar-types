@@ -1033,3 +1033,8 @@ function UI_CreateCustomKickerMessage(player, pos, message, durationSeconds, ico
 ---@param distance number
 ---@return unknown
 function Util_GetOffsetPosition(pos, offset, distance) end
+
+--- Returns the starting position for this player
+---@param player Player
+---@return Position
+function Player_GetStartingPosition(player) end
