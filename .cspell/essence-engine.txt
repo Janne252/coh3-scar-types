@@ -51,6 +51,7 @@ scalefactor
 scardocs
 SCARPOS
 scartype
+scenref
 SCMD
 setautoclear
 setdisplay
