@@ -1038,3 +1038,35 @@ function Util_GetOffsetPosition(pos, offset, distance) end
 ---@param player Player
 ---@return Position
 function Player_GetStartingPosition(player) end
+
+--- Sends a reinforce command to all squads in a group.  count represents the number of commands to send.
+--- Note: To reinforce squad bypassing the pre-reqs and costs use Cmd_InstantReinforceUnit.
+---@param sgroup SGroup
+---@param count? number
+---@param instant? boolean
+---@return unknown
+function Cmd_ReinforceUnit(sgroup, count, instant) end
+
+--- ZERO-BASED get of entities out of squads
+---@param squad Squad
+---@param index number
+---@return Entity
+function Squad_EntityAt(squad, index) end
+
+--- Updates the title and description for the objective. If you only want to set one of them, pass in nil for the other
+--- Use the immediate flag to make this change happen immediately, bypassing the queue that objective updates normally sit in (i.e. you're updating the objective's title in the middle of its PreStart() function!)
+---@param objTable LuaTable
+---@param new_title LocString
+---@param new_description LocString
+---@param showTitle boolean | nil
+---@param immediate boolean | nil
+---@return unknown
+function Objective_UpdateText(objTable, new_title, new_description, showTitle, immediate) end
+
+--- Adds a Timer bar for objective timers, which is automatically updated. The bar can be removed with Objective_RemoveTimerBar or by completing/failing the objective.
+--- Requires a timer to have been started with Objective_StartTimer to work. If you want to use one of the "global" progress bars (if your project supports them), supply the relevant barIndex value and text string to show alongside it.
+---@param objTable LuaTable
+---@param barIndex number | nil
+---@param text LocString | nil
+---@return unknown
+function Objective_AddTimerBar(objTable, barIndex, text) end

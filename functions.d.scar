@@ -5912,13 +5912,6 @@ function Cmd_MoveToThenCapture(attacker, target, queued) end
 ---@return unknown
 function Cmd_RecrewVehicle(sgroupid, targetid, queued) end
 
---- Sends a reinforce command to all squads in a group.  count represents the number of commands to send.
---- Note: To reinforce squad bypassing the pre-reqs and costs use Cmd_InstantReinforceUnit.
----@param sgroup SGroup
----@param count number
----@return unknown
-function Cmd_ReinforceUnit(sgroup, count) end
-
 --- Order a squad group to retreat, optionally to a specific location. The sgroup can be deleted when in proximity of a marker (it assumes a proximity of 5 if you forget to set one on the marker)
 --- vulnerableRetreat will make retreating squads take more damage
 ---@param sgroup SGroup
@@ -10431,14 +10424,6 @@ function Objective_AddHealthBar(objTable, group, onlyWhenDamaged, barIndex, text
 ---@return unknown
 function Objective_AddPing(objectiveTable, pos) end
 
---- Adds a Timer bar for objective timers, which is automatically updated. The bar can be removed with Objective_RemoveTimerBar or by completing/failing the objective.
---- Requires a timer to have been started with Objective_StartTimer to work. If you want to use one of the "global" progress bars (if your project supports them), supply the relevant barIndex value and text string to show alongside it.
----@param objTable LuaTable
----@param barIndex number | nil
----@param text string | nil
----@return unknown
-function Objective_AddTimerBar(objTable, barIndex, text) end
-
 --- Adds multiple UI elements on one position. 'pos' can be group/entity/squad/marker. worldArrow adds a 3D arrow which points to the thing in the world. hintpointText adds a hint point that appears on the thing when moused over. If you're adding an arrow or a hintpoint, this thing will be among those potentially pointed to by the 2D HUD arrow. objectiveArrowOffset is an offset applied to the arrow's position (you can specify a height offset or a 3D position offset).
 ---@param objTable LuaTable
 ---@param pos Position
@@ -10684,16 +10669,6 @@ function Objective_TogglePings(objective_table, on_off) end
 --- If you omit this call, the titlecard will appear at the end of the event by default. You also do not have to wrap this with CTRL and WAIT stuff - it does all of the internally.
 ---@return unknown
 function Objective_TriggerTitleCard() end
-
---- Updates the title and description for the objective. If you only want to set one of them, pass in nil for the other
---- Use the immediate flag to make this change happen immediately, bypassing the queue that objective updates normally sit in (i.e. you're updating the objective's title in the middle of its PreStart() function!)
----@param objTable LuaTable
----@param new_title string
----@param new_description string
----@param showTitle boolean | nil
----@param immediate boolean | nil
----@return unknown
-function Objective_UpdateText(objTable, new_title, new_description, showTitle, immediate) end
 
 --- Add an ability to a player
 ---@param player Player
@@ -13625,12 +13600,6 @@ function Squad_EnableProductionQueue(squad, enable) end
 ---@param enable boolean
 ---@return unknown
 function Squad_EnableSurprise(squad, enable) end
-
---- ZERO-BASED get of entities out of squads
----@param squad Squad
----@param index number
----@return unknown
-function Squad_EntityAt(squad, index) end
 
 --- Returns total squad extension count.
 ---@return unknown

@@ -10,6 +10,7 @@ CONSTSQUAD
 CONSTVALTABLE
 Decrew
 despawned
+Despawning
 drawline
 EBPs
 egroup
