@@ -796,10 +796,10 @@ function UI_IsLiveOrRecordedReplayCasterModeWithSidesFlipped() end
 ---@param value any
 function Misc_SyncCheckVariable(name, value) end
 
----@param ticket_meter_visible boolean
----@param vp_indicator_visible boolean
----@param game_timer_visible boolean
----@param game_timer_spacing number
+---@param ticket_meter_visible? boolean
+---@param vp_indicator_visible? boolean
+---@param game_timer_visible? boolean
+---@param game_timer_spacing? number
 function TicketUI_SetVisibility(ticket_meter_visible, vp_indicator_visible, game_timer_visible, game_timer_spacing) end
 
 --- Returns a newly created marker with the given attributes [direction] is expecting a direction vector and not a position relative to [pos]
@@ -1070,3 +1070,22 @@ function Objective_UpdateText(objTable, new_title, new_description, showTitle, i
 ---@param text LocString | nil
 ---@return unknown
 function Objective_AddTimerBar(objTable, barIndex, text) end
+
+--- Move a squad group to a given position.
+--- Supports facing, 'offset' movement, and can find cover. The sgroup can be deleted when in proximity of a marker (it assumes a proximity of 5 if you forget to set one on the marker)
+---@param sgroup SGroup
+---@param position Entity|Marker|Position|EGroup|SGroup|Squad
+---@param queued boolean | nil
+---@param deleteWhenNearMarker Marker | nil
+---@param facing Position | nil
+---@param offset number | nil
+---@param distance number | nil
+---@param coverSearchRadius number | nil
+---@param splitCmd boolean | nil
+---@return unknown
+function Cmd_Move(sgroup, position, queued, deleteWhenNearMarker, facing, offset, distance, coverSearchRadius, splitCmd) end
+
+--- Returns the id of the player
+---@param player Player
+---@return number
+function Player_GetID(player) end

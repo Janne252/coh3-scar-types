@@ -5845,20 +5845,6 @@ function Cmd_InstantReinforceUnit(sgroup, count) end
 ---@return unknown
 function Cmd_InstantSetupTeamWeapon(sgroupid, queued) end
 
---- Move a squad group to a given position.
---- Supports facing, 'offset' movement, and can find cover. The sgroup can be deleted when in proximity of a marker (it assumes a proximity of 5 if you forget to set one on the marker)
----@param sgroup SGroup
----@param position EGroup
----@param queued boolean | nil
----@param deleteWhenNearMarker Marker | nil
----@param facing Position | nil
----@param offset number | nil
----@param distance number | nil
----@param coverSearchRadius number | nil
----@param splitCmd boolean | nil
----@return unknown
-function Cmd_Move(sgroup, position, queued, deleteWhenNearMarker, facing, offset, distance, coverSearchRadius, splitCmd) end
-
 --- Move a squad group out of a position to a certain radius
 --- All squads in the group will move away from the centre position from its current position
 ---@param sgroup SGroup
@@ -10994,11 +10980,6 @@ function Player_GetEntityCountByUnitType(player, unitTypeString) end
 ---@param index number
 ---@return unknown
 function Player_GetEntityName(player, index) end
-
---- Returns the id of the player
----@param player Player
----@return unknown
-function Player_GetID(player) end
 
 --- Get maximum popcap. Use capType CT_Personnel to get max squad cap or CT_VehicleCap to get max vehicle cap.
 ---@param player Player
