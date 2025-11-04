@@ -3,6 +3,11 @@
 ---@alias ALL true
 ---@alias ANY false
 
+---Objective_AddTimerBar
+
+COUNT_UP = 0
+COUNT_DOWN = 1
+
 ---@param filepath string
 ---Built-in method of importing SCAR files relative to the DATA:\scar folder (across all .SGAs)
 function import(filepath) end
@@ -567,8 +572,8 @@ function UI_CreateMinimapBlip(where, lifetime, blipDataTemplate, blipRadius) end
 function MapIcon_ClearFacing(id) end
 
 --- Creates an arrow on the metamap between the two locations provided
---- @param position_from Marker | Pos
---- @param position_to Marker | Pos
+--- @param position_from Marker | Position
+--- @param position_to Marker | Position
 --- @param red number
 --- @param green number
 --- @param blue number
@@ -1089,3 +1094,80 @@ function Cmd_Move(sgroup, position, queued, deleteWhenNearMarker, facing, offset
 ---@param player Player
 ---@return number
 function Player_GetID(player) end
+
+--- Returns the Player owner of the given entity. Entity MUST NOT be owned by the world.
+--- Use World_OwnsEntity to make sure entity is not owned by the world before calling this function
+---@param entity Entity
+---@return Player
+function Entity_GetPlayerOwner(entity) end
+
+--- Returns the Player owner of the given squad. Squad MUST NOT be owned by the world.
+---@param squad Squad
+---@return Player
+function Squad_GetPlayerOwner(squad) end
+
+--- Returns the average position of the spawned units in the squad. The position is currently a lua table with three entries (x, y, z)
+---@param squad Squad
+---@return Position
+function Squad_GetPosition(squad) end
+
+--- Returns the heading of the entity.  The heading is currently a lua table with three entries (x, y, z)
+---@param entity Entity
+---@return Position
+function Entity_GetHeading(entity) end
+
+--- Returns the health of an entity.
+--- Health will be zero for entities with no health extension.
+---@param entity Entity
+---@return number
+function Entity_GetHealth(entity) end
+
+--- Returns the max health of an entity.
+--- Max health will be zero for entities with no health extension.
+---@param entity Entity
+---@return number
+function Entity_GetHealthMax(entity) end
+
+--- Returns the percentage health, taking into account destructible buildings
+--- Health will be zero for entities with no health extension, health max equals to zero
+---@param entity Entity
+---@return number
+function Entity_GetHealthPercentage(entity) end
+
+--- Returns the entities unique id in the world
+---@param entity Entity
+---@return number
+function Entity_GetID(entity) end
+
+--- Check if the entity is invulnerable or not
+---@param entity Entity
+---@return boolean
+function Entity_GetInvulnerable(entity) end
+
+--- Returns the invulnerable point in terms of percentage
+--- For units, retrieve the percentage value of hitpoints below which the entity would become invulnerable to both critical hit and damage For buildings, retrieve the percentage value of healthy below which no more panels could be destroyed
+---@param entity Entity
+---@return number
+function Entity_GetInvulnerableMinCap(entity) end
+
+--- Adds multiple UI elements on one position. 'pos' can be group/entity/squad/marker. worldArrow adds a 3D arrow which points to the thing in the world. hintpointText adds a hint point that appears on the thing when moused over. If you're adding an arrow or a hintpoint, this thing will be among those potentially pointed to by the 2D HUD arrow. objectiveArrowOffset is an offset applied to the arrow's position (you can specify a height offset or a 3D position offset).
+---@param objTable LuaTable
+---@param pos Position|Squad|Entity|SGroup|EGroup|Marker
+---@param ping boolean | nil
+---@param hintpointText LocString | nil
+---@param worldArrow boolean | nil
+---@param objectiveArrowOffset number | nil
+---@param objectiveArrowFacing Entity | Squad | Position | nil
+---@param actionType number | nil
+---@param iconName string | nil
+---@param templateName string | nil
+---@return unknown
+function Objective_AddUIElements(objTable, pos, ping, hintpointText, worldArrow, objectiveArrowOffset, objectiveArrowFacing, actionType, iconName, templateName) end
+
+--- Move the camera to an entity/marker/pos/egroup/sgroup/squad at a given speed
+---@param position Position
+---@param pan? boolean
+---@param panRate? number
+---@param keepInputLocked? boolean
+---@param resetToDefault? boolean
+function Camera_MoveTo(position, pan, panRate, keepInputLocked, resetToDefault) end

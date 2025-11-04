@@ -5688,16 +5688,6 @@ function Camera_Follow(var) end
 ---@param controlRotation boolean
 ---@return unknown
 function Camera_LinearSplinePanOverTime(var, seconds, keepQueue, controlRotation) end
-
---- Move the camera to an entity/marker/pos/egroup/sgroup/squad at a given speed
----@param var any
----@param pan boolean
----@param panRate number
----@param keepInputLocked boolean
----@param resetToDefault boolean
----@return unknown
-function Camera_MoveTo(var, pan, panRate, keepInputLocked, resetToDefault) end
-
 --- Slightly refocus the camera to rest on an entity/squad/squad/sgroup/egroup/pos/marker if it's close by.
 --- This function can be called through a CTRL object in NISlets.
 ---@param var any
@@ -8309,45 +8299,6 @@ function Entity_GetFenceEntityCount(ebp, startPos, endPos) end
 ---@return unknown
 function Entity_GetFilledHoldSquadSlots(entity) end
 
---- Returns the heading of the entity.  The heading is currently a lua table with three entries (x, y, z)
----@param entity Entity
----@return unknown
-function Entity_GetHeading(entity) end
-
---- Returns the health of an entity.
---- Health will be zero for entities with no health extension.
----@param entity Entity
----@return unknown
-function Entity_GetHealth(entity) end
-
---- Returns the max health of an entity.
---- Max health will be zero for entities with no health extension.
----@param entity Entity
----@return unknown
-function Entity_GetHealthMax(entity) end
-
---- Returns the percentage health, taking into account destructible buildings
---- Health will be zero for entities with no health extension, health max equals to zero
----@param entity Entity
----@return unknown
-function Entity_GetHealthPercentage(entity) end
-
---- Returns the entities unique id in the world
----@param entity Entity
----@return unknown
-function Entity_GetID(entity) end
-
---- Check if the entity is invulnerable or not
----@param squad Squad
----@return unknown
-function Entity_GetInvulnerable(squad) end
-
---- Returns the invulnerable point in terms of percentage
---- For units, retrieve the percentage value of hitpoints below which the entity would become invulnerable to both critical hit and damage For buildings, retrieve the percentage value of healthy below which no more panels could be destroyed
----@param entity Entity
----@return unknown
-function Entity_GetInvulnerableMinCap(entity) end
-
 --- Find the last squad attacker on this entity. If found, the squad is added to the sgroup
 ---@param entity Entity
 ---@param sgroup SGroup
@@ -8402,12 +8353,6 @@ function Entity_GetOffsetPosition(entity, offset, distance) end
 ---@param entity Entity
 ---@return unknown
 function Entity_GetOnFireHealthPercentThreshold(entity) end
-
---- Returns the Player owner of the given entity. Entity MUST NOT be owned by the world.
---- Use World_OwnsEntity to make sure entity is not owned by the world before calling this function
----@param entity Entity
----@return unknown
-function Entity_GetPlayerOwner(entity) end
 
 --- Returns the blueprint for a production queue item with index.
 ---@param entity Entity
@@ -10409,20 +10354,6 @@ function Objective_AddHealthBar(objTable, group, onlyWhenDamaged, barIndex, text
 ---@param pos Position
 ---@return unknown
 function Objective_AddPing(objectiveTable, pos) end
-
---- Adds multiple UI elements on one position. 'pos' can be group/entity/squad/marker. worldArrow adds a 3D arrow which points to the thing in the world. hintpointText adds a hint point that appears on the thing when moused over. If you're adding an arrow or a hintpoint, this thing will be among those potentially pointed to by the 2D HUD arrow. objectiveArrowOffset is an offset applied to the arrow's position (you can specify a height offset or a 3D position offset).
----@param objTable LuaTable
----@param pos Position
----@param ping boolean | nil
----@param hintpointText string | nil
----@param worldArrow boolean | nil
----@param objectiveArrowOffset number | nil
----@param objectiveArrowFacing Entity | Squad | Position | nil
----@param actionType number | nil
----@param iconName string | nil
----@param templateName string | nil
----@return unknown
-function Objective_AddUIElements(objTable, pos, ping, hintpointText, worldArrow, objectiveArrowOffset, objectiveArrowFacing, actionType, iconName, templateName) end
 
 --- Returns whether all primary objectives have been completed.
 ---@return unknown
@@ -13761,16 +13692,6 @@ function Squad_GetNumSlotItem(squad, pbg) end
 ---@param distance number
 ---@return unknown
 function Squad_GetOffsetPosition(squad, offset, distance) end
-
---- Returns the Player owner of the given squad. Squad MUST NOT be owned by the world.
----@param squad Squad
----@return unknown
-function Squad_GetPlayerOwner(squad) end
-
---- Returns the average position of the spawned units in the squad. The position is currently a lua table with three entries (x, y, z)
----@param squad Squad
----@return unknown
-function Squad_GetPosition(squad) end
 
 --- Returns the average position of the despawned AND spawned units in the squad.
 ---@param squad Squad

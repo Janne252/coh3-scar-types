@@ -3,6 +3,7 @@ ipairs
 loadfile
 luac
 pcall
+setmetatable
 tonumber
 tostring
 vararg
