@@ -2,6 +2,7 @@ gsub
 ipairs
 loadfile
 luac
+maxinteger
 pcall
 setmetatable
 tonumber

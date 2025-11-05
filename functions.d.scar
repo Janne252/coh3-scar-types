@@ -3978,12 +3978,6 @@ function UI_SetDataContext(elementName, table) end
 ---@return unknown
 function UI_SetEntityDataContext(entity, table) end
 
---- Converts table to a data context exposed through player models.
----@param player Player
----@param table StackVarTable
----@return unknown
-function UI_SetPlayerDataContext(player, table) end
-
 --- Sets the property propertyName on elementName to value stackVar.
 ---@param elementName string
 ---@param propertyName string
@@ -6665,11 +6659,6 @@ function Core_Compare(value1, value2, comparator) end
 --- Returns the number of non-eliminated teams remaining.
 ---@return unknown
 function Core_GetActiveTeamCount() end
-
---- Returns the table reference of a PLAYERS table entry
----@param player Player
----@return unknown
-function Core_GetPlayersTableEntry(player) end
 
 --- Returns the table reference of a PLAYERS table entry
 ---@param playerIndex number
@@ -10946,16 +10935,6 @@ function Player_GetNumVictoryPoints(p) end
 ---@param captype number | nil
 ---@return unknown
 function Player_GetPopulationPercentage(playerid, captype) end
-
---- Returns the race for the given player.
----@param player Player
----@return unknown
-function Player_GetRace(player) end
-
---- Returns the name of the race for a given player (always in english)
----@param player Player
----@return unknown
-function Player_GetRaceName(player) end
 
 --- DEPRECATED, use Player_ObserveRelationship instead.
 ---@param player1 Player

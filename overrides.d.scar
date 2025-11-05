@@ -1171,3 +1171,44 @@ function Objective_AddUIElements(objTable, pos, ping, hintpointText, worldArrow,
 ---@param keepInputLocked? boolean
 ---@param resetToDefault? boolean
 function Camera_MoveTo(position, pan, panRate, keepInputLocked, resetToDefault) end
+
+---@class CorePlayerTableEntryScarModel
+---@field hideMiniMap boolean
+---@field hideCommandCard boolean
+---@field hideGUC boolean
+---@field hidePlayerAbilityPanel boolean
+---@field hideBattleGroup boolean
+
+---Data.sga\DATA\scar\core.scar
+---@class CorePlayerTableEntry
+---@field index number
+---@field id number
+---@field isHuman boolean
+---@field isLocal boolean
+---@field playerName LocString
+---@field isEliminated boolean
+---@field raceName string
+---@field race ScarRacePBG
+---@field startingPos Position
+---@field slotIndex number
+---@field scarModel CorePlayerTableEntryScarModel
+
+--- Returns the table reference of a PLAYERS table entry
+---@param player Player
+---@return CorePlayerTableEntry
+function Core_GetPlayersTableEntry(player) end
+
+--- Converts table to a data context exposed through player models.
+---@param playerId number
+---@param scarModel CorePlayerTableEntryScarModel
+function UI_SetPlayerDataContext(playerId, scarModel) end
+
+--- Returns the race for the given player.
+---@param player Player
+---@return ScarRacePBG
+function Player_GetRace(player) end
+
+--- Returns the name of the race for a given player (always in english)
+---@param player Player
+---@return string
+function Player_GetRaceName(player) end
