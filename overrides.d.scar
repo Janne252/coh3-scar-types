@@ -1212,3 +1212,20 @@ function Player_GetRace(player) end
 ---@param player Player
 ---@return string
 function Player_GetRaceName(player) end
+
+--- Returns a random position either within the marker's proximity or with a pos and range provided. Range is ignored for rectangular markers
+---@param target Position|Marker
+---@param range number | nil
+---@param hidden boolean | nil
+---@return unknown
+function Util_GetRandomPosition(target, range, hidden) end
+
+--- Get the team a player is on
+---@param p Player
+---@return TeamID
+function Player_GetTeam(p) end
+
+--- Set title text localization ID for the objective
+---@param objectiveID number
+---@param title LocString
+function Obj_SetTitle(objectiveID, title) end

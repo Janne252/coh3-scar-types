@@ -9,6 +9,8 @@
 ---@field z number
 
 
+---@alias TeamID 0 | 1
+
 ---@class Player
 Player = {}
 ---@class Squad
@@ -153,8 +155,6 @@ winReason = {}
 GameUICore = {}
 ---@class List
 List = {}
----@class TeamID
-TeamID = {}
 ---@class EncounterData
 EncounterData = {}
 ---@class SBP
@@ -3235,12 +3235,6 @@ function Obj_SetProgressVisible(objectiveID, visible) end
 ---@return unknown
 function Obj_SetState(objectiveID, state) end
 
---- Set title text localization ID for the objective
----@param objectiveID number
----@param title string
----@return unknown
-function Obj_SetTitle(objectiveID, title) end
-
 --- Set objective visibility
 ---@param objectiveID number
 ---@param visible boolean
@@ -5682,6 +5676,7 @@ function Camera_Follow(var) end
 ---@param controlRotation boolean
 ---@return unknown
 function Camera_LinearSplinePanOverTime(var, seconds, keepQueue, controlRotation) end
+
 --- Slightly refocus the camera to rest on an entity/squad/squad/sgroup/egroup/pos/marker if it's close by.
 --- This function can be called through a CTRL object in NISlets.
 ---@param var any
@@ -11097,11 +11092,6 @@ function Player_GetStateModelVector3f(player, key) end
 ---@return unknown
 function Player_GetStrategicPointCaptureProgress(player, strategicPoint) end
 
---- Get the team a player is on
----@param p Player
----@return unknown
-function Player_GetTeam(p) end
-
 --- Gets the toal population including Personnel, Vehicle and Medic
 --- Directly uses the C++ API Player_GetCurrentPopulation to get the current population for CT_Personnel, CT_Vehicle and CT_Medic.
 ---@param player Player
@@ -16451,12 +16441,6 @@ function Util_GetPositionFromAtoB(a, b, distance) end
 ---@param items EGroup
 ---@return unknown
 function Util_GetRandomHiddenPosition(items) end
-
---- Returns a random position either within the marker's proximity or with a pos and range provided. Range is ignored for rectangular markers
----@param range number | nil
----@param hidden boolean | nil
----@return unknown
-function Util_GetRandomPosition(range, hidden) end
 
 --- Gets the relationship between two of: entity, squad, egroup, sgroup, player. for groups, the first item is used. returns R_ENEMY, R_ALLY, R_NEUTRAL, R_UNDEFINED, or nil (if world owned or invalid parameters)
 ---@param Object_1 EGroup
