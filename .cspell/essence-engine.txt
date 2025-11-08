@@ -34,6 +34,7 @@ Impass
 Loadout
 Locstring
 mathtype
+mipped
 modtype
 movetype
 pathfinding

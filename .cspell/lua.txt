@@ -3,7 +3,9 @@ ipairs
 loadfile
 luac
 maxinteger
+metatable
 pcall
+rawget
 setmetatable
 tonumber
 tostring
