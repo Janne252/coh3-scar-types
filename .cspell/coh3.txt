@@ -1,5 +1,6 @@
 afrika
 Afrikakorps
+autobuild
 Battlegroup
 battlegroups
 cooldown
