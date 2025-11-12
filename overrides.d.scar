@@ -1229,3 +1229,8 @@ function Player_GetTeam(p) end
 ---@param objectiveID number
 ---@param title LocString
 function Obj_SetTitle(objectiveID, title) end
+
+--- Get the creator entity of the sector by sectorID
+---@param sectorID number
+---@return nil|Entity
+function Territory_GetSectorCreatorEntity(sectorID) end

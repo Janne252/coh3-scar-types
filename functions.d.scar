@@ -14631,11 +14631,6 @@ function Territory_GetPrimaryEntityInSector(sectorID) end
 ---@return unknown
 function Territory_GetSectorContainingPoint(pos3D) end
 
---- Get the creator entity of the sector by sectorID
----@param sectorID SectorID
----@return unknown
-function Territory_GetSectorCreatorEntity(sectorID) end
-
 --- Returns the generator point of the given sector, snapped to the surface of the terrain.
 ---@param sectorID SectorID
 ---@return unknown
