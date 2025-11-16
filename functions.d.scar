@@ -9,7 +9,11 @@
 ---@field z number
 
 
+
+---Numeric team ID. Usually 0 or 1. Some custom maps may have more teams.
 ---@alias TeamID 0 | 1
+
+---@alias SectorID number
 
 ---@class Player
 Player = {}
@@ -191,8 +195,6 @@ AreaType = {}
 BP = {}
 ---@class Element
 Element = {}
----@class SectorID
-SectorID = {}
 ---@class Availability
 Availability = {}
 ---@class SquadCombatBehaviourMoodMode
