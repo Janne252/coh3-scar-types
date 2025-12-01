@@ -42,6 +42,7 @@ pathing
 pbgs
 pbgtype
 PCMD
+pickupable
 PITEM
 popcap
 Precache
