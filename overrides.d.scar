@@ -1234,3 +1234,7 @@ function Territory_GetSectorCreatorEntity(sectorID) end
 --- Remove an applied modifier.
 --- @param modifierId number|number[]
 function Modifier_Remove(modifierId) end
+
+---@param flag userdata SimulationPause_Break | SimulationPause_Error | SimulationPause_Game | SimulationPause_Input | SimulationPause_Movies | SimulationPause_Music | SimulationPause_None | SimulationPause_Simulation | SimulationPause_SimulationInput
+function Game_PauseSimulation(flag) end
+
