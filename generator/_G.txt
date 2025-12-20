@@ -217,6 +217,7 @@ AI_SetPrefabTarget_EGroup
 AI_SetPrefabTarget_Position
 AI_SetPrefabTarget_SGroup
 AI_SetPrefabTarget_Waypoints
+AI_SetPrefabTarget_WaypointsByHandle
 AI_SetResourceIncomeDesire
 AI_SetTable
 AI_SetTableParam
@@ -349,8 +350,10 @@ AIEncounter_TargetGuidance_DisableSquadPatrol
 AIEncounter_TargetGuidance_GetTargetAreaRadius
 AIEncounter_TargetGuidance_GetTargetLeashRadius
 AIEncounter_TargetGuidance_GetTargetPos
+AIEncounter_TargetGuidance_SetPatrolPathByHandle
 AIEncounter_TargetGuidance_SetPatrolPathByName
 AIEncounter_TargetGuidance_SetPatrolWander
+AIEncounter_TargetGuidance_SetSquadPatrolPathByHandle
 AIEncounter_TargetGuidance_SetSquadPatrolPathByName
 AIEncounter_TargetGuidance_SetSquadPatrolWander
 AIEncounter_TargetGuidance_SetTargetArea
@@ -446,6 +449,7 @@ AIPlayer_GetDynamicEntityTargetScore
 AIPlayer_GetDynamicMultiplier
 AIPlayer_GetDynamicUnitTypeMultipliersForEntity
 AIPlayer_GetDynamicUnitTypeMultipliersForSquad
+AIPlayer_GetEncounterBehaviourTypes
 AIPlayer_GetKnownResourceDeposits
 AIPlayer_GetLocal
 AIPlayer_GetLocalFromPlayer
@@ -571,6 +575,7 @@ assert
 Audio_AfterActionReport
 Audio_OnDamageReceived
 Audio_OnGameOver
+Audio_OnGameRestore
 Audio_OnInit
 Audio_OnMatchStateChanged
 Audio_OnMaxTicketsChanged
@@ -591,6 +596,9 @@ BP_ApplyBlueprintNameMigration
 BP_DebugDrawAICompanyPersonality
 BP_GetAbilityBlueprint
 BP_GetAbilityBlueprintByPbgID
+BP_GetAbilityCategories
+BP_GetAbilityCategoryBlueprint
+BP_GetAbilityCategoryBlueprintByPbgID
 BP_GetAbilityUIInfo
 BP_GetAIAbilityBlueprint
 BP_GetAIAbilityBlueprintByPbgID
@@ -601,6 +609,11 @@ BP_GetAIFormationTargetPriorityBlueprint
 BP_GetAIFormationTargetPriorityBlueprintByPbgID
 BP_GetAIStateModelTuningsBlueprint
 BP_GetAIStateModelTuningsBlueprintByPbgID
+BP_GetArmyBag
+BP_GetArmyBagAbilities
+BP_GetArmyBagFromRaceBag
+BP_GetArmyBagStartingBuildings
+BP_GetArmyBagUpgrades
 BP_GetBaseEntityBlueprintFromSquad
 BP_GetBlueprintMigrationVersion
 BP_GetBriefingActorBlueprint
@@ -616,6 +629,7 @@ BP_GetEntityBlueprintsWithType_Internal
 BP_GetEntityBPArmorInfo
 BP_GetEntityBPMaxHealth
 BP_GetEntityBPMovementInfo
+BP_GetEntityBPPossibleUpgrades
 BP_GetEntityBPStrategicPointInfo
 BP_GetEntityBPTargetSize
 BP_GetEntityChildBlueprintAtIndex
@@ -646,6 +660,7 @@ BP_GetSquadBlueprintsWithType
 BP_GetSquadBlueprintsWithType_Internal
 BP_GetSquadBlueprintTotalPopulation
 BP_GetSquadBlueprintUpgrades
+BP_GetSquadBPPossibleUpgrades
 BP_GetSquadChildBlueprintAtIndex
 BP_GetSquadChildBlueprintCount
 BP_GetSquadParentBlueprintAtIndex
@@ -667,6 +682,7 @@ BP_GetWeaponBlueprint
 BP_GetWeaponBlueprintByPbgID
 BP_GetWeaponBlueprintInfo
 BP_GetWeaponEntityWeaponBlueprint
+BP_IsAbilityOfCategory
 BP_IsInfantryBlueprint
 BP_IsTeamWeaponBlueprint
 BP_IsUpgradeOfType
@@ -896,6 +912,7 @@ dr_terrainrect
 dr_text2d
 dr_text3d
 dr_toggleBackgroundOpacity
+DrawAudioDebug
 EBP_Exists
 EBP_IsOfRace
 EGroup_Add
@@ -943,6 +960,7 @@ EGroup_GetAvgHealth
 EGroup_GetClosestEntity
 EGroup_GetDeSpawnedEntityAt
 EGroup_GetEntityAt
+EGroup_GetFarthestEntity
 EGroup_GetInvulnerable
 EGroup_GetLastAttacker
 EGroup_GetName
@@ -1030,7 +1048,6 @@ Entity_CheckSupply
 Entity_ClearDemolitionCallbacks
 Entity_ClearMissionNodeData
 Entity_ClearPendingDeathFlag
-Entity_ClearPostureSuggestion
 Entity_ClearStateModelEnumTableTarget
 Entity_ClearStateModelPBG
 Entity_ClearStateModelTarget
@@ -1047,7 +1064,6 @@ Entity_Destroy
 Entity_DestroyAll
 Entity_DisableCancelConstructionCommand
 Entity_DoBurnDamage
-Entity_EnableAttention
 Entity_EnableProductionQueue
 Entity_EnableStrategicPoint
 Entity_ExtensionCount
@@ -1096,7 +1112,7 @@ Entity_GetLastAttackers
 Entity_GetLastEntityAttackers
 Entity_GetMaxCaptureCrewSize
 Entity_GetMaxHoldSquadSlots
-Entity_GetMeleeBlocksPerAttacks
+Entity_GetMaxVeterancyRank
 Entity_GetMissionLayerSetTagsByHealthThreshold
 Entity_GetMissionMapFromEntryPoint
 Entity_GetMissionOwner
@@ -1108,12 +1124,20 @@ Entity_GetPosition
 Entity_GetProductionQueueItem
 Entity_GetProductionQueueItemType
 Entity_GetProductionQueueSize
-Entity_GetProjectileBlocksPerAttacks
 Entity_GetRadius
 Entity_GetRallyPointPosition
-Entity_GetRangedBlocksPerAttacks
 Entity_GetReinforcementAbilitiesOnMovementNode
 Entity_GetRemainingResourceDepositAmount
+Entity_GetResourceGeneratorDefaultProvidedResourceType
+Entity_GetResourceGeneratorResourceInitial
+Entity_GetResourceGeneratorResourceLeft
+Entity_GetResourceGeneratorResourcePerSecond
+Entity_GetResourceGeneratorResourcePerTick
+Entity_GetResourceGeneratorResourcePerTurn
+Entity_GetResourceGeneratorUnmodifiedResourceInitial
+Entity_GetResourceGeneratorUnmodifiedResourcePerSecond
+Entity_GetResourceGeneratorUnmodifiedResourcePerTick
+Entity_GetResourceGeneratorUnmodifiedResourcePerTurn
 Entity_GetSightInnerHeight
 Entity_GetSightInnerRadius
 Entity_GetSightOuterHeight
@@ -1124,16 +1148,28 @@ Entity_GetSquadsHeld
 Entity_GetStateModelAttributeEnum
 Entity_GetStateModelBool
 Entity_GetStateModelEntityTarget
+Entity_GetStateModelEnumTableAttributeEnum
 Entity_GetStateModelEnumTableBool
 Entity_GetStateModelEnumTableEntityTarget
 Entity_GetStateModelEnumTableFloat
 Entity_GetStateModelEnumTableInt
+Entity_GetStateModelEnumTablePBG
 Entity_GetStateModelEnumTablePlayerTarget
 Entity_GetStateModelEnumTableSquadTarget
+Entity_GetStateModelEnumTableTarget
 Entity_GetStateModelEnumTableVector3f
 Entity_GetStateModelFloat
 Entity_GetStateModelInt
+Entity_GetStateModelListAttributeEnum
+Entity_GetStateModelListBool
+Entity_GetStateModelListEntityTarget
+Entity_GetStateModelListFloat
+Entity_GetStateModelListInt
+Entity_GetStateModelListPBG
+Entity_GetStateModelListPlayerTarget
+Entity_GetStateModelListSquadTarget
 Entity_GetStateModelListTarget
+Entity_GetStateModelListVector3f
 Entity_GetStateModelPBG
 Entity_GetStateModelPlayerTarget
 Entity_GetStateModelSquadTarget
@@ -1145,6 +1181,9 @@ Entity_GetStateTreeTargeting_SquadTarget
 Entity_GetStateTreeTargeting_Vector3f
 Entity_GetStrategicPointSecureCount
 Entity_GetTargetingType
+Entity_GetVeterancy
+Entity_GetVeterancyRank
+Entity_GetVeterancyTable
 Entity_GetWeaponBlueprint
 Entity_GetWeaponEntity
 Entity_GetWeaponHardpointCount
@@ -1153,13 +1192,24 @@ Entity_HasAbility
 Entity_HasBlueprint
 Entity_HasProductionQueue
 Entity_HasRallyPointPosition
+Entity_HasStateModelAttributeEnum
 Entity_HasStateModelBool
 Entity_HasStateModelFloat
 Entity_HasStateModelInt
 Entity_HasStateModelList
+Entity_HasStateModelListAttributeEnum
+Entity_HasStateModelListBool
+Entity_HasStateModelListFloat
+Entity_HasStateModelListInt
+Entity_HasStateModelListPBG
+Entity_HasStateModelListTarget
+Entity_HasStateModelListVector3f
+Entity_HasStateModelPBG
 Entity_HasStateModelTarget
 Entity_HasStateModelVector3f
 Entity_HasUpgrade
+Entity_IncreaseVeterancy
+Entity_IncreaseVeterancyRank
 Entity_InstantCaptureStrategicPoint
 Entity_InstantConvertBuildingToFieldSupport
 Entity_InstantRevertOccupiedBuilding
@@ -1223,18 +1273,18 @@ Entity_RagDoll
 Entity_RemoveAbility
 Entity_RemoveBoobyTraps
 Entity_RemoveDemolitions
+Entity_RemoveStateModelListAttributeEnum
 Entity_RemoveStateModelListBool
 Entity_RemoveStateModelListEntityTarget
 Entity_RemoveStateModelListFloat
 Entity_RemoveStateModelListInt
+Entity_RemoveStateModelListPBG
 Entity_RemoveStateModelListPlayerTarget
 Entity_RemoveStateModelListSquadTarget
+Entity_RemoveStateModelListTarget
 Entity_RemoveStateModelListVector3f
 Entity_RemoveUpgrade
 Entity_RequiresSlottedSplineUpdateAfterBlueprintConversion
-Entity_ResetMeleeBlocksPerAttacks
-Entity_ResetProjectileBlocksPerAttacks
-Entity_ResetRangedBlocksPerAttacks
 Entity_ResetUpgradeGlobalStatetreeHandle
 Entity_RestoreTargetingType
 Entity_SetAnimatorAction
@@ -1259,16 +1309,13 @@ Entity_SetHeadingGroundSnapOptional
 Entity_SetHealth
 Entity_SetInvulnerable
 Entity_SetInvulnerableMinCap
-Entity_SetMeleeBlocksPerAttacks
 Entity_SetMissionNodeData
 Entity_SetOnFire
 Entity_SetPartisanHubRelationValue
 Entity_SetPlayerOwner
 Entity_SetPopupMissionEntityKillOnEndStatus
 Entity_SetPosition
-Entity_SetProjectileBlocksPerAttacks
 Entity_SetProjectileCanExplode
-Entity_SetRangedBlocksPerAttacks
 Entity_SetRecrewable
 Entity_SetRemainingResourceDepositAmount
 Entity_SetSharedProductionQueue
@@ -1280,12 +1327,23 @@ Entity_SetStateModelEnumTableBool
 Entity_SetStateModelEnumTableEntityTarget
 Entity_SetStateModelEnumTableFloat
 Entity_SetStateModelEnumTableInt
+Entity_SetStateModelEnumTablePBG
 Entity_SetStateModelEnumTablePlayerTarget
 Entity_SetStateModelEnumTableSquadTarget
+Entity_SetStateModelEnumTableTarget
 Entity_SetStateModelEnumTableVector3f
 Entity_SetStateModelFloat
 Entity_SetStateModelInt
+Entity_SetStateModelListAttributeEnum
+Entity_SetStateModelListBool
+Entity_SetStateModelListEntityTarget
+Entity_SetStateModelListFloat
+Entity_SetStateModelListInt
+Entity_SetStateModelListPBG
+Entity_SetStateModelListPlayerTarget
+Entity_SetStateModelListSquadTarget
 Entity_SetStateModelListTarget
+Entity_SetStateModelListVector3f
 Entity_SetStateModelPBG
 Entity_SetStateModelPlayerTarget
 Entity_SetStateModelSquadTarget
@@ -1296,6 +1354,7 @@ Entity_SetStrategicPointNeutral
 Entity_SetStrategicPointReticuleVisible
 Entity_SetTargetingType
 Entity_SetTeamWeaponDestroyOnAbandonChance
+Entity_SetVeterancyDisplayVisibility
 Entity_SetWorldOwned
 Entity_ShowcaseRotate
 Entity_SimHide
@@ -1306,7 +1365,6 @@ Entity_SpawnLiveMunition
 Entity_SpawnToward
 Entity_StopAbility
 Entity_StopFire
-Entity_SuggestPosture
 Entity_SupportsDemolition
 Entity_TagDebug
 Entity_TaggedEntityKill
@@ -1592,6 +1650,7 @@ LocalCommand_SquadMovePos
 LocalCommand_SquadMovePosFacing
 LocalCommand_SquadMultiTargetAbility
 LocalCommand_SquadPath
+LocalCommand_SquadPathByHandle
 LocalCommand_SquadPos
 LocalCommand_SquadPosAbility
 LocalCommand_SquadPosExt
@@ -1677,6 +1736,7 @@ Misc_GetSquadControlGroup
 Misc_InfluenceMapDebug
 Misc_InfluenceOverride
 Misc_IsCommandLineOptionSet
+Misc_IsCommandLineOptionSetNoDevCheck
 Misc_IsDebugTextChannelEnabled
 Misc_IsDevMode
 Misc_IsEGroupOnScreen
@@ -1948,6 +2008,7 @@ Physics_GetNumRBodies
 Physics_IsEnabled
 Player_AddAbility
 Player_AddAbilityLockoutZone
+Player_AddPotentialUpgrade
 Player_AddResource
 Player_AddResources
 Player_AddSquadsToSGroup
@@ -1962,6 +2023,7 @@ Player_CanConstruct
 Player_CanConstructOnPosition
 Player_CanPlaceStructureOnPosition
 Player_CanProduceUpgrade
+Player_CanProduceUpgradeEx
 Player_CanSeeEGroup
 Player_CanSeeEntity
 Player_CanSeePosition
@@ -1987,6 +2049,7 @@ Player_GetAllEntities
 Player_GetAllEntitiesNearMarker
 Player_GetAllSquadsNearMarker
 Player_GetAvailableAbilities
+Player_GetAverageResourceRatePerSecond
 Player_GetBuildingID
 Player_GetBuildingsCount
 Player_GetBuildingsCountExcept
@@ -1995,6 +2058,7 @@ Player_GetBuildingUnderConstructionID
 Player_GetCompletedUpgrades
 Player_GetControlledTerritories
 Player_GetCurrentPopulation
+Player_GetCurrentResourceRatePerSecond
 Player_GetDebugPlayer
 Player_GetDisplayName
 Player_GetEntities
@@ -2026,21 +2090,27 @@ Player_GetSquadCount
 Player_GetSquads
 Player_GetStartingPosition
 Player_GetState
+Player_GetStateModelAttributeEnum
 Player_GetStateModelBool
 Player_GetStateModelEntityTarget
+Player_GetStateModelEnumTableAttributeEnum
 Player_GetStateModelEnumTableBool
 Player_GetStateModelEnumTableEntityTarget
 Player_GetStateModelEnumTableFloat
 Player_GetStateModelEnumTableInt
+Player_GetStateModelEnumTablePBG
 Player_GetStateModelEnumTablePlayerTarget
 Player_GetStateModelEnumTableSquadTarget
+Player_GetStateModelEnumTableTarget
 Player_GetStateModelEnumTableVector3f
 Player_GetStateModelFloat
 Player_GetStateModelInt
+Player_GetStateModelListAttributeEnum
 Player_GetStateModelListBool
 Player_GetStateModelListEntityTarget
 Player_GetStateModelListFloat
 Player_GetStateModelListInt
+Player_GetStateModelListPBG
 Player_GetStateModelListPlayerTarget
 Player_GetStateModelListSquadTarget
 Player_GetStateModelListTarget
@@ -2064,10 +2134,18 @@ Player_HasBuildingUnderConstruction
 Player_HasCapturingSquadNearStrategicPoint
 Player_HasEntity
 Player_HasMapEntryPosition
+Player_HasStateModelAttributeEnum
 Player_HasStateModelBool
 Player_HasStateModelFloat
 Player_HasStateModelInt
 Player_HasStateModelList
+Player_HasStateModelListAttributeEnum
+Player_HasStateModelListBool
+Player_HasStateModelListFloat
+Player_HasStateModelListInt
+Player_HasStateModelListPBG
+Player_HasStateModelListTarget
+Player_HasStateModelListVector3f
 Player_HasStateModelPBG
 Player_HasStateModelTarget
 Player_HasStateModelVector3f
@@ -2082,18 +2160,24 @@ Player_IsValid
 Player_NumUpgradeComplete
 Player_ObserveRelationship
 Player_ObserveReputation
+Player_OverrideArmy
+Player_OverrideRace
 Player_OwnsEGroup
 Player_OwnsEntity
 Player_OwnsSGroup
 Player_OwnsSquad
 Player_RemoveAbilityLockoutZone
 Player_RemoveAllUpgrades
+Player_RemovePotentialUpgrade
+Player_RemoveStateModelListAttributeEnum
 Player_RemoveStateModelListBool
 Player_RemoveStateModelListEntityTarget
 Player_RemoveStateModelListFloat
 Player_RemoveStateModelListInt
+Player_RemoveStateModelListPBG
 Player_RemoveStateModelListPlayerTarget
 Player_RemoveStateModelListSquadTarget
+Player_RemoveStateModelListTarget
 Player_RemoveStateModelListVector3f
 Player_RemoveUpgrade
 Player_ResetAbilityCooldowns
@@ -2121,21 +2205,27 @@ Player_SetResource
 Player_SetResources
 Player_SetSquadProductionAvailability
 Player_SetSquadProductionAvailabilityInternal
+Player_SetStateModelAttributeEnum
 Player_SetStateModelBool
 Player_SetStateModelEntityTarget
+Player_SetStateModelEnumTableAttributeEnum
 Player_SetStateModelEnumTableBool
 Player_SetStateModelEnumTableEntityTarget
 Player_SetStateModelEnumTableFloat
 Player_SetStateModelEnumTableInt
+Player_SetStateModelEnumTablePBG
 Player_SetStateModelEnumTablePlayerTarget
 Player_SetStateModelEnumTableSquadTarget
+Player_SetStateModelEnumTableTarget
 Player_SetStateModelEnumTableVector3f
 Player_SetStateModelFloat
 Player_SetStateModelInt
+Player_SetStateModelListAttributeEnum
 Player_SetStateModelListBool
 Player_SetStateModelListEntityTarget
 Player_SetStateModelListFloat
 Player_SetStateModelListInt
+Player_SetStateModelListPBG
 Player_SetStateModelListPlayerTarget
 Player_SetStateModelListSquadTarget
 Player_SetStateModelListTarget
@@ -2307,7 +2397,6 @@ SGroup_CanInstantReinforceNow
 SGroup_CanSeeEGroup
 SGroup_CanSeeSGroup
 SGroup_Clear
-SGroup_ClearPostureSuggestion
 SGroup_Compare
 SGroup_CompleteEntityUpgrade
 SGroup_CompleteUpgrade
@@ -2334,9 +2423,7 @@ SGroup_DestroyAllSquads
 SGroup_DisableCombatPlans
 SGroup_DivideIntoClusters
 SGroup_Duplicate
-SGroup_EnableAttention
 SGroup_EnableMinimapIndicator
-SGroup_EnableSurprise
 SGroup_EnableUIDecorator
 SGroup_Exists
 SGroup_FaceEachOther
@@ -2360,6 +2447,7 @@ SGroup_GetAvgLoadout
 SGroup_GetAvgShieldPercentage
 SGroup_GetClosestSquad
 SGroup_GetDeSpawnedSquadAt
+SGroup_GetFarthestSquad
 SGroup_GetGarrisonedBuildingEntity
 SGroup_GetHoldEGroup
 SGroup_GetHoldSGroup
@@ -2438,7 +2526,6 @@ SGroup_SetAvgHealth
 SGroup_SetAvgMorale
 SGroup_SetCrushable
 SGroup_SetInvulnerable
-SGroup_SetMoodMode
 SGroup_SetPlayerOwner
 SGroup_SetRecrewable
 SGroup_SetResource
@@ -2451,7 +2538,6 @@ SGroup_SetWorldOwned
 SGroup_Single
 SGroup_SnapFaceEachOther
 SGroup_SnapFacePosition
-SGroup_SuggestPosture
 SGroup_TotalMembersCount
 SGroup_WarpToMarker
 SGroup_WarpToPos
@@ -2529,7 +2615,6 @@ Squad_CanTargetEntity
 Squad_CanTargetSquad
 Squad_ClearIdleFormationOverride
 Squad_ClearMovingFormationOverride
-Squad_ClearPostureSuggestion
 Squad_ClearStateModelEnumTableTarget
 Squad_ClearStateModelPBG
 Squad_ClearStateModelTarget
@@ -2547,7 +2632,6 @@ Squad_CreateTowardENVCheat
 Squad_DeSpawn
 Squad_Destroy
 Squad_EnableProductionQueue
-Squad_EnableSurprise
 Squad_EntityAt
 Squad_ExtensionCount
 Squad_ExtensionEnabled
@@ -2626,16 +2710,28 @@ Squad_GetSquadsHeld
 Squad_GetStateModelAttributeEnum
 Squad_GetStateModelBool
 Squad_GetStateModelEntityTarget
+Squad_GetStateModelEnumTableAttributeEnum
 Squad_GetStateModelEnumTableBool
 Squad_GetStateModelEnumTableEntityTarget
 Squad_GetStateModelEnumTableFloat
 Squad_GetStateModelEnumTableInt
+Squad_GetStateModelEnumTablePBG
 Squad_GetStateModelEnumTablePlayerTarget
 Squad_GetStateModelEnumTableSquadTarget
+Squad_GetStateModelEnumTableTarget
 Squad_GetStateModelEnumTableVector3f
 Squad_GetStateModelFloat
 Squad_GetStateModelInt
+Squad_GetStateModelListAttributeEnum
+Squad_GetStateModelListBool
+Squad_GetStateModelListEntityTarget
+Squad_GetStateModelListFloat
+Squad_GetStateModelListInt
+Squad_GetStateModelListPBG
+Squad_GetStateModelListPlayerTarget
+Squad_GetStateModelListSquadTarget
 Squad_GetStateModelListTarget
+Squad_GetStateModelListVector3f
 Squad_GetStateModelPBG
 Squad_GetStateModelPlayerTarget
 Squad_GetStateModelSquadTarget
@@ -2662,10 +2758,19 @@ Squad_HasInfantry
 Squad_HasProductionQueue
 Squad_HasRallyPointPosition
 Squad_HasSetupTeamWeapon
+Squad_HasStateModelAttributeEnum
 Squad_HasStateModelBool
 Squad_HasStateModelFloat
 Squad_HasStateModelInt
 Squad_HasStateModelList
+Squad_HasStateModelListAttributeEnum
+Squad_HasStateModelListBool
+Squad_HasStateModelListFloat
+Squad_HasStateModelListInt
+Squad_HasStateModelListPBG
+Squad_HasStateModelListTarget
+Squad_HasStateModelListVector3f
+Squad_HasStateModelPBG
 Squad_HasStateModelTarget
 Squad_HasStateModelVector3f
 Squad_HasTeamWeapon
@@ -2732,12 +2837,15 @@ Squad_Precache
 Squad_RecreateAll
 Squad_RemoveAbility
 Squad_RemoveOfficer
+Squad_RemoveStateModelListAttributeEnum
 Squad_RemoveStateModelListBool
 Squad_RemoveStateModelListEntityTarget
 Squad_RemoveStateModelListFloat
 Squad_RemoveStateModelListInt
+Squad_RemoveStateModelListPBG
 Squad_RemoveStateModelListPlayerTarget
 Squad_RemoveStateModelListSquadTarget
+Squad_RemoveStateModelListTarget
 Squad_RemoveStateModelListVector3f
 Squad_RemoveUpgrade
 Squad_ResetActionPoints
@@ -2759,7 +2867,6 @@ Squad_SetIdleFormationOverride
 Squad_SetInvulnerable
 Squad_SetInvulnerableEntityCount
 Squad_SetInvulnerableMinCap
-Squad_SetMoodMode
 Squad_SetMovementDistanceRemaining
 Squad_SetMoveType
 Squad_SetMovingFormationOverride
@@ -2772,19 +2879,24 @@ Squad_SetSharedProductionQueue
 Squad_SetStateModelAttributeEnum
 Squad_SetStateModelBool
 Squad_SetStateModelEntityTarget
+Squad_SetStateModelEnumTableAttributeEnum
 Squad_SetStateModelEnumTableBool
 Squad_SetStateModelEnumTableEntityTarget
 Squad_SetStateModelEnumTableFloat
 Squad_SetStateModelEnumTableInt
+Squad_SetStateModelEnumTablePBG
 Squad_SetStateModelEnumTablePlayerTarget
 Squad_SetStateModelEnumTableSquadTarget
+Squad_SetStateModelEnumTableTarget
 Squad_SetStateModelEnumTableVector3f
 Squad_SetStateModelFloat
 Squad_SetStateModelInt
+Squad_SetStateModelListAttributeEnum
 Squad_SetStateModelListBool
 Squad_SetStateModelListEntityTarget
 Squad_SetStateModelListFloat
 Squad_SetStateModelListInt
+Squad_SetStateModelListPBG
 Squad_SetStateModelListPlayerTarget
 Squad_SetStateModelListSquadTarget
 Squad_SetStateModelListTarget
@@ -2802,10 +2914,10 @@ Squad_SetWorldOwned
 Squad_ShowcaseSetActorsRotation
 Squad_Spawn
 Squad_SpawnFormationToward
+Squad_SpawnIgnorePathfinding
 Squad_SpawnToward
 Squad_Split
 Squad_StopAbility
-Squad_SuggestPosture
 Squad_TeleportToNearbyStandableNode
 Squad_TeleportToNearestBuoy
 Squad_TryFindClosestFreePosition
@@ -2852,6 +2964,8 @@ Table_DeterministicOrderedPairs
 Table_FillWithDefaultValues
 Table_FillWithDefaultValues_MergeSubTable
 Table_GetRandomItem
+Table_IsArray
+Table_IsDictionary
 Table_MakeReadOnly
 Table_RemoveFirstItem
 Table_RemoveIf
@@ -2958,6 +3072,7 @@ TimeRule_Unpause
 TimeRule_UnpauseAll
 TimeRule_UnpauseWithGroup
 TimeRule_UnpauseWithID
+ToggleAudioDebug
 ToggleCameraSwitchboardDebugDraw
 tonumber
 tostring
@@ -2971,6 +3086,7 @@ Tuning_GetCustomPropertyHashKey
 Tuning_GetCustomPropertyInt
 Tuning_GetCustomPropertyLocString
 Tuning_GetCustomPropertyPBG
+Tuning_GetCustomPropertyPBGList
 Tuning_GetCustomPropertyPhysicalStateNodePath
 Tuning_GetCustomPropertySimGlobalStateNodePath
 Tuning_GetCustomPropertySquadStateNodePath
@@ -3337,10 +3453,20 @@ warning
 water_reflection_change_mode
 water_reflection_enable
 water_reflection_toggle
+WaypointPath_Create
+WaypointPath_Destroy
 WaypointPath_Exists
+WaypointPath_GetAllHandlesFromName
+WaypointPath_GetFirstHandle
+WaypointPath_GetHandleAtIndex
+WaypointPath_GetHandleName
 WaypointPath_GetPositions
 WaypointPath_Hide
+WaypointPath_HideByHandle
+WaypointPath_NumPathHandlesByName
 WaypointPath_Show
+WaypointPath_ShowByHandle
+WaypointPath_Valid
 WinWarning_PublishLoseReminder
 WinWarning_ShowLoseWarning
 World_AddExtraTurnLoggingInfo
@@ -3359,6 +3485,7 @@ World_ChangeZoneInteractivity
 World_CleanUpTheDead
 World_ClearCasualties
 World_ClearQueuedCommandsFromTurnOrderQueue
+World_ClearStateModelEnumTableTarget
 World_ClearStateModelPBG
 World_ClearStateModelTarget
 World_ConsumeActionDirectorScarData
@@ -3486,13 +3613,35 @@ World_GetSquad
 World_GetSquadsNearMarker
 World_GetSquadsNearPoint
 World_GetSquadsWithinTerritorySector
+World_GetStateModelAttributeEnum
 World_GetStateModelBool
 World_GetStateModelEntityTarget
+World_GetStateModelEnumTableAttributeEnum
+World_GetStateModelEnumTableBool
+World_GetStateModelEnumTableEntityTarget
+World_GetStateModelEnumTableFloat
+World_GetStateModelEnumTableInt
+World_GetStateModelEnumTablePBG
+World_GetStateModelEnumTablePlayerTarget
+World_GetStateModelEnumTableSquadTarget
+World_GetStateModelEnumTableTarget
+World_GetStateModelEnumTableVector3f
 World_GetStateModelFloat
 World_GetStateModelInt
+World_GetStateModelListAttributeEnum
+World_GetStateModelListBool
+World_GetStateModelListEntityTarget
+World_GetStateModelListFloat
+World_GetStateModelListInt
+World_GetStateModelListPBG
+World_GetStateModelListPlayerTarget
+World_GetStateModelListSquadTarget
+World_GetStateModelListTarget
+World_GetStateModelListVector3f
 World_GetStateModelPBG
 World_GetStateModelPlayerTarget
 World_GetStateModelSquadTarget
+World_GetStateModelTarget
 World_GetStateModelVector3f
 World_GetStrategyPoints
 World_GetTeamTerritoryGaps
@@ -3503,9 +3652,17 @@ World_GetThresholdModifiersForSquad
 World_GetVeterancyPointsPerObjective_High
 World_GetVeterancyPointsPerObjective_Low
 World_GetWidth
+World_HasStateModelAttributeEnum
 World_HasStateModelBool
 World_HasStateModelFloat
 World_HasStateModelInt
+World_HasStateModelListAttributeEnum
+World_HasStateModelListBool
+World_HasStateModelListFloat
+World_HasStateModelListInt
+World_HasStateModelListPBG
+World_HasStateModelListTarget
+World_HasStateModelListVector3f
 World_HasStateModelPBG
 World_HasStateModelTarget
 World_HasStateModelVector3f
@@ -3551,6 +3708,16 @@ World_RemoveAllResourcePoints
 World_RemoveScriptedCommandBlocker
 World_RemoveScriptedSaveBlocker
 World_RemoveSquadFromTurnActionQueue
+World_RemoveStateModelListAttributeEnum
+World_RemoveStateModelListBool
+World_RemoveStateModelListEntityTarget
+World_RemoveStateModelListFloat
+World_RemoveStateModelListInt
+World_RemoveStateModelListPBG
+World_RemoveStateModelListPlayerTarget
+World_RemoveStateModelListSquadTarget
+World_RemoveStateModelListTarget
+World_RemoveStateModelListVector3f
 World_SetAllInteractiveStagesVisibility
 World_SetCurrentTurn
 World_SetDesignerSupply
@@ -3564,19 +3731,52 @@ World_SetPlayerLose
 World_SetPlayerWin
 World_SetScriptedTurnPhaseEnabled
 World_SetSquadInventoryItemPrerequisiteViewed
+World_SetStateModelAttributeEnum
 World_SetStateModelBool
 World_SetStateModelEntityTarget
+World_SetStateModelEnumTableAttributeEnum
+World_SetStateModelEnumTableBool
+World_SetStateModelEnumTableEntityTarget
+World_SetStateModelEnumTableFloat
+World_SetStateModelEnumTableInt
+World_SetStateModelEnumTablePBG
+World_SetStateModelEnumTablePlayerTarget
+World_SetStateModelEnumTableSquadTarget
+World_SetStateModelEnumTableTarget
+World_SetStateModelEnumTableVector3f
 World_SetStateModelFloat
 World_SetStateModelInt
+World_SetStateModelListAttributeEnum
+World_SetStateModelListBool
+World_SetStateModelListEntityTarget
+World_SetStateModelListFloat
+World_SetStateModelListInt
+World_SetStateModelListPBG
+World_SetStateModelListPlayerTarget
+World_SetStateModelListSquadTarget
+World_SetStateModelListTarget
+World_SetStateModelListVector3f
 World_SetStateModelPBG
 World_SetStateModelPlayerTarget
 World_SetStateModelSquadTarget
 World_SetStateModelVector3f
 World_SetTeamWin
 World_SpawnDemolitionCharge
+World_StartAction
+World_StopAction
 World_TeamTerritoryPointsConnected
 World_ToggleNarrativeDebug
 World_ToggleNodeMovementSmoothing
+World_TurnDebugAddAvailableSquad
+World_TurnDebugAddEncountersSquad
+World_TurnDebugAddHowitzerFailed
+World_TurnDebugAddHowitzerUpdated
+World_TurnDebugAddHowitzerUpdating
+World_TurnDebugAddHowitzerWaiting
+World_TurnDebugAddMilitaryTarget
+World_TurnDebugClearAIData
+World_TurnDebugSetCurrentUpdatingEntity
+World_TurnDebugSetCurrentUpdatingSquad
 World_UnlockTurnSoftLockDetection
 World_UpdateFastestCompletionTimeServerStat
 World_UpdatePathfindingBlockers
@@ -3710,6 +3910,7 @@ CANPRODUCE_PrerequisitesItem = {} CanProduceResult(4) (ENUM)
 CANPRODUCE_PrerequisitesProducer = {} CanProduceResult(2) (ENUM)
 CANPRODUCE_ProductionItemFull = {} CanProduceResult(128) (ENUM)
 CANPRODUCE_ProductionQueueFull = {} CanProduceResult(64) (ENUM)
+CANPRODUCE_TemporarilyDisabled = {} CanProduceResult(8192) (ENUM)
 CANPRODUCE_UpgradeItemFull = {} CanProduceResult(256) (ENUM)
 CE_ACHIEV20KILLS1FLAK36 = 0  (NUMBER)
 CE_ACHIEV3BREACHES1SQUAD = 1  (NUMBER)
@@ -3960,6 +4161,7 @@ EXTID_TeamWeaponUser = "team_weapon_user_ext"  (STRING)
 EXTID_Territory = "territory_ext"  (STRING)
 EXTID_UI = "ui_ext"  (STRING)
 EXTID_Upgrade = "upgrade_ext"  (STRING)
+EXTID_Veterancy = "veterancy_ext"  (STRING)
 EXTID_WalkableSurface = "walkable_surface_ext"  (STRING)
 EXTID_Wall = "wall_ext"  (STRING)
 EXTID_Weapon = "weapon_ext"  (STRING)
@@ -3986,23 +4188,23 @@ GD_EXPERT = 3  (NUMBER)
 GD_HARD = 2  (NUMBER)
 GD_INVALID = 127  (NUMBER)
 GD_NORMAL = 1  (NUMBER)
-GE_AbilityCanCast = 8388608  (NUMBER)
-GE_AbilityComplete = 2555904  (NUMBER)
-GE_AbilityExecuted = 2490368  (NUMBER)
-GE_AbilityRecharged = 2621440  (NUMBER)
-GE_AccessoryWeaponFired = 3014656  (NUMBER)
-GE_AIPlayer_DifficultyChanged = 7208960  (NUMBER)
-GE_AIPlayer_EncounterNotification = 7012352  (NUMBER)
-GE_AIPlayer_EncounterSniped = 7077888  (NUMBER)
-GE_AIPlayer_Migrated = 7143424  (NUMBER)
-GE_AITakeOver = 6946816  (NUMBER)
-GE_AnimatorSwap = 9240576  (NUMBER)
-GE_ArtilleryFired = 2293760  (NUMBER)
-GE_BoobyTrapTriggered = 3407872  (NUMBER)
-GE_BroadcastMessage = 8192000  (NUMBER)
-GE_BuildItemCancelled = 8454144  (NUMBER)
-GE_BuildItemComplete = 1703936  (NUMBER)
-GE_BuildItemStart = 1638400  (NUMBER)
+GE_AbilityCanCast = 8454144  (NUMBER)
+GE_AbilityComplete = 2621440  (NUMBER)
+GE_AbilityExecuted = 2555904  (NUMBER)
+GE_AbilityRecharged = 2686976  (NUMBER)
+GE_AccessoryWeaponFired = 3080192  (NUMBER)
+GE_AIPlayer_DifficultyChanged = 7274496  (NUMBER)
+GE_AIPlayer_EncounterNotification = 7077888  (NUMBER)
+GE_AIPlayer_EncounterSniped = 7143424  (NUMBER)
+GE_AIPlayer_Migrated = 7208960  (NUMBER)
+GE_AITakeOver = 7012352  (NUMBER)
+GE_AnimatorSwap = 9371648  (NUMBER)
+GE_ArtilleryFired = 2359296  (NUMBER)
+GE_BoobyTrapTriggered = 3473408  (NUMBER)
+GE_BroadcastMessage = 8257536  (NUMBER)
+GE_BuildItemCancelled = 8519680  (NUMBER)
+GE_BuildItemComplete = 1769472  (NUMBER)
+GE_BuildItemStart = 1703936  (NUMBER)
 GE_CameraKeyOrbit = 2687232  (NUMBER)
 GE_CameraKeyPan = 2621696  (NUMBER)
 GE_CameraMousePan = 2752768  (NUMBER)
@@ -4012,178 +4214,178 @@ GE_CameraScreenPan = 2883840  (NUMBER)
 GE_CamerGamepadOrbit = 3014912  (NUMBER)
 GE_CamerGamepadPan = 2949376  (NUMBER)
 GE_CampaignSkirmishAutoResolved = 2556160  (NUMBER)
-GE_CasualtySquadSpawned = 4521984  (NUMBER)
-GE_ChallengeCustomEvent = 9830400  (NUMBER)
+GE_CasualtySquadSpawned = 4587520  (NUMBER)
+GE_ChallengeCustomEvent = 9961472  (NUMBER)
 GE_ChallengeDefinitionsUpdated = 3211520  (NUMBER)
 GE_CommandReceiverStatusUpdate = 1704192  (NUMBER)
 GE_CommandStatusUpdate = 1638656  (NUMBER)
-GE_ConstructionCancelled = 983040  (NUMBER)
-GE_ConstructionComplete = 1048576  (NUMBER)
-GE_ConstructionFieldComplete = 1179648  (NUMBER)
-GE_ConstructionPlanComplete = 1114112  (NUMBER)
-GE_ConstructionStart = 917504  (NUMBER)
-GE_CustomUIEvent = 7602176  (NUMBER)
-GE_DamageArea = 7405568  (NUMBER)
-GE_DamageReceived = 5570560  (NUMBER)
-GE_DataCustomEvent = 10420224  (NUMBER)
+GE_ConstructionCancelled = 1048576  (NUMBER)
+GE_ConstructionComplete = 1114112  (NUMBER)
+GE_ConstructionFieldComplete = 1245184  (NUMBER)
+GE_ConstructionPlanComplete = 1179648  (NUMBER)
+GE_ConstructionStart = 983040  (NUMBER)
+GE_CustomUIEvent = 7667712  (NUMBER)
+GE_DamageArea = 7471104  (NUMBER)
+GE_DamageReceived = 5636096  (NUMBER)
+GE_DataCustomEvent = 10551296  (NUMBER)
 GE_DefaultCommandIssued = 852224  (NUMBER)
-GE_DistrictChanged = 9568256  (NUMBER)
-GE_DistrictCreated = 9437184  (NUMBER)
-GE_DistrictRatingChanged = 9633792  (NUMBER)
-GE_DistrictRemoved = 9502720  (NUMBER)
-GE_DriverDecrewed = 7733248  (NUMBER)
-GE_DriverRecrewed = 7798784  (NUMBER)
-GE_EnemyActivitySpotted = 8323072  (NUMBER)
-GE_EnemyTerritoryEntered = 6488064  (NUMBER)
-GE_EntityAbandoned = 3538944  (NUMBER)
+GE_DistrictChanged = 9699328  (NUMBER)
+GE_DistrictCreated = 9568256  (NUMBER)
+GE_DistrictRatingChanged = 9764864  (NUMBER)
+GE_DistrictRemoved = 9633792  (NUMBER)
+GE_DriverDecrewed = 7798784  (NUMBER)
+GE_DriverRecrewed = 7864320  (NUMBER)
+GE_EnemyActivitySpotted = 8388608  (NUMBER)
+GE_EnemyTerritoryEntered = 6553600  (NUMBER)
+GE_EntityAbandoned = 3604480  (NUMBER)
 GE_EntityBlueprintChanged = 393216  (NUMBER)
 GE_EntityCommandIssued = 721152  (NUMBER)
 GE_EntityCrushed = 589824  (NUMBER)
 GE_EntityDespawn = 262144  (NUMBER)
 GE_EntityKilled = 458752  (NUMBER)
 GE_EntityOwnerChange = 327680  (NUMBER)
-GE_EntityParadropComplete = 2359296  (NUMBER)
+GE_EntityParadropComplete = 2424832  (NUMBER)
 GE_EntityPrecached = 1179904  (NUMBER)
-GE_EntityRecrewed = 3604480  (NUMBER)
+GE_EntityRecrewed = 3670016  (NUMBER)
 GE_EntityRestored = 720896  (NUMBER)
-GE_EntitySelectionVisualChanged = 9109504  (NUMBER)
+GE_EntitySelectionVisualChanged = 9240576  (NUMBER)
 GE_EntitySpawn = 196608  (NUMBER)
 GE_EntityTeleported = 524288  (NUMBER)
 GE_EntityWrecked = 655360  (NUMBER)
-GE_ExperienceGranted = 5636096  (NUMBER)
-GE_FieldSupportChange = 3670016  (NUMBER)
+GE_ExperienceGranted = 5701632  (NUMBER)
+GE_FieldSupportChange = 3735552  (NUMBER)
 GE_FormationSquadGroupCommandIssued = 590080  (NUMBER)
 GE_GameOver = 983296  (NUMBER)
 GE_GameStart = 917760  (NUMBER)
-GE_Garrison = 1507328  (NUMBER)
-GE_GarrisonSquad = 1572864  (NUMBER)
-GE_ImportantUnitSighted = 3473408  (NUMBER)
-GE_InfluenceUpdate = 9699328  (NUMBER)
+GE_Garrison = 1572864  (NUMBER)
+GE_GarrisonSquad = 1638400  (NUMBER)
+GE_ImportantUnitSighted = 3538944  (NUMBER)
+GE_InfluenceUpdate = 9830400  (NUMBER)
 GE_InteractiveOptionInitialized = 2425088  (NUMBER)
 GE_InteractiveOptionSelected = 2490624  (NUMBER)
-GE_ItemAvailabilityChanged = 7995392  (NUMBER)
-GE_MineDefused = 2424832  (NUMBER)
-GE_MoveFailed = 3145728  (NUMBER)
+GE_ItemAvailabilityChanged = 8060928  (NUMBER)
+GE_MineDefused = 2490368  (NUMBER)
+GE_MoveFailed = 3211264  (NUMBER)
 GE_MusicIntensityChange = 1769728  (NUMBER)
-GE_NonGlobalCamoDetected = 2228224  (NUMBER)
-GE_OccupiedBuildingChangedOwner = 1376256  (NUMBER)
-GE_OnHealthExtBPConvert = 1441792  (NUMBER)
-GE_PathfindingBlockersUpdated = 3342336  (NUMBER)
-GE_PathfindingCanBuildBlockersAdded = 3211264  (NUMBER)
-GE_PathfindingCanBuildBlockersRemoved = 3276800  (NUMBER)
-GE_PathFound = 3080192  (NUMBER)
+GE_NonGlobalCamoDetected = 2293760  (NUMBER)
+GE_OccupiedBuildingChangedOwner = 1441792  (NUMBER)
+GE_OnHealthExtBPConvert = 1507328  (NUMBER)
+GE_PathfindingBlockersUpdated = 3407872  (NUMBER)
+GE_PathfindingCanBuildBlockersAdded = 3276800  (NUMBER)
+GE_PathfindingCanBuildBlockersRemoved = 3342336  (NUMBER)
+GE_PathFound = 3145728  (NUMBER)
 GE_Ping = 459008  (NUMBER)
-GE_PlannedStructureCancelled = 1966080  (NUMBER)
-GE_PlannedStructurePlaced = 1900544  (NUMBER)
-GE_PlantDemolitionIssued = 6356992  (NUMBER)
-GE_PlayerAddEntity = 8716288  (NUMBER)
-GE_PlayerAddResource = 8585216  (NUMBER)
-GE_PlayerBeingAttacked = 5505024  (NUMBER)
-GE_PlayerCheat = 5701632  (NUMBER)
+GE_PlannedStructureCancelled = 2031616  (NUMBER)
+GE_PlannedStructurePlaced = 1966080  (NUMBER)
+GE_PlantDemolitionIssued = 6422528  (NUMBER)
+GE_PlayerAddEntity = 8781824  (NUMBER)
+GE_PlayerAddResource = 8650752  (NUMBER)
+GE_PlayerBeingAttacked = 5570560  (NUMBER)
+GE_PlayerCheat = 5767168  (NUMBER)
 GE_PlayerCommandIssued = 786688  (NUMBER)
-GE_PlayerDebug_DELETED = 5767168  (NUMBER)
-GE_PlayerDebugBuildOrder = 6029312  (NUMBER)
-GE_PlayerDebugBuildTime = 5963776  (NUMBER)
-GE_PlayerDebugDestroy = 6094848  (NUMBER)
-GE_PlayerDebugEndMatch = 5832704  (NUMBER)
-GE_PlayerDebugFogOfWar = 5898240  (NUMBER)
-GE_PlayerDonation = 6553600  (NUMBER)
+GE_PlayerDebug_DELETED = 5832704  (NUMBER)
+GE_PlayerDebugBuildOrder = 6094848  (NUMBER)
+GE_PlayerDebugBuildTime = 6029312  (NUMBER)
+GE_PlayerDebugDestroy = 6160384  (NUMBER)
+GE_PlayerDebugEndMatch = 5898240  (NUMBER)
+GE_PlayerDebugFogOfWar = 5963776  (NUMBER)
+GE_PlayerDonation = 6619136  (NUMBER)
 GE_PlayerDropped = 196864  (NUMBER)
 GE_PlayerEndStateChanged = 2162944  (NUMBER)
-GE_PlayerFormationFinalized = 9175040  (NUMBER)
+GE_PlayerFormationFinalized = 9306112  (NUMBER)
 GE_PlayerHostMigrated = 393472  (NUMBER)
 GE_PlayerKicked = 262400  (NUMBER)
 GE_PlayerKilled = 327936  (NUMBER)
 GE_PlayerLagComplaint = 131328  (NUMBER)
 GE_PlayerLose = 1114368  (NUMBER)
-GE_PlayerNameChanged = 6619136  (NUMBER)
-GE_PlayerObjectiveChanged = 6750208  (NUMBER)
-GE_PlayerObjectiveDeleted = 6684672  (NUMBER)
-GE_PlayerPhaseUp = 6815744  (NUMBER)
+GE_PlayerNameChanged = 6684672  (NUMBER)
+GE_PlayerObjectiveChanged = 6815744  (NUMBER)
+GE_PlayerObjectiveDeleted = 6750208  (NUMBER)
+GE_PlayerPhaseUp = 6881280  (NUMBER)
 GE_PlayerPingOfShame = 256  (NUMBER)
 GE_PlayerPingOfShameLocal = 65792  (NUMBER)
-GE_PlayerRemoveEntity = 8781824  (NUMBER)
-GE_PlayerRemoveSquad = 8912896  (NUMBER)
-GE_PlayerResourcesAwarded = 6881280  (NUMBER)
-GE_PlayerSetResource = 9764864  (NUMBER)
-GE_PlayerSquadInitialized = 8847360  (NUMBER)
-GE_PlayerSubResource = 8650752  (NUMBER)
-GE_PlayerSurrendered = 7536640  (NUMBER)
-GE_PlayerTeamIdUpdated = 9043968  (NUMBER)
+GE_PlayerRemoveEntity = 8847360  (NUMBER)
+GE_PlayerRemoveSquad = 8978432  (NUMBER)
+GE_PlayerResourcesAwarded = 6946816  (NUMBER)
+GE_PlayerSetResource = 9895936  (NUMBER)
+GE_PlayerSquadInitialized = 8912896  (NUMBER)
+GE_PlayerSubResource = 8716288  (NUMBER)
+GE_PlayerSurrendered = 7602176  (NUMBER)
+GE_PlayerTeamIdUpdated = 9109504  (NUMBER)
 GE_PlayerWin = 1048832  (NUMBER)
 GE_PresentationMapStateEvent = 1900800  (NUMBER)
 GE_PresentationPauseMenuStateEvent = 2031872  (NUMBER)
 GE_PresentationSimPauseStateEvent = 1966336  (NUMBER)
 GE_PresentatonSoundEvent = 1835264  (NUMBER)
-GE_ProjectileFired = 2686976  (NUMBER)
-GE_ProjectileLanded = 2752512  (NUMBER)
-GE_ReinforcementCreated = 1769472  (NUMBER)
-GE_ResourceDepleted = 2097152  (NUMBER)
-GE_ResourceGathererAtCapacity = 2162688  (NUMBER)
-GE_SectorLinkProviderChanged = 7667712  (NUMBER)
-GE_SectorOutOfSupply = 10027008  (NUMBER)
+GE_ProjectileFired = 2752512  (NUMBER)
+GE_ProjectileLanded = 2818048  (NUMBER)
+GE_ReinforcementCreated = 1835008  (NUMBER)
+GE_ResourceDepleted = 2162688  (NUMBER)
+GE_ResourceGathererAtCapacity = 2228224  (NUMBER)
+GE_SectorLinkProviderChanged = 7733248  (NUMBER)
+GE_SectorOutOfSupply = 10158080  (NUMBER)
 GE_SelectionChanged = 1442048  (NUMBER)
-GE_SpawnActionComplete = 7340032  (NUMBER)
-GE_SpeechAction = 7864320  (NUMBER)
+GE_SpawnActionComplete = 7405568  (NUMBER)
+GE_SpeechAction = 7929856  (NUMBER)
 GE_SpeechTelemetryEvent = 2097408  (NUMBER)
-GE_SpeechWarningAction = 8257536  (NUMBER)
+GE_SpeechWarningAction = 8323072  (NUMBER)
 GE_SquadAudioGameObjectRemoved = 1310976  (NUMBER)
-GE_SquadBlueprintChanged = 5439488  (NUMBER)
+GE_SquadBlueprintChanged = 5505024  (NUMBER)
 GE_SquadBuildCommandIssued = 524544  (NUMBER)
-GE_SquadCalledIn = 4980736  (NUMBER)
-GE_SquadCold = 4849664  (NUMBER)
+GE_SquadCalledIn = 5046272  (NUMBER)
+GE_SquadCold = 4915200  (NUMBER)
 GE_SquadCommandIssued = 655616  (NUMBER)
-GE_SquadFormation = 4456448  (NUMBER)
-GE_SquadFreezing = 4915200  (NUMBER)
-GE_SquadIdleEnter = 4194304  (NUMBER)
-GE_SquadIdleExit = 4259840  (NUMBER)
-GE_SquadItemDeposit = 4128768  (NUMBER)
-GE_SquadItemPickup = 4063232  (NUMBER)
-GE_SquadKilled = 3801088  (NUMBER)
-GE_SquadMembersChanged = 4784128  (NUMBER)
-GE_SquadMerge = 4718592  (NUMBER)
-GE_SquadModifyResource = 5373952  (NUMBER)
-GE_SquadOwnerChange = 5242880  (NUMBER)
-GE_SquadParadropComplete = 4587520  (NUMBER)
-GE_SquadPinned = 3866624  (NUMBER)
+GE_SquadFormation = 4521984  (NUMBER)
+GE_SquadFreezing = 4980736  (NUMBER)
+GE_SquadIdleEnter = 4259840  (NUMBER)
+GE_SquadIdleExit = 4325376  (NUMBER)
+GE_SquadItemDeposit = 4194304  (NUMBER)
+GE_SquadItemPickup = 4128768  (NUMBER)
+GE_SquadKilled = 3866624  (NUMBER)
+GE_SquadMembersChanged = 4849664  (NUMBER)
+GE_SquadMerge = 4784128  (NUMBER)
+GE_SquadModifyResource = 5439488  (NUMBER)
+GE_SquadOwnerChange = 5308416  (NUMBER)
+GE_SquadParadropComplete = 4653056  (NUMBER)
+GE_SquadPinned = 3932160  (NUMBER)
 GE_SquadPrecached = 1245440  (NUMBER)
-GE_SquadProductionQueue = 3932160  (NUMBER)
-GE_SquadReplaced = 5046272  (NUMBER)
-GE_SquadRetreat = 4325376  (NUMBER)
-GE_SquadRetreatMsgReceived = 4390912  (NUMBER)
-GE_SquadSizeChanged = 8126464  (NUMBER)
-GE_SquadSpawn = 3735552  (NUMBER)
-GE_SquadSplit = 4653056  (NUMBER)
-GE_SquadTeleported = 5308416  (NUMBER)
-GE_SquadUnloaded = 5177344  (NUMBER)
-GE_SquadVeterancyRank = 3997696  (NUMBER)
-GE_StatsCustomEvent = 9895936  (NUMBER)
-GE_StrategicPointChanged = 1835008  (NUMBER)
-GE_StructureReplaced = 2031616  (NUMBER)
+GE_SquadProductionQueue = 3997696  (NUMBER)
+GE_SquadReplaced = 5111808  (NUMBER)
+GE_SquadRetreat = 4390912  (NUMBER)
+GE_SquadRetreatMsgReceived = 4456448  (NUMBER)
+GE_SquadSizeChanged = 8192000  (NUMBER)
+GE_SquadSpawn = 3801088  (NUMBER)
+GE_SquadSplit = 4718592  (NUMBER)
+GE_SquadTeleported = 5373952  (NUMBER)
+GE_SquadUnloaded = 5242880  (NUMBER)
+GE_SquadVeterancyRank = 4063232  (NUMBER)
+GE_StatsCustomEvent = 10027008  (NUMBER)
+GE_StrategicPointChanged = 1900544  (NUMBER)
+GE_StructureReplaced = 2097152  (NUMBER)
 GE_SubselectionChanged = 1507584  (NUMBER)
-GE_SuperAbility = 7274496  (NUMBER)
+GE_SuperAbility = 7340032  (NUMBER)
 GE_TacticalPause = 2359552  (NUMBER)
-GE_TerrainAreaDeformed = 7471104  (NUMBER)
-GE_TerritoryControllerChangedOwner = 10158080  (NUMBER)
-GE_TerritoryCornerDeoccupied = 1310720  (NUMBER)
-GE_TerritoryEdgeDeoccupied = 1245184  (NUMBER)
-GE_TerritoryEntered = 6422528  (NUMBER)
-GE_TickerValuesUpdated = 8978432  (NUMBER)
-GE_TurnAdvancement = 10223616  (NUMBER)
-GE_UpgradeCancelled = 8060928  (NUMBER)
+GE_TerrainAreaDeformed = 7536640  (NUMBER)
+GE_TerritoryControllerChangedOwner = 10289152  (NUMBER)
+GE_TerritoryCornerDeoccupied = 1376256  (NUMBER)
+GE_TerritoryEdgeDeoccupied = 1310720  (NUMBER)
+GE_TerritoryEntered = 6488064  (NUMBER)
+GE_TickerValuesUpdated = 9043968  (NUMBER)
+GE_TurnAdvancement = 10354688  (NUMBER)
+GE_UpgradeCancelled = 8126464  (NUMBER)
 GE_UpgradeComplete = 65536  (NUMBER)
-GE_UpgradeRemoved = 7929856  (NUMBER)
+GE_UpgradeRemoved = 7995392  (NUMBER)
 GE_UpgradeStart = 0  (NUMBER)
 GE_UpgradeTentative = 131072  (NUMBER)
-GE_WaitObjectDone = 8519680  (NUMBER)
-GE_WalkableSurfacePurgeOrphans = 9961472  (NUMBER)
-GE_WallCombatEnded = 6291456  (NUMBER)
-GE_WallCombatStarted = 6225920  (NUMBER)
-GE_WallWalked = 6160384  (NUMBER)
-GE_WeaponSetup = 2818048  (NUMBER)
-GE_WeaponTeardown = 2883584  (NUMBER)
-GE_WreckRecovered = 851968  (NUMBER)
-GE_WreckSalvaged = 786432  (NUMBER)
+GE_WaitObjectDone = 8585216  (NUMBER)
+GE_WalkableSurfacePurgeOrphans = 10092544  (NUMBER)
+GE_WallCombatEnded = 6356992  (NUMBER)
+GE_WallCombatStarted = 6291456  (NUMBER)
+GE_WallWalked = 6225920  (NUMBER)
+GE_WeaponSetup = 2883584  (NUMBER)
+GE_WeaponTeardown = 2949120  (NUMBER)
+GE_WreckRecovered = 917504  (NUMBER)
+GE_WreckSalvaged = 851968  (NUMBER)
 Heavy = {} CrushMode(0) (ENUM)
 HPAT_Artillery = {} HintPointActionType(8) (ENUM)
 HPAT_Attack = {} HintPointActionType(4) (ENUM)
@@ -4381,16 +4583,17 @@ R_ALLY = {} Relationship(2) (ENUM)
 R_ENEMY = {} Relationship(1) (ENUM)
 R_NEUTRAL = {} Relationship(3) (ENUM)
 R_UNDEFINED = {} Relationship(0) (ENUM)
-RT_Action = 0  (NUMBER)
+RT_AbilityResource1 = 1  (NUMBER)
+RT_Action = 2  (NUMBER)
 RT_Begin = 0  (NUMBER)
-RT_Command = 1  (NUMBER)
-RT_Count = 8  (NUMBER)
-RT_Fuel = 2  (NUMBER)
-RT_Manpower = 3  (NUMBER)
-RT_Munition = 4  (NUMBER)
-RT_Popcap = 5  (NUMBER)
-RT_Requisition = 6  (NUMBER)
-RT_Ultimate = 7  (NUMBER)
+RT_Command = 3  (NUMBER)
+RT_Count = 10  (NUMBER)
+RT_Fuel = 4  (NUMBER)
+RT_Manpower = 5  (NUMBER)
+RT_Munition = 6  (NUMBER)
+RT_Popcap = 7  (NUMBER)
+RT_Requisition = 8  (NUMBER)
+RT_Ultimate = 9  (NUMBER)
 SCARTYPE_AIENCOUNTER = 1634297198  (NUMBER)
 SCARTYPE_AIENTITY = 1634297204  (NUMBER)
 SCARTYPE_AIPLAYER = 1634300012  (NUMBER)
@@ -4534,7 +4737,8 @@ ST_SQUAD = {} ScarType(14) (ENUM)
 ST_STRING = {} ScarType(4) (ENUM)
 ST_TABLE = {} ScarType(5) (ENUM)
 ST_UIGAMEITEMINFO = {} ScarType(27) (ENUM)
-ST_UNKNOWN = {} ScarType(30) (ENUM)
+ST_UNKNOWN = {} ScarType(31) (ENUM)
+ST_WAYPOINTS = {} ScarType(30) (ENUM)
 STANCE_Attack = {} StanceType(2) (ENUM)
 STANCE_CeaseFire = {} StanceType(0) (ENUM)
 STANCE_StandGround = {} StanceType(1) (ENUM)
@@ -4643,6 +4847,7 @@ UIE_CasualtySquadSpawned = {} UIEventType(25) (ENUM)
 UIE_CommandPointGained = {} UIEventType(28) (ENUM)
 UIE_ConstructionComplete = {} UIEventType(1) (ENUM)
 UIE_Default = {} UIEventType(0) (ENUM)
+UIE_EmplacementAttacked = {} UIEventType(32) (ENUM)
 UIE_EnemyReveal = {} UIEventType(20) (ENUM)
 UIE_EnemyTerritoryEntered = {} UIEventType(11) (ENUM)
 UIE_InfantryAttacked = {} UIEventType(6) (ENUM)
