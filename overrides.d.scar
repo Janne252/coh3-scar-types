@@ -1238,3 +1238,11 @@ function Modifier_Remove(modifierId) end
 ---@param flag userdata SimulationPause_Break | SimulationPause_Error | SimulationPause_Game | SimulationPause_Input | SimulationPause_Movies | SimulationPause_Music | SimulationPause_None | SimulationPause_Simulation | SimulationPause_SimulationInput
 function Game_PauseSimulation(flag) end
 
+---@param t table
+--- Iterate over a table's entries in the order of their keys sorted alphabetically
+--- Necessary if you require deterministic iteration of a table
+--- Returns an iterator An iterator of table pairs in the order of their keys in alphabetical order
+function Table_DeterministicOrderedPairs(t) end
+
+---@param modifierId number
+function Modifier_RemoveInternal(modifierId) end
