@@ -1246,3 +1246,8 @@ function Table_DeterministicOrderedPairs(t) end
 
 ---@param modifierId number
 function Modifier_RemoveInternal(modifierId) end
+
+---@param player Player
+---@param resourceType ResourceType
+---@return number
+function Player_GetCurrentResourceRatePerSecond(player, resourceType) end
