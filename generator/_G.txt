@@ -648,6 +648,7 @@ BP_GetMoveTypeBlueprintByPbgID
 BP_GetName
 BP_GetPassTypeBlueprint
 BP_GetPassTypeBlueprintByPbgID
+BP_GetPersistentPerkName
 BP_GetPropertyBagGroupCount
 BP_GetPropertyBagGroupPathName
 BP_GetPropertyBagGroupShortName
@@ -750,7 +751,9 @@ Camera_SetDefaultDeclination
 Camera_SetDefaultOrbit
 Camera_SetDefaultZoomDist
 Camera_SetDistance
+Camera_SetFov
 Camera_SetInputEnabled
+Camera_SetOffset
 Camera_SetOrbit
 Camera_SetOrbitRelative
 Camera_SetOverviewModeEnabled
@@ -1101,6 +1104,7 @@ Entity_GetHeading
 Entity_GetHealth
 Entity_GetHealthMax
 Entity_GetHealthPercentage
+Entity_GetHeight
 Entity_GetID
 Entity_GetInventoryOwnerEntity
 Entity_GetInventoryOwnerPlayer
@@ -1366,6 +1370,7 @@ Entity_SpawnToward
 Entity_StopAbility
 Entity_StopFire
 Entity_SupportsDemolition
+Entity_SwapAttachmentList
 Entity_TagDebug
 Entity_TaggedEntityKill
 Entity_UsesBoardTurn
@@ -1500,6 +1505,7 @@ Game_GetTerrainTypeVariables
 Game_GetVisibilityFlag
 Game_HasLocalPlayer
 Game_IsDataLocked
+Game_IsFrontEndScenario
 Game_IsFtue
 Game_IsGamepadActive
 Game_IsKeyboardMouseActive
@@ -2013,6 +2019,7 @@ Player_AddResource
 Player_AddResources
 Player_AddSquadsToSGroup
 Player_AddUnspentCommandPoints
+Player_ApplyPersistentPerk
 Player_AreSquadsNearMarker
 Player_CanAddUpgrade
 Player_CanCastAbilityOnEntity
@@ -2625,6 +2632,7 @@ Squad_CreateAndSpawnToward
 Squad_CreateAndSpawnTowardCheat
 Squad_CreateAndSpawnTowardENV
 Squad_CreateAndSpawnTowardENVCheat
+Squad_CreateAndSpawnTowardEx
 Squad_CreateToward
 Squad_CreateTowardCheat
 Squad_CreateTowardENV
@@ -2699,6 +2707,7 @@ Squad_GetProductionQueueItem
 Squad_GetProductionQueueItemType
 Squad_GetProductionQueueSize
 Squad_GetRace
+Squad_GetRadius
 Squad_GetRallyPointPosition
 Squad_GetRemainingInventoryCapacity
 Squad_GetResource
@@ -3976,6 +3985,7 @@ CMD_CancelRestoreWreck = {} EntityCommandType(59) (ENUM)
 CMD_Capture = {} EntityCommandType(13) (ENUM)
 CMD_Casualty = {} EntityCommandType(27) (ENUM)
 CMD_ChangeCombatSlot = {} EntityCommandType(49) (ENUM)
+CMD_Custom = {} EntityCommandType(44) (ENUM)
 CMD_Death = {} EntityCommandType(28) (ENUM)
 CMD_DefaultAction = {} EntityCommandType(0) (ENUM)
 CMD_DefuseMine = {} EntityCommandType(26) (ENUM)
@@ -4014,7 +4024,6 @@ CMD_Stop = {} EntityCommandType(1) (ENUM)
 CMD_StopAbility = {} EntityCommandType(51) (ENUM)
 CMD_StopMove = {} EntityCommandType(24) (ENUM)
 CMD_Stun = {} EntityCommandType(40) (ENUM)
-CMD_Taunted = {} EntityCommandType(44) (ENUM)
 CMD_Teardown = {} EntityCommandType(37) (ENUM)
 CMD_Trade = {} EntityCommandType(45) (ENUM)
 CMD_Unload = {} EntityCommandType(19) (ENUM)
@@ -4628,11 +4637,11 @@ SCMD_CancelQueuedCommand = {} SquadCommandType(112) (ENUM)
 SCMD_Capture = {} SquadCommandType(66) (ENUM)
 SCMD_CaptureTeamWeapon = {} SquadCommandType(79) (ENUM)
 SCMD_CombatStance = {} SquadCommandType(103) (ENUM)
+SCMD_Custom = {} SquadCommandType(119) (ENUM)
 SCMD_DefaultAction = {} SquadCommandType(0) (ENUM)
 SCMD_DefuseCharge = {} SquadCommandType(84) (ENUM)
 SCMD_DefuseMine = {} SquadCommandType(87) (ENUM)
 SCMD_Destroy = {} SquadCommandType(64) (ENUM)
-SCMD_DetachingTrailer_UNUSED = {} SquadCommandType(119) (ENUM)
 SCMD_DoPlan = {} SquadCommandType(88) (ENUM)
 SCMD_DropTrailer_UNUSED = {} SquadCommandType(85) (ENUM)
 SCMD_Evacuate = {} SquadCommandType(110) (ENUM)
