@@ -1251,3 +1251,10 @@ function Modifier_RemoveInternal(modifierId) end
 ---@param resourceType ResourceType
 ---@return number
 function Player_GetCurrentResourceRatePerSecond(player, resourceType) end
+
+---@deprecated
+--- Get maximum popcap including any overrides. Use capType CT_Personnel to get max squad cap or CT_VehicleCap to get max vehicle cap. If there are no overrides, the default max pop cap is returned.
+---@param player Player
+---@param capType CapType
+---@return unknown
+function Player_GetMaxPopulationCapOverride(player, capType) end

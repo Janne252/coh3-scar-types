@@ -10904,12 +10904,6 @@ function Player_GetEntityName(player, index) end
 ---@return unknown
 function Player_GetMaxPopulationCap(player, capType) end
 
---- Get maximum popcap including any overrides. Use capType CT_Personnel to get max squad cap or CT_VehicleCap to get max vehicle cap. If there are no overrides, the default max pop cap is returned.
----@param player Player
----@param capType CapType
----@return unknown
-function Player_GetMaxPopulationCapOverride(player, capType) end
-
 --- Returns the number of squads currently gathering resources of a given type
 ---@param player Player
 ---@param type number
