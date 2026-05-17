@@ -1,3 +1,7 @@
+-- Import common modules not imported by default win condition entries
+import("objectives.scar")
+import("team.scar")
+
 print('Beginning to dump _G contents...')
 local declarations = {}
 local functionNames --[[@type string[] ]] = {}
@@ -8,7 +12,15 @@ for key, value in pairs(_G) do
 	local scarTypeName = scartype_tostring(value)
     local declarationType = nativeType
     local declarationDocumentation = ''
-    if scarType == ST_STRING or scarType == ST_NUMBER or scarType == ST_INTEGER or scarType == ST_BOOLEAN or scarType == ST_ENUM or scarType == ST_CONSTVALTABLE then
+    if
+		scarType == ST_STRING or
+		scarType == ST_NUMBER or
+		scarType == ST_INTEGER or
+		scarType == ST_BOOLEAN or
+		scarType == ST_ENUM or
+		scarType == ST_CONSTVALTABLE or
+		scarType == ST_FUNCTION
+	 then
         local declarationValue
 		local declarationValueUnescaped
         if scarType == ST_STRING then
@@ -19,6 +31,11 @@ for key, value in pairs(_G) do
             declarationValueUnescaped = '{}'
             declarationType = 'userdata'
             declarationDocumentation = string.format('%s', tostring(value))
+		elseif scarType == ST_FUNCTION then
+			table.insert(functionNames, key)
+			declarationValue = ''
+			declarationType = 'function'
+			declarationValueUnescaped = '(...) end'
         elseif scarType == ST_NUMBER or scarType == ST_INTEGER or scarType == ST_BOOLEAN then
             if value == math.huge or value == -math.huge then
                 declarationValue = 'math.huge'
@@ -35,8 +52,6 @@ for key, value in pairs(_G) do
             content = string.format('{"name": "%s", "type": "%s", "value": "%s", "documentation": "%s"}', key, declarationType, declarationValue, declarationDocumentation),
         })
 		table.insert(symbols, string.format('%s = %s %s (%s)', key, declarationValueUnescaped, declarationDocumentation, scarTypeName))
-	elseif scarType == ST_FUNCTION then
-		table.insert(functionNames, key)
     end
 	print(key, value)
 end

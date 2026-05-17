@@ -683,6 +683,7 @@ BP_GetWeaponBlueprint
 BP_GetWeaponBlueprintByPbgID
 BP_GetWeaponBlueprintInfo
 BP_GetWeaponEntityWeaponBlueprint
+BP_HasEntityBPMovementInfo
 BP_IsAbilityOfCategory
 BP_IsInfantryBlueprint
 BP_IsTeamWeaponBlueprint
@@ -1525,6 +1526,8 @@ Game_LoadFromFileDev
 Game_LoadGame
 Game_LoadSP
 Game_LockRandom
+Game_PauseMP
+Game_PauseSim
 Game_PauseSimulation
 Game_Quicksave
 Game_QuitApp
@@ -1541,6 +1544,9 @@ Game_SendCustomChallengeEvent
 Game_SetDataLock
 Game_SetGameRestoreCallback
 Game_SetInputEnabledFlag
+Game_SetMPPauseCount
+Game_SetMPSimRate
+Game_SetMPSimRateChangeCount
 Game_SetPostGameChatChannel
 Game_SetSimRate
 Game_SetVisibility
@@ -1557,6 +1563,8 @@ Game_TransitionFromStateToState
 Game_TransitionPartiallyToState
 Game_TransitionToState
 Game_UnLockRandom
+Game_UnpauseMP
+Game_UnpauseSim
 GameModifiers_OnGameRestore
 GetCameraNameFromPBGName
 GetLocalPlayer
@@ -3268,6 +3276,7 @@ UI_SetDecoratorsEnabled
 UI_SetEnablePauseMenu
 UI_SetEntityDataContext
 UI_SetForceShowSubtitles
+UI_SetHoffTechnologyMenuVisibility
 UI_SetMinimapTrueNorth
 UI_SetModalAbilityPhaseCallback
 UI_SetModalConstructionPhaseCallback
@@ -3693,6 +3702,7 @@ World_IsPosOnWalkableWall
 World_IsScriptedTurnPhase
 World_IsScriptedTurnPhaseEnabled
 World_IsSetupTurnPhase
+World_IsSkirmishGame
 World_IsSquadInventoryItemPrerequisiteUnviewed
 World_IsTerritorySectorOwnedByPlayer
 World_IsTurnEndScriptedPhase
@@ -4076,11 +4086,12 @@ DST_CLOSEST_HIDDEN = 2  (NUMBER)
 DST_CLOSEST_VISIBLE = 3  (NUMBER)
 DST_FURTHEST_HIDDEN = 0  (NUMBER)
 DST_FURTHEST_VISIBLE = 1  (NUMBER)
-DV_Count = {} DecoratorVisibility(7) (ENUM)
+DV_Count = {} DecoratorVisibility(8) (ENUM)
 DV_Default = {} DecoratorVisibility(2) (ENUM)
 DV_EnemyOnly = {} DecoratorVisibility(4) (ENUM)
 DV_Hidden = {} DecoratorVisibility(0) (ENUM)
 DV_MouseOver = {} DecoratorVisibility(1) (ENUM)
+DV_MouseOverOrDamaged = {} DecoratorVisibility(7) (ENUM)
 DV_MouseOverOrDamagedEnemy = {} DecoratorVisibility(5) (ENUM)
 DV_MouseOverOrDamagedRecently = {} DecoratorVisibility(6) (ENUM)
 DV_Visible = {} DecoratorVisibility(3) (ENUM)
@@ -4729,6 +4740,7 @@ ST_CONSTSQUAD = {} ScarType(15) (ENUM)
 ST_EGROUP = {} ScarType(10) (ENUM)
 ST_ENTITY = {} ScarType(11) (ENUM)
 ST_ENUM = {} ScarType(8) (ENUM)
+ST_EXTENDED = {} ScarType(31) (ENUM)
 ST_FUNCTION = {} ScarType(7) (ENUM)
 ST_LOCSTRING = {} ScarType(24) (ENUM)
 ST_MARKER = {} ScarType(18) (ENUM)
@@ -4746,7 +4758,7 @@ ST_SQUAD = {} ScarType(14) (ENUM)
 ST_STRING = {} ScarType(4) (ENUM)
 ST_TABLE = {} ScarType(5) (ENUM)
 ST_UIGAMEITEMINFO = {} ScarType(27) (ENUM)
-ST_UNKNOWN = {} ScarType(31) (ENUM)
+ST_UNKNOWN = {} ScarType(32) (ENUM)
 ST_WAYPOINTS = {} ScarType(30) (ENUM)
 STANCE_Attack = {} StanceType(2) (ENUM)
 STANCE_CeaseFire = {} StanceType(0) (ENUM)

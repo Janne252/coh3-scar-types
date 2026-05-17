@@ -270,6 +270,7 @@ ErrorMessage = {}
 ---@class argc
 argc = {}
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a AlliedCombatFitness scoring function.
 --- Returns 1.0 to 0.0, based on how the allied combat fitness is. 1.0 if the allied fitness is at or below minFitness, 0.0 if fitness is above the maxFitness, smooth transition in between. If highFitnessIsGood, returns 0.0 to 1.0 instead. 0.0 if at or below minFitness and 1.0 if at or above maxFitness.
 ---@param aiPlayer Player
@@ -280,6 +281,7 @@ argc = {}
 ---@return unknown
 function AIProductionScoring_AlliedCombatFitness(aiPlayer, minFitness, maxFitness, aiArmyType, highFitnessIsGood) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a AlliedCombatFitness scoring function (versus strongest enemy).
 --- Returns 1.0 to 0.0, based on how the allied combat fitness is. 1.0 if the fitness is at or below minFitness, 0.0 if fitness is above the maxFitness, smooth transition in between. If highFitnessIsGood, returns 0.0 to 1.0 instead. 0.0 if at or below minFitness and 1.0 if at or above maxFitness.
 ---@param aiPlayer Player
@@ -290,6 +292,7 @@ function AIProductionScoring_AlliedCombatFitness(aiPlayer, minFitness, maxFitnes
 ---@return unknown
 function AIProductionScoring_AlliedCombatFitnessVsStrongestEnemy(aiPlayer, minFitness, maxFitness, aiArmyType, highFitnessIsGood) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a AlliedCombatFitness scoring function (versus the weakest enemy).
 --- Returns 1.0 to 0.0, based on how the allied combat fitness is. 1.0 if the fitness is at or below minFitness, 0.0 if fitness is above the maxFitness, smooth transition in between. If highFitnessIsGood, returns 0.0 to 1.0 instead. 0.0 if at or below minFitness and 1.0 if at or above maxFitness.
 ---@param aiPlayer Player
@@ -300,6 +303,7 @@ function AIProductionScoring_AlliedCombatFitnessVsStrongestEnemy(aiPlayer, minFi
 ---@return unknown
 function AIProductionScoring_AlliedCombatFitnessVsWeakestEnemy(aiPlayer, minFitness, maxFitness, aiArmyType, highFitnessIsGood) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create an AmountOfResourceNeeded scoring function.
 --- If this building is a dropoff, this returns a value between 0 and 1 indicating how much of that resources is needed. Any amount >= maxResources will result in a value of 1.
 ---@param aiPlayer Player
@@ -307,12 +311,14 @@ function AIProductionScoring_AlliedCombatFitnessVsWeakestEnemy(aiPlayer, minFitn
 ---@return unknown
 function AIProductionScoring_AmountOfResourceNeeded(aiPlayer, maxResources) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Check if now is an appropriate time to be making scoring functions.
 --- Score functions should only be made within functions referenced by ProductionGroups
 ---@param aiPlayer Player
 ---@return unknown
 function AIProductionScoring_CanPushProductionScoringFunction(aiPlayer) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a ClampedScoringFunction scoring function.
 --- Clamps the returned value of the inner scoring function
 ---@param aiPlayer Player
@@ -322,6 +328,7 @@ function AIProductionScoring_CanPushProductionScoringFunction(aiPlayer) end
 ---@return unknown
 function AIProductionScoring_ClampedScoringFunction(aiPlayer, min, max, innerScoringFunction) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a CounterScore scoring function
 --- If a item is a chosen counter it will get the score = (baseScoreContributuion + (1 - baseScoreContributuion) * counter score)
 ---@param aiPlayer Player
@@ -329,6 +336,7 @@ function AIProductionScoring_ClampedScoringFunction(aiPlayer, min, max, innerSco
 ---@return unknown
 function AIProductionScoring_CounterScore(aiPlayer, baseScoreContributuion) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a DropOffScore scoring function.
 --- Returns positive score if drop off is required to either serve gathering of a resource or improve existing gathering
 ---@param aiPlayer Player
@@ -336,12 +344,14 @@ function AIProductionScoring_CounterScore(aiPlayer, baseScoreContributuion) end
 ---@return unknown
 function AIProductionScoring_DeficiencyScore(aiPlayer, weight) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a EntityCombatUpgrade scoring function.
 --- Returns positive score if entity's combat fitness is improved. The aforementioned entity is the entity that the upgrade is being produce on.
 ---@param aiPlayer Player
 ---@return unknown
 function AIProductionScoring_EntityCombatUpgrade(aiPlayer) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a MinimumGameTime scoring function.
 --- minGameTime is time from start in seconds. Returns 0.0 until minGameTime has passed, 1.0f after.
 ---@param aiPlayer Player
@@ -350,18 +360,21 @@ function AIProductionScoring_EntityCombatUpgrade(aiPlayer) end
 ---@return unknown
 function AIProductionScoring_IncreaseOverTime(aiPlayer, minGameTime, increasePerSecond) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create an InverseRandomIntScore scoring function.
 --- Returns either 0.0f or 1.0f (inverse of RandomIntScore) based on a random number picked at the start of the game
 ---@param aiPlayer Player
 ---@return unknown
 function AIProductionScoring_InverseRandomIntScore(aiPlayer) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create an IslandNeedingExpansionBase scoring function.
 --- Returns 1.0f if there is an island requiring an expansion base
 ---@param aiPlayer Player
 ---@return unknown
 function AIProductionScoring_IslandNeedingExpansionBase(aiPlayer) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a LackOfSecuredResourceDeposits scoring function.
 --- Returns between 0 and 1, 1 if the total sum of secured resource deposits is less or equal to scarce amount, 0 if the amount is equal to or greater than well off amount, lerps in between
 ---@param aiPlayer Player
@@ -371,6 +384,7 @@ function AIProductionScoring_IslandNeedingExpansionBase(aiPlayer) end
 ---@return unknown
 function AIProductionScoring_LackOfSecuredResourceDeposits(aiPlayer, resourceType, scarceAmount, wellOffAmount) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a LuaScoringFunction scoring function.
 --- Takes a reference to a lua function. Lua function will be called and passed AIPlayer and Pbg. Lua function is expected to return a value >= 0.0 DO NOT call any methods that do stuff to the AIPlayer in your referenced lua function. The referenced lua function must exist within the player's lua context
 ---@param aiPlayer Player
@@ -378,6 +392,7 @@ function AIProductionScoring_LackOfSecuredResourceDeposits(aiPlayer, resourceTyp
 ---@return unknown
 function AIProductionScoring_LuaScoringFunction(aiPlayer, scoringFunction) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a MaximumGameTime scoring function.
 --- minGameTime is time from start in seconds. Returns 1.0 until maxGameTime has passed, 0.0f after.
 ---@param aiPlayer Player
@@ -385,6 +400,7 @@ function AIProductionScoring_LuaScoringFunction(aiPlayer, scoringFunction) end
 ---@return unknown
 function AIProductionScoring_MaximumGameTime(aiPlayer, maxGameTime) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a MaxPopCapPercentage scoring function
 --- targetPopulationPercentageAlive should be in range 0.0 -> 1.0. Return 1.0f as long as the combined population of the production item /group does not exceed a percentage of the player's max pop cap. If groupPopulation == true then all members of the item's Production Group are counted towards the current population to be compared against the target population.
 ---@param aiPlayer Player
@@ -393,6 +409,7 @@ function AIProductionScoring_MaximumGameTime(aiPlayer, maxGameTime) end
 ---@return unknown
 function AIProductionScoring_MaxPopCapPercentage(aiPlayer, targetPopulationPercentageAlive, groupPopulation) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a MaxScoringFunction scoring function.
 --- Returns the max value of the inner scoring functions
 ---@param aiPlayer Player
@@ -400,6 +417,7 @@ function AIProductionScoring_MaxPopCapPercentage(aiPlayer, targetPopulationPerce
 ---@return unknown
 function AIProductionScoring_MaxScoringFunction(aiPlayer, innerScoringFunction) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a MaxWeaponDamage scoring function.
 --- Units max weapon damage is normalized by max damage. (returns between 0.0 and 1.0)
 ---@param aiPlayer Player
@@ -407,6 +425,7 @@ function AIProductionScoring_MaxScoringFunction(aiPlayer, innerScoringFunction) 
 ---@return unknown
 function AIProductionScoring_MaxWeaponDamage(aiPlayer, maxDamage) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a MilitaryPlayerUpgrade scoring function.
 --- Quantifies how a player upgrade will improve the current army's combat fitness. Result = 1 - (1  - combat_fitness_improvment)^upgradeExponent
 ---@param aiPlayer Player
@@ -414,6 +433,7 @@ function AIProductionScoring_MaxWeaponDamage(aiPlayer, maxDamage) end
 ---@return unknown
 function AIProductionScoring_MilitaryPlayerUpgrade(aiPlayer, upgradeExponent) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a MinimumGameTime scoring function.
 --- minGameTime is time from start in seconds. Returns 0.0 until minGameTime has passed, 1.0f after.
 ---@param aiPlayer Player
@@ -421,6 +441,7 @@ function AIProductionScoring_MilitaryPlayerUpgrade(aiPlayer, upgradeExponent) en
 ---@return unknown
 function AIProductionScoring_MinimumGameTime(aiPlayer, minGameTime) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a MultipleProduced scoring function
 --- Item will get a score of 1 +(additionalFactor * number of additional produced)
 ---@param aiPlayer Player
@@ -428,6 +449,7 @@ function AIProductionScoring_MinimumGameTime(aiPlayer, minGameTime) end
 ---@return unknown
 function AIProductionScoring_MultipleProduced(aiPlayer, additionalFactor) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a MultiplyListScoringFunction scoring function.
 --- Takes a list of scoring functions and multiplies them together. This scoring function can be paired with MaxScoringFunction to generate OR scoring expressions, such as Max(IslandNeedingExpansionBase, (ProductionQueueContention * TimeToAcquire))
 ---@param aiPlayer Player
@@ -435,18 +457,21 @@ function AIProductionScoring_MultipleProduced(aiPlayer, additionalFactor) end
 ---@return unknown
 function AIProductionScoring_MultiplyListScoringFunction(aiPlayer, innerScoringFunction) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a NavalTransportRequired scoring function.
 --- Returns 0.0 -> 1.0, depending on strategic island decisions that would require transport
 ---@param aiPlayer Player
 ---@return unknown
 function AIProductionScoring_NavalTransportRequired(aiPlayer) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create an NotProducedEver scoring function.
 --- Returns 1.0f has never been produced, 0.0f if it has been produced
 ---@param aiPlayer Player
 ---@return unknown
 function AIProductionScoring_NotProducedEver(aiPlayer) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create an NotProducedRecently scoring function.
 --- Returns 1.0f if the item was not produced within the time period supplied, 0.0f otherwise
 ---@param aiPlayer Player
@@ -454,12 +479,14 @@ function AIProductionScoring_NotProducedEver(aiPlayer) end
 ---@return unknown
 function AIProductionScoring_NotProducedRecently(aiPlayer, timePeriodSeconds) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a OnlyProduceOneAtATime scoring function.
 --- Returns 0.0 while another item of the same type is being produced
 ---@param aiPlayer Player
 ---@return unknown
 function AIProductionScoring_OnlyProduceOneAtATime(aiPlayer) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a PlannedPlacementScore scoring function.
 --- Returns the value of the planned placement, returns 0.0 if no planned placement Will return 0.0 if placement score is below minPlacementScore. Set minPlacementScore < 0.0 to ignore this minimum filtering.
 ---@param aiPlayer Player
@@ -467,6 +494,7 @@ function AIProductionScoring_OnlyProduceOneAtATime(aiPlayer) end
 ---@return unknown
 function AIProductionScoring_PlannedPlacementScore(aiPlayer, minPlacementScore) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a PlayerGatheringUpgrade scoring function
 --- Result is gatheringImprovment * improvementScalingFactor
 ---@param aiPlayer Player
@@ -475,18 +503,21 @@ function AIProductionScoring_PlannedPlacementScore(aiPlayer, minPlacementScore) 
 ---@return unknown
 function AIProductionScoring_PlayerGatheringUpgrade(aiPlayer, improvementScalingFactor, approxDistToDeposit) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create an AIPlayersOnDifferentIslands scoring function.
 --- Returns 1.0 if any players are on different pathfinding islands, 0 if they are all on the same island
 ---@param aiPlayer Player
 ---@return unknown
 function AIProductionScoring_PlayersOnDifferentIslands(aiPlayer) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a PopCapGenerator scoring function.
 --- Returns 1.0 score if the item generates required pop cap
 ---@param aiPlayer Player
 ---@return unknown
 function AIProductionScoring_PopCapGenerator(aiPlayer) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a PopulationPercentage scoring function
 --- targetPopulationPercentageAlive should be in range 0.0 -> 1.0. Score will approach zero as an item's population (as a percentage of the global population) approaches the target, i.e. score =  1.0f - (currentPercentage / target)^dropOffFactor;  The global population is number of squads or structures belonging to the player alive. If groupPopulation == true then all members of the item's Production Group are counted towards the current population to be compared against the global population. if useSquadPopulation == true, number of squads will be used in calculation instead of checking if the item pbg corresponds to a squad or building
 ---@param aiPlayer Player
@@ -497,6 +528,7 @@ function AIProductionScoring_PopCapGenerator(aiPlayer) end
 ---@return unknown
 function AIProductionScoring_PopulationPercentage(aiPlayer, targetPopulationPercentageAlive, scoreDropOffFactor, groupPopulation, useSquadPopulation) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a PresenceOfEnemyTypes scoring function
 --- Every time a unit type is observed it's weight is added to the return value of this scoring function. if squadTypes == false, then entity types assumed. Max return value is 1.0
 ---@param aiPlayer Player
@@ -505,6 +537,7 @@ function AIProductionScoring_PopulationPercentage(aiPlayer, targetPopulationPerc
 ---@return unknown
 function AIProductionScoring_PresenceOfEnemyTypes(aiPlayer, weights, squadTypes) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a PresenceOfMyTypes scoring function
 --- Every time a unit type is observed it's weight is added to the return value of this scoring function. if squadTypes == false, then entity types assumed. Max return value is 1.0
 ---@param aiPlayer Player
@@ -513,6 +546,7 @@ function AIProductionScoring_PresenceOfEnemyTypes(aiPlayer, weights, squadTypes)
 ---@return unknown
 function AIProductionScoring_PresenceOfMyTypes(aiPlayer, weights, squadTypes) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a PresenceOfUpgradeableSquads scoring function.
 --- For each player squad that this upgrade applies to the score is increased by the weight to a max of 1.0.
 ---@param aiPlayer Player
@@ -520,6 +554,7 @@ function AIProductionScoring_PresenceOfMyTypes(aiPlayer, weights, squadTypes) en
 ---@return unknown
 function AIProductionScoring_PresenceOfUpgradeableSquads(aiPlayer, weight) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a ProductionQueueContention scoring function.
 --- Returns a score of productionQueueContention / normalFactor. productionQueueContention is the number of contentions recorded for the associated item (which is a production building), normalFactor is clamped >= 1
 ---@param aiPlayer Player
@@ -528,12 +563,14 @@ function AIProductionScoring_PresenceOfUpgradeableSquads(aiPlayer, weight) end
 ---@return unknown
 function AIProductionScoring_ProductionQueueContention(aiPlayer, contentionThreshold, normalFactor) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create an RandomIntScore scoring function.
 --- Returns either 0.0f or 1.0f based on a random number picked at the start of the game
 ---@param aiPlayer Player
 ---@return unknown
 function AIProductionScoring_RandomIntScore(aiPlayer) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create an RemainingPersonnelPopCap scoring function.
 --- Returns 1.0f if there is enough remaining personnel pop cap, 0.0f otherwise
 ---@param aiPlayer Player
@@ -541,6 +578,7 @@ function AIProductionScoring_RandomIntScore(aiPlayer) end
 ---@return unknown
 function AIProductionScoring_RemainingPersonnelPopCap(aiPlayer, requiredRemainingPop) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a ResourceGeneratorScore scoring function.
 --- Gives positive score if the item produces required resources
 ---@param aiPlayer Player
@@ -548,24 +586,28 @@ function AIProductionScoring_RemainingPersonnelPopCap(aiPlayer, requiredRemainin
 ---@return unknown
 function AIProductionScoring_ResourceGeneratorScore(aiPlayer, depletionTimeThreshold) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a DropOffScore scoring function.
 --- Returns positive score if drop off is required to either serve gathering of a resource or improve existing gathering
 ---@param aiPlayer Player
 ---@return unknown
 function AIProductionScoring_ScarcityAndDeficiencyScore(aiPlayer) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create an AIShouldConsiderLimitedNaval scoring function.
 --- Returns 1.0 if there are large bodies of water on the map
 ---@param aiPlayer Player
 ---@return unknown
 function AIProductionScoring_ShouldConsiderLimitedNaval(aiPlayer) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create an AIShouldConsiderNaval scoring function.
 --- Returns 1.0 if players start on different islands or there are large bodies of water on the map
 ---@param aiPlayer Player
 ---@return unknown
 function AIProductionScoring_ShouldConsiderNaval(aiPlayer) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns 1 if not a naval map, 0 otherwise
 --- If shouldIncludeLimitedNaval is true, limited naval maps return 1, otherwise limited naval maps return 0
 ---@param aiPlayer Player
@@ -573,6 +615,7 @@ function AIProductionScoring_ShouldConsiderNaval(aiPlayer) end
 ---@return unknown
 function AIProductionScoring_ShouldNotConsiderNaval(aiPlayer, shouldIncludeLimitedNaval) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a StrategicIntention scoring function
 --- Weights table format: { ["weight name"] = weight, } The score is the sum of current intention values * weight, divided by the sum of weights Ex: (currentSiegeIntention* siegeIntentionWeight)/siegeIntentionWeight
 ---@param aiPlayer Player
@@ -580,12 +623,14 @@ function AIProductionScoring_ShouldNotConsiderNaval(aiPlayer, shouldIncludeLimit
 ---@return unknown
 function AIProductionScoring_StrategicIntention(aiPlayer, weights) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a TierUpgrade scoring function.
 --- Returns 1.0f if the given BuildInfo is a Player Upgrade that unlocks higher tier of existing units
 ---@param aiPlayer Player
 ---@return unknown
 function AIProductionScoring_TierUpgrade(aiPlayer) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a TimeToAcquire scoring function
 --- TimeToAcquire returns values between 0 and 1 and penalizes things that need lots of resources or prerequisites to be produced. Score will approach 0.01 as the time to build something approaches maxTimeSeconds. Time to build something is the sum of the time to gather the outstanding resources, time to build the item, and time to build the requirements of the item
 ---@param aiPlayer Player
@@ -596,6 +641,7 @@ function AIProductionScoring_TierUpgrade(aiPlayer) end
 ---@return unknown
 function AIProductionScoring_TimeToAcquire(aiPlayer, maxTimeSeconds, includeTimeToGather, includeTimeToBuildThis, includeTimeToBuildRequirements) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a ResourceDesireVsIncome scoring function.
 --- Returns 0.0 if no safe trade routes exist, 1.0 otherwise.
 ---@param aiPlayer Player
@@ -603,6 +649,7 @@ function AIProductionScoring_TimeToAcquire(aiPlayer, maxTimeSeconds, includeTime
 ---@return unknown
 function AIProductionScoring_TradeRouteExistsScore(aiPlayer, landRoute) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a UnderCountLimit scoring function
 --- Keeps an item within limits. If groupPopulation == true then all members of the item's Production Group are counted towards the current population to be compared against the limit.
 ---@param aiPlayer Player
@@ -612,6 +659,7 @@ function AIProductionScoring_TradeRouteExistsScore(aiPlayer, landRoute) end
 ---@return unknown
 function AIProductionScoring_UnderCountLimit(aiPlayer, maxAlive, maxEverProduced, groupPopulation) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a UnderCountLimit scoring function
 --- Keeps an item within limits. If groupPopulation == true then all members of the item's Production Group are counted towards the current population to be compared against the limit.
 ---@param aiPlayer Player
@@ -886,6 +934,7 @@ function AISquad_SetStateModelSquadTarget(aiSquad, key, value) end
 ---@return unknown
 function AISquad_SetStateModelVector3f(aiSquad, key, value) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- calculates a valid target position for a jump slide ability
 ---@param aiSquad Squad
 ---@param abilityPBG PBG
@@ -894,6 +943,7 @@ function AISquad_SetStateModelVector3f(aiSquad, key, value) end
 ---@return unknown
 function AITactic_AdjustJumpSlideAbilityTarget(aiSquad, abilityPBG, slideOffset, targetPosition) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Issue an AI move command to a squad
 ---@param aiSquad Squad
 ---@param target Position
@@ -902,6 +952,7 @@ function AITactic_AdjustJumpSlideAbilityTarget(aiSquad, abilityPBG, slideOffset,
 ---@return unknown
 function AITactic_AICommandSquadMove(aiSquad, target, acceptableProximity, reverseMove) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Get tactic priority for a squad.
 --- Return -1 if the tactic type isn't found.
 ---@param pSquad Squad
@@ -909,84 +960,103 @@ function AITactic_AICommandSquadMove(aiSquad, target, acceptableProximity, rever
 ---@return unknown
 function AITactic_GetTacticPriority(pSquad, tacticType) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Get current AI player ID
 ---@return unknown
 function AI_GetDebugAIPlayerID() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set current debug AI player to the next AI player
 ---@return unknown
 function AI_ToggleDebugAIPlayer() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle cursor position distance drawring
 ---@return unknown
 function Cursor_Distance() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle clearing of cursor over entity weapon shot history debug display
 ---@return unknown
 function Cursor_GetClearWeaponShotHistory() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle cursor over entity weapon shot history debug display
 ---@return unknown
 function Cursor_GetDrawWeaponShotHistory() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle cursor position information
 ---@return unknown
 function Cursor_Info() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle cursor over entity weapon information
 ---@return unknown
 function Cursor_WeaponInfo() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle cursor over entity weapon range information
 ---@return unknown
 function Cursor_WeaponRanges() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggles on or off under mouse check. If ignoring mouse check, all entities will have the enabled debug info displayed
 ---@return unknown
 function Debug_IgnoreMouseOverCheck() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Allows the local player to issue commands to any unit regardless of ownership.
 ---@return unknown
 function Debug_ToggleControlAll() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggles on or off all debug test activity
 ---@return unknown
 function Debug_ToggleDebugTest() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Query the display adapter database for a boolean setting override.
 ---@param setting string
 ---@return unknown
 function DisplayAdapterDatabase_CheckBoolOverride(setting) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Query the display adapter database for a floating-point setting override.
 ---@param setting string
 ---@return unknown
 function DisplayAdapterDatabase_CheckFloatOverride(setting) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Query the display adapter database for an integer setting override.
 ---@param setting string
 ---@return unknown
 function DisplayAdapterDatabase_CheckIntOverride(setting) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Output the installed display adapter driver version, the required version for the current adapter, and whether or not the installed version is equal to or greater than the required one.
 ---@return unknown
 function DisplayAdapterDatabase_CheckMinimumDriverVersion() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Query the display adapter database for a uint16 setting override.
 ---@param setting string
 ---@return unknown
 function DisplayAdapterDatabase_CheckUint16Override(setting) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Query the display adapter database for a uint8 setting override.
 ---@param setting string
 ---@return unknown
 function DisplayAdapterDatabase_CheckUint8Override(setting) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Query the display adapter database for a uint32 setting override.
 ---@param setting string
 ---@return unknown
 function DisplayAdapterDatabase_CheckUintOverride(setting) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Query the display adapter database for information about a specified adapter.
 ---@param vendor string
 ---@param device string
@@ -995,10 +1065,12 @@ function DisplayAdapterDatabase_CheckUintOverride(setting) end
 ---@return unknown
 function DisplayAdapterDatabase_GetAdapterFromID(vendor, device, subsystem, revision) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Output basic information about the current display adapter.
 ---@return unknown
 function DisplayAdapterDatabase_GetAdapterID() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Query the display adapter database for the minimum required driver version for a specified adapter.
 ---@param vendor string
 ---@param device string
@@ -1007,300 +1079,370 @@ function DisplayAdapterDatabase_GetAdapterID() end
 ---@return unknown
 function DisplayAdapterDatabase_GetAdapterMinimumDriverVersion(vendor, device, subsystem, revision) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Query the display adapter database for the performance class of the currently-installed display adapter.
 ---@return unknown
 function DisplayAdapterDatabase_GetCurrentAdapterPerformanceClass() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Output basic information about the currently installed display adapter driver.
 ---@return unknown
 function DisplayAdapterDatabase_GetDriverInfo() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Query the display adapter database for the performance class given a relative performance percentage.
 ---@param relativePerformance number
 ---@return unknown
 function DisplayAdapterDatabase_GetPerformanceClass(relativePerformance) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle blockers info
 ---@return unknown
 function FOW_Blockers() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Force effects to be recreated.
 ---@return unknown
 function fx_refresh() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Get physics debug toggle value
 ---@return unknown
 function GetPhysicsDebug() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Get physics debug toggle value
 ---@return unknown
 function GetPhysicsRaycastAsCapsuleDebug() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle hold info
 ---@return unknown
 function Hold_Info() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- turns on the watcher and displays the lists if any
 ---@param on boolean
 ---@return unknown
 function LCWatcher_Activate(on) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Needs the proper luaConfig id, and looks through that list to add the filter.
 ---@param stateName string
 ---@param filter string
 ---@return unknown
 function LCWatcher_AddFilter(stateName, filter) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Needs the proper luaConfig id, returns true if filter exists.
 ---@param stateName string
 ---@param filter string
 ---@return unknown
 function LCWatcher_FilterExists(stateName, filter) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns true if LCWatcher is active.
 ---@return unknown
 function LCWatcher_IsActive() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Needs the proper luaConfig id, removes filter added by LCWatch_AddFilter.
 ---@param stateName string
 ---@param filter string
 ---@return unknown
 function LCWatcher_RemoveFilter(stateName, filter) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Selects a LuaConfig state to watch.  Returns true if state is registered and false if it has not.
 ---@param state string
 ---@return unknown
 function LCWatcher_SelectState(state) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Print text to specified file
 ---@param file string
 ---@param txt string
 ---@return unknown
 function LogPrintTo(file, txt) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Disable collecting and displaying render stats
 ---@return unknown
 function MemoryStats_Disable() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Enable collecting and displaying render stats
 ---@return unknown
 function MemoryStats_Enable() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle collecting and displaying render stats
 ---@return unknown
 function MemoryStats_Toggle() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Clear entire draw pathfinding cell list
 ---@return unknown
 function Path_ClearCells() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Draw pathfinding impassable map
 ---@return unknown
 function Path_DrawImpass() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle pathfinding entity path
 ---@return unknown
 function Path_DrawPath() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Draw pathfinding grid overlay
 ---@param onoff boolean
 ---@return unknown
 function Path_DrawPathMap(onoff) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Add pathfinding cell to draw cell list
 ---@param x number
 ---@param y number
 ---@return unknown
 function Path_ShowCell(x, y) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Add pathfinding precise cell to draw cell list
 ---@param x number
 ---@param y number
 ---@return unknown
 function Path_ShowPreciseCell(x, y) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle pathfinding collision circles
 ---@return unknown
 function Path_ToggleCollisionCircle() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Reload mouse over entity's entire list of extension info's
 ---@return unknown
 function PBG_ReloadMouseOverEntity() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Reload mouse over squad's entire list of extension info's
 ---@return unknown
 function PBG_ReloadMouseOverSquad() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Reload mouse over squad's weapon property bag
 ---@return unknown
 function PBG_ReloadMouseOverWeapon() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Disable collecting and displaying render stats
 ---@return unknown
 function RenderStats_Disable() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Output the render stats to a CSV LogFile for viewing
 ---@return unknown
 function RenderStats_DumpToLogFile() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Enable collecting and displaying render stats
 ---@return unknown
 function RenderStats_Enable() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set the render stats refresh update interval (seconds)
 ---@param time number
 ---@return unknown
 function RenderStats_SetUpdateTime(time) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Sort render stats by model instances (descending sort)
 ---@return unknown
 function RenderStats_SortInstances() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Sort render stats by render calls (descending sort)
 ---@return unknown
 function RenderStats_SortRenderCalls() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Sort render stats by shader changes (descending sort)
 ---@return unknown
 function RenderStats_SortShaderChanges() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Sort render stats by mesh triangles (descending sort)
 ---@return unknown
 function RenderStats_SortTris() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle collecting and displaying render stats
 ---@return unknown
 function RenderStats_Toggle() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle drawing debug info for scar markers
 ---@return unknown
 function Scar_DrawMarkers() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle mouse over debug info on which group the entity belongs to
 ---@return unknown
 function Scar_GroupInfo() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle a list of all egroups and sgroups in the game
 ---@return unknown
 function Scar_GroupList() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Disable collecting and displaying render stats
 ---@return unknown
 function ShaderStats_Disable() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Output the render stats to a CSV LogFile for viewing
 ---@return unknown
 function ShaderStats_DumpToLogFile() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Enable collecting and displaying render stats
 ---@return unknown
 function ShaderStats_Enable() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set the render stats refresh update interval (seconds)
 ---@param time number
 ---@return unknown
 function ShaderStats_SetUpdateTime(time) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Sort render stats by model instances (descending sort)
 ---@return unknown
 function ShaderStats_SortPixelCount() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Sort render stats by model instances (descending sort)
 ---@return unknown
 function ShaderStats_SortShaderNames() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle collecting and displaying render stats
 ---@return unknown
 function ShaderStats_Toggle() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle check requirements information
 ---@return unknown
 function Sim_CheckRequirements() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Draw the current sim tick
 ---@return unknown
 function Sim_DebugDrawSimTick() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle drawing debug info for the attention system
 ---@return unknown
 function Sim_DrawAttention() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle the crush OBB
 ---@return unknown
 function Sim_DrawEntityCrusherOBB() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle entity information
 ---@return unknown
 function Sim_DrawEntityExtensions() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle entity move state debug drawing
 ---@return unknown
 function Sim_DrawEntityStateMove() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle a list of all active abilities on the entity
 ---@return unknown
 function Sim_EntityAbility() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Draw the per-entity decision delay if there is one
 ---@return unknown
 function Sim_EntityDelay() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle posture info text for selected entities
 ---@return unknown
 function Sim_EntityDrawPosture() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle a list of all active modifiers on the entity
 ---@return unknown
 function Sim_EntityHistory() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle entity information
 ---@return unknown
 function Sim_EntityInfo() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle a list of all active modifiers on the entity
 ---@return unknown
 function Sim_EntityModifier() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Draw the OBBs for the entity
 ---@return unknown
 function Sim_EntityOBB() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Draw OOC target debug info
 ---@return unknown
 function Sim_EntityOOCTarget() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle a list of all completed upgrades on the entity.
 ---@return unknown
 function Sim_EntityUpgrades() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle a list of all active player abilities
 ---@return unknown
 function Sim_PlayerInfo() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle a list of all active player modifiers
 ---@return unknown
 function Sim_PlayerModifiers() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle simulation boxes for shot blockers only
 ---@return unknown
 function Sim_ShotBlockers() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle simulation boxes for entities
 ---@return unknown
 function Sim_SimBox() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle a list of all active modifiers on the entity
 ---@return unknown
 function Sim_SquadHistory() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle squad information
 ---@return unknown
 function Sim_SquadInfo() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle squad suppression information
 ---@return unknown
 function Sim_SquadSuppression() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a splat on the terrain
 ---@param _name string
 ---@param xpos number
@@ -1309,105 +1451,128 @@ function Sim_SquadSuppression() end
 ---@return unknown
 function Terrain_CreateSplat(_name, xpos, zpos, scale) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Draw a grid on the terrain with tunable increment
 ---@param increment number
 ---@return unknown
 function Terrain_DrawGrid(increment) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Draw lines on a grid on the terrain with tunable spacing
 ---@param spacing number
 ---@return unknown
 function Terrain_DrawGridLines(spacing) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Draw terrain material map cells
 ---@param onoff boolean
 ---@return unknown
 function Terrain_DrawMaterialMap(onoff) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Add a timer to be triggered every 'freqInSec'. the timer will then run the passed-in command
 ---@param command string
 ---@param freqInSec number
 ---@return unknown
 function TimerAdd(command, freqInSec) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Add a timer to be triggered every frame the timer will then run the passed-in command
 ---@param command string
 ---@return unknown
 function TimerAddFrame(command) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Add a timer to be triggered once after 'freqInSec' has elapsed. the timer will then run the passed-in command
 ---@param command string
 ---@param timeInSec number
 ---@return unknown
 function TimerAddOnce(command, timeInSec) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Remove specified timer
 ---@param command string
 ---@return unknown
 function TimerDel(command) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggles the scanning info from the ScanForTarget track for the debug entity
 ---@return unknown
 function Toggle_Scanning_Info() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle physics debug drawing
 ---@param enable boolean
 ---@return unknown
 function TogglePhysicsDebug(enable) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle physics debug drawing
 ---@param enable boolean
 ---@return unknown
 function TogglePhysicsRaycastAsCapsuleDebug(enable) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggles on or off vaulting debug drawing
 ---@return unknown
 function Vaulting_DrawDebug() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle enabling all weapon gound attack
 ---@return unknown
 function Weapon_AllWeaponAttackGround() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle weapon animation information
 ---@return unknown
 function Weapon_AnimInfo() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle weapon attack radii around the entities
 ---@return unknown
 function Weapon_AttackRadii() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle weapon firing lines
 ---@return unknown
 function Weapon_Firing() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle weapon hard point information
 ---@return unknown
 function Weapon_HardPointInfo() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle weapon state and calculation information
 ---@return unknown
 function Weapon_Info() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle weapon best target result
 ---@return unknown
 function Weapon_PrintBestTarget() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle weapon priority information (must TAG entity you want info about)
 ---@return unknown
 function Weapon_PriorityInfo() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle weapon projectile denotation timer
 ---@return unknown
 function Weapon_ProjectileDetonateTimer() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle weapon projectile information
 ---@return unknown
 function Weapon_ProjectileInfo() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle weapon scatter target information
 ---@return unknown
 function Weapon_ScatterInfo() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle weapon tracking lines and maximum angles
 ---@return unknown
 function Weapon_Tracking() end
@@ -1456,52 +1621,64 @@ function dr_terraincirclewithlifetime(pos, radius, r, g, b, divs, frame, lifetim
 ---@return unknown
 function dr_terrainrect(pos, w, h, r, g, b, rads) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Gets the type of game we are playing ( GT_SP = 0, GT_MP = 1, GT_Skirmish = 2)
 ---@return unknown
 function getgametype() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns the local player index
 ---@return unknown
 function getlocalplayer() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns the scenario name (shortname version eg. "2P Semois")
 ---@return unknown
 function getmapname() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns the current simulation rate.
 ---@return unknown
 function getsimrate() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Run the specified scar script file
 ---@param scriptName string
 ---@return unknown
 function Scar_DoFile(scriptName) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Run the specified scar command
 ---@param str string
 ---@return unknown
 function Scar_DoString(str) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Reload all scar scripts
 ---@return unknown
 function Scar_Reload() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Pause the simulation.
 ---@return unknown
 function setsimpause() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- DO NOT call this function directly, use Event_Save(STT_Auto) instead
 ---@return unknown
 function __Internal_Game_Autosave() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- DO NOT call this function directly, use Event_Save(STT_Quick) instead
 ---@return unknown
 function __Internal_Game_Quicksave() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- DO NOT call this function directly, use Event_SaveWithName(STT_Standard) instead
 ---@return unknown
 function __Internal_Game_SaveGame() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- DO NOT call this function directly, use Event_SaveWithName(STT_Dev) instead
 ---@return unknown
 function __Internal_Game_SaveToFileDev() end
@@ -1603,6 +1780,7 @@ function AI_CombatFitnessCharacterizesSquad(player, squadPBG) end
 ---@return unknown
 function AI_CombatFitnessGetDefensiveUpgradesForStructureArchetypeMember(memberPBG) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns healer feature option pbgs
 ---@return unknown
 function AI_CombatFitnessGetHealerPBGs() end
@@ -1616,6 +1794,7 @@ function AI_CombatFitnessGetOffensiveUpgradesForStructureArchetypeMember(memberP
 ---@return unknown
 function AI_CombatFitnessGetPlayerUpgrades() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns squad pbgs for all squad archetypes
 ---@return unknown
 function AI_CombatFitnessGetSquadArchetypeNames() end
@@ -1950,6 +2129,7 @@ function AIPlayer_GetOwnedMilitaryPointEntitiesInRange(militaryPointPBG, positio
 ---@return unknown
 function AIPlayer_GetPositionsOfMilitaryPointsWithRelation(aiPlayer, relationshipEnum) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns the utility of building the squad specified by the PBG, or 0 if not found
 ---@param aiPlayer Player
 ---@param squadPBG Squad
@@ -2087,6 +2267,7 @@ function AIPlayer_SetEntityHomebase(aiPlayer, eGroup, homeBaseID) end
 ---@return unknown
 function AIPlayer_SetSquadHomebase(aiPlayer, sGroup, homeBaseID) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set the base strategic intention of a player
 ---@param player Player
 ---@param intentionName string
@@ -2189,6 +2370,7 @@ function AISquad_HasPathWithinDistance(aiSquad, targetPosition, maxDistance) end
 ---@return unknown
 function AISquad_ShouldFallBackOrBraceSelf(pAISquad) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Get the number of seconds on an objective timer.
 ---@param objectiveID number
 ---@return unknown
@@ -2201,19 +2383,23 @@ function AITactic_GetObjectiveTimerSeconds(objectiveID) end
 ---@return unknown
 function AllMarkers_FromName(name, type) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Remove the movie mode framerate restriction
 ---@return unknown
 function App_ClearMovieModeFramerate() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Return the current app time
 ---@return unknown
 function app_currenttime() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set the ideal frame rate for the game. Set to 0 if an unbounded frame rate is desired.
 ---@param frameRate number
 ---@return unknown
 function app_setidealframerate(frameRate) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Run the game at specified frame rate (for capturing movies). Only works with 60 or 120, other rates are defaulted to 60. Setting it to 0 disables movie mode
 ---@param frameRate number
 ---@return unknown
@@ -2452,33 +2638,40 @@ function Camera_ToggleMeshShown(show) end
 ---@return unknown
 function Camera_Unclamp() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Cheat to award all ribbons and medals
 ---@return unknown
 function Cheat_GrantAllRibbonsAndMedals() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Cheat to reset all achievement progress
 ---@return unknown
 function Cheat_ResetAchievementProgress() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Get the value for a command line arg.
 ---@param name string
 ---@return unknown
 function cmdline_string(name) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Hide the cursor
 ---@return unknown
 function cursor_hide() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set the cursor position
 ---@param x number
 ---@param y number
 ---@return unknown
 function cursor_setposition(x, y) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Show the cursor
 ---@return unknown
 function cursor_show() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Get dca variable value for an entity. Can be used to validate presentation state from lua.
 ---@param pEntity Entity
 ---@param variableName string
@@ -2547,6 +2740,7 @@ function dr_text2d(frame, x, y, cmd, r, g, b) end
 ---@return unknown
 function dr_text3d(frame, x, y, z, cmd, r, g, b) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Draw the ref-posed OBB of a model
 ---@param pModel RenderModel
 ---@param transform Transform
@@ -2570,12 +2764,14 @@ function EGroup_CallEntityFunction(egroup, entityFunction, argument_list) end
 ---@return unknown
 function EGroup_CallEntityFunctionAllOrAny(egroup, all, entityFunction, argument_list) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Starts a save event the same way as Event_Start, but automatically sets highest priority and promotes the request
 --- up the queue automatically. It waits for the existing event to finish, and does not cancel the existing event. STT_Quick: Saves the game by user request. Name is generated from campaign mission or skirmish preset name. STT_Auto: Campaign only. Saves the game by script request. Name is generated from campaign mission. STT_Standard: Saves the game using the name provided, overwriting if necessary - a suitable filename will be generated - saves to Campaign or Skirmish folder depending on currently running scenario STT_Dev: Saves the game using the filename provided - for development and testing only
 ---@param type SaveTriggerType
 ---@return unknown
 function Event_Save(type) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Starts a save event the same way as Event_Save, but with a filename specified.
 --- STT_Quick: Saves the game by user request. Name is generated from campaign mission or skirmish preset name. Supplied filename is ignored. STT_Auto: Campaign only. Saves the game by script request. Name is generated from campaign mission. Supplied filename is ignored. STT_Standard: Saves the game using the name provided, overwriting if necessary - a suitable filename will be generated - saves to Campaign or Skirmish folder depending on currently running scenario STT_Dev: Saves the game using the filename provided - for development and testing only
 ---@param type SaveTriggerType
@@ -2588,6 +2784,7 @@ function Event_SaveWithName(type, fileName) end
 ---@return unknown
 function Formation_GetDimensionsAndOffset(sgroup) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Place an SGroup or table of SGroups in formation
 ---@param sgroup SGroup
 ---@param position Position
@@ -2602,28 +2799,34 @@ function Formation_PlaceSquadGroupsInFormation(sgroup, position, direction) end
 ---@return unknown
 function Formation_PlaceSquadsInFormation(sgroup, position, direction) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- force the gamma
 ---@return unknown
 function fx_dump() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- force the LOD of the FX system (use 0 to enable dynamic LOD)
 ---@param lod number
 ---@return unknown
 function fx_forcelod(lod) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- enable logging of fx, it it wasn't already
 ---@param enable boolean
 ---@return unknown
 function fx_logenable(enable) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- toggle effects on or off
 ---@return unknown
 function fx_toggle() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- toggle effects rendering on or off
 ---@return unknown
 function fx_toggleRendering() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- use the debugshader, which will render all fx green
 ---@param enable boolean
 ---@return unknown
@@ -2751,6 +2954,7 @@ function Game_SaveDataStore(id, path, binary) end
 ---@return unknown
 function Game_SaveGameExistsDev(filename) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Fades the screen to a given RGBA colour over a number of seconds
 ---@param r number
 ---@param g number
@@ -2798,40 +3002,48 @@ function Game_TransitionToState(stateName, transitionTimeSec) end
 ---@return unknown
 function Game_UnLockRandom() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- get camera name from PBG path
 ---@param pbgPath string
 ---@return unknown
 function GetCameraNameFromPbgName(pbgPath) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- A class-like object used as a Singleton to read and write a JSON file
 --- Initializes based on command line parameter -test_result_file <alias:path>. Checks for temporary logs on creation and inserts them into the result data. NOTE: A lot of information in the file is redundant to make it easier to process and easier to read for a human.
 ---@return unknown
 function Initialize() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Dump content of inventory to a file
 ---@return unknown
 function inv_dump() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns true if the pbg class list contains a type that has economic utility
 ---@param pbg PBG
 ---@return unknown
 function IsEconomyClassStructure_CS(pbg) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Can this structure be used to secure territory
 ---@param pbg PBG
 ---@return unknown
 function IsSecuringStructure_CS(pbg) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Can this structure be used to secure territory
 ---@param pbg PBG
 ---@return unknown
 function IsSecuringStructurePlacedOnPoint_CS(pbg) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns true if this object is a structure (something with a site_ext)
 ---@param pbg PBG
 ---@return unknown
 function IsStructure_CS(pbg) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Print all players information.
 ---@return unknown
 function listplayers() end
@@ -2891,53 +3103,64 @@ function Loc_FormatTime_M_S_MS(secs, leading_zeroes) end
 ---@return unknown
 function Loc_GetString(id) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Run simulation and presentation in lockstep, with simulation ticked every frame (useful for debugging sync errors)
 ---@return unknown
 function lockstep_simulation_presentation_toggle() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Start an Action at the given position.  Returns the id so the Action can be stopped using Marker_StopActionById.
 ---@param name string
 ---@param pos Position
 ---@return unknown
 function Marker_StartActionAt(name, pos) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Stop an Action by id.  Marker_StartActionAt returns an id that can be used here.
 ---@param id number
 ---@return unknown
 function Marker_StopActionById(id) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Write the OS map of allocated memory to the log folder
 ---@return unknown
 function memdump() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Write the OS map of allocated memory to the log folder
 ---@param foldername string
 ---@return unknown
 function memdumpf(foldername) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns the numbers of memory pools
 ---@return unknown
 function mempoolcount() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Given a poolID it will return the current memory in use
 ---@param int number
 ---@return unknown
 function mempoolinuse(int) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Given a poolID it will return the max amount of memory this pool has allocated
 ---@param int number
 ---@return unknown
 function mempoolmax(int) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Given a poolID it will return the name of the pool
 ---@param poolid number
 ---@return unknown
 function mempoolname(poolid) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Ask the OS to reduce the memory allocated to the game
 ---@return unknown
 function memshrink() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Write to a file all allocation content for specified pool
 ---@param pool string
 ---@return unknown
@@ -2947,6 +3170,7 @@ function memtofile(pool) end
 ---@return unknown
 function Misc_AbortToFE() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Let AI take over local player
 ---@return unknown
 function Misc_AIControlLocalPlayer() end
@@ -2967,6 +3191,7 @@ function Misc_DetectKeyboardInput(sinceTime) end
 ---@return unknown
 function Misc_DetectMouseInput(sinceTime) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Turn on or off the performance test monitoring
 ---@param toEnable boolean
 ---@return unknown
@@ -3025,6 +3250,7 @@ function Misc_RemoveFile(filename) end
 ---@return unknown
 function Misc_Screenshot() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set the graphic file type for screenshot (.jpg, .tga)
 ---@param fileExtension string
 ---@return unknown
@@ -3035,6 +3261,7 @@ function Misc_ScreenshotExt(fileExtension) end
 ---@return unknown
 function Misc_SetCurrentAutotest(description) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Shows or hides designer splats, which are splats in the UI folder
 ---@param bVisible boolean
 ---@return unknown
@@ -3090,19 +3317,23 @@ function Modifier_InitResourceBasedModifierTables() end
 ---@return unknown
 function Modifier_IsEnabled(pEntity, modtype, bEnabledByDefault) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Start capturing a movie, optionally downscaling to low resolution.
 ---@param lowResolution boolean
 ---@return unknown
 function MovieCapture_Start(lowResolution) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Stop a previously started movie capture.
 ---@return unknown
 function MovieCapture_Stop() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- toggle the outstanding network call information
 ---@return unknown
 function network_show_calls() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- toggle the network statgraph
 ---@return unknown
 function network_show_statgraph() end
@@ -3243,22 +3474,27 @@ function Obj_SetState(objectiveID, state) end
 ---@return unknown
 function Obj_SetVisible(objectiveID, visible) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Disable displaying the Essence Profiler
 ---@return unknown
 function PerfStats_Disable() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Dump the Essence Profiler data onto a file
 ---@return unknown
 function PerfStats_Dump() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Enable displaying the Essence Profiler
 ---@return unknown
 function PerfStats_Enable() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Get perf stats toggle value
 ---@return unknown
 function PerfStats_IsEnabled() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle displaying the Essence Profiler
 ---@return unknown
 function PerfStats_Toggle() end
@@ -3276,16 +3512,19 @@ function Physics_IsEnabled() end
 ---@return unknown
 function Player_GetState(pPlayer) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns the current game state of the player.
 ---@return unknown
 function Player_GetTributeIncrementModifier() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Prints a message on the screen
 --- Prints the given message on the screen. It will stay there until you call PrintOnScreen_RemoveFromScreen() or print another message on the screen to replace it.
 ---@param text string
 ---@return unknown
 function PrintOnScreen(text) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Prints the lua content of an object on the screen
 --- Prints the given message on the screen. If you would like to print multiple messages without clearing them you can assign them unique ID's. Must use PrintOnScreen_Remove(id) to remove each instance
 ---@param object Object
@@ -3294,20 +3533,24 @@ function PrintOnScreen(text) end
 ---@return unknown
 function PrintOnScreen_Add(object, id, style) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Removes the PrintOnScreen text of a given ID
 ---@param id string
 ---@return unknown
 function PrintOnScreen_Remove(id) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Remove any messages from the screen
 --- Removes from the screen any messages put there with PrintOnScreen()
 ---@return unknown
 function PrintOnScreen_RemoveFromScreen() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Exit to windows
 ---@return unknown
 function quit() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Disable rendering and render update
 ---@return unknown
 function render_viewport_toggle() end
@@ -3316,24 +3559,29 @@ function render_viewport_toggle() end
 ---@return unknown
 function restart() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Activate the scar RulesProfiler
 ---@param on boolean
 ---@return unknown
 function RulesProfiler_Activate(on) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Enable the scar RulesProfiler so it runs in the background. Call this before RulesProfiler_Activate
 ---@param on boolean
 ---@return unknown
 function RulesProfiler_Enable(on) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns true if the scar RulesProfiler is active
 ---@return unknown
 function RulesProfiler_IsActive() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Don't filter the RulesProfiler displayed rules.
 ---@return unknown
 function RulesProfiler_ResetTypeFilter() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Filter the RulesProfiler to filter displayed rules to given type. E.g., "SCAR", "AI"
 ---@param filter string
 ---@return unknown
@@ -3364,11 +3612,13 @@ function scartype_enum_tostring(v) end
 ---@return unknown
 function scartype_tostring(v) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set the simulation rate
 ---@param fcap number
 ---@return unknown
 function setsimframecap(fcap) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set the simulation rate
 ---@param rate number
 ---@return unknown
@@ -3428,10 +3678,12 @@ function SGroup_CallSquadFunction(sgroup, squadFunction, argument_list) end
 ---@return unknown
 function SGroup_CallSquadFunctionAllOrAny(sgroup, all, squadFunction, argument_list) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Is the Market info currently being drawn?
 ---@return unknown
 function Sim_GetDrawMarketInfo() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Clears the egroup, then finds and adds all trade entities registered with an entity endpoint
 --- Returns the number of entities found
 ---@param endpoint Entity
@@ -3439,11 +3691,13 @@ function Sim_GetDrawMarketInfo() end
 ---@return unknown
 function Sim_GetTradeEntitiesFromEndpoint(endpoint, egroup) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Add a settlement to the market trade manager with specified ID. Settlement will be marked 'not trading' with all players.
 ---@param settlement Entity
 ---@return unknown
 function Sim_MarketAddSettlement(settlement) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Attempts to execute a trade on behalf of the specified player, for the specified resource, of the specified type.
 ---@param player Player
 ---@param resourceName string
@@ -3451,6 +3705,7 @@ function Sim_MarketAddSettlement(settlement) end
 ---@return unknown
 function Sim_MarketExecuteTrade(player, resourceName, tradeTypeString) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Sets market trade status between two players, using the array index they appear at in PlayerManager::GetPlayers_CS()
 ---@param firstPlayer Player
 ---@param secondPlayer Player
@@ -3458,6 +3713,7 @@ function Sim_MarketExecuteTrade(player, resourceName, tradeTypeString) end
 ---@return unknown
 function Sim_MarketSetTradeStatusPlayer(firstPlayer, secondPlayer, status) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Sets trade status between a player number and a settlement ID.
 ---@param player Player
 ---@param settlement Entity
@@ -3465,6 +3721,7 @@ function Sim_MarketSetTradeStatusPlayer(firstPlayer, secondPlayer, status) end
 ---@return unknown
 function Sim_MarketSetTradeStatusSettlement(player, settlement, status) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set/clear drawing of the market info.
 ---@param bEnable boolean
 ---@return unknown
@@ -3479,6 +3736,7 @@ function SitRep_PlayMovie(url) end
 ---@return unknown
 function SitRep_StopMovie() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggles the display of the terrain audio environment zones on/off.
 ---@param enable boolean
 ---@return unknown
@@ -3514,12 +3772,14 @@ function Sound_PostEvent(eventName, handle) end
 ---@return unknown
 function Sound_Stop(handle) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- A closure-based class-like object for performing unit-tests and outputting test-results
 --- unique_name 			A name used as identifier in the json result file unit_tests 				A table containing UnitTest objects which this driver manages is_long_test 			(Optional, default is false) The driver will only run if the command line argument -TestLong is set
 ---@param unique_name_Table_unit_tests_Boolean_is_long_test string
 ---@return unknown
 function standard_test(unique_name_Table_unit_tests_Boolean_is_long_test) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- A closure-based class-like object defining a single unit test
 --- unique_name 		- Unique name of the test. It is used as a key in the JSON result file. description 		- Description of this test and the feature it tests. start_function 		- Executed at test start to setup any preconditions to running the test (e.g. spawning a unit) update_function 	- Function which is repeatedly executed to test when the test should end. Should return true when the test needs to continue and false when the test needs to end. e.g. a timer which returns true until 5 seconds have elapsed, a predicate which returns true while a unit is still alive etc. finish_function 	- A predicate which tests the success of the test. This is invoked when the test is finished (indicated by the update function). If finish returns true then the test is successful otherwise the test is a failure. timeout_seconds 	- A timeout will result in test termination and the test will be considered a failure.
 ---@param unique_name_String_description_Function_start_function_Function_update_function_Function_finish_function_Number_timeout_seconds string
@@ -3550,26 +3810,31 @@ function StateTree_QueueGlobalStateTreePlayer(keepAlive, openingBranchName, play
 ---@return unknown
 function StateTree_QueueGlobalStateTreeSquad(keepAlive, openingBranchName, squad) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Save the statgraph output to a file
 ---@param begin boolean
 ---@return unknown
 function statgraph_save(begin) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Predicate testing if a value is of specific type
 --- e.g. f = std.TypePredicate(); f() => 1; f() => 2 ...
 ---@return unknown
 function std() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Performs basic type-checking on [value]
 --- e.g. foo = 7; std.Validate(foo, 'foo', T_NUMBER, false)
 ---@return unknown
 function std() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Makes an assertion. If the assertion turns out to be false, raises an error.
 --- e.g. foo = 7; assert(foo ~= nil, 'foo should not be nil!', 'If foo is nil we don't know how many bars to spawn!'') This is intended to be a more scripter friendly version of LUA assert.
 ---@return unknown
 function std() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Change the local player.
 ---@param state lua_State
 ---@return unknown
@@ -3657,6 +3922,7 @@ function Table_FillWithDefaultValues(myTable, myDefaults, errorMessage) end
 ---@return unknown
 function Table_GetRandomItem(table, numberofitems) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- CHecks if a table contains the specified key
 ---@param table LuaTable
 ---@param key any
@@ -3697,6 +3963,7 @@ function Terrain_GetCoverType_AsNumber(pos) end
 ---@return unknown
 function Terrain_GetCoverType_AsString(pos) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Verify that a provided SBP spawns in game correctly
 ---@param table_of_tests_to_pass_blueprint_name a
 ---@param name_of_the_SBP_to_spawn_expected_population the
@@ -3705,77 +3972,93 @@ function Terrain_GetCoverType_AsString(pos) end
 ---@return unknown
 function Test_SpawnSquad(table_of_tests_to_pass_blueprint_name, name_of_the_SBP_to_spawn_expected_population, value_to_provide_the_expected_population_cost_of_the_unit_timeout_seconds, how_long_before_the_test_times_out) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- optional expect_kill overrides automatic targeting discovery
 ---@return unknown
 function Test_SquadAttackMove() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- optional expect_kill overrides automatic targeting discovery
 ---@return unknown
 function Test_SquadAttackMoveEntity() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Movement test designed to allow for optional facing
 --- Spawns a given unit blueprint and moves them to the given target destination, rotating the unit to the optional given facing if given upon arrival.
 ---@param t_test_group_string_blueprint_name_table_move_and_face_targets_float_move_pos_x_float_move_pos_z_float_face_pos_x__optional__float_face_pos_z__optional__int_timeout_seconds__optional___default_20__int_desired_tick_rate__optional__float_move_target_acceptable_distance__optional___default_0_5__float_facing_tolerance_degrees__optional___default_5__float_spawn_pos_x__optional___default_7_5__float_spawn_pos_z__optional___default_7_5__float_deviation_tolerance__optional___default_1_0_ table
 ---@return unknown
 function Test_SquadMoveWithOptionalFacing(t_test_group_string_blueprint_name_table_move_and_face_targets_float_move_pos_x_float_move_pos_z_float_face_pos_x__optional__float_face_pos_z__optional__int_timeout_seconds__optional___default_20__int_desired_tick_rate__optional__float_move_target_acceptable_distance__optional___default_0_5__float_facing_tolerance_degrees__optional___default_5__float_spawn_pos_x__optional___default_7_5__float_spawn_pos_z__optional___default_7_5__float_deviation_tolerance__optional___default_1_0_) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Auto generates a test configuration template and stores it for later saving. This is a debug feature.
 --- The system tries to gather the parameters of the calling function and auto generates a template for it. The resulting template is added to a list which is written to cache:AutoConfig.json (see TestConfig_SaveCachedTestTemplates() above). If you use a non json compatible type you need to update _SerializeParameters above. See example for ScarPos.
 ---@param _optional__target_stack_level_to_grab_the_parameters_from_name_____optional__give_the_test_a_name_to_make_it_easier_to_identify_in_logs_config_files stack_level
 ---@return unknown
 function TestConfig_AutoGenerateTestTemplate(_optional__target_stack_level_to_grab_the_parameters_from_name_____optional__give_the_test_a_name_to_make_it_easier_to_identify_in_logs_config_files) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Tries to load the test configuration from the command line argument. See TEST_CONFIG_ARGUMENT_TEST_CONFIG above. See definition of TestConfig_LoadFromFile.
 ---@return unknown
 function TestConfig_LoadFromCommandLine() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Tries to load the test configuration from the given file.
 --- The test configuration file is a json file containing groups of tests. Each test is defined with a function to call and its parameters. The system parses the file and tries to invoke the functions in the global space (by calling _G[function_string] ). Tests marked as active: false are skipped. Parameters either need to be json compatible (strings,  numbers, boolean) or have a 'constructor' function associated to them. e.g: 2D positions { "parameters": [ 0, -20 ], "func": "Util_ScarPos" }
 ---@param path__containing_alias__to_the_file_e_g__cache_AutoConfig_json path
 ---@return unknown
 function TestConfig_LoadFromFile(path__containing_alias__to_the_file_e_g__cache_AutoConfig_json) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Writes the tests to a json file.
 ---@return unknown
 function TestConfig_SaveCachedTestTemplates() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- expect_destruction=nil will let the test determine this value based on entity targeting settings
 --- expect_destruction=nil will let the test determine this value based on entity targeting settings
 ---@return unknown
 function TestGroup_BuildingBasics() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- idx used to should be unique per run to prevent entity stacking
 --- expect_destruction=nil will let the test determine this value based on entity targeting settings
 ---@return unknown
 function TestGroup_SquadBasics() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- small version of TestGroup_SquadBasics() without the combat-specific tests
 ---@return unknown
 function TestGroup_SquadBasics_NoCombat() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- spawns instances of an unit in a grid, then kills it to trigger physics destruction. Fails if to rigid bodies where created. params table : testName, unitPath, quantity, spacing, slowdown,  timeout_seconds, use_telemetry
 ---@return unknown
 function TestPhysics_Destruction() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Calls given method/parameter combinations one at a time to avoid blocking for long calls.
 --- Expects to receive a table in the format of {{func=<function>,params=<table-containing-parameters in order}}. Calls one function at a time and queues the next function after completing the call. This allows the engine to simulate in between and will not block the other threads for extended amounts of time. Useful for tests that spawn a large amount of squads and entities and need to give them commands. Giving a callback to notify when the list has been processed is optional.
 ---@param t_function_parameter_function_callback table
 ---@return unknown
 function TestUtil_CallWithoutBlocking(t_function_parameter_function_callback) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Destroy neutral entities like wrecks, gaia, etc
 ---@return unknown
 function TestUtil_DestroyAllNeutralEntities() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Destroy player squads and entities
 ---@param player Player
 ---@return unknown
 function TestUtil_DestroyAllPlayerSquadsAndEntities(player) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Destorys all player owned squads and every player or neutral entity
 ---@return unknown
 function TestUtil_DestroyAllSquadsAndEntities() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Destroy specified player squads and entities from the blueprint list
 --- Destroys all squads and entities belonging to player that match one of the
 ---@param player Player
@@ -3783,6 +4066,7 @@ function TestUtil_DestroyAllSquadsAndEntities() end
 ---@return unknown
 function TestUtil_DestroySpecifiedPlayerSquadsAndEntities(player, t_blueprintsToDestroy) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns all blueprints that match the given filters.
 --- Filters the property bags inside attrib/instances and returns the paths that match the filters. After matching the base filter this part of the path is removed and the detail filter is applied. Example: base_filter "sbps\\races\\eng\\" will match all english units. detail filter "archer" will return return a table with "unit_archer_2_eng", "unit_archer_3_eng", "unit_archer_4_eng"
 ---@param do_entity___true_for_entity_blueprints boolean
@@ -3790,40 +4074,47 @@ function TestUtil_DestroySpecifiedPlayerSquadsAndEntities(player, t_blueprintsTo
 ---@return unknown
 function TestUtil_GetAllBlueprintNames(do_entity___true_for_entity_blueprints, for_squad_blueprints_string_base_filter___specify_a_string_that_matches_a_path_inside_attrib_instances_usually_used_to_match_a_folder_table_of_strings___specify_a_black_list_filter_after_the_base_filter_has_been_applied_usually_used_to_exclude_files_based_on_string_matches__e_g___villager_armed__) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Draws a circle at the given location.
 --- calls a render debug function in a way that creates a visible outline on terrain. Any provided colour value that isn't within the char bit range (0 - 255) will be adjusted. The colour, segment and thickness parameters are optional and will default to reasonable values if excluded.
 ---@param position_real_radius_real_opt_lifetime_real_opt_red_value_real_opt_green_value_real_opt_blue_value_real_opt_number_of_circle_segments_int_opt_thickness_of_circle_border Position
 ---@return unknown
 function TestUtil_HighlightCircleRadius(position_real_radius_real_opt_lifetime_real_opt_red_value_real_opt_green_value_real_opt_blue_value_real_opt_number_of_circle_segments_int_opt_thickness_of_circle_border) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Applies a modifier making player 1 build the given ebp faster. The modifier is returned.
 ---@param ebpname_building string
 ---@return unknown
 function TestUtil_MakeBuildingFast(ebpname_building) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Prints the location and health of all player owned squads and entities
 --- Iterates over all players and prints the position and health of all squads and entities the player owns.
 ---@return unknown
 function TestUtil_PrintAllSquadsAndEntities() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Prints the location and health of all entities owned by a player
 --- Iterates over all entities a player owns and prints their blueprint name, position and health.
 ---@param player Player
 ---@return unknown
 function TestUtil_PrintPlayerEntities(player) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Prints the location and health of all squads owned by a player
 --- Iterates over all squads a player owns and prints their blueprint name, position and health.
 ---@param player Player
 ---@return unknown
 function TestUtil_PrintPlayerSquads(player) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a new unit test and add it to the given table
 --- Once all tests have been added using this function, the test group passed to t_test_group should be passed
 ---@param a_table_of_tests_to_be_run_by_the_same_driver t_test_group
 ---@return unknown
 function TestUtil_RegisterTest(a_table_of_tests_to_be_run_by_the_same_driver) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Spawn entities in a grid based on a list of blueprint names.
 --- Grabs one entry of the given blueprint list each iteration and spawns it. Then it creates a new timed rule requesting to be called again as soon as possible. This gives the engine time to update in between calls so that the other threads are not blocked in case a huge list of units needs to get spawned. Once every unit is spawned the given callback function will be called. The spawning grid starts at the given top left corner and spawns in an axis aligned grid based on the given spacing. The grid expands towards positive x/z
 ---@param player_EGroup_egroup Player
@@ -3831,6 +4122,7 @@ function TestUtil_RegisterTest(a_table_of_tests_to_be_run_by_the_same_driver) en
 ---@return unknown
 function TestUtil_SpawnEntitiesInGridWithoutBlocking(player_EGroup_egroup, t_ebpnames_Position_pos_top_left_Number_spacing_function_callback) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Spawn squads based on a list of blueprint names.
 --- Grabs one entry of the given blueprint list each iteration and spawns it. Then it creates a new timed rule requesting to be called again as soon as possible. This gives the engine time to update in between calls so that the other threads are not blocked in case a huge list of units needs to get spawned. Once every unit is spawned the given callback function will be called.
 ---@param player_SGroup_sgroup Player
@@ -3838,6 +4130,7 @@ function TestUtil_SpawnEntitiesInGridWithoutBlocking(player_EGroup_egroup, t_ebp
 ---@return unknown
 function TestUtil_SpawnSquadsInGridWithoutBlocking(player_SGroup_sgroup, t_sbpnames_Position_pos_spawn_function_callback) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Compare two values and print to standard_test if they are close enough
 --- Uses equality if acceptable_difference is nil or 0
 ---@param value1 any
@@ -3848,6 +4141,7 @@ function TestUtil_SpawnSquadsInGridWithoutBlocking(player_SGroup_sgroup, t_sbpna
 ---@return unknown
 function TestUtil_TestClose(value1, value2, acceptable_difference, value1_name, value2_name) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Compare two values using the given comparator
 ---@param value1 any
 ---@param value2 any
@@ -3856,6 +4150,7 @@ function TestUtil_TestClose(value1, value2, acceptable_difference, value1_name, 
 ---@return unknown
 function TestUtil_TestCompare(value1, value2, value1_name, value2_name) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Checks if directions are equal and prints message to standard_test if they are not
 --- The items must of of types that can have a direction resolved on them with Util_GetDirection()
 ---@param item1 EGroup
@@ -3863,6 +4158,7 @@ function TestUtil_TestCompare(value1, value2, value1_name, value2_name) end
 ---@return unknown
 function TestUtil_TestDirectionsSame(item1, item2) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Compare two values and print to standard_test if they are equal
 --- Uses equality if acceptable_difference is nil or 0
 ---@param value1 any
@@ -3872,6 +4168,7 @@ function TestUtil_TestDirectionsSame(item1, item2) end
 ---@return unknown
 function TestUtil_TestEqual(value1, value2, value1_name, value2_name) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Checks if positions are equal and prints message to standard_test if they are not
 ---@param object1 EGroup
 ---@param object2 EGroup
@@ -3913,6 +4210,7 @@ function UI_AddText(elementName, text) end
 ---@return unknown
 function UI_Clear(elementName) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Check if content is loaded for a specific layer
 ---@param layer FrontEnd_Layer
 ---@param contentPath string
@@ -4355,6 +4653,7 @@ function AI_SetCapturePointAsHighPriority(pPlayer, pEntity) end
 ---@return unknown
 function AI_SetDebugDisplay(pPlayer, enable) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set the difficulty level of this AI player
 --- Levels can be one of: GD_Easy, GD_Normal, GD_Hard, GD_Expert
 ---@param pPlayer Player
@@ -5001,6 +5300,7 @@ function AIEncounter_IsAIPlayerValid(pEncounter) end
 ---@return unknown
 function AIEncounter_IsValid(PlayerUniqueID, encounterTaskID) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- in non RTM builds, if verboseEncounterLogging is enabled, will spew string to AI log file
 ---@param pPlayer Player
 ---@param encounterID number
@@ -5301,12 +5601,14 @@ function AIEncounter_Trigger(pEncounter) end
 ---@return unknown
 function AIPlayer_CanAISquadLockTacticItem(tacticItemEntity, lockingAISquad) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns the Player at specified index out of all opponent players.  Use in conjunction with `AIPlayer_GetOpponentPlayerCount`.
 ---@param aiPlayer Player
 ---@param index number
 ---@return unknown
 function AIPlayer_GetOpponentPlayerAtIndex(aiPlayer, index) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns the number of opponent Players to the specified AIPlayer.
 ---@param aiPlayer Player
 ---@return unknown
@@ -5336,6 +5638,7 @@ function AIPlayer_IsTacticItemLockedByAISquad(tacticItemEntity, lockingAISquad) 
 ---@return unknown
 function AIPlayer_LockTacticItemForAISquad(tacticItemEntity, lockingAISquad) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Temporarily hides all of the known squads belonging to the enemy player for the specified AI
 ---@param player Player
 ---@param enemyPlayer Player
@@ -5349,6 +5652,7 @@ function AIPlayer_ResetEnemySquadsVisibility(player, enemyPlayer) end
 ---@return unknown
 function AIPlayer_SetGathererDistributionOverride(aiPlayer, luaGatherDistro) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- marks the player to force the stats squads to update
 ---@param player Player
 ---@return unknown
@@ -5415,6 +5719,7 @@ function Squad_GetInternalAIEncounterPtr(squad) end
 ---@return unknown
 function Squad_IsInAIEncounter(squad) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- iterates through an sgroup, returns count with AIStatsSquad
 ---@param sgroup SGroup
 ---@param player Player
@@ -5461,11 +5766,13 @@ function BP_GetAIStateModelTuningsBlueprint(pbgShortname) end
 ---@return unknown
 function BP_GetAIStateModelTuningsBlueprintByPbgID(pbgID) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns the unmodified build time in seconds from cost_ext for a given entity blueprint.
 ---@param entityBag Entity
 ---@return unknown
 function BP_GetEntityBPBuildTime(entityBag) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns the default movement speed from moving_ext for a given entity blueprint. If getModifiedSpeed is true, the value will be modified by any speed_maximum_modifier applied to the player for the given entity blueprint.
 ---@param entityBag Entity
 ---@param getModifiedSpeed boolean
@@ -5554,11 +5861,13 @@ function BP_GetPropertyBagGroupPathName(type, index) end
 ---@return unknown
 function BP_GetReticuleBlueprint(pbgShortname) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns a slot item property bag group.
 ---@param pbgShortname string
 ---@return unknown
 function BP_GetSlotItemBlueprint(pbgShortname) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns a slot item property bag group.
 ---@param pbgID number
 ---@return unknown
@@ -5629,6 +5938,7 @@ function EBP_Exists(pbgShortname) end
 ---@return unknown
 function EBP_IsOfRace(pbgShortname, race) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- get Entity blueprint pop cost, use CT_Personnel, CT_Vehicle, CT_Medic for captype
 ---@param ebpUnit PBG
 ---@param player Player
@@ -5971,6 +6281,7 @@ function Cmd_UngarrisonSquad(sgroupid, destination, queued) end
 ---@return unknown
 function Cmd_Upgrade(user, blueprint, count, instant) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set a squad's unit speed to a multiplied value, and revert it when they reach the target, speed cannot be 0.0f
 --- Squad will move to a position, once they're within 'distance', they will revert back to their original speed. ANY means any squad in the group within distance meets criteria, ALL means ALL squads. Queued means the command is queued if true as a command, rather than executing immediately.
 ---@param sgroup SGroup
@@ -6229,6 +6540,7 @@ function LocalCommand_PlayerPosExt(player, dest, playerCommand, pos, cmdparam, q
 ---@return unknown
 function LocalCommand_PlayerSquadConstructBuilding(player, sgroup, ebp, position, facingPos, queued) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Send a player command to itself to order squads in the sgroup to construct the building at specific position and facing
 --- structureBlueprint must be a valid building that can be constructed by the sgroup. This building would cost nothing and does not effect population and availability This is a special command for SCAR use
 ---@param player Player
@@ -6251,6 +6563,7 @@ function LocalCommand_PlayerSquadConstructBuildingCheat(player, sgroup, ebp, pos
 ---@return unknown
 function LocalCommand_PlayerSquadConstructFence(player, sgroup, ebp, posStart, posEnd, queued) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Send a player command to itself to order squads in the sgroup to construct fences from posStart to posEnd
 --- structureBlueprint must be a valid building that can be constructed by the sgroup. This building would cost nothing and does not effect population and availability This is a special command for SCAR use
 ---@param player Player
@@ -6273,6 +6586,7 @@ function LocalCommand_PlayerSquadConstructFenceCheat(player, sgroup, ebp, posSta
 ---@return unknown
 function LocalCommand_PlayerSquadConstructField(player, sgroup, ebp, posStart, posEnd, queued) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Send a player command to itself to order squads in the sgroup to construct a field ranging from posStart to posEnd
 --- structureBlueprint must be a valid building that can be constructed by the sgroup. This building would cost nothing and does not effect population and availability This is a special command for SCAR use
 ---@param player Player
@@ -6295,6 +6609,7 @@ function LocalCommand_PlayerSquadConstructFieldCheat(player, sgroup, ebp, posSta
 ---@return unknown
 function LocalCommand_PlayerSquadConstructSlottedSpline(player, sgroup, ebp, posStart, posEnd, queued) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Send a command from player to sgroup to build ebp as a slotted spline from posStart to posEnd.
 --- structureBlueprint must be a valid building that can be constructed by the sgroup. This building costs nothing and does not effect population and availability This is a special command for SCAR use
 ---@param player Player
@@ -6317,6 +6632,7 @@ function LocalCommand_PlayerSquadConstructSlottedSplineCheat(player, sgroup, ebp
 ---@return unknown
 function LocalCommand_PlayerSquadConstructSlottedSplineDependent(player, sgroup, ebp, position, facingPos, queued) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Send a command from player to sgroup to build ebp as a slotted spline dependent entity.
 --- structureBlueprint must be a valid building that can be constructed by the sgroup. This building costs nothing and does not effect population and availability This is a special command for SCAR use
 ---@param player Player
@@ -6339,6 +6655,7 @@ function LocalCommand_PlayerSquadConstructSlottedSplineDependentCheat(player, sg
 ---@return unknown
 function LocalCommand_PlayerSquadConstructSlottedSplineReplacer(player, sgroup, ebp, position, facingPos, queued) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Send a command from player to sgroup to build ebp as a slotted spline replacer entity.
 --- structureBlueprint must be a valid building that can be constructed by the sgroup. This building costs nothing and does not effect population and availability This is a special command for SCAR use
 ---@param player Player
@@ -6719,6 +7036,7 @@ function Core_RegisterModule(name) end
 ---@return unknown
 function Core_RemovePlayerFromPlayersTable(player) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns the value of the "Reveal FOW on Elimination" match option
 ---@return unknown
 function Core_RevealFOWOnEliminationEnabled() end
@@ -6781,6 +7099,7 @@ function Core_SetTeamVictorious(teams_table, presentationFunction, reason) end
 ---@return unknown
 function Core_UnregisterModule(name) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set the game to a GameOver state without an explicit winner
 ---@param presentationFunction function
 ---@param reason winReason
@@ -7085,6 +7404,7 @@ function EGroup_Filter(egroup, blueprint_type, filtertype, splitGroup) end
 ---@return unknown
 function EGroup_FilterOnScreen(egroup, percent, filtertype) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Filters an EGroup by whether or not the entity is part of a squad. filter_type can be FILTER_KEEP or FILTER_REMOVE
 ---@param egroup EGroup
 ---@param filter_type number
@@ -7141,6 +7461,7 @@ function EGroup_FromName(name) end
 ---@return unknown
 function EGroup_GetAvgHealth(egroup) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Gets the COUNT closest entities to POSITION from EGROUP. Does NOT remove entities from the source EGroup
 ---@return unknown
 function EGroup_GetClosestEntities() end
@@ -7398,6 +7719,7 @@ function EGroup_NotifyOnPlayerDemolition(id, _function) end
 ---@return unknown
 function EGroup_Remove(group, entity) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Removes any entites that exist in both groups.
 --- Entities that exist in both groups will be removed from 'group'.\n The contents of 'grouptocompare' will not be changed.\n Example: group = (1,2,3,4,5,6)  grouptocompare = (1,2,3,8,10)   --> group will now equal (4,5,6)
 ---@param group EGroup
@@ -7578,225 +7900,271 @@ function SGroup_GetTotalHealth(sgroup) end
 ---@return unknown
 function SGroup_HasEntityUpgrade(egroup, upgrade, all) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Finds all encounters that contain ANY or ALL squads within the given sgroup.
 ---@param sgroup SGroup
 ---@param all any | ALL
 ---@return unknown
 function Ai(sgroup, all) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Finds all encounters that contain ANY or ALL squads within the given sgroup.
 ---@param squad Squad
 ---@return unknown
 function Ai(squad) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Disables all encounters
 ---@return unknown
 function AI_DisableAllEncounters() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Enables all encounters
 ---@return unknown
 function AI_EnableAllEncounters() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns a table with all active (not dead) encounters.
 ---@return unknown
 function AI_GetActiveEncounters() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns the number of alive encounters currently managed by the AI manager.
 ---@return unknown
 function AI_GetNumEncounters() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns True if the current AI_Manager difficulty matches any in a given list.
 ---@param difficultyList number
 ---@return unknown
 function AI_IsMatchingDifficulty(difficultyList) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Overrides the current difficulty setting (only for the AI Manager). Pass 'nil' to reset to Game_GetSPDifficulty() value
 ---@param level number
 ---@return unknown
 function AI_OverrideDifficulty(level) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Clears goals on all encounters, then empties the encounter list. Can also issue a stop command to all units.
 ---@param stopAll boolean
 ---@return unknown
 function AI_RemoveAllEncounters(stopAll) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set the level of debug information shown but Ai:Print().
 ---@return unknown
 function AI_SetDebugLevel() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Sets the default player to use when creating an encounter.
 ---@param player Player
 ---@return unknown
 function AI_SetDefaultEnemyPlayer(player) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle encounter/goal debug information on screen.
 ---@return unknown
 function AI_ToggleDebugData() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle printing console debug information for encounters.
 ---@return unknown
 function AI_ToggleDebugPrint() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Adjust default goal data for ability goals.  Sets the default GoalData to the current defaults plus additionalDefaultGoalData; any values specified are used for unspecified encounter ability goal values.
 ---@param additionalDefaultGoalData table
 ---@return unknown
 function AIAbilityGoal_AdjustDefaultGoalData(additionalDefaultGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set default goal data for ability goals.  defaultGoalData is cloned; any values specified are used for unspecified encounter ability goal values.
 ---@param defaultGoalData table
 ---@return unknown
 function AIAbilityGoal_SetDefaultGoalData(defaultGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set modify goal data for ability goals.  modifyGoalData is cloned; values specified via keyname_Multiplier are used for the numeric keyname encounter ability goal value.
 ---@param modifyGoalData table
 ---@return unknown
 function AIAbilityGoal_SetModifyGoalData(modifyGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set override goal data for ability goals.  overrideGoalData is cloned; any values specified are used for encounter ability goal values.
 ---@param overrideGoalData table
 ---@return unknown
 function AIAbilityGoal_SetOverrideGoalData(overrideGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Adjust default goal data for attack goals.  Sets the default GoalData to the current defaults plus additionalDefaultGoalData; any values specified are used for unspecified encounter attack goal values.
 ---@param additionalDefaultGoalData table
 ---@return unknown
 function AIAttackGoal_AdjustDefaultGoalData(additionalDefaultGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set default goal data for attack goals.  defaultGoalData is cloned; any values specified are used for unspecified encounter attack goal values.
 ---@param defaultGoalData table
 ---@return unknown
 function AIAttackGoal_SetDefaultGoalData(defaultGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set modify goal data for attack goals.  modifyGoalData is cloned; values specified via keyname_Multiplier are used for the numeric keyname encounter attack goal value.
 ---@param modifyGoalData table
 ---@return unknown
 function AIAttackGoal_SetModifyGoalData(modifyGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set override goal data for attack goals.  overrideGoalData is cloned; any values specified are used for encounter attack goal values.
 ---@param overrideGoalData table
 ---@return unknown
 function AIAttackGoal_SetOverrideGoalData(overrideGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Adjust default goal data.  Sets the default GoalData to the current defaults plus additionalDefaultGoalData; any values specified are used for unspecified encounter goal values.
 ---@param additionalDefaultGoalData table
 ---@return unknown
 function AIBaseGoal_AdjustDefaultGoalData(additionalDefaultGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set default goal data.  defaultGoalData is cloned; any values specified are used for unspecified encounter goal values.
 ---@param defaultGoalData table
 ---@return unknown
 function AIBaseGoal_SetDefaultGoalData(defaultGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set modify goal data.  modifyGoalData is cloned; values specified via keyname_Multiplier are used for the numeric keyname encounter goal value.
 ---@param modifyGoalData table
 ---@return unknown
 function AIBaseGoal_SetModifyGoalData(modifyGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set override goal data.  overrideGoalData is cloned; any values specified are used for encounter goal values.
 ---@param overrideGoalData table
 ---@return unknown
 function AIBaseGoal_SetOverrideGoalData(overrideGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Adjust default goal data for defend goals.  Sets the default GoalData to the current defaults plus additionalDefaultGoalData; any values specified are used for unspecified encounter defend goal values.
 ---@param additionalDefaultGoalData table
 ---@return unknown
 function AIDefendGoal_AdjustDefaultGoalData(additionalDefaultGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set default goal data for defend goals.  defaultGoalData is cloned; any values specified are used for unspecified encounter defend goal values.
 ---@param defaultGoalData table
 ---@return unknown
 function AIDefendGoal_SetDefaultGoalData(defaultGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set modify goal data for defend goals.  modifyGoalData is cloned; values specified via keyname_Multiply are used for the numeric keyname encounter defend goal value.
 ---@param modifyGoalData table
 ---@return unknown
 function AIDefendGoal_SetModifyGoalData(modifyGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set override goal data for defend goals.  overrideGoalData is cloned; any values specified are used for encounter defend goal values.
 ---@param overrideGoalData table
 ---@return unknown
 function AIDefendGoal_SetOverrideGoalData(overrideGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Adjust default goal data for attack goals.  Sets the default GoalData to the current defaults plus additionalDefaultGoalData; any values specified are used for unspecified encounter attack goal values.
 ---@param additionalDefaultGoalData table
 ---@return unknown
 function AIFormationAttackGoal_AdjustDefaultGoalData(additionalDefaultGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set default goal data for attack goals.  defaultGoalData is cloned; any values specified are used for unspecified encounter attack goal values.
 ---@param defaultGoalData table
 ---@return unknown
 function AIFormationAttackGoal_SetDefaultGoalData(defaultGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set modify goal data for attack goals.  modifyGoalData is cloned; values specified via keyname_Multiplier are used for the numeric keyname encounter attack goal value.
 ---@param modifyGoalData table
 ---@return unknown
 function AIFormationAttackGoal_SetModifyGoalData(modifyGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set override goal data for attack goals.  overrideGoalData is cloned; any values specified are used for encounter attack goal values.
 ---@param overrideGoalData table
 ---@return unknown
 function AIFormationAttackGoal_SetOverrideGoalData(overrideGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Adjust default goal data for DefendArea goals.  Sets the default GoalData to the current defaults plus additionalDefaultGoalData; any values specified are used for unspecified encounter DefendArea goal values.
 ---@param additionalDefaultGoalData table
 ---@return unknown
 function AIFormationDefendAreaGoal_AdjustDefaultGoalData(additionalDefaultGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set default goal data for DefendArea goals.  defaultGoalData is cloned; any values specified are used for unspecified encounter DefendArea goal values.
 ---@param defaultGoalData table
 ---@return unknown
 function AIFormationDefendAreaGoal_SetDefaultGoalData(defaultGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set modify goal data for DefendArea goals.  modifyGoalData is cloned; values specified via keyname_Multiplier are used for the numeric keyname encounter DefendArea goal value.
 ---@param modifyGoalData table
 ---@return unknown
 function AIFormationDefendAreaGoal_SetModifyGoalData(modifyGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set override goal data for DefendArea goals.  overrideGoalData is cloned; any values specified are used for encounter DefendArea goal values.
 ---@param overrideGoalData table
 ---@return unknown
 function AIFormationDefendAreaGoal_SetOverrideGoalData(overrideGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Adjust default goal data for move goals.  Sets the default GoalData to the current defaults plus additionalDefaultGoalData; any values specified are used for unspecified encounter move goal values.
 ---@param additionalDefaultGoalData table
 ---@return unknown
 function AIMoveGoal_AdjustDefaultGoalData(additionalDefaultGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set default goal data for move goals.  defaultGoalData is cloned; any values specified are used for unspecified encounter move goal values.
 ---@param defaultGoalData table
 ---@return unknown
 function AIMoveGoal_SetDefaultGoalData(defaultGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set modify goal data for move goals.  modifyGoalData is cloned; values specified via keyname_Multiply are used for the numeric keyname encounter move goal value.
 ---@param modifyGoalData table
 ---@return unknown
 function AIMoveGoal_SetModifyGoalData(modifyGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set override goal data for move goals.  overrideGoalData is cloned; any values specified are used for encounter move goal values.
 ---@param overrideGoalData table
 ---@return unknown
 function AIMoveGoal_SetOverrideGoalData(overrideGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Adjust default goal data for TownLife goals.  Sets the default GoalData to the current defaults plus additionalDefaultGoalData; any values specified are used for unspecified encounter TownLife goal values.
 ---@param additionalDefaultGoalData table
 ---@return unknown
 function AITownLifeGoal_AdjustDefaultGoalData(additionalDefaultGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set default goal data for TownLife goals.  defaultGoalData is cloned; any values specified are used for unspecified encounter TownLife goal values.
 ---@param defaultGoalData table
 ---@return unknown
 function AITownLifeGoal_SetDefaultGoalData(defaultGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set modify goal data for TownLife goals.  modifyGoalData is cloned; values specified via keyname_Multiply are used for the numeric keyname encounter TownLife goal value.
 ---@param modifyGoalData table
 ---@return unknown
 function AITownLifeGoal_SetModifyGoalData(modifyGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set override goal data for TownLife goals.  overrideGoalData is cloned; any values specified are used for encounter TownLife goal values.
 ---@param overrideGoalData table
 ---@return unknown
 function AITownLifeGoal_SetOverrideGoalData(overrideGoalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a new encounter from encounter data. If spawnNow is true, spawns specified units immediately.
 --- See: http://relicwiki/display/REL/Ai+Encounters
 ---@param data EncounterData
@@ -7805,6 +8173,7 @@ function AITownLifeGoal_SetOverrideGoalData(overrideGoalData) end
 ---@return unknown
 function Encounter(data, spawnNow, spawnStaggered) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a new encounter with a generic FormationAttack goal.
 ---@param name string
 ---@param encUnits SBP | table
@@ -7816,6 +8185,7 @@ function Encounter(data, spawnNow, spawnStaggered) end
 ---@return unknown
 function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, encRange, encLeash) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a new encounter with a generic FormationAttack goal.
 ---@param name string
 ---@param encUnits SBP | table
@@ -7827,6 +8197,7 @@ function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, encRange, 
 ---@return unknown
 function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, encRange, encLeash) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a new encounter with a generic Attack goal.
 ---@param name string
 ---@param encUnits SBP | table
@@ -7838,6 +8209,7 @@ function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, encRange, 
 ---@return unknown
 function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, encRange, encLeash) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a new encounter with a generic Defend goal.
 ---@param name string
 ---@param encUnits SBP | table
@@ -7849,6 +8221,7 @@ function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, encRange, 
 ---@return unknown
 function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, encRange, encLeash) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a new encounter with a generic Patrol goal.
 --- pathLoop can be: LOOP_NONE, LOOP_NORMAL, LOOP_TOGGLE_DIRECTION
 ---@param name string
@@ -7861,6 +8234,7 @@ function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, encRange, 
 ---@return unknown
 function Encounter(name, encUnits, spawnLoc, encPath, dynamicSpawn, pathWait, pathLoop) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a new encounter with a generic Move goal.
 ---@param name string
 ---@param encUnits SBP | table
@@ -7871,6 +8245,7 @@ function Encounter(name, encUnits, spawnLoc, encPath, dynamicSpawn, pathWait, pa
 ---@return unknown
 function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, moveRange) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a new encounter with a generic Ability goal.
 ---@param name string
 ---@param encUnits SBP | table
@@ -7881,6 +8256,7 @@ function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, moveRange)
 ---@return unknown
 function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, moveRange) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a new encounter with a generic TownLife goal.
 ---@param name string
 ---@param encUnits SBP | table
@@ -7891,6 +8267,7 @@ function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, moveRange)
 ---@return unknown
 function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, townLifeRange) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a new basic encounter.
 ---@param name string
 ---@param spawnLoc Marker | Position
@@ -7899,17 +8276,20 @@ function Encounter(name, encUnits, spawnLoc, encTarget, dynamicSpawn, townLifeRa
 ---@return unknown
 function Encounter(name, spawnLoc, encUnits, dynamicSpawn) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a new encounter from an SGroup, with default encounter data
 --- Encounter player is derived from sgroup; all squads in sgroup must be owned by same player.
 ---@param squadgroup SGroup
 ---@return unknown
 function Encounter(squadgroup) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Spawns the units within an. Does nothing if the encounter has already been spawned.
 ---@param spawnStaggered boolean
 ---@return unknown
 function Encounter(spawnStaggered) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Adds unit(s) to the encounter
 --- See Encounter.scar for details unitData is a table that can either hold a single unit OR a set of unit tables The format of each individual unit table is the same as regular encounter unit tables spawnType is of type SPAWN.<>
 ---@param unitData table
@@ -7917,6 +8297,7 @@ function Encounter(spawnStaggered) end
 ---@return unknown
 function Encounter(unitData, spawnType) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Creates encounter goal from goal data; goals determine unit behaviours.
 --- See: http://relicwiki/display/REL/Ai+Goal
 ---@param goalData GoalData
@@ -7925,117 +8306,142 @@ function Encounter(unitData, spawnType) end
 ---@return unknown
 function Encounter(goalData, triggerGoal__dafault_true_, previousEncounterID) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Determines whether or not the encounter has an active and valid goal.
 ---@return unknown
 function Encounter() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Clears the current goal.
 ---@return unknown
 function Encounter() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Removes an encounter's onSight/onEngage event and immediately starts its goal.
 --- Only works if the encounter has both data.goal, and a valid goal trigger
 ---@return unknown
 function Encounter() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Moves back the goal to the original location
 --- Only works if the goal was previously relocated after being triggered
 ---@return unknown
 function Encounter() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- If encounter has a goal, but no currently running AI Encounter, restarts the goal.
 --- Returns true if goal was restarted, false otherwise. If we pass a previousEncounterID, it restarts the encounter using that handle id. This is used for save / load
 ---@return unknown
 function Encounter() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Sets the goal data for the encounter. If encounter has a goal with a running AI Encounter, updates the goal.
 --- See: http://relicwiki/display/REL/Ai+Goal Use GetGoalData() to get
 ---@param goalData GoalData
 ---@return unknown
 function Encounter(goalData) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Gets clone of current goal data.  May be nil.
 ---@return unknown
 function Encounter() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Gets the encounter's sgroup. Caution: sgroup may be empty
 ---@return unknown
 function Encounter() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Gets the encounter's nearby allied Egroup. Caution: egroup may be empty. Automatically created whenever the Encounter triggers OnEngage or OnAttacked. To force the EGroup creation call Encounter:UpdateNearbyAllies()
 ---@return unknown
 function Encounter() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Starts encounter running (encounters are enabled by default) if it was disabled previously.
 ---@return unknown
 function Encounter() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Stops running the encounter and clears the current goal.
 ---@return unknown
 function Encounter() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- After adding units to a pre-existing encounter it is sometimes necessary to reboot it, as it may have disabled itself if all it's units died. This function checks and does that safely.
 ---@return unknown
 function Encounter() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Removes all encounter units that belong to the given sgroup
 ---@return unknown
 function Encounter() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Find and removes a unit from an encounter based on the squad.
 ---@return unknown
 function Encounter() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Adds an sgroup to an encounter
 ---@return unknown
 function Encounter() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Forces the encounter to spawn its units instantly
 ---@return unknown
 function Encounter() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Clears the encounter's onDeath callback. If includeUnits is set to true, it clears onDeath callbacks for units as well.
 ---@param includeUnits boolean
 ---@return unknown
 function Encounter(includeUnits) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Sets a new onDeath callback for the encounter
 ---@param func function
 ---@return unknown
 function Encounter(func) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set the goal's OnSuccess callback.
 ---@return unknown
 function Encounter() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set the goal's OnFailure callback.
 ---@return unknown
 function Encounter() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Callback helper function for relocate an Encounter goal. Name of parameters: 'encounter'.
 --- Example usage: Event_*(EventHandler_ResetGoalRelocation, {encounter = <myEncounter>}, ...)
 ---@param data table
 ---@return unknown
 function EventHandler_RelocateGoal(data) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Callback helper function for relocate  an Encounter goal to the original location. Name of parameters: 'encounter'.
 --- Example usage: Event_*(EventHandler_ResetGoalRelocation, {encounter = <myEncounter>}, ...)
 ---@param data table
 ---@return unknown
 function EventHandler_ResetGoalRelocation(data) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Callback helper function for triggering an Encounter goal. Name of parameters: 'encounter'.
 --- Invokes Encounter:TriggerGoal() for data.encounter Example usage: Event_*(EventHandler_TriggerEncounterGoal, {encounter = <myEncounter>}, ...)
 ---@param data table
 ---@return unknown
 function EventHandler_TriggerEncounterGoal(data) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Merge clones two table (recursively) into a single table combining into a new table allowing for unadulterated use of the data
 ---@param defaultTable table
 ---@param overrideTable table
 ---@return unknown
 function MergeClone(defaultTable, overrideTable) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns true if the active command is of the type we specified
 ---@param entity Entity
 ---@param cmdtype EntityCommandType
@@ -8048,6 +8454,7 @@ function Entity_ActiveCommandIs(entity, cmdtype) end
 ---@return unknown
 function Entity_AddAbility(entity, ability) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Add a specific amount of a certain resource type to an entity.
 ---@param entity Entity
 ---@param type number
@@ -8083,6 +8490,7 @@ function Entity_CanAttackNow(attacker, target) end
 ---@return unknown
 function Entity_CancelProductionQueueItem(entity, index) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Check if an entity can currently be damaged.
 ---@param entity Entity
 ---@return unknown
@@ -8122,6 +8530,7 @@ function Entity_CanTargetEntity(entity, target, checkFOW) end
 ---@return unknown
 function Entity_ClearPendingDeathFlag(entity) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Clears any previous posture suggestions made to an entity
 ---@param entity Entity
 ---@return unknown
@@ -8177,6 +8586,7 @@ function Entity_DisableCancelConstructionCommand(entity, disable) end
 ---@return unknown
 function Entity_DoBurnDamage(entity, val, ignoreMaxDamagePerSecond) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Sets whether an entity pays attention to its surroundings
 ---@param entity Entity
 ---@param attentive boolean
@@ -8315,6 +8725,7 @@ function Entity_GetMaxCaptureCrewSize(entity) end
 ---@return unknown
 function Entity_GetMaxHoldSquadSlots(entity) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns the number of blocks the entity will perform per number of attacks
 --- For each numAttacks melee attacks the entity receives, it will block a random numBlocks of them. Block rate is numBlocks / numAttacks
 ---@param entity Entity
@@ -8335,6 +8746,7 @@ function Entity_GetNumInteractors(entity, interactionType) end
 ---@return unknown
 function Entity_GetOffsetPosition(entity, offset, distance) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Get the entity health percentage where it can be set on fire
 ---@param entity Entity
 ---@return unknown
@@ -8358,12 +8770,14 @@ function Entity_GetProductionQueueItemType(entity, index) end
 ---@return unknown
 function Entity_GetProductionQueueSize(entity) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns the number of blocks the entity will perform per number of attacks
 --- For each numAttacks projectile attacks the entity receives, it will block a random numBlocks of them. Block rate is numBlocks / numAttacks
 ---@param entity Entity
 ---@return unknown
 function Entity_GetProjectileBlocksPerAttacks(entity) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns the number of blocks the entity will perform per number of attacks
 --- For each numAttacks ranged attacks the entity receives, it will block a random numBlocks of them. Block rate is numBlocks / numAttacks
 ---@param entity Entity
@@ -8375,6 +8789,7 @@ function Entity_GetRangedBlocksPerAttacks(entity) end
 ---@return unknown
 function Entity_GetRemainingResourceDepositAmount(entity) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns the amount of a certain resource that an entity has.
 ---@param entity Entity
 ---@param resourceType number
@@ -8712,6 +9127,7 @@ function Entity_IsInCover(entityId) end
 ---@return unknown
 function Entity_IsInfantry(pEntity) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Checks if an entity is in a hold
 ---@param entity Entity
 ---@return unknown
@@ -8759,6 +9175,7 @@ function Entity_IsPlannedStructure(entity) end
 ---@return unknown
 function Entity_IsProducingSquad(entity, pbg) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns true if an entity has a production queue and if the queue is available
 ---@param entity Entity
 ---@return unknown
@@ -8769,6 +9186,7 @@ function Entity_IsProductionQueueAvailable(entity) end
 ---@return unknown
 function Entity_IsResourceGenerator(entity) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Return true if the entity is a slot item
 ---@param entity Entity
 ---@return unknown
@@ -8820,6 +9238,7 @@ function Entity_IsUnderAttackByPlayer(entity, pAttackerOwner, time) end
 ---@return unknown
 function Entity_IsUnderAttackFromDirection(entity, offset, timeSeconds) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns true if the entity is under construction.
 ---@param entity Entity
 ---@return unknown
@@ -8899,16 +9318,19 @@ function Entity_RemoveUpgrade(entity, upgrade) end
 ---@return unknown
 function Entity_RequiresSlottedSplineUpdateAfterBlueprintConversion(entity) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Reset melee block rate to AE tuned values
 ---@param entity Entity
 ---@return unknown
 function Entity_ResetMeleeBlocksPerAttacks(entity) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Reset Projectile block rate to AE tuned values
 ---@param entity Entity
 ---@return unknown
 function Entity_ResetProjectileBlocksPerAttacks(entity) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Reset ranged block rate to AE tuned values
 ---@param entity Entity
 ---@return unknown
@@ -9012,12 +9434,14 @@ function Entity_SetInvulnerable(entity, enable, reset_time) end
 ---@return unknown
 function Entity_SetInvulnerableMinCap(entity, minHealthPercentage, resetTime) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Sets the lockCurrentTierVisuals flag in the TierExt so when an entity gets BP converted it doesn't update the visual assets. Must be called before BP conversion
 ---@param entity Entity
 ---@param lockVisuals boolean
 ---@return unknown
 function Entity_SetLockCurrentTierVisuals(entity, lockVisuals) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set the number of blocks the entity will perform per number of attacks
 --- For each numAttacks melee attacks the entity receives, it will block a random numBlocks of them. Block rate is numBlocks / numAttacks
 ---@param entity Entity
@@ -9044,12 +9468,14 @@ function Entity_SetPlayerOwner(entity, owner) end
 ---@return unknown
 function Entity_SetPosition(entity, pos) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- If the entity is at the same cell as desiredPosition, try to set the entity position to it. If the cell is next to impass, set it to the center of the cell.
 ---@param entity Entity
 ---@param desiredPosition Position
 ---@return unknown
 function Entity_SetPositionWithinCell(entity, desiredPosition) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set the number of blocks the entity will perform per number of attacks
 --- For each numAttacks projectile attacks the entity receives, it will block a random numBlocks of them. Block rate is numBlocks / numAttacks
 ---@param entity Entity
@@ -9064,6 +9490,7 @@ function Entity_SetProjectileBlocksPerAttacks(entity, blocks, attacks) end
 ---@return unknown
 function Entity_SetProjectileCanExplode(projectile, canExplode) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set the number of blocks the entity will perform per number of attacks
 --- For each numAttacks ranged attacks the entity receives, it will block a random numBlocks of them. Block rate is numBlocks / numAttacks
 ---@param entity Entity
@@ -9084,6 +9511,7 @@ function Entity_SetRecrewable(entity, capturable) end
 ---@return unknown
 function Entity_SetRemainingResourceDepositAmount(entity, amount) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Sets a specific amount of a certain resource type for an entity.
 ---@param entity Entity
 ---@param type number
@@ -9279,6 +9707,7 @@ function Entity_StopAbility(entity, ability, bIsEarlyExit) end
 ---@return unknown
 function Entity_StopFire(entity) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Suggests a posture to an entity, lasting the passed duration
 --- Posture of 0 is prone, 1 is kneel/crouch, and 2 is standing.  Duration is in seconds, negative means indefinite.
 ---@param entity Entity
@@ -9638,6 +10067,7 @@ function FOW_RevealTerritory(player, sectorID, durationSecs, mustOwn) end
 ---@return unknown
 function FOW_UIRevealAll() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Use to transition from game to RevealAll
 ---@param duration number
 ---@return unknown
@@ -9727,6 +10157,7 @@ function SGroup_CreateTable(format, size) end
 ---@return unknown
 function SGroup_GetWBTable(format) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns all ScarMarkers from the Mission Editor with the given name. If you don't care about the type, pass in an empty string ( "" )
 --- The type is defined in the markers list of the mission editor when placing markers.\n
 ---@param name string
@@ -9740,6 +10171,7 @@ function AllMarkersFromName(name, type) end
 ---@return unknown
 function Marker_GetSequence(name, type) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns the number of ScarMarkers with the given name If you don't care about the type, pass in an empty string ( "" )
 --- The type is defined in the markers list of the mission editor when placing markers.
 ---@param name string
@@ -9857,6 +10289,7 @@ function Modify_DisableHold(group, disable) end
 ---@return unknown
 function Modify_EnableCamoflage(group, disable) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Modifies an entity's construction time
 --- Should only be used on entities, NOT squads
 ---@param group EGroup
@@ -10194,6 +10627,7 @@ function Modify_WeaponSuppression(group, hardpoint, scalefactor) end
 ---@return unknown
 function Music_GetDefaultMovement() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Translates the string music event level into the engine designated intensity value
 ---@param music_event__see_Cardinal_scar_for_event_enums_ string
 ---@return unknown
@@ -10315,6 +10749,7 @@ function NIS_StoreCurrentCameraPos() end
 ---@return unknown
 function Objective_AddAreaHighlight(objTable, pos, areatype, scale, color, alpha) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Adds a visual splat on the ground in the world around a certain position, returning the ID
 --- The reticule blueprint (the circle on the ground) and the hintpoint template (the arrow) are by defualt taken from the objective type, but you can override them or set them to false to turn that element off.
 ---@param objTable LuaTable
@@ -10461,6 +10896,7 @@ function Objective_PauseTimer(objTable) end
 ---@return unknown
 function Objective_Register(objTable, owner) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Removes an existing ground reticule by its ID
 ---@return unknown
 function Objective_RemoveGroundReticule() end
@@ -10477,6 +10913,7 @@ function Objective_RemoveHealthBar(objectiveTable, healthBarID) end
 ---@return unknown
 function Objective_RemovePing(objectiveTable, PingID) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Remove a progress bar for this objective.
 ---@param objTable LuaTable
 ---@return unknown
@@ -10514,6 +10951,7 @@ function Objective_SetAlwaysShowDetails(objTable, title, hud_arrow, hintpoints) 
 ---@return unknown
 function Objective_SetCounter(objTable, current, maximum) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Show a progress bar for this objective with the given value (which should be a percentage from 0.0 (empty) to 1.0 (full)). This bar can be removed with Objective_RemoveProgressBar or by completing or failing the mission.
 --- If you want to use one of the "global" progress bars (if your project supports them), supply the relevant barIndex value and text string to show alongside it.
 ---@param objTable LuaTable
@@ -10771,6 +11209,7 @@ function Player_GetAll(player, sgroup, egroup) end
 ---@return unknown
 function Player_GetAllEntities(player) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns an EGroup containing all of the players entities(including non_squad entities) of a specific unit_type (as defined by the type_ext on the entity)
 --- This function returns a new EGroup to allow tracking of different types.
 ---@param player Player
@@ -10833,6 +11272,7 @@ function Player_GetBuildingUnderConstructionID(player, entitytypes_unit_types) e
 ---@return unknown
 function Player_GetCurrentPopulation(player, capType) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Get current popcap. Use capType CT_Personnel to get current squad cap or CT_VehicleCap to get current vehicle cap.
 ---@param player Player
 ---@param capType CapType
@@ -10886,6 +11326,7 @@ function Player_GetEntityConcentration(player, popcapOnly, includeBlueprints, ex
 ---@return unknown
 function Player_GetEntityCount(player) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns the number of entities of a certain unit type
 ---@param player Player
 ---@param unitTypeString string
@@ -10898,11 +11339,19 @@ function Player_GetEntityCountByUnitType(player, unitTypeString) end
 ---@return unknown
 function Player_GetEntityName(player, index) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Get maximum popcap. Use capType CT_Personnel to get max squad cap or CT_VehicleCap to get max vehicle cap.
 ---@param player Player
 ---@param capType CapType
 ---@return unknown
 function Player_GetMaxPopulationCap(player, capType) end
+
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
+--- Get maximum popcap including any overrides. Use capType CT_Personnel to get max squad cap or CT_VehicleCap to get max vehicle cap. If there are no overrides, the default max pop cap is returned.
+---@param player Player
+---@param capType CapType
+---@return unknown
+function Player_GetMaxPopulationCapOverride(player, capType) end
 
 --- Returns the number of squads currently gathering resources of a given type
 ---@param player Player
@@ -10983,6 +11432,7 @@ function Player_GetSquadCount(player) end
 ---@return unknown
 function Player_GetSquads(player) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns an SGroup containing all of the players squads of a specific unit_type (as defined by the type_ext on the squad)
 --- This function returns a new SGroup.
 ---@param player Player
@@ -11117,6 +11567,7 @@ function Player_GetUpgradeBPCost(player, upgradePBG) end
 ---@return unknown
 function Player_GetUpgradeBPCostByResource(player, upgradePBG, type) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set the gifted resource amount for a given player A positive resource amount means the player receives the resources A negative resource amount means the player sends the resources Ignores income cap and resource sharing.
 ---@param player Player
 ---@param type number
@@ -11376,6 +11827,7 @@ function Player_SetReputation(observer, target, reputation) end
 ---@return unknown
 function Player_SetResource(player, type, amt) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set the resource amount for a given player.  Ignores income cap and resource sharing.
 ---@param player Player
 ---@param type number
@@ -11840,6 +12292,7 @@ function Decal_Destroy(decalID) end
 ---@return unknown
 function Decal_GetInvalidID() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Cleanup resources in cache. Only for debug purposes, not in RTM.
 ---@param cacheName string
 ---@return unknown
@@ -11852,6 +12305,7 @@ function ResourceContainer_ClearCache(cacheName) end
 ---@return unknown
 function ResourceContainer_CreateCache(cacheName, cacheSize) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Log resource references to log. Only for debug purposes, not in RTM.
 --- dumps inventory information to ResourceContainerLog file
 ---@return unknown
@@ -11881,10 +12335,12 @@ function Splat_Destroy(handle) end
 ---@return unknown
 function Splat_GetInvalidID() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Load the saved terrain height map. This will restore the state of the terrain height map to
 ---@return unknown
 function Terrain_LoadHeightMap() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Save the current terrain height map. It can be restored to that state by using Terrain_LoadHeightMap.
 ---@return unknown
 function Terrain_SaveHeightMap() end
@@ -11923,6 +12379,7 @@ function Rule_AddEGroupEvent(rule, egroup, eventtype) end
 ---@return unknown
 function Rule_AddEntityEvent(rule, entity, eventtype) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Adds a filter to the given rule that will cause the event to only be invoked if - The blueprint of the entity pointed to by context is in includeTypes and none in excludeTypes.
 --- Valid contexts are dependent on the event this filter is applied to. When multiple filters exist op defines how the result of the previous filter is combined with this filter. Blueprint can be either a PBG or the name of a type (where in it acts the same as Rule_AddEventFilter_EntityType).
 ---@param rule function
@@ -11933,6 +12390,7 @@ function Rule_AddEntityEvent(rule, entity, eventtype) end
 ---@return unknown
 function Rule_AddEventFilter_EntityBlueprint(rule, context, op, includeTypes, excludeTypes) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Adds a filter to the given rule that will cause the event to only be invoked if - The type of the entity pointed to by context is owned by a player that is in includeTypes and none in excludeTypes.
 --- Valid contexts are dependent on the event this filter is applied to. When multiple filters exist op defines how the result of the previous filter is combined with this filter.
 ---@param rule function
@@ -11943,6 +12401,7 @@ function Rule_AddEventFilter_EntityBlueprint(rule, context, op, includeTypes, ex
 ---@return unknown
 function Rule_AddEventFilter_EntityPlayerOwner(rule, context, op, includeTypes, excludeTypes) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Adds a filter to the given rule that will cause the event to only be invoked if - The type of the entity pointed to by context is in includeTypes and not in excludeTypes.
 --- Valid contexts are dependent on the event this filter is applied to. When multiple filters exist op defines how the result of the previous filter is combined with this filter.
 ---@param rule function
@@ -11953,6 +12412,7 @@ function Rule_AddEventFilter_EntityPlayerOwner(rule, context, op, includeTypes, 
 ---@return unknown
 function Rule_AddEventFilter_EntityType(rule, context, op, includeTypes, excludeTypes) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Adds a filter to the given rule that will cause the event to only be invoked if - The type of the entity pointed to by context has at least one true state model value from includeTypes and none from excludeTypes.
 --- Valid contexts are dependent on the event this filter is applied to. When multiple filters exist op defines how the result of the previous filter is combined with this filter.
 ---@param rule function
@@ -12250,6 +12710,7 @@ function SGroup_AddLeaders(sgroup) end
 ---@return unknown
 function SGroup_AddResource(sgroup, resource, amount) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Add to the list of slot items to drop when any one of the squads is wiped out
 --- Drop chance is percentage chance the item will drop (0.0-1.0) exlusive means the squad would only drop this item, thus erasing all previous items in list example:	local item = Util_GetSlotItemID( "slot_item/allies_m9bazooka.lua" ) SGroup_AddSlotItemToDropOnDeath( squadid, item, false )
 ---@param groupid SGroup
@@ -12308,6 +12769,7 @@ function SGroup_CanSeeSGroup(sgroup, targetsgroup, all) end
 ---@return unknown
 function SGroup_Clear(sgroup) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Clears any previous posture suggestions made to a squad
 ---@param sgroup SGroup
 ---@return unknown
@@ -12446,6 +12908,7 @@ function SGroup_DisableCombatPlans(groupID) end
 ---@return unknown
 function SGroup_Duplicate(sgroup1, sgroup2) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Sets whether an entity pays attention to its surroundings
 ---@param sgroup SGroup
 ---@param attentive boolean
@@ -12458,6 +12921,7 @@ function SGroup_EnableAttention(sgroup, attentive) end
 ---@return unknown
 function SGroup_EnableMinimapIndicator(group, enable) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Enables or disables the surprise feature for an sgroup
 ---@param groupid SGroup
 ---@param enable boolean
@@ -12542,6 +13006,7 @@ function SGroup_FilterSpawned(sgroup, filtertype, splitSGroup) end
 ---@return unknown
 function SGroup_FilterThreat(sgroup, tableSBPs, bEmpty) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Filters an sgroup on spawned/despawned status. Use FILTER_KEEP to keep the spawned units (therefore removing the despawned), or FILTER_REMOVE to remove the spawned units (and keep the despawned).
 ---@param sgroup SGroup
 ---@param filtertype number
@@ -12663,6 +13128,7 @@ function SGroup_GetLoadedVehicleSquad(groupid) end
 ---@return unknown
 function SGroup_GetName(sgroup) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Get the number of slot items with the same ID that the squads in the sgroup own
 ---@param group SGroup
 ---@param itemID number
@@ -13076,6 +13542,7 @@ function SGroup_SetCrushable(sgroup, crushable) end
 ---@return unknown
 function SGroup_SetInvulnerable(sgroup, enabled, reset_time) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set soldier mood mode. Mode could be MM_Auto, MM_ForceCalm or MM_ForceTense
 ---@param group SGroup
 ---@param mode number
@@ -13150,6 +13617,7 @@ function SGroup_Single(groupID, squad) end
 ---@return unknown
 function SGroup_SnapFaceEachOther(sgroup1, sgroup2) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Suggests a posture to an SGroup, lasting the passed duration
 --- Posture of 0 is prone, 1 is kneel/crouch, and 2 is standing.  Duration is in seconds, negative means indefinite.
 ---@param sgroup SGroup
@@ -13251,6 +13719,7 @@ function Sound_SetMusicRaceCode(raceCode) end
 ---@return unknown
 function Sound_StartMusicOutro(outroEvent) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Try to group the squads, returning the squads in groupings that are at least the ideal squad range apart
 ---@param _not boolean
 ---@param smallvector_SGroup SGroup
@@ -13293,6 +13762,7 @@ function Squad_AddAbility(squad, ability) end
 ---@return unknown
 function Squad_AddAllResources(squad, amount) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Add to the list of slot items to drop when this squad is wiped out
 --- Drop chance is percentage chance the item will drop (0.0-1.0) exlusive means the squad would only drop this item, thus erasing all previous items in list example:	local item = Util_GetSlotItemID( "slot_item/allies_m9bazooka.lua" ) Squad_AddSlotItemToDropOnDeath( squadid, item, false )
 ---@param squad Squad
@@ -13387,6 +13857,7 @@ function Squad_CanInstantReinforceNow(squad) end
 ---@return unknown
 function Squad_CanLoadSquad(squad, loadthis, assumeEmpty, assumeVisible) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- True if the squad can pickup the entity slot item
 ---@param pSquad Squad
 ---@param pEntity Entity
@@ -13427,6 +13898,7 @@ function Squad_CanTargetEntity(squad, target, checkFOW) end
 ---@return unknown
 function Squad_CanTargetSquad(squad, target, checkFOW) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Clears any previous posture suggestions made to a squad
 ---@param squad Squad
 ---@return unknown
@@ -13472,6 +13944,7 @@ function Squad_Destroy(squad) end
 ---@return unknown
 function Squad_EnableProductionQueue(squad, enable) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Enables or disables the surprise feature on thie given squad
 ---@param squad Squad
 ---@param enable boolean
@@ -13639,11 +14112,13 @@ function Squad_GetMaxEntityDropOffDistance(targetSquad) end
 ---@return unknown
 function Squad_GetMinArmor(squad) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns the command ID of the most recent queued command on the Squad.
 ---@param squad Squad
 ---@return unknown
 function Squad_GetMostRecentQueuedCommandID(squad) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Get the number of slot items with the same ID that the squad has
 --- example:	local item = Util_GetSlotItemID( "slot_item/allies_m1918_bar.lua" ) Squad_GetNumSlotItem( squadid, item )
 ---@param squad Squad
@@ -13691,17 +14166,20 @@ function Squad_GetRace(squad) end
 ---@return unknown
 function Squad_GetShieldPercentage(squad) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns the ID of the slot item. Use Squad_GetSlotItemCount to determine how many slot items the squad has. The first index is 1
 ---@param squad Squad
 ---@param index number
 ---@return unknown
 function Squad_GetSlotItemAt(squad, index) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns how many slot items this squad has
 ---@param squad Squad
 ---@return unknown
 function Squad_GetSlotItemCount(squad) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns a table of SlotItem ID's that this squad currently owns
 ---@param squadid Squad
 ---@return unknown
@@ -13830,12 +14308,14 @@ function Squad_GetVeterancy(squad) end
 ---@return unknown
 function Squad_GetVeterancyRank(squad) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Gives a slot item to the squad. Can fail due to not enough slots left
 ---@param squad Squad
 ---@param pbg ScarSlotItemPBG
 ---@return unknown
 function Squad_GiveSlotItem(squad, pbg) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Gives all slot items in a table to the squad. The table should come from Squad_GetSlotItemsTable
 ---@param squadid Squad
 ---@param itemTable LuaTable
@@ -13897,6 +14377,7 @@ function Squad_HasProductionQueue(squad) end
 ---@return unknown
 function Squad_HasSetupTeamWeapon(pSquad) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Check if a squad has a specific slot item
 ---@param squad Squad
 ---@param slotItem SlotItemID
@@ -14069,6 +14550,7 @@ function Squad_IsOfType(squad, type) end
 ---@return unknown
 function Squad_IsOnWalkableWall(squad, all) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns true if the given squad is owned by the given player
 ---@param squad Squad
 ---@param player Player
@@ -14182,6 +14664,7 @@ function Squad_Population(squad, type) end
 ---@return unknown
 function Squad_RemoveAbility(squad, ability) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Removes a slot item from the squad.
 ---@param squad Squad
 ---@param index number
@@ -14322,6 +14805,7 @@ function Squad_SetInvulnerableEntityCount(squad, invEntityCount, resetTime) end
 ---@return unknown
 function Squad_SetInvulnerableMinCap(squad, minHealthPercentage, resetTime) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set soldier mood mode.
 ---@param squad Squad
 ---@param mood SquadCombatBehaviourMoodMode
@@ -14582,6 +15066,7 @@ function Squad_Split(squad, int) end
 ---@return unknown
 function Squad_StopAbility(squad, ability, bIsEarlyExit) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Suggests a posture to a squad, lasting the passed duration
 --- Posture of 0 is prone, 1 is kneel/crouch, and 2 is standing.  Duration is in seconds, negative means indefinate.
 ---@param squad Squad
@@ -14713,19 +15198,23 @@ function Timer_Resume(timerID, force) end
 ---@return unknown
 function Timer_Start(timerID, period) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- register two callbacks to a goal. One fires when starts while the other fires when completes.
 ---@param target_goal_onStart__a_function_with_GoalStartReason_as_argument__E_G__function_OnGoalStart_startReason__onComplete__a_function_with_GoalCompletionReason_as_argument__E_G__function_OnGoalComplete_completeReason_ the
 ---@return unknown
 function Training_AddCallbacksToGoal(target_goal_onStart__a_function_with_GoalStartReason_as_argument__E_G__function_OnGoalStart_startReason__onComplete__a_function_with_GoalCompletionReason_as_argument__E_G__function_OnGoalComplete_completeReason_) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- add an extra tag to an existing goal.
 ---@return unknown
 function Training_AddExTagToGoal() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Adds a sequence of goals to the training system, also starting the sequence's timer
 ---@return unknown
 function Training_AddGoalSequence() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Enable/disable goal sequence
 --- Also restarts the timer for the goal sequence
 ---@param goalSequence GoalSequence
@@ -14733,16 +15222,19 @@ function Training_AddGoalSequence() end
 ---@return unknown
 function Training_EnableGoalSequence(goalSequence, enabled) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Enable/disable goal sequence with given id
 ---@param id string
 ---@param enabled boolean
 ---@return unknown
 function Training_EnableGoalSequenceByID(id, enabled) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Terminates a goal sequence
 ---@return unknown
 function Training_EndGoalSequence() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Creates a goal object
 --- A goal represents one step in a training sequence. Each goal gets one hint popup. Only one goal hint will be displayed at a time. key is the object to visually anchor the hint to. This can be: - the name of an adornable UI element - an entity - a squad - the pbg of a production button - a squad or entity unique id - UniqueSquadButton will anchor to the hero selection - UniqueRespawningSquadButton will anchor to the respawning hero element - CenterLeftSecondaryInfo will anchor to the information panel left of the command card. data is a table of arbitrary information for use in the isCompletePredicate and is routed to the ui. It should include: Message: Localized text to display on the hint pop-up. Use DataTemplate: template for the UI hint. Options are: - LeftClickTrainingDataTemplate: a box displaying an image of a left clicking mouse and message text - RightClickTrainingDataTemplate: a box displaying an image of a right clicking mouse and message text - PanCameraTrainingDataTemplate: a box displaying an image of a middle clicking mouse and message text - GenericTrainingDataTemplate: a box displaying message text - LargeGenericDataTemplate: a larger box dislpaying message text isComplete predicate to run on the goal. It should return true if and only if the goal is complete.
 ---@param key string
@@ -14750,6 +15242,7 @@ function Training_EndGoalSequence() end
 ---@return unknown
 function Training_Goal(key, data) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Creates a goal sequence
 --- A Goal Sequence represents the a single high-level task to prompt the user to do, composed of one or more goals. The goal sequence will begin when its trigger predicate is met, assuming its ignore and bypass conditions aren't met first. Only one goal sequence will be run at a time. id - unique string id to identify or reference the goal seqeuence repeatMax - if the goal sequence has been completed less than repeatMax times and its triggerPredicate passes, the goal sequence will run again. Infinite if less than 0. remindMax - if the . Infinite if less than 0. trigger - predicate to run on the goal sequence. If it returns true, start the goal sequence. ignore - predicate to run on the goal sequence. If it returns true, don't show the goal sequence even if trigger passes. remind - predicate to run on the goal sequence. It should indicate that the player needs a reminder on how to do the task. If it returns true, show the goal sequence again. bypass - predicate to run on the goal sequence. It should indicate whether the player has completed the goal without prompting. If true, the goal sequence will be ended and its completion count incremented. canRegress - if the complete condition for the current goal in the sequence stops passing, back up to the previous goal goals - list of goals to proceed through to as part of this goal sequence repeatMax and remindMax will be infinite if less than 0.
 ---@param id string
@@ -14815,6 +15308,7 @@ function Game_HasLocalPlayer() end
 ---@return unknown
 function Game_IsPaused() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns true if the we're running the performance test.
 ---@return unknown
 function Game_IsPerformanceTest() end
@@ -14829,29 +15323,34 @@ function Game_RequestSetLocalPlayer(player) end
 ---@return unknown
 function Game_SetInputEnabledFlag(flag) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Sets the map explored state for the ExploredAll cheat
 ---@param player Player
 ---@return unknown
 function Game_SetMapExplored(player) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set the player color for the world visuals from preset colors defined in tuning_simulation\ui_team_colours.
 ---@param player target
 ---@param _Colour_Neutral__ boolean
 ---@return unknown
 function Game_SetPlayerColour(player, _Colour_Neutral__) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set the player color for the world visuals by slot index from preset colors defined in tuning_simulation\ui_player_colours.
 ---@param player target
 ---@param based_player_slot_index unknown
 ---@return unknown
 function Game_SetPlayerSlotColour(player, based_player_slot_index) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set the player color for the UI from preset colors defined in tuning_simulation\ui_team_colours. Does not affect world visuals.
 ---@param player target
 ---@param _Colour_Neutral__ boolean
 ---@return unknown
 function Game_SetPlayerUIColour(player, _Colour_Neutral__) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set the player color for the UI by slot index from preset colors defined in tuning_simulation\ui_player_colours. Does not affect world visuals.
 ---@param player target
 ---@param based_player_slot_index unknown
@@ -15068,6 +15567,7 @@ function HintPoint_SetVisible(HintPointID, bVisible) end
 ---@return unknown
 function HintPoint_SetVisibleInternal(id, visible) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Appends the provided EntityIDs to the EGroup
 ---@param group EGroup
 ---@param entityIDsEncoded string
@@ -15092,6 +15592,7 @@ function Misc_AddRestrictCommandsMarker(marker) end
 ---@return unknown
 function Misc_AddRestrictCommandsOBB(minPosition, maxPosition) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Appends the provided SquadIDs to the SGroup
 ---@param group SGroup
 ---@param entityIDsEncoded string
@@ -15173,10 +15674,12 @@ function Misc_GetSelectedEntities(group, subselection) end
 ---@return unknown
 function Misc_GetSelectedSquads(group, subselection) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns the default simulation rate.
 ---@return unknown
 function Misc_GetSimDefaultStepsPerSecond() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns the current simulation rate.
 ---@return unknown
 function Misc_GetSimRate() end
@@ -15297,6 +15800,7 @@ function Misc_SetSelectionInputEnabled(enabled) end
 ---@return unknown
 function Misc_SetSGroupSelectable(sgroup, selectable) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Set the simulation rate
 ---@param rate number
 ---@return unknown
@@ -15403,6 +15907,7 @@ function Subtitle_PlayNarrativeLine(str) end
 ---@return unknown
 function Subtitle_PlaySpeechForSquadFromLocString(briefingActorPBG, loc, disableIconSubtitle, audioCtrlEvent, squad, is3D) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Plays a global speech with subtitle and actor icon in the overlay
 --- localization id is used for both subtitle text and speech please make sure that the the speech file is 2D Call UI_TitleDestroy to remove.
 ---@param briefingActorPBG ScarBriefingActorPBG
@@ -15828,6 +16333,7 @@ function UI_HighlightSGroup(sgroup, duration) end
 ---@return unknown
 function UI_HighlightSquad(squad, duration) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Is a replay match currently.
 --- Removed in version 1.9.0. Use UI_IsLiveOrRecordedReplay instead.
 ---@deprecated
@@ -15846,12 +16352,14 @@ function UI_IsReplay() end
 ---@return unknown
 function UI_LetterboxFade(r, g, b, a, duration, aspectRatio, persistent) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Create a reticule
 ---@param reticulePbg ScarReticulePBG
 ---@param radius number
 ---@return unknown
 function UI_ModalVisual_CreateReticule(reticulePbg, radius) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Destroy a modal visual
 ---@param id number
 ---@return unknown
@@ -15890,10 +16398,12 @@ function UI_RestrictBuildingPlacement(marker) end
 ---@return unknown
 function UI_ScreenFade(r, g, b, a, duration, persistent) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle off sector lines. Each call to UI_SectorsHide must be matched by a call to UI_SectorsShow
 ---@return unknown
 function UI_SectorsHide() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Toggle on sector lines. Each call to UI_SectorsShow must be matched by a call to UI_SectorsHide
 ---@return unknown
 function UI_SectorsShow() end
@@ -15928,12 +16438,14 @@ function UI_SetDecoratorsEnabled(enabled) end
 ---@return unknown
 function UI_SetEnablePauseMenu(isEnable) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Explicitly set the decorator a squad should use.
 ---@param entity Entity
 ---@param decorator string
 ---@return unknown
 function UI_SetEntityDecorator(entity, decorator) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Sets the game to show the entity ghost in a spotted state
 ---@param entity Entity
 ---@return unknown
@@ -15976,6 +16488,7 @@ function UI_SetSGroupSpecialLevel(sgroup, level) end
 ---@return unknown
 function UI_SetSkipNISCallback(_function) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Explicitly set the decorator a squad should use.
 ---@param squad Squad
 ---@param decorator string
@@ -16082,6 +16595,7 @@ function Game_EndSP(win, winReason, nis, sandmap) end
 ---@return unknown
 function Game_FadeToBlack(direction, length) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Loads a scar file if it hasn't been loaded yet
 ---@param Path string
 ---@return unknown
@@ -16524,6 +17038,7 @@ function Util_PlayMovie(name, fadeOut, fadeIn, onComplete, delay, onCompleteAfte
 ---@return unknown
 function Util_PlayMusic(name) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Simply prints something if the first variable is true
 ---@return unknown
 function Util_PrintIf() end
@@ -16541,6 +17056,7 @@ function Util_PrintObject(obj, max_depth, data_type, print_func) end
 ---@return unknown
 function Util_PrintTable() end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Prints out a unit table. indent is the number of tabs at the beginning of each line
 ---@return unknown
 function Util_PrintUnitTable() end
@@ -17027,6 +17543,7 @@ function World_IsPointInPlayerTerritory(player, position) end
 ---@return unknown
 function World_IsPosOnWalkableWall(p) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Returns TRUE if the game is currently in a replay state.
 ---@return unknown
 function World_IsReplay() end
@@ -17080,6 +17597,7 @@ function World_Pos(x, y, z) end
 ---@return unknown
 function World_PosInBounds(pos) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- DO NOT CALL UNLESS YOU DO AUTOMATED TESTING
 --- This resets the world into a state comparable to a fresh scenario start. Used in automated testing to avoid tests being dependent on each other.
 ---@return unknown
@@ -17101,6 +17619,7 @@ function World_SetDesignerSupply(point, bSupply) end
 ---@return unknown
 function World_SetInteractionStage(stage) end
 
+--- @deprecated Removed or unavailable in a standard skirmish/multiplayer context
 --- Enables or disables shared line of sight between these two players, and merges explored maps when needed
 ---@param p0 Player
 ---@param p1 Player
